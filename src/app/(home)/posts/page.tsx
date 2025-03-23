@@ -89,7 +89,7 @@ export default async function Page(props: {
           </div>
         </div>
       </div>
-      <Pagination pageIndex={pageIndex} />
+      {pageCount > 1 && (<Pagination pageIndex={pageIndex} />)}
     </>
   );
 }
