@@ -1,50 +1,70 @@
 # Blog
 
-This is a blog template built with fumadocs
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+This is a blog template built using [Fumadocs](https://fumadocs.vercel.app), a documentation framework for Next.js.  
 
-Install dependencies:
+---
+
+## 🚀 Getting Started
+
+### Install Dependencies
 
 ```bash
 pnpm install
 ```
 
-Run development server:
+### Run the Development Server
 
 ```bash
 pnpm dev
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000) in your browser to view the site.
 
-Dev commands:
+---
+
+## 🛠️ More Commands
+
+### Format Code
 
 ```bash
-# Format
 pnpm format
-# Lint
+```
+
+### Lint Code
+
+```bash
 pnpm lint
-# Lint (fix)
+```
+
+### Lint and Auto-Fix
+
+```bash
 pnpm lint:fix
-# Format, lint and import sort
+```
+
+### Format, Lint, and Sort Imports
+
+```bash
 pnpm check:fix
 ```
 
-## Learn More
+---
 
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
+## 📚 Learn More
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs
+### Official Resources
 
-- https://www.runfunrun.dev/
-- https://tailwindcss.com/
-- https://ui.shadcn.com/
-- https://www.haydenbleasel.com/
-- https://www.next-forge.com/
-- https://fumadocs.vercel.app/
-- https://sunar.js.org/
+- [Next.js Documentation](https://nextjs.org/docs) – learn about features, API routes, and more.
+- [Learn Next.js](https://nextjs.org/learn) – an interactive tutorial for beginners.
+- [Fumadocs](https://fumadocs.vercel.app) – full documentation for Fumadocs.
+
+### Useful Links & Inspiration
+
+- [RunFunRun](https://www.runfunrun.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Hayden Bleasel](https://www.haydenbleasel.com/)
+- [Next Forge](https://www.next-forge.com/)
+- [Sunar.js](https://sunar.js.org/)
+
+---
