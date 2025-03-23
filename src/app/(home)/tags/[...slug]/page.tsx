@@ -1,0 +1,176 @@
+import { postsPerPage } from '@/app/layout.config';
+import { TagJsonLd } from '@/components/json-ld';
+import { NumberedPagination } from '@/components/numbered-pagination';
+import PageHeader from '@/components/page-header';
+import { PostCard } from '@/components/post-card';
+import { createMetadata } from '@/lib/metadata';
+import { getPostsByTag, getTags } from '@/lib/source';
+import { TagIcon } from 'lucide-react';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { notFound, redirect } from 'next/navigation';
+
+export const dynamicParams = false;
+
+const totalPosts = (title: string) => getPostsByTag(title).length;
+const pageCount = (title: string) =>
+  Math.ceil(totalPosts(title) / postsPerPage);
+
+const CurrentPostsCount = ({
+  startIndex,
+  endIndex,
+  tag,
+}: {
+  startIndex: number;
+  endIndex: number;
+  tag: string;
+}) => {
+  const total = totalPosts(tag);
+  const start = startIndex + 1;
+  const end = endIndex < total ? endIndex : total;
+  if (start === end) return <span>({start})</span>;
+  return (
+    <span>
+      ({start}-{end})
+    </span>
+  );
+};
+
+const Header = ({
+  tag,
+  startIndex,
+  endIndex,
+}: {
+  tag: string;
+  startIndex: number;
+  endIndex: number;
+}) => (
+  <PageHeader>
+    <div className='flex items-center gap-2'>
+      <TagIcon size={20} className='text-muted-foreground' />
+      <h1 className='text-3xl font-bold leading-tight tracking-tighter md:text-4xl'>
+        {tag} <span className='text-muted-foreground'>Posts</span>{' '}
+        <CurrentPostsCount
+          startIndex={startIndex}
+          endIndex={endIndex}
+          tag={tag}
+        />
+      </h1>
+    </div>
+  </PageHeader>
+);
+
+const Pagination = ({ pageIndex, tag }: { pageIndex: number; tag: string }) => {
+  const handlePageChange = async (page: number) => {
+    'use server';
+    redirect(`/tags/${tag}?page=${page}`);
+  };
+
+  return (
+    <div className='border-grid border-t'>
+      <div className='container-wrapper bg-dashed'>
+        <NumberedPagination
+          currentPage={pageIndex + 1}
+          totalPages={pageCount(tag)}
+          paginationItemsToDisplay={5}
+          onPageChange={handlePageChange}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default async function Page(props: {
+  params: Promise<{ slug: string[] }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+
+  const tag = params.slug[0];
+  const pageIndex = searchParams.page
+    ? Number.parseInt(searchParams.page[0], 10) - 1
+    : 0;
+
+  if (pageIndex < 0 || pageIndex >= pageCount(tag)) notFound();
+
+  const startIndex = pageIndex * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const posts = getPostsByTag(tag).slice(startIndex, endIndex);
+
+  return (
+    <>
+      <Header tag={tag} startIndex={startIndex} endIndex={endIndex} />
+      <div className='container-wrapper flex-1'>
+        <div>
+          <div className='grid divide-y divide-dashed divide-border/70 dark:divide-border text-left'>
+            {posts.map((post) => {
+              const date = new Date(post.data.date).toDateString();
+              return (
+                <PostCard
+                  title={post.data.title}
+                  description={post.data.description ?? ''}
+                  url={post.url}
+                  date={date}
+                  key={post.url}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <Pagination pageIndex={pageIndex} tag={tag} />
+      <TagJsonLd tag={tag} />
+    </>
+  );
+}
+
+export const generateStaticParams = () => {
+  const tags = getTags();
+  return [
+    ...tags.map((tag) => ({ slug: [tag] })),
+    ...tags.flatMap((tag) =>
+      Array.from({ length: pageCount(tag) }, (_, index) => ({
+        slug: [tag, (index + 1).toString()],
+      })),
+    ),
+  ];
+};
+
+type Props = {
+  params: Promise<{ slug: string[] }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export async function generateMetadata(
+  props: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+
+  const tag = params.slug[0];
+  const pageIndex = searchParams.page
+    ? Number.parseInt(searchParams.page.toString(), 10)
+    : 1;
+
+  const isFirstPage = pageIndex === 1 || !searchParams.page;
+  const pageTitle = isFirstPage
+    ? `${tag} Posts`
+    : `${tag} Posts - Page ${pageIndex}`;
+  const canonicalUrl = isFirstPage
+    ? `/tags/${tag}`
+    : `/tags/${tag}?page=${pageIndex}`;
+
+  return createMetadata({
+    title: pageTitle,
+    description: `Posts tagged with ${tag}${
+      !isFirstPage ? ` - Page ${pageIndex}` : ''
+    }`,
+    openGraph: {
+      url: canonicalUrl,
+    },
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  });
+}

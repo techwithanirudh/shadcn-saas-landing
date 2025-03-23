@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/vitepress.css";
+@import "fumadocs-ui/css/preset.css";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@source '../../node_modules/fumadocs-ui/dist/**/*.js';
+
+@theme {
+  --color-background: var(--color-fd-background);
+  --color-foreground: var(--color-fd-foreground);
+
+  --color-card: var(--color-fd-card);
+  --color-card-foreground: var(--color-fd-card-foreground);
+
+  --color-popover: var(--color-fd-popover);
+  --color-popover-foreground: var(--color-fd-popover-foreground);
+
+  --color-primary: var(--color-fd-primary);
+  --color-primary-foreground: var(--color-fd-primary-foreground);
+
+  --color-secondary: var(--color-fd-secondary);
+  --color-secondary-foreground: var(--color-fd-secondary-foreground);
+
+  --color-muted: var(--color-fd-muted);
+  --color-muted-foreground: var(--color-fd-muted-foreground);
+
+  --color-accent: var(--color-fd-accent);
+  --color-accent-foreground: var(--color-fd-accent-foreground);
+
+  --color-destructive: var(--color-fd-destructive);
+  --color-destructive-foreground: var(--color-fd-destructive-foreground);
+
+  --color-border: var(--color-fd-border);
+  --color-input: var(--color-fd-input);
+  --color-ring: var(--color-fd-ring);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  a {
+    @apply [overflow-wrap:anywhere];
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .border-grid {
+    @apply border-border/50 dark:border-border border-dashed;
+  }
+
+  .container-wrapper {
+    @apply max-w-[1400px] min-[1800px]:max-w-screen-2xl min-[1400px]:border-x border-border/70 dark:border-border mx-auto w-full border-dashed;
+  }
+
+  .container {
+    @apply px-4 xl:px-6 mx-auto max-w-screen-2xl;
+  }
+
+  .bg-dashed {
+    background-image: linear-gradient(
+      45deg,
+      var(--color-border) 12.50%,
+      transparent 12.50%,
+      transparent 50%,
+      var(--color-border) 50%,
+      var(--color-border) 62.50%,
+      transparent 62.50%,
+      transparent 100%
+    );
+    background-size: 0.25rem 0.25rem;
+  }
+}

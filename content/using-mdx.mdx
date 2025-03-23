@@ -1,0 +1,37 @@
+---
+title: 'Using MDX'
+description: 'Lorem ipsum dolor sit amet'
+date: '2025-03-23'
+tags: ['nextjs', 'mdx', 'guide']
+author: You
+---
+
+import { Button } from '@/components/ui/button' 
+
+This Next.js app is configured with MDX support using the [`@next/mdx`](https://nextjs.org/docs/app/building-your-application/configuring/mdx) plugin. If you decide not to use MDX, you can remove the configuration from your `next.config.js`.
+
+## Why MDX?
+
+MDX is Markdown on steroids — it lets you embed JSX directly inside Markdown. This means you can [mix Markdown with React components](https://mdxjs.com/docs/what-is-mdx/) to build rich, interactive content.
+
+Perfect for blog posts, documentation, or tutorials that need some React magic ✨.
+
+## Example
+
+Here's how you can use a React component directly in MDX:
+
+<Button>Click Me!</Button>
+
+Yep, that button is fully interactive — thanks to MDX + React.
+
+## More Links
+
+- [MDX Syntax Documentation](https://mdxjs.com/docs/what-is-mdx/)
+- [Next.js MDX Setup Guide](https://nextjs.org/docs/app/building-your-application/configuring/mdx)
+- [Client Components in App Router](https://nextjs.org/docs/app/building-your-application/rendering/client-components)
+
+> **Note:** Components used in `.mdx` files should be **Client Components** if they use state, effects, or interactivity.
+
+---
+
+Let me know if you're using the Pages Router instead or want the full setup guide with `next.config.js` and loader info — happy to drop that in too.
