@@ -3,11 +3,17 @@ import PageHeader from './page-header';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import type { TOCItemType } from 'fumadocs-core/server';
 
+interface MdxLayoutProps {
+  children: ReactNode;
+  title: string;
+  toc?: TOCItemType[] | null;
+}
+
 export default function MdxLayout({
   children,
   title,
-  toc
-}: { children: ReactNode; title: string; toc: TOCItemType[] }): ReactNode {
+  toc,
+}: MdxLayoutProps): ReactNode {
   return (
     <>
       <PageHeader>
@@ -18,10 +24,12 @@ export default function MdxLayout({
       <div className='container-wrapper flex-1'>
         <article className='container flex flex-col px-4 lg:flex-row min-h-full'>
           <div className='flex-1 flex flex-col gap-4'>
-            <InlineTOC
-              items={toc}
-              className='rounded-none -ml-4 -mr-4 xl:-ml-6  lg:mr-0 border-0 border-dashed border-border/70 dark:border-border border-b xl:px-2'
-            />
+            {toc?.length ? (
+              <InlineTOC
+                items={toc}
+                className='rounded-none -ml-4 -mr-4 xl:-ml-6  lg:mr-0 border-0 border-dashed border-border/70 dark:border-border border-b xl:px-2'
+              />
+            ) : null}
             <div className='prose min-w-0 flex-1 py-4 pr-4'>{children}</div>
           </div>
         </article>
