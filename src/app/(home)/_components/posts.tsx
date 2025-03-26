@@ -8,13 +8,14 @@ export default function Posts({ posts }: { posts: Page[] }) {
   return (
     <section className='border-grid border-b'>
       <div className='container-wrapper'>
-        <div className='flex flex-col divide-y-1 divide-dashed divide-border/70 dark:divide-border'>
+        <div className='grid divide-y divide-dashed divide-border/70 dark:divide-border text-left'>
           {posts.map((post) => {
             const date = new Date(post.data.date).toDateString();
             return (
               <PostCard
                 title={post.data.title}
                 description={post.data.description ?? ''}
+                image={post.data.image}
                 url={post.url}
                 date={date}
                 key={post.url}

@@ -30,6 +30,7 @@ export const blog = defineCollections({
       }),
     author: z.string(),
     tags: z.array(z.string()).optional(),
+    image: z.string().optional(),
   }),
 });
 
