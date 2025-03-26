@@ -1,7 +1,7 @@
+import type { TOCItemType } from 'fumadocs-core/server';
+import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import type { ReactNode } from 'react';
 import PageHeader from './page-header';
-import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
-import type { TOCItemType } from 'fumadocs-core/server';
 
 interface MdxLayoutProps {
   children: ReactNode;

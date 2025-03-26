@@ -78,10 +78,11 @@ function NumberedPagination({
               <PaginationLink
                 className={cn(
                   buttonVariants({
-                    variant: page === currentPage ? 'default' : 'ghost'
+                    variant: page === currentPage ? 'default' : 'ghost',
                   }),
                   'rounded-none border-0 shadow-none focus-visible:z-10',
-                  page === currentPage && 'min-w-full dark:bg-primary dark:hover:bg-primary/90',
+                  page === currentPage &&
+                    'min-w-full dark:bg-primary dark:hover:bg-primary/90',
                 )}
                 href='#'
                 onClick={handlePageChange(page)}

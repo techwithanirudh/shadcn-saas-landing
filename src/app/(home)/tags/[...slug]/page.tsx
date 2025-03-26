@@ -118,7 +118,7 @@ export default async function Page(props: {
           </div>
         </div>
       </div>
-      {pageCount(tag) > 1 && (<Pagination pageIndex={pageIndex} tag={tag} />)}
+      {pageCount(tag) > 1 && <Pagination pageIndex={pageIndex} tag={tag} />}
       <TagJsonLd tag={tag} />
     </>
   );
@@ -163,8 +163,9 @@ export async function generateMetadata(
 
   return createMetadata({
     title: pageTitle,
-    description: `Posts tagged with ${tag}${!isFirstPage ? ` - Page ${pageIndex}` : ''
-      }`,
+    description: `Posts tagged with ${tag}${
+      !isFirstPage ? ` - Page ${pageIndex}` : ''
+    }`,
     openGraph: {
       url: canonicalUrl,
     },

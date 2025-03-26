@@ -1,10 +1,10 @@
-import { loader } from "fumadocs-core/source";
-import type { InferMetaType, InferPageType } from "fumadocs-core/source";
-import { createMDXSource } from "fumadocs-mdx";
-import { blog } from ".source";
+import { loader } from 'fumadocs-core/source';
+import type { InferMetaType, InferPageType } from 'fumadocs-core/source';
+import { createMDXSource } from 'fumadocs-mdx';
+import { blog } from '.source';
 
 export const source = loader({
-  baseUrl: "/posts",
+  baseUrl: '/posts',
   source: createMDXSource(blog),
 });
 export const { getPage: getPost, getPages: getPosts, pageTree } = source;
