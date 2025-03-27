@@ -106,7 +106,7 @@ export function UserButton({ className, classNames }: UserButtonProps) {
           <>
             <DropdownMenuItem className={classNames?.content?.menuItem} asChild>
               <Link href={'/login'}>
-                <Icons.logIn />
+                <Icons.logIn className='size-4' />
                 Sign In
               </Link>
             </DropdownMenuItem>
@@ -117,7 +117,7 @@ export function UserButton({ className, classNames }: UserButtonProps) {
               className={classNames?.content?.menuItem}
               onClick={() => signOut()}
             >
-              <Icons.logOut />
+              <Icons.logOut className='size-4' />
               Log Out
             </DropdownMenuItem>
           </>
