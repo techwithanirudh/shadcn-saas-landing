@@ -63,7 +63,7 @@ export default async function Page(props: {
               items={toc}
               className='rounded-none border-0 border-border/70 border-b border-dashed dark:border-border'
             />
-            <div className='prose min-w-0 px-4'>
+            <div className='prose min-w-0 flex-1 px-4'>
               <Mdx
                 components={{
                   ...defaultMdxComponents,
@@ -77,7 +77,7 @@ export default async function Page(props: {
             </div>
             <PostComments
               slug={params.slug}
-              className='[&_form>div]:!rounded-none h-full rounded-none border-0 border-border/70 border-t border-dashed dark:border-border'
+              className='[&_form>div]:!rounded-none rounded-none border-0 border-border/70 border-t border-dashed dark:border-border'
             />
           </div>
           <div className='flex flex-col gap-4 p-4 text-sm lg:sticky lg:top-[4rem] lg:h-[calc(100vh-4rem)] lg:w-[250px] lg:self-start lg:overflow-y-auto lg:border-border/70 lg:border-l lg:border-dashed lg:dark:border-border'>

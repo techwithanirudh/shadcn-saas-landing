@@ -58,7 +58,7 @@ export function UserButton({ className, classNames }: UserButtonProps) {
           {isPending ? (
             <Skeleton
               className={cn(
-                'size-5 rounded-md',
+                'size-8 rounded-md',
                 className,
                 classNames?.base,
                 classNames?.skeleton,
