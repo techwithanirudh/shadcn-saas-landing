@@ -1,5 +1,6 @@
 'use client';
 import { buttonVariants } from '@/components/ui/button';
+import { Icons } from '@/components/ui/icons';
 import {
   Pagination,
   PaginationContent,
@@ -9,7 +10,6 @@ import {
 } from '@/components/ui/pagination';
 import { usePagination } from '@/hooks/use-pagination';
 import { cn } from '@/lib/utils';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 type NumberedPaginationProps = {
   currentPage: number;
@@ -39,7 +39,7 @@ function NumberedPagination({
 
   return (
     <Pagination>
-      <PaginationContent className='inline-flex gap-0 -space-x-px rtl:space-x-reverse w-full'>
+      <PaginationContent className='-space-x-px inline-flex w-full gap-0 rtl:space-x-reverse'>
         <PaginationItem>
           <PaginationLink
             className={cn(
@@ -53,11 +53,11 @@ function NumberedPagination({
             aria-label='Go to previous page'
             aria-disabled={currentPage === 1}
           >
-            <ChevronLeft size={16} strokeWidth={2} aria-hidden='true' />
+            <Icons.chevronLeft size={16} strokeWidth={2} aria-hidden='true' />
           </PaginationLink>
         </PaginationItem>
 
-        <div className='w-full inline-flex justify-center '>
+        <div className='inline-flex w-full justify-center '>
           {showLeftEllipsis && (
             <PaginationItem>
               <PaginationLink
@@ -121,7 +121,7 @@ function NumberedPagination({
             aria-label='Go to next page'
             aria-disabled={currentPage === totalPages}
           >
-            <ChevronRight size={16} strokeWidth={2} aria-hidden='true' />
+            <Icons.chevronRight size={16} strokeWidth={2} aria-hidden='true' />
           </PaginationLink>
         </PaginationItem>
       </PaginationContent>

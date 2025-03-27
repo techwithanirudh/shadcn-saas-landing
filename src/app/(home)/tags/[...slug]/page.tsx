@@ -3,9 +3,9 @@ import { TagJsonLd } from '@/components/json-ld';
 import { NumberedPagination } from '@/components/numbered-pagination';
 import PageHeader from '@/components/page-header';
 import { PostCard } from '@/components/post-card';
+import { Icons } from '@/components/ui/icons';
 import { createMetadata } from '@/lib/metadata';
 import { getPostsByTag, getTags } from '@/lib/source';
-import { TagIcon } from 'lucide-react';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
@@ -46,8 +46,8 @@ const Header = ({
 }) => (
   <PageHeader>
     <div className='flex items-center gap-2'>
-      <TagIcon size={20} className='text-muted-foreground' />
-      <h1 className='text-3xl font-bold leading-tight tracking-tighter md:text-4xl'>
+      <Icons.tag size={20} className='text-muted-foreground' />
+      <h1 className='font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
         {tag} <span className='text-muted-foreground'>Posts</span>{' '}
         <CurrentPostsCount
           startIndex={startIndex}
@@ -87,8 +87,10 @@ export default async function Page(props: {
   const searchParams = await props.searchParams;
 
   const tag = params.slug[0];
+  if (!tag) return notFound();
+
   const pageIndex = searchParams.page
-    ? Number.parseInt(searchParams.page[0], 10) - 1
+    ? Number.parseInt(searchParams.page[0] ?? '', 10) - 1
     : 0;
 
   if (pageIndex < 0 || pageIndex >= pageCount(tag)) notFound();
@@ -102,7 +104,7 @@ export default async function Page(props: {
       <Header tag={tag} startIndex={startIndex} endIndex={endIndex} />
       <div className='container-wrapper flex-1'>
         <div>
-          <div className='grid divide-y divide-dashed divide-border/70 dark:divide-border text-left'>
+          <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
             {posts.map((post) => {
               const date = new Date(post.data.date).toDateString();
               return (

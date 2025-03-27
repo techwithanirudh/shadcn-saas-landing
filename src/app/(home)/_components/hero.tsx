@@ -1,8 +1,8 @@
 import { baseOptions, linkItems } from '@/app/layout.config';
 import { buttonVariants } from '@/components/ui/button';
+import { Icons } from '@/components/ui/icons';
 import { cn } from '@/lib/utils';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
-import { ArrowUpRight, Code } from 'lucide-react';
 import Link from 'next/link';
 
 export default function HeroSection() {
@@ -14,16 +14,16 @@ export default function HeroSection() {
   return (
     <section className='border-grid border-b'>
       <div className='container-wrapper'>
-        <div className='container relative overflow-hidden bg-dashed py-20 px-6 sm:py-32'>
+        <div className='container relative overflow-hidden bg-dashed px-6 py-20 sm:py-32'>
           <div className='relative z-10 mx-auto max-w-4xl text-center'>
-            <div className='flex items-center justify-center space-x-2 mb-6'>
-              <Code className='h-6 w-6 text-primary' />
-              <span className='text-sm font-medium text-muted-foreground'>
+            <div className='mb-6 flex items-center justify-center space-x-2'>
+              <Icons.code className='h-6 w-6 text-primary' />
+              <span className='font-medium text-muted-foreground text-sm'>
                 Full-Stack Developer & Tech Writer
               </span>
             </div>
 
-            <h1 className='mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl'>
+            <h1 className='mb-6 font-bold text-4xl text-foreground tracking-tight sm:text-5xl md:text-6xl'>
               I'm John Doe, a Full-Stack Developer.
             </h1>
 
@@ -40,12 +40,12 @@ export default function HeroSection() {
                     variant: 'default',
                     size: 'lg',
                   }),
-                  'rounded-full bg-primary hover:bg-primary/90 group',
+                  'group rounded-full bg-primary hover:bg-primary/90',
                 )}
                 href='/posts'
               >
                 Browse Posts
-                <ArrowUpRight className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
+                <Icons.arrowUpRight className='group-hover:-rotate-12 ml-2 size-5 transition-transform' />
               </Link>
 
               <div className='flex items-center space-x-4'>

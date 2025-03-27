@@ -2,7 +2,7 @@ import { baseUrl, createMetadata } from '@/lib/metadata';
 import type { Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
-import './global.css';
+import '@/styles/globals.css';
 import 'katex/dist/katex.css';
 import { Body } from './layout.client';
 import { description as homeDescription } from './layout.config';

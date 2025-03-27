@@ -7,7 +7,7 @@ const PageHeader = ({
 }: { children: ReactNode; className?: string }) => (
   <div className='border-grid border-b'>
     <div className='container-wrapper'>
-      <div className={cn('container py-6 px-4', className)}>{children}</div>
+      <div className={cn('container px-4 py-6', className)}>{children}</div>
     </div>
   </div>
 );

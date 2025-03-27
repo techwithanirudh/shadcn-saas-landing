@@ -1,4 +1,4 @@
-import { Control } from '@/app/(home)/posts/[slug]/page.client';
+import { PostComments, Share } from '@/app/(home)/posts/[slug]/page.client';
 import { PostJsonLd } from '@/components/json-ld';
 import PageHeader from '@/components/page-header';
 import { TagCard } from '@/components/tag-card';
@@ -21,17 +21,17 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
     <PageHeader>
       <div
         className={cn(
-          'flex flex-col items-start justify-center gap-4 md:gap-6 py-8',
-          'sm:items-center sm:rounded-lg sm:border sm:bg-muted/70 sm:dark:bg-muted sm:px-8 sm:py-20 sm:shadow-xs',
+          'flex flex-col items-start justify-center gap-4 py-8 md:gap-6',
+          'sm:items-center sm:rounded-lg sm:border sm:bg-muted/70 sm:px-8 sm:py-20 sm:shadow-xs sm:dark:bg-muted',
         )}
       >
-        <div className='flex flex-col sm:text-center gap-2 md:gap-4'>
+        <div className='flex flex-col gap-2 sm:text-center md:gap-4'>
           <h1 className='max-w-4xl font-bold text-3xl leading-tight tracking-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight'>
             {page.data.title}
           </h1>
           <p className='mx-auto max-w-4xl'>{page.data.description}</p>
         </div>
-        <div className='flex gap-2 flex-wrap'>
+        <div className='flex flex-wrap gap-2'>
           {tags?.map((tag) => (
             <TagCard name={tag} key={tag} className=' border border-border ' />
           ))}
@@ -57,13 +57,13 @@ export default async function Page(props: {
       <Header page={page} tags={tags} />
 
       <div className='container-wrapper flex-1'>
-        <article className='container flex flex-col px-4 lg:flex-row min-h-full'>
-          <div className='flex-1 flex flex-col gap-4'>
+        <article className='flex min-h-full flex-col lg:flex-row'>
+          <div className='flex flex-1 flex-col gap-4'>
             <InlineTOC
               items={toc}
-              className='rounded-none -ml-4 -mr-4 xl:-ml-6  lg:mr-0 border-0 border-dashed border-border/70 dark:border-border border-b xl:px-2'
+              className='rounded-none border-0 border-border/70 border-b border-dashed dark:border-border'
             />
-            <div className='prose min-w-0 flex-1 pr-4'>
+            <div className='prose min-w-0 px-4'>
               <Mdx
                 components={{
                   ...defaultMdxComponents,
@@ -75,14 +75,18 @@ export default async function Page(props: {
                 }}
               />
             </div>
+            <PostComments
+              slug={params.slug}
+              className='[&_form>div]:!rounded-none h-full rounded-none border-0 border-border/70 border-t border-dashed dark:border-border'
+            />
           </div>
-          <div className='flex flex-col gap-4 lg:border-l lg:border-border/70 lg:dark:border-border lg:border-dashed p-4 text-sm lg:w-[250px] lg:sticky lg:top-[4rem] lg:self-start lg:h-[calc(100vh-4rem)] lg:overflow-y-auto'>
+          <div className='flex flex-col gap-4 p-4 text-sm lg:sticky lg:top-[4rem] lg:h-[calc(100vh-4rem)] lg:w-[250px] lg:self-start lg:overflow-y-auto lg:border-border/70 lg:border-l lg:border-dashed lg:dark:border-border'>
             <div>
               <p className='mb-1 text-fd-muted-foreground'>Written by</p>
               <p className='font-medium'>{page.data.author}</p>
             </div>
             <div>
-              <p className='mb-1 text-sm text-fd-muted-foreground'>
+              <p className='mb-1 text-fd-muted-foreground text-sm'>
                 Created At
               </p>
               <p className='font-medium'>
@@ -91,13 +95,13 @@ export default async function Page(props: {
             </div>
             {lastUpdate && (
               <div>
-                <p className='mb-1 text-sm text-fd-muted-foreground'>
+                <p className='mb-1 text-fd-muted-foreground text-sm'>
                   Updated At
                 </p>
                 <p className='font-medium'>{lastUpdate.toDateString()}</p>
               </div>
             )}
-            <Control url={page.url} />
+            <Share url={page.url} />
           </div>
         </article>
       </div>
@@ -131,7 +135,7 @@ export async function generateMetadata(props: {
   );
 }
 
-export function generateStaticParams(): { slug: string }[] {
+export function generateStaticParams(): { slug: string | undefined }[] {
   return getPosts().map((page) => ({
     slug: page.slugs[0],
   }));

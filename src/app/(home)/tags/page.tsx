@@ -12,26 +12,26 @@ export default function Page() {
   return (
     <div className='flex flex-1 flex-col'>
       <PageHeader>
-        <h1 className='text-3xl font-bold leading-tight tracking-tighter md:text-4xl'>
+        <h1 className='font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
           Tags
         </h1>
       </PageHeader>
       <div className='container-wrapper flex-1'>
         <div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y divide-dashed divide-border/70 dark:divide-border'>
+          <div className='grid grid-cols-1 divide-y divide-dashed divide-border/70 sm:grid-cols-2 lg:grid-cols-4 dark:divide-border'>
             {tags.map((tag, index) => (
               <TagCard
                 key={tag}
                 displayCount={true}
                 name={tag}
                 className={cn(
-                  'rounded-none bg-card/50 p-6 hover:bg-card/80 items-center gap-2 justify-start last:border-b last:border-border/70 last:dark:border-border last:border-dashed border-r-0',
+                  'items-center justify-start gap-2 rounded-none border-r-0 bg-card/50 p-6 last:border-border/70 last:border-b last:border-dashed hover:bg-card/80 last:dark:border-border',
                   tags.at(index - 1) && 'border-l',
                 )}
               />
             ))}
             {tags.length % 2 === 1 && (
-              <div className='size-full bg-dashed sm:border-l sm:border-b border-border/70 dark:border-border border-dashed' />
+              <div className='size-full border-border/70 border-dashed bg-dashed sm:border-b sm:border-l dark:border-border' />
             )}
           </div>
         </div>

@@ -54,7 +54,7 @@ export default async function Page(props: {
 }) {
   const searchParams = await props.searchParams;
   const pageIndex = searchParams.page
-    ? Number.parseInt(searchParams.page[0], 10) - 1
+    ? Number.parseInt(searchParams.page[0] ?? '', 10) - 1
     : 0;
   if (pageIndex < 0 || pageIndex >= pageCount) notFound();
 
@@ -65,7 +65,7 @@ export default async function Page(props: {
   return (
     <>
       <PageHeader>
-        <h1 className='text-3xl font-bold leading-tight tracking-tighter md:text-4xl'>
+        <h1 className='font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
           All {totalPosts} Posts{' '}
           <CurrentPostsCount startIndex={startIndex} endIndex={endIndex} />
         </h1>
@@ -73,7 +73,7 @@ export default async function Page(props: {
       <div className='container-wrapper flex-1'>
         {/* container */}
         <div>
-          <div className='grid divide-y divide-dashed divide-border/70 dark:divide-border text-left'>
+          <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
             {posts.map((post) => {
               const date = new Date(post.data.date).toDateString();
               return (

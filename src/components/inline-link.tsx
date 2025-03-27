@@ -17,7 +17,7 @@ export const InlineLink = ({
     <Link
       href={href}
       className={cn(
-        'text-fd-primary underline hover:text-fd-primary/70 duration-300',
+        'text-fd-primary underline duration-300 hover:text-fd-primary/70',
         className,
       )}
       target={blank ? '_blank' : undefined}

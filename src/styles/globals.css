@@ -1,12 +1,14 @@
 @import "tailwindcss";
 @import "fumadocs-ui/css/vitepress.css";
 @import "fumadocs-ui/css/preset.css";
+@import "@fuma-comment/react/preset.css";
 
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
 
 @source '../../node_modules/fumadocs-ui/dist/**/*.js';
+@source '../../node_modules/@fuma-comment/react/dist/**/*.js';
 
 @theme {
   --color-background: var(--color-fd-background);

@@ -39,13 +39,13 @@ pnpm lint
 ### Lint and Auto-Fix
 
 ```bash
-pnpm lint:fix
+pnpm lint:unsafe
 ```
 
 ### Format, Lint, and Sort Imports
 
 ```bash
-pnpm check:fix
+pnpm check:unsafe
 ```
 
 ---

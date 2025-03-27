@@ -17,15 +17,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 import { Alert, AlertTitle } from '@/components/ui/alert';
-import {
-  CircleCheckIcon,
-  SendHorizontalIcon,
-  SendIcon,
-  TriangleAlertIcon,
-} from 'lucide-react';
 
 import { subscribeUser } from '@/app/(home)/actions';
-import { LoaderIcon } from 'lucide-react';
+import { Icons } from '@/components/ui/icons';
 
 export const NewsletterForm = () => {
   const form = useForm({
@@ -41,26 +35,27 @@ export const NewsletterForm = () => {
     execute(values);
   };
 
+  //   todo: check if hte user is authed if so send teir name aswell with email, if the email matches that is
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-4 flex-1'>
-        <div className='overflow-hidden rounded-md border bg-muted p-0 flex min-h-10 h-full'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='flex-1 space-y-4'>
+        <div className='flex h-full min-h-10 overflow-hidden rounded-md border bg-muted p-0'>
           <div className='flex-1'>
             <FormField
               control={form.control}
               name='email'
               render={({ field }) => (
-                <FormItem className='h-full group'>
+                <FormItem className='group h-full'>
                   <FormControl className='h-full group-has-[p]:pt-3'>
                     <Input
                       {...field}
                       disabled={status === 'executing'}
                       placeholder='Email address'
                       type='email'
-                      className='border-none rounded-md rounded-r-none px-4 focus-visible:ring-0 focus-visible:ring-offset-0 h-full'
+                      className='h-full rounded-md rounded-r-none border-none px-4 focus-visible:ring-0 focus-visible:ring-offset-0'
                     />
                   </FormControl>
-                  <FormMessage className='ml-4 text-xs pb-2' />
+                  <FormMessage className='ml-4 pb-2 text-xs' />
                 </FormItem>
               )}
             />
@@ -70,27 +65,27 @@ export const NewsletterForm = () => {
             disabled={status === 'executing'}
             type='submit'
             size='icon'
-            className='rounded-md rounded-l-none px-3 size-auto'
+            className='size-auto rounded-md rounded-l-none px-3'
           >
             {status === 'executing' ? (
-              <LoaderIcon className='size-4 animate-spin' />
+              <Icons.spinner className='size-4 animate-spin' />
             ) : (
-              <SendHorizontalIcon className='size-4' />
+              <Icons.send className='size-4' />
             )}
           </Button>
         </div>
 
         {status === 'hasSucceeded' && (
-          <Alert className='bg-emerald-500/15 text-emerald-500 p-3 border-emerald-500/15 py-2 px-3 has-[>svg]:gap-x-1.5'>
-            <CircleCheckIcon size={16} />
+          <Alert className='border-emerald-500/15 bg-emerald-500/15 p-3 px-3 py-2 text-emerald-500 has-[>svg]:gap-x-1.5'>
+            <Icons.success size={16} />
             <AlertTitle className='mb-0 leading-normal'>
               You are now subscribed to our newsletter!
             </AlertTitle>
           </Alert>
         )}
         {result.serverError && (
-          <Alert className='bg-destructive/15 text-destructive dark:bg-destructive dark:text-destructive-foreground p-3 border-destructive/15 dark:border-destructive py-2 px-3 has-[>svg]:gap-x-1.5'>
-            <TriangleAlertIcon className='size-4' />
+          <Alert className='border-destructive/15 bg-destructive/15 p-3 px-3 py-2 text-destructive has-[>svg]:gap-x-1.5 dark:border-destructive dark:bg-destructive dark:text-destructive-foreground'>
+            <Icons.warning className='size-4' />
             <AlertTitle className='mb-0 leading-normal'>
               {result.serverError}
             </AlertTitle>
