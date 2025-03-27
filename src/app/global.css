@@ -30,8 +30,10 @@
   --color-accent: var(--color-fd-accent);
   --color-accent-foreground: var(--color-fd-accent-foreground);
 
-  --color-destructive: var(--color-fd-destructive);
-  --color-destructive-foreground: var(--color-fd-destructive-foreground);
+  /* --color-destructive: var(--color-fd-destructive);
+  --color-destructive-foreground: var(--color-fd-destructive-foreground); */
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(0 0% 98%);
 
   --color-border: var(--color-fd-border);
   --color-input: var(--color-fd-input);

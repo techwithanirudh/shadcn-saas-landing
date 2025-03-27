@@ -1,3 +1,4 @@
+import { NewsletterForm } from '@/components/newsletter-form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
@@ -18,16 +19,8 @@ export function CTA(): React.ReactElement {
             </p>
           </div>
 
-          <div className='flex flex-col sm:flex-row gap-3 items-center justify-center'>
-            <Input
-              type='email'
-              placeholder='Enter your email'
-              className='flex-1 border-border'
-              disabled
-            />
-            <Button className='sm:whitespace-nowrap' disabled>
-              Subscribe
-            </Button>
+          <div className='flex items-center w-full'>
+            <NewsletterForm />
           </div>
         </div>
       </div>
