@@ -3,19 +3,19 @@ import { ImageResponse } from 'next/og';
 import type { ReactElement } from 'react';
 
 interface GenerateProps {
-  title: string;
-  description?: string;
+  title?: string;
+  subtitle?: string;
 }
 
 export function generateOGImage(
   options: GenerateProps & ImageResponseOptions,
 ): ImageResponse {
-  const { title, description, ...rest } = options;
+  const { title, subtitle, ...rest } = options;
 
   return new ImageResponse(
     generate({
       title,
-      description,
+      subtitle,
     }),
     {
       width: 1200,
@@ -25,10 +25,7 @@ export function generateOGImage(
   );
 }
 
-export function generate({
-  title,
-  description = 'Learn more about this post by visiting the website.',
-}: GenerateProps): ReactElement {
+export function generate({ title = 'John Doe' }: GenerateProps): ReactElement {
   return (
     <div
       tw='flex h-full w-full bg-black text-white'
@@ -38,9 +35,9 @@ export function generate({
       <div tw='flex border absolute border-stone-900 border-dashed inset-y-0 right-16 w-[1px]' />
       <div tw='flex border absolute border-stone-900 inset-x-0 h-[1px] top-16' />
       <div tw='flex border absolute border-stone-900 inset-x-0 h-[1px] bottom-16' />
-      <div tw='flex flex-col absolute w-[896px] justify-center inset-32'>
+      <div tw='flex items-center absolute w-[896px] justify-center inset-32'>
         <div
-          tw='tracking-tight flex-grow-1 flex flex-col justify-center leading-[1.1]'
+          tw='tracking-tight flex-grow-1 flex flex-col justify-center items-center leading-[1.1]'
           style={{
             textWrap: 'balance',
             fontWeight: 600,
@@ -49,15 +46,6 @@ export function generate({
           }}
         >
           {title}
-        </div>
-        <div
-          tw='text-[40px] leading-[1.5] flex-grow-1 text-stone-400'
-          style={{
-            fontWeight: 500,
-            textWrap: 'balance',
-          }}
-        >
-          {description}
         </div>
       </div>
     </div>

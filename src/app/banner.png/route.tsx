@@ -1,7 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { generateOGImage } from '@/app/og/[...slug]/og';
-import { metadataImage } from '@/lib/metadata-image';
-import type { ImageResponse } from 'next/og';
+import { generateOGImage } from '@/app/banner.png/og';
 
 async function loadAssets(): Promise<
   { name: string; data: Buffer; weight: 400 | 600; style: 'normal' }[]
@@ -40,20 +38,12 @@ async function loadAssets(): Promise<
   ];
 }
 
-export const GET = metadataImage.createAPI(
-  async (page): Promise<ImageResponse> => {
-    const [fonts] = await Promise.all([loadAssets()]);
+export async function GET() {
+  const [fonts] = await Promise.all([loadAssets()]);
 
-    return generateOGImage({
-      title: page.data.title,
-      description: page.data.description,
-      fonts,
-    });
-  },
-);
-
-export function generateStaticParams(): {
-  slug: string[];
-}[] {
-  return metadataImage.generateParams();
+  return generateOGImage({
+    title: 'John Doe',
+    subtitle: 'Software Engineer',
+    fonts,
+  });
 }
