@@ -1,5 +1,6 @@
 'use client';
 
+import Analytics from '@/components/analytics';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 import { RootProvider } from 'fumadocs-ui/provider';
 import type { ReactNode } from 'react';
@@ -15,6 +16,7 @@ export function Provider({
       <TooltipProvider>
         <ViewTransition>{children}</ViewTransition>
       </TooltipProvider>
+      <Analytics />
     </RootProvider>
   );
 }

@@ -1,4 +1,4 @@
-import { baseUrl } from '@/lib/metadata';
+import { baseUrl } from '@/lib/constants';
 import {
   Body,
   Button,

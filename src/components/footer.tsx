@@ -37,6 +37,12 @@ export function Footer() {
                     {item.text}
                   </InlineLink>
                 ))}
+              <InlineLink
+                href='/rss.xml'
+                className='font-medium text-foreground text-sm uppercase no-underline transition-colors hover:text-foreground/80'
+              >
+                RSS
+              </InlineLink>
             </nav>
           </div>
 

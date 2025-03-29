@@ -10,20 +10,22 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 const audienceId = process.env.RESEND_AUDIENCE_ID as string;
 
+const splitName = (name = '') => {
+  const [firstName, ...lastName] = name.split(' ').filter(Boolean);
+  return {
+    firstName: firstName,
+    lastName: lastName.join(' '),
+  };
+};
+
 export const subscribeUser = actionClient
   .schema(NewsletterSchema)
   .action(async ({ parsedInput: { email } }) => {
     const session = await getSession();
     const fullName = session?.user.name || '';
     const { firstName, lastName } = fullName
-      ? {
-          firstName: fullName.split(' ')?.[0],
-          lastName: fullName.split(' ')?.[1],
-        }
-      : {
-          firstName: '',
-          lastName: '',
-        };
+      ? splitName(fullName)
+      : { firstName: '', lastName: '' };
 
     try {
       const contact = await getContact({ email, audienceId });

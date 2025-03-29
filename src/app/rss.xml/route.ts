@@ -1,6 +1,6 @@
 import { description, title } from '@/app/layout.config';
 import { owner } from '@/app/layout.config';
-import { baseUrl } from '@/lib/metadata';
+import { baseUrl } from '@/lib/constants';
 import { getPosts } from '@/lib/source';
 import { Feed } from 'feed';
 
@@ -16,20 +16,30 @@ const escapeForXML = (str: string) => {
 };
 
 export const GET = () => {
+  const feed = createFeed();
+
+  return new Response(feed.atom1(), {
+    headers: {
+      'Content-Type': 'application/xml',
+    },
+  });
+};
+
+function createFeed(): Feed {
   const feed = new Feed({
     title,
     description,
     id: baseUrl.href,
-    copyright: owner,
+    language: 'en',
+    copyright: `All rights reserved ${new Date().getFullYear()}, ${owner}`,
+    image: new URL('/banner.png', baseUrl).href,
+    favicon: new URL('/favicon.ico', baseUrl).href,
     link: baseUrl.href,
     feed: new URL('/api/rss.xml', baseUrl).href,
-    language: 'en',
     updated: new Date(),
-    favicon: new URL('/favicon.ico', baseUrl).href,
   });
 
   const posts = getPosts();
-
   for (const post of posts) {
     feed.addItem({
       title: post.data.title,
@@ -52,9 +62,5 @@ export const GET = () => {
     });
   }
 
-  return new Response(feed.atom1(), {
-    headers: {
-      'Content-Type': 'application/xml',
-    },
-  });
-};
+  return feed;
+}

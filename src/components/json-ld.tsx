@@ -1,6 +1,6 @@
 import { title as homeTitle } from '@/app/layout.config';
 import { owner } from '@/app/layout.config';
-import { baseUrl } from '@/lib/metadata';
+import { baseUrl } from '@/lib/constants';
 import type { Post } from '@/lib/source';
 import type { BlogPosting, BreadcrumbList, Graph } from 'schema-dts';
 
