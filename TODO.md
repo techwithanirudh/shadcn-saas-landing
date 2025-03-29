@@ -11,7 +11,6 @@
   - Publishing is controlled manually by running a `publish` script.
   - Consider using [Beehiiv](https://www.beehiiv.com/) as an alternative.
 - [ ] Add an AI-powered "Ask Me Anything" chat to the blog template using the existing `fumadocs-mcp` setup.
-- [ ] Use a different RSS feed generator.
 - [ ] Use [pqoqubbw animated icons](https://icons.pqoqubbw.dev/).
 - [ ] Add a smooth dark/light mode view transition like [0.email](https://0.email).
 - So, when a user is re-putting their email it might mean they like to resubscribe, so update to unsubscribe: false

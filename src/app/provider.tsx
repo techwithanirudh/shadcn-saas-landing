@@ -1,6 +1,7 @@
 'use client';
 
 import Analytics from '@/components/analytics';
+import { ThemeProvider } from '@/components/theme-provider';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 import { RootProvider } from 'fumadocs-ui/provider';
 import type { ReactNode } from 'react';
@@ -12,11 +13,22 @@ export function Provider({
   children: ReactNode;
 }): React.ReactElement {
   return (
-    <RootProvider>
-      <TooltipProvider>
-        <ViewTransition>{children}</ViewTransition>
-      </TooltipProvider>
-      <Analytics />
-    </RootProvider>
+    <ThemeProvider
+      attribute='class'
+      defaultTheme='system'
+      enableSystem
+      disableTransitionOnChange
+    >
+      <RootProvider
+        theme={{
+          enabled: false,
+        }}
+      >
+        <TooltipProvider>
+          <ViewTransition>{children}</ViewTransition>
+        </TooltipProvider>
+        <Analytics />
+      </RootProvider>
+    </ThemeProvider>
   );
 }

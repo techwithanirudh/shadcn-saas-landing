@@ -7,7 +7,7 @@ import {
   LargeSearchToggle,
   SearchToggle,
 } from 'fumadocs-ui/components/layout/search-toggle';
-import { ThemeToggle } from 'fumadocs-ui/components/layout/theme-toggle';
+// import { ThemeToggle } from 'fumadocs-ui/components/layout/theme-toggle';
 import { NavigationMenuList } from 'fumadocs-ui/components/ui/navigation-menu';
 import type { HomeLayoutProps } from 'fumadocs-ui/layouts/home';
 import {
@@ -19,6 +19,7 @@ import {
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import { SearchOnly } from 'fumadocs-ui/provider';
 import { ChevronDown, Languages } from 'lucide-react';
+import { ThemeToggle } from '../theme-toggle';
 import { Menu, MenuContent, MenuLinkItem, MenuTrigger } from './menu';
 import { Navbar, NavbarMenuLink } from './navbar';
 
@@ -63,6 +64,7 @@ export const Header = ({
             <LargeSearchToggle className='w-full max-w-[240px] max-lg:hidden' />
           </SearchOnly>
         ) : null}
+        {/* <ThemeToggle className='max-lg:hidden' /> */}
         <ThemeToggle className='max-lg:hidden' />
         {navItems.filter(isSecondary).map((item, i) => (
           <NavbarLinkItem
