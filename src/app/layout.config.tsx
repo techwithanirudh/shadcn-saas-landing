@@ -35,16 +35,16 @@ export const linkItems: LinkItemType[] = [
     active: 'url',
   },
   {
+    type: 'custom',
+    children: <UserButton />,
+    secondary: true,
+  },
+  {
     type: 'icon',
     label: 'rss',
     icon: <Icons.rss />,
     text: 'RSS',
     url: '/api/rss.xml',
-  },
-  {
-    type: 'custom',
-    children: <UserButton />,
-    secondary: true,
   },
 ];
 

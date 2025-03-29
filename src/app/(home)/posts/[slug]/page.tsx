@@ -1,7 +1,7 @@
 import { PostComments, Share } from '@/app/(home)/posts/[slug]/page.client';
 import { PostJsonLd } from '@/components/json-ld';
 import PageHeader from '@/components/page-header';
-import { TagCard } from '@/components/tag-card';
+import { TagCard } from '@/components/tags/tag-card';
 import { createMetadata } from '@/lib/metadata';
 import { metadataImage } from '@/lib/metadata-image';
 import { type Page as MDXPage, getPost, getPosts } from '@/lib/source';

@@ -1,7 +1,7 @@
 import { postsPerPage } from '@/app/layout.config';
 import { NumberedPagination } from '@/components/numbered-pagination';
 import PageHeader from '@/components/page-header';
-import { PostCard } from '@/components/post-card';
+import { PostCard } from '@/components/posts/post-card';
 import { createMetadata } from '@/lib/metadata';
 import { getSortedByDatePosts } from '@/lib/source';
 import type { Metadata, ResolvingMetadata } from 'next';

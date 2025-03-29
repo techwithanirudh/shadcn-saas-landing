@@ -35,7 +35,6 @@ export const NewsletterForm = () => {
     execute(values);
   };
 
-  //   todo: check if hte user is authed if so send teir name aswell with email, if the email matches that is
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='flex-1 space-y-4'>
@@ -52,7 +51,7 @@ export const NewsletterForm = () => {
                       disabled={status === 'executing'}
                       placeholder='Email address'
                       type='email'
-                      className='h-full rounded-md rounded-r-none border-none px-4 focus-visible:ring-0 focus-visible:ring-offset-0'
+                      className='h-full rounded-md rounded-r-none border-none px-4 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0'
                     />
                   </FormControl>
                   <FormMessage className='ml-4 pb-2 text-xs' />
@@ -65,7 +64,7 @@ export const NewsletterForm = () => {
             disabled={status === 'executing'}
             type='submit'
             size='icon'
-            className='size-auto rounded-md rounded-l-none px-3'
+            className='size-auto w-15 rounded-md rounded-l-none px-3'
           >
             {status === 'executing' ? (
               <Icons.spinner className='size-4 animate-spin' />
@@ -79,7 +78,7 @@ export const NewsletterForm = () => {
           <Alert className='border-emerald-500/15 bg-emerald-500/15 p-3 px-3 py-2 text-emerald-500 has-[>svg]:gap-x-1.5'>
             <Icons.success size={16} />
             <AlertTitle className='mb-0 leading-normal'>
-              You are now subscribed to our newsletter!
+              {result.data?.message ?? "Hmm... Our server didn't respond."}
             </AlertTitle>
           </Alert>
         )}

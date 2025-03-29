@@ -1,6 +1,6 @@
 import { title as homeTitle } from '@/app/layout.config';
 import PageHeader from '@/components/page-header';
-import { TagCard } from '@/components/tag-card';
+import { TagCard } from '@/components/tags/tag-card';
 import { createMetadata } from '@/lib/metadata';
 import { getTags } from '@/lib/source';
 import { cn } from '@/lib/utils';

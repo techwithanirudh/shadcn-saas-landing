@@ -12,6 +12,7 @@ export const env = createEnv({
     // Resend
     RESEND_API_KEY: z.string().min(1).startsWith('re_'),
     RESEND_AUDIENCE_ID: z.string().min(1),
+    EMAIL_FROM: z.string().email(),
     // Authentication
     BETTER_AUTH_SECRET:
       process.env.NODE_ENV === 'production'

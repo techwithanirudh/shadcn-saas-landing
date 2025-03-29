@@ -1,4 +1,4 @@
-import { PostCard } from '@/components/post-card';
+import { PostCard } from '@/components/posts/post-card';
 import { buttonVariants } from '@/components/ui/button';
 import { Icons } from '@/components/ui/icons';
 import type { Page } from '@/lib/source';
