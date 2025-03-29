@@ -1,6 +1,6 @@
+import { Icons } from '@/components/icons/icons';
 import { PostCard } from '@/components/posts/post-card';
 import { buttonVariants } from '@/components/ui/button';
-import { Icons } from '@/components/ui/icons';
 import type { Page } from '@/lib/source';
 import Link from 'next/link';
 

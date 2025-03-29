@@ -1,6 +1,6 @@
 'use client';
+import { Icons } from '@/components/icons/icons';
 import { buttonVariants } from '@/components/ui/button';
-import { Icons } from '@/components/ui/icons';
 import {
   Pagination,
   PaginationContent,

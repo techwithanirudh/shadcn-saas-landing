@@ -19,7 +19,7 @@ import { useForm } from 'react-hook-form';
 import { Alert, AlertTitle } from '@/components/ui/alert';
 
 import { subscribeUser } from '@/app/(home)/actions';
-import { Icons } from '@/components/ui/icons';
+import { Icons } from '@/components/icons/icons';
 
 export const NewsletterForm = () => {
   const form = useForm({

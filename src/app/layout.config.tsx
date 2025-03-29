@@ -1,5 +1,5 @@
 import { UserButton } from '@/components/auth/user-button';
-import { Icons } from '@/components/ui/icons';
+import { Icons } from '@/components/icons/icons';
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 

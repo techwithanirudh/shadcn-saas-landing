@@ -1,38 +1,34 @@
 'use client';
-import { buttonVariants } from '@/components/ui/button';
-import { Icons } from '@/components/ui/icons';
+import {
+  UploadIcon as ShareIcon,
+  type UploadIconHandle as ShareIconHandle,
+} from '@/components/icons/animated/upload';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Comments } from '@fuma-comment/react';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@radix-ui/react-tooltip';
 import { redirect } from 'next/navigation';
-import { useState } from 'react';
+import { useRef } from 'react';
+import { toast } from 'sonner';
 
 export function Share({ url }: { url: string }): React.ReactElement {
-  const [open, setOpen] = useState(false);
+  const iconRef = useRef<ShareIconHandle>(null);
+
   const onClick = (): void => {
-    setOpen(true);
     void navigator.clipboard.writeText(`${window.location.origin}${url}`);
+    toast.success('Copied to clipboard!');
   };
 
   return (
-    <Tooltip open={open} onOpenChange={setOpen}>
-      <TooltipTrigger
-        className={cn(
-          buttonVariants({ className: 'gap-2', variant: 'secondary' }),
-        )}
-        onClick={onClick}
-      >
-        <Icons.share className='size-4' />
-        Share Post
-      </TooltipTrigger>
-      <TooltipContent className='rounded-lg border bg-fd-popover p-2 text-fd-popover-foreground text-sm'>
-        Copied
-      </TooltipContent>
-    </Tooltip>
+    <Button
+      className={cn('group gap-2')}
+      variant={'secondary'}
+      onClick={onClick}
+      onMouseEnter={() => iconRef.current?.startAnimation?.()}
+      onMouseLeave={() => iconRef.current?.stopAnimation?.()}
+    >
+      <ShareIcon className='size-4' ref={iconRef} />
+      Share Post
+    </Button>
   );
 }
 

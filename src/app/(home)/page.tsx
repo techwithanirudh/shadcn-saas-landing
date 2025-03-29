@@ -1,8 +1,8 @@
 import Hero from '@/app/(home)/_components/hero';
 import Posts from '@/app/(home)/_components/posts';
+import { Icons } from '@/components/icons/icons';
 import PageHeader from '@/components/page-header';
 import Separator from '@/components/separator';
-import { Icons } from '@/components/ui/icons';
 import { getSortedByDatePosts } from '@/lib/source';
 import { CTA } from './_components/call-to-action';
 

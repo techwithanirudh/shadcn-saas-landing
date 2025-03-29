@@ -62,6 +62,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -110,38 +111,21 @@
   display: none;
 }
 
-::view-transition-group(root) {
-  animation-duration: 0.65s;
-  animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-::view-transition-new(root) {
-  animation-name: reveal-light;
-}
-
-::view-transition-old(root),
-.dark::view-transition-old(root) {
-  animation: none;
-  z-index: -1;
-}
-.dark::view-transition-new(root) {
-  animation-name: reveal-dark;
-}
-
-@keyframes reveal-dark {
-  from {
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-new(theme-transition) {
     clip-path: inset(0 0 100% 0);
+    animation: slide-in-from-top 0.65s forwards cubic-bezier(0.65, 0, 0.35, 1);
   }
-  to {
-    clip-path: inset(0 0 0 0);
+
+  ::view-transition-old(theme-transition) {
+    animation: none;
+  }
+
+  @keyframes slide-in-from-top {
+    to {
+      clip-path: inset(0 0 0 0);
+    }
   }
 }
 
-@keyframes reveal-light {
-  from {
-    clip-path: inset(0 0 100% 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
+/* todo: fix global view transistion trigger on load: NOT FIXED */

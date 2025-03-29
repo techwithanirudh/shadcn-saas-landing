@@ -58,11 +58,18 @@ export function ThemeToggle({
     setMounted(true);
   }, []);
 
-  const handleChangeTheme = (theme: Theme) => {
-    if (theme === currentTheme) return;
+  const handleChangeTheme = async (theme: Theme) => {
+    function update() {
+      setTheme(theme);
+    }
 
-    if (!document.startViewTransition) return setTheme(theme);
-    document.startViewTransition(() => setTheme(theme));
+    if (document.startViewTransition && theme !== resolvedTheme) {
+      document.documentElement.style.viewTransitionName = 'theme-transition';
+      await document.startViewTransition(update).finished;
+      document.documentElement.style.viewTransitionName = '';
+    } else {
+      update();
+    }
   };
 
   const value = mounted
@@ -71,15 +78,13 @@ export function ThemeToggle({
       : currentTheme
     : null;
 
-  const handleSwitcherClick = (e: React.MouseEvent) => {
-    if (mode !== 'light-dark') return;
-    handleChangeTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
-  };
-
   return (
     <div
       className={container}
-      onClick={handleSwitcherClick}
+      onClick={() => {
+        if (mode !== 'light-dark') return;
+        handleChangeTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+      }}
       data-theme-toggle=''
       aria-label={mode === 'light-dark' ? 'Toggle Theme' : undefined}
       {...props}
@@ -93,7 +98,10 @@ export function ThemeToggle({
             type='button'
             key={key}
             className={itemVariants({ active: isActive })}
-            onClick={() => handleChangeTheme(key as Theme)}
+            onClick={() => {
+              if (mode === 'light-dark') return;
+              handleChangeTheme(key as Theme);
+            }}
             aria-label={label}
           >
             {isActive && (

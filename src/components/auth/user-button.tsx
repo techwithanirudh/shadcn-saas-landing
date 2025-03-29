@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 
+import { Icons } from '@/components/icons/icons';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -10,7 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Icons } from '@/components/ui/icons';
 import { Skeleton } from '@/components/ui/skeleton';
 import type { User } from '@/lib/auth-client';
 import { signOut, useSession } from '@/lib/auth-client';

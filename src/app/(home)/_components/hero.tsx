@@ -1,6 +1,6 @@
 import { baseOptions, linkItems } from '@/app/layout.config';
+import { Icons } from '@/components/icons/icons';
 import { buttonVariants } from '@/components/ui/button';
-import { Icons } from '@/components/ui/icons';
 import { cn } from '@/lib/utils';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
 import Link from 'next/link';

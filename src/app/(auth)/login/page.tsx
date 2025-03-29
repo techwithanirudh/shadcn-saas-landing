@@ -2,6 +2,7 @@
 
 import { baseOptions, linkItems } from '@/app/layout.config';
 import { Header } from '@/components/header';
+import { Icons } from '@/components/icons/icons';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -10,7 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Icons } from '@/components/ui/icons';
 import { signIn } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';

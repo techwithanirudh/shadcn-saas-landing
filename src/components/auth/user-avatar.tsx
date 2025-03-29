@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react';
 
+import { Icons } from '@/components/icons/icons';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Icons } from '@/components/ui/icons';
 import type { User } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 
