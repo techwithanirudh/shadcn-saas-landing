@@ -7,20 +7,6 @@ import { motion } from 'motion/react';
 import { useTheme } from 'next-themes';
 import { type HTMLAttributes, useLayoutEffect, useState } from 'react';
 
-type Theme = 'light' | 'dark' | 'system';
-
-const itemVariants = cva(
-  'relative m-auto size-6.5 rounded-full p-1.5 text-fd-muted-foreground',
-  {
-    variants: {
-      active: {
-        true: 'bg-fd-accent text-fd-accent-foreground',
-        false: 'text-fd-muted-foreground',
-      },
-    },
-  },
-);
-
 const themes = [
   {
     key: 'light',
@@ -39,24 +25,38 @@ const themes = [
   },
 ];
 
+const itemVariants = cva(
+  'relative size-6.5 rounded-full p-1.5 text-fd-muted-foreground',
+  {
+    variants: {
+      active: {
+        true: 'text-fd-accent-foreground',
+        false: 'text-fd-muted-foreground',
+      },
+    },
+  },
+);
+
+type Theme = 'light' | 'dark' | 'system';
+
 export function ThemeToggle({
   className,
   mode = 'light-dark',
   ...props
-}: HTMLAttributes<HTMLElement> & {
+}: HTMLAttributes<HTMLDivElement> & {
   mode?: 'light-dark' | 'light-dark-system';
 }) {
   const { setTheme, theme: currentTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  const container = cn(
+    'relative inline-flex items-center rounded-full p-1 ring-1 ring-border',
+    className,
+  );
+
   useLayoutEffect(() => {
     setMounted(true);
   }, []);
-
-  const container = cn(
-    'inline-flex items-center rounded-full border p-1',
-    className,
-  );
 
   const handleChangeTheme = (theme: Theme) => {
     if (theme === currentTheme) return;
@@ -65,71 +65,50 @@ export function ThemeToggle({
     document.startViewTransition(() => setTheme(theme));
   };
 
-  if (mode === 'light-dark') {
-    const value = mounted ? resolvedTheme : null;
+  const value = mounted
+    ? mode === 'light-dark'
+      ? resolvedTheme
+      : currentTheme
+    : null;
 
-    return (
-      <button
-        className={container}
-        aria-label={'Toggle Theme'}
-        onClick={() => handleChangeTheme(value === 'light' ? 'dark' : 'light')}
-        data-theme-toggle=''
-        {...props}
-      >
-        {themes.map(({ key, icon: Icon, label }) => {
-          const isActive = value === key;
-          if (key === 'system') return;
-
-          return (
-            <div className='relative' key={key}>
-              {isActive && (
-                <motion.div
-                  layoutId='activeTheme'
-                  className='absolute inset-0 rounded-full bg-muted'
-                  transition={{ type: 'spring', duration: 0.5 }}
-                />
-              )}
-              <Icon
-                fill='currentColor'
-                className={cn(itemVariants({ active: isActive }))}
-              />
-            </div>
-          );
-        })}
-      </button>
-    );
-  }
-
-  const value = mounted ? currentTheme : null;
+  const handleSwitcherClick = (e: React.MouseEvent) => {
+    if (mode !== 'light-dark') return;
+    handleChangeTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  };
 
   return (
-    <div className={container} data-theme-toggle='' {...props}>
+    <div
+      className={container}
+      onClick={handleSwitcherClick}
+      data-theme-toggle=''
+      aria-label={mode === 'light-dark' ? 'Toggle Theme' : undefined}
+      {...props}
+    >
       {themes.map(({ key, icon: Icon, label }) => {
         const isActive = value === key;
+        if (mode === 'light-dark' && key === 'system') return;
 
         return (
           <button
             type='button'
             key={key}
-            aria-label={label}
-            className={cn(itemVariants({ active: value === key }))}
+            className={itemVariants({ active: isActive })}
             onClick={() => handleChangeTheme(key as Theme)}
+            aria-label={label}
           >
             {isActive && (
               <motion.div
                 layoutId='activeTheme'
-                className='absolute inset-0 rounded-full bg-muted'
-                transition={{ type: 'spring', duration: 0.5 }}
+                className='absolute inset-0 rounded-full bg-accent'
+                transition={{
+                  type: 'spring',
+                  duration: mode === 'light-dark' ? 1.5 : 1,
+                }}
               />
             )}
             <Icon
-              className={cn(
-                'relative m-auto size-full',
-                isActive
-                  ? 'text-fd-accent-foreground'
-                  : 'text-fd-muted-foreground',
-              )}
-              fill='currentColor'
+              className={'relative m-auto size-full'}
+              fill={'currentColor'}
             />
           </button>
         );

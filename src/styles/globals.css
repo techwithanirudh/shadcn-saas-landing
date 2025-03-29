@@ -111,8 +111,8 @@
 }
 
 ::view-transition-group(root) {
-  animation-duration: 0.7s;
-  animation-timing-function: var(--expo-out);
+  animation-duration: 0.65s;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 ::view-transition-new(root) {
@@ -130,18 +130,18 @@
 
 @keyframes reveal-dark {
   from {
-    clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);
+    clip-path: inset(0 0 100% 0);
   }
   to {
-    clip-path: polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%);
+    clip-path: inset(0 0 0 0);
   }
 }
 
 @keyframes reveal-light {
   from {
-    clip-path: polygon(171% 50%, 50% 171%, 50% 171%, 171% 50%);
+    clip-path: inset(0 0 100% 0);
   }
   to {
-    clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
+    clip-path: inset(0 0 0 0);
   }
 }
