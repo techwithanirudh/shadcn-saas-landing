@@ -12,7 +12,7 @@ export function Body({
   const mode = useMode();
 
   return (
-    <body className={cn(mode, 'relative flex min-h-svh flex-col')}>
+    <body className={cn(mode, 'relative flex min-h-svh flex-col overflow-x-hidden')}>
       {children}
     </body>
   );
