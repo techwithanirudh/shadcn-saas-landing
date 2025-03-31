@@ -2,6 +2,7 @@ import { CalendarIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type React from 'react';
+import Balancer from 'react-wrap-balancer';
 
 interface PostCardProps {
   title: string;
@@ -29,7 +30,7 @@ export const PostCard: React.FC<PostCardProps> = ({
             {title}
           </h2>
           <p className='line-clamp-3 overflow-hidden text-ellipsis text-medium text-muted-foreground'>
-            {description}
+            <Balancer>{description}</Balancer>
           </p>
         </div>
         <div className='group inline-flex items-center gap-2 text-sm'>

@@ -76,8 +76,6 @@
 @utility container {
   margin-inline: auto;
   padding-inline: 0rem;
-
-  @apply max-w-screen-2xl;
 }
 
 @layer utilities {

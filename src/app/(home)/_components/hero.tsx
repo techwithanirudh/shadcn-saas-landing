@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
 import Image from 'next/image';
 import Link from 'next/link';
+import Balancer from 'react-wrap-balancer';
 
 export default function HeroSection() {
   const links = getLinks(linkItems, baseOptions.githubUrl);
@@ -20,7 +21,7 @@ export default function HeroSection() {
         alt='Hero Background'
         height={600}
         width={704}
-        className='absolute right-0 bottom-0 h-[900px] w-[1004px] max-w-[1004px] translate-x-1/2 translate-y-1/2 opacity-80 dark:opacity-100'
+        className='pointer-events-none absolute right-0 bottom-0 h-[900px] w-[1004px] max-w-[1004px] translate-x-1/2 translate-y-1/2 select-none opacity-80 dark:opacity-100'
         priority
       />
       <div className='relative z-10 mx-auto max-w-4xl text-center'>
@@ -36,9 +37,11 @@ export default function HeroSection() {
         </h1>
 
         <p className='mx-auto mb-10 max-w-2xl text-lg text-muted-foreground'>
-          I write about web development, software engineering, and the latest
-          technologies. Join me as I share insights, tutorials, and thoughts on
-          building modern applications.
+          <Balancer>
+            I write about web development, software engineering, and the latest
+            technologies. Join me as I share insights, tutorials, and thoughts
+            on building modern applications.
+          </Balancer>
         </p>
 
         <div className='flex flex-wrap items-center justify-center gap-4'>
