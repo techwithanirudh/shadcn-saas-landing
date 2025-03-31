@@ -1,7 +1,7 @@
 import { postsPerPage } from '@/app/layout.config';
 import { NumberedPagination } from '@/components/numbered-pagination';
-import PageHeader from '@/components/page-header';
 import { PostCard } from '@/components/posts/post-card';
+import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { getSortedByDatePosts } from '@/lib/source';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -36,16 +36,14 @@ const Pagination = ({ pageIndex }: { pageIndex: number }) => {
   };
 
   return (
-    <div className='border-grid border-t'>
-      <div className='container-wrapper bg-dashed'>
-        <NumberedPagination
-          currentPage={pageIndex + 1}
-          totalPages={pageCount}
-          paginationItemsToDisplay={5}
-          onPageChange={handlePageChange}
-        />
-      </div>
-    </div>
+    <Section className='bg-dashed'>
+      <NumberedPagination
+        currentPage={pageIndex + 1}
+        totalPages={pageCount}
+        paginationItemsToDisplay={5}
+        onPageChange={handlePageChange}
+      />
+    </Section>
   );
 };
 
@@ -64,32 +62,29 @@ export default async function Page(props: {
 
   return (
     <>
-      <PageHeader>
+      <Section className='p-4 lg:p-6'>
         <h1 className='font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
           All {totalPosts} Posts{' '}
           <CurrentPostsCount startIndex={startIndex} endIndex={endIndex} />
         </h1>
-      </PageHeader>
-      <div className='container-wrapper flex-1'>
-        {/* container */}
-        <div>
-          <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
-            {posts.map((post) => {
-              const date = new Date(post.data.date).toDateString();
-              return (
-                <PostCard
-                  title={post.data.title}
-                  description={post.data.description ?? ''}
-                  image={post.data.image}
-                  url={post.url}
-                  date={date}
-                  key={post.url}
-                />
-              );
-            })}
-          </div>
+      </Section>
+      <Section>
+        <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
+          {posts.map((post) => {
+            const date = new Date(post.data.date).toDateString();
+            return (
+              <PostCard
+                title={post.data.title}
+                description={post.data.description ?? ''}
+                image={post.data.image}
+                url={post.url}
+                date={date}
+                key={post.url}
+              />
+            );
+          })}
         </div>
-      </div>
+      </Section>
       {pageCount > 1 && <Pagination pageIndex={pageIndex} />}
     </>
   );

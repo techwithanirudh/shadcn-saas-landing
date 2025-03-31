@@ -2,7 +2,7 @@ import { PostComments } from '@/app/(home)/posts/[slug]/page.client';
 import type { TOCItemType } from 'fumadocs-core/server';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import type { ReactNode } from 'react';
-import PageHeader from './page-header';
+import { Section } from './section';
 
 interface MdxLayoutProps {
   children: ReactNode;
@@ -21,12 +21,13 @@ export default function MdxLayout({
 }: MdxLayoutProps): ReactNode {
   return (
     <>
-      <PageHeader>
+      <Section className='p-4 lg:p-6'>
         <h1 className='text-center font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
           {title}
         </h1>
-      </PageHeader>
-      <div className='container-wrapper flex flex-1'>
+      </Section>
+
+      <Section className='h-full' sectionClassName='flex flex-1'>
         <article className='flex min-h-full flex-col lg:flex-row'>
           <div className='flex flex-1 flex-col gap-4'>
             {toc?.length ? (
@@ -44,7 +45,7 @@ export default function MdxLayout({
             ) : null}
           </div>
         </article>
-      </div>
+      </Section>
     </>
   );
 }

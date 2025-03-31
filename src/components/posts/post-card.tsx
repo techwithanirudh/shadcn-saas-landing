@@ -1,3 +1,4 @@
+import { CalendarIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type React from 'react';
@@ -20,7 +21,7 @@ export const PostCard: React.FC<PostCardProps> = ({
   return (
     <Link
       href={url}
-      className='grid grid-cols-1 gap-4 rounded-lg bg-card/50 px-6 py-6 transition-colors hover:bg-card/80 md:grid-cols-[1fr_auto]'
+      className='grid grid-cols-1 gap-4 bg-card/50 px-6 py-6 transition-colors hover:bg-card/80 md:grid-cols-[1fr_auto]'
     >
       <div className='order-2 flex h-full flex-col justify-between gap-2 md:order-1'>
         <div className='flex-1 gap-2'>
@@ -31,7 +32,10 @@ export const PostCard: React.FC<PostCardProps> = ({
             {description}
           </p>
         </div>
-        <p className='font-medium'>{date}</p>
+        <div className='group inline-flex items-center gap-2 text-sm'>
+          <CalendarIcon className='size-4 transition-transform hover:scale-125' />
+          <p className='font-medium'>{date}</p>
+        </div>
       </div>
 
       {image && (
@@ -41,7 +45,7 @@ export const PostCard: React.FC<PostCardProps> = ({
             alt={title}
             fill
             sizes='(max-width: 768px) 100vw, (max-width: 1024px) 300px, 350px'
-            className='rounded-lg object-cover'
+            className='rounded-lg object-cover transition-transform duration-200 hover:scale-105'
           />
         </div>
       )}

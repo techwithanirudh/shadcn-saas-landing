@@ -10,8 +10,8 @@
     - Updates an existing Resend broadcast item, or creates a new one if it doesn’t exist.
   - Publishing is controlled manually by running a `publish` script.
   - Consider using [Beehiiv](https://www.beehiiv.com/) as an alternative.
+  - Look at https://www.joshwcomeau.com/react/wonderful-emails-with-mjml-and-mdx/ for reference of integration of the newsletter
 - [ ] Add an AI-powered "Ask Me Anything" chat to the blog template using the existing `fumadocs-mcp` setup.
 - [ ] Use [pqoqubbw animated icons](https://icons.pqoqubbw.dev/).
-- [ ] Add a smooth dark/light mode view transition like [0.email](https://0.email).
-- So, when a user is re-putting their email it might mean they like to resubscribe, so update to unsubscribe: false
-- look at https://www.joshwcomeau.com/react/wonderful-emails-with-mjml-and-mdx/
+- [ ] Add a marquee footer like https://21st.dev/serafimcloud/marquee/default
+- [ ] Use flex-1 on some pages with less content.

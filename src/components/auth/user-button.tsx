@@ -12,7 +12,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Skeleton } from '@/components/ui/skeleton';
-import type { User } from '@/lib/auth-client';
 import { signOut, useSession } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 

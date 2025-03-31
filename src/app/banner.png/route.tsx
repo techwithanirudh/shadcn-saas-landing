@@ -1,4 +1,3 @@
-import { readFileSync } from 'node:fs';
 import { generateOGImage } from '@/app/banner.png/og';
 
 async function loadAssets(): Promise<

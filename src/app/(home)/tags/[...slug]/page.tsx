@@ -2,8 +2,8 @@ import { postsPerPage } from '@/app/layout.config';
 import { Icons } from '@/components/icons/icons';
 import { TagJsonLd } from '@/components/json-ld';
 import { NumberedPagination } from '@/components/numbered-pagination';
-import PageHeader from '@/components/page-header';
 import { PostCard } from '@/components/posts/post-card';
+import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { getPostsByTag, getTags } from '@/lib/source';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -44,9 +44,12 @@ const Header = ({
   startIndex: number;
   endIndex: number;
 }) => (
-  <PageHeader>
+  <Section className='p-4 lg:p-6'>
     <div className='flex items-center gap-2'>
-      <Icons.tag size={20} className='text-muted-foreground' />
+      <Icons.tag
+        size={20}
+        className='text-muted-foreground transition-transform hover:rotate-12 hover:scale-125'
+      />
       <h1 className='font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
         {tag} <span className='text-muted-foreground'>Posts</span>{' '}
         <CurrentPostsCount
@@ -56,7 +59,7 @@ const Header = ({
         />
       </h1>
     </div>
-  </PageHeader>
+  </Section>
 );
 
 const Pagination = ({ pageIndex, tag }: { pageIndex: number; tag: string }) => {
@@ -66,16 +69,14 @@ const Pagination = ({ pageIndex, tag }: { pageIndex: number; tag: string }) => {
   };
 
   return (
-    <div className='border-grid border-t'>
-      <div className='container-wrapper bg-dashed'>
-        <NumberedPagination
-          currentPage={pageIndex + 1}
-          totalPages={pageCount(tag)}
-          paginationItemsToDisplay={5}
-          onPageChange={handlePageChange}
-        />
-      </div>
-    </div>
+    <Section className='bg-dashed'>
+      <NumberedPagination
+        currentPage={pageIndex + 1}
+        totalPages={pageCount(tag)}
+        paginationItemsToDisplay={5}
+        onPageChange={handlePageChange}
+      />
+    </Section>
   );
 };
 
@@ -102,24 +103,23 @@ export default async function Page(props: {
   return (
     <>
       <Header tag={tag} startIndex={startIndex} endIndex={endIndex} />
-      <div className='container-wrapper flex-1'>
-        <div>
-          <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
-            {posts.map((post) => {
-              const date = new Date(post.data.date).toDateString();
-              return (
-                <PostCard
-                  title={post.data.title}
-                  description={post.data.description ?? ''}
-                  url={post.url}
-                  date={date}
-                  key={post.url}
-                />
-              );
-            })}
-          </div>
+      <Section>
+        <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
+          {posts.map((post) => {
+            const date = new Date(post.data.date).toDateString();
+            return (
+              <PostCard
+                title={post.data.title}
+                description={post.data.description ?? ''}
+                image={post.data.image}
+                url={post.url}
+                date={date}
+                key={post.url}
+              />
+            );
+          })}
         </div>
-      </div>
+      </Section>
       {pageCount(tag) > 1 && <Pagination pageIndex={pageIndex} tag={tag} />}
       <TagJsonLd tag={tag} />
     </>

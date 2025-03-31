@@ -37,6 +37,9 @@
           }
         }
       },
+      "correctness": {
+        "noUnusedImports": "error"
+      },
       "recommended": true
     }
   }

@@ -1,8 +1,6 @@
 import { baseUrl } from '@/lib/constants';
 import {
   Body,
-  Button,
-  Column,
   Container,
   Font,
   Head,
@@ -12,7 +10,6 @@ import {
   Img,
   Link,
   Preview,
-  Row,
   Section,
   Tailwind,
   Text,

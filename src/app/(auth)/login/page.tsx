@@ -106,8 +106,10 @@ export default function LoginPage() {
       }}
       className='border-grid pt-0'
     >
-      <main className='container-wrapper flex flex-1 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-24'>
-        <SignInCard />
+      <main className='flex flex-1 px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-24'>
+        <div className='container flex min-h-full flex-1 items-center justify-center border-border/70 border-x border-b border-dashed dark:border-border'>
+          <SignInCard />
+        </div>
       </main>
     </HomeLayout>
   );

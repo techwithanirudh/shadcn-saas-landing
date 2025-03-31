@@ -64,12 +64,12 @@ export const NewsletterForm = () => {
             disabled={status === 'executing'}
             type='submit'
             size='icon'
-            className='size-auto w-15 rounded-md rounded-l-none px-3'
+            className='group size-auto w-15 rounded-md rounded-l-none px-3'
           >
             {status === 'executing' ? (
               <Icons.spinner className='size-4 animate-spin' />
             ) : (
-              <Icons.send className='size-4' />
+              <Icons.send className='group-hover:-rotate-45 size-4 transition-transform' />
             )}
           </Button>
         </div>

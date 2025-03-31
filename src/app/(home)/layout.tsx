@@ -18,10 +18,12 @@ const Layout = ({ children }: { children: ReactNode }) => {
           />
         ),
       }}
-      className='border-grid pt-0'
+      className='pt-0'
     >
-      <main className='flex flex-1 flex-col'>{children}</main>
-      <Footer />
+      <main className='flex flex-1 flex-col divide-y divide-dashed divide-border/70 border-border/70 border-dashed sm:border-b dark:divide-border dark:border-border'>
+        {children}
+        <Footer />
+      </main>
     </HomeLayout>
   );
 };

@@ -1,4 +1,3 @@
-import { readFileSync } from 'node:fs';
 import { generateOGImage } from '@/app/og/[...slug]/og';
 import { metadataImage } from '@/lib/metadata-image';
 import type { ImageResponse } from 'next/og';

@@ -3,19 +3,25 @@ import {
   UploadIcon as ShareIcon,
   type UploadIconHandle as ShareIconHandle,
 } from '@/components/icons/animated/upload';
+import { Icons } from '@/components/icons/icons';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Comments } from '@fuma-comment/react';
 import { redirect } from 'next/navigation';
 import { useRef } from 'react';
 import { toast } from 'sonner';
+import { useCopyToClipboard } from 'usehooks-ts';
 
 export function Share({ url }: { url: string }): React.ReactElement {
   const iconRef = useRef<ShareIconHandle>(null);
+  const [_, copyToClipboard] = useCopyToClipboard();
 
-  const onClick = (): void => {
-    void navigator.clipboard.writeText(`${window.location.origin}${url}`);
-    toast.success('Copied to clipboard!');
+  const onClick = async (): Promise<void> => {
+    await copyToClipboard(`${window.location.origin}${url}`);
+    toast.success('Copied to clipboard!', {
+      icon: <Icons.copied className='size-4' />,
+      description: 'The post link has been copied to your clipboard.',
+    });
   };
 
   return (
@@ -26,7 +32,7 @@ export function Share({ url }: { url: string }): React.ReactElement {
       onMouseEnter={() => iconRef.current?.startAnimation?.()}
       onMouseLeave={() => iconRef.current?.stopAnimation?.()}
     >
-      <ShareIcon className='size-4' ref={iconRef} />
+      <ShareIcon className='size-4 hover:bg-transparent' ref={iconRef} />
       Share Post
     </Button>
   );

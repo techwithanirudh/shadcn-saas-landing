@@ -1,6 +1,6 @@
 import { PostComments, Share } from '@/app/(home)/posts/[slug]/page.client';
 import { PostJsonLd } from '@/components/json-ld';
-import PageHeader from '@/components/page-header';
+import { Section } from '@/components/section';
 import { TagCard } from '@/components/tags/tag-card';
 import { createMetadata } from '@/lib/metadata';
 import { metadataImage } from '@/lib/metadata-image';
@@ -18,7 +18,7 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
   const { page, tags } = props;
 
   return (
-    <PageHeader>
+    <Section className='p-4 lg:p-6'>
       <div
         className={cn(
           'flex flex-col items-start justify-center gap-4 py-8 md:gap-6',
@@ -37,7 +37,7 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
           ))}
         </div>
       </div>
-    </PageHeader>
+    </Section>
   );
 }
 
@@ -56,7 +56,7 @@ export default async function Page(props: {
     <>
       <Header page={page} tags={tags} />
 
-      <div className='container-wrapper flex-1'>
+      <Section className='flex-1'>
         <article className='flex min-h-full flex-col lg:flex-row'>
           <div className='flex flex-1 flex-col gap-4'>
             <InlineTOC
@@ -104,7 +104,7 @@ export default async function Page(props: {
             <Share url={page.url} />
           </div>
         </article>
-      </div>
+      </Section>
       <PostJsonLd page={page} />
     </>
   );

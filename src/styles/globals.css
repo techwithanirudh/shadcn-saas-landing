@@ -56,6 +56,11 @@
   a {
     @apply [overflow-wrap:anywhere];
   }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 @layer base {
@@ -68,19 +73,14 @@
   }
 }
 
+@utility container {
+  margin-inline: auto;
+  padding-inline: 0rem;
+
+  @apply max-w-screen-2xl;
+}
+
 @layer utilities {
-  .border-grid {
-    @apply border-border/50 dark:border-border border-dashed;
-  }
-
-  .container-wrapper {
-    @apply max-w-[1400px] min-[1800px]:max-w-screen-2xl min-[1400px]:border-x border-border/70 dark:border-border mx-auto w-full border-dashed;
-  }
-
-  .container {
-    @apply px-4 xl:px-6 mx-auto max-w-screen-2xl;
-  }
-
   .bg-dashed {
     background-image: linear-gradient(
       45deg,
