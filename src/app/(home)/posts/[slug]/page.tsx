@@ -56,7 +56,7 @@ export default async function Page(props: {
     <>
       <Header page={page} tags={tags} />
 
-      <Section className='flex-1'>
+      <Section className='h-full' sectionClassName='flex flex-1'>
         <article className='flex min-h-full flex-col lg:flex-row'>
           <div className='flex flex-1 flex-col gap-4'>
             <InlineTOC

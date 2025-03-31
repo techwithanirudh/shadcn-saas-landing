@@ -68,7 +68,7 @@ export default async function Page(props: {
           <CurrentPostsCount startIndex={startIndex} endIndex={endIndex} />
         </h1>
       </Section>
-      <Section>
+      <Section className='h-full' sectionClassName='flex flex-1'>
         <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
           {posts.map((post) => {
             const date = new Date(post.data.date).toDateString();
