@@ -80,6 +80,8 @@ export default async function Page(props: {
                 url={post.url}
                 date={date}
                 key={post.url}
+                author={post.data.author}
+                tags={post.data.tags}
               />
             );
           })}
