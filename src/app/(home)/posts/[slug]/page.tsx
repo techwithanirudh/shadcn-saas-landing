@@ -12,6 +12,7 @@ import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Balancer from 'react-wrap-balancer';
 import { description as homeDescription } from 'src/app/layout.config';
 
 function Header(props: { page: MDXPage; tags?: string[] }) {
@@ -27,9 +28,11 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
       >
         <div className='flex flex-col gap-2 sm:text-center md:gap-4'>
           <h1 className='max-w-4xl font-bold text-3xl leading-tight tracking-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight'>
-            {page.data.title}
+            <Balancer>{page.data.title}</Balancer>
           </h1>
-          <p className='mx-auto max-w-4xl'>{page.data.description}</p>
+          <p className='mx-auto max-w-4xl'>
+            <Balancer>{page.data.description}</Balancer>
+          </p>
         </div>
         <div className='flex flex-wrap gap-2'>
           {tags?.map((tag) => (

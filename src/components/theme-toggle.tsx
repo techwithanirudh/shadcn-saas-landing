@@ -50,7 +50,7 @@ export function ThemeToggle({
   const [mounted, setMounted] = useState(false);
 
   const container = cn(
-    'relative inline-flex items-center rounded-full p-1 ring-1 ring-border',
+    'relative overflow-hidden inline-flex items-center rounded-full p-1 ring-1 ring-border',
     className,
   );
 
