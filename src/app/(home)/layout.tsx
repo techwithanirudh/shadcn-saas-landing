@@ -1,5 +1,5 @@
-import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
+import { Footer } from '@/components/sections/footer';
+import { Header } from '@/components/sections/header';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
 import type { ReactNode } from 'react';

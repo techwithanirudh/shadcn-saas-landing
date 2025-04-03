@@ -1,6 +1,7 @@
 'use client';
 
 import Analytics from '@/components/analytics';
+import { TailwindIndicator } from '@/components/tailwind-indicator';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
@@ -30,6 +31,7 @@ export function Provider({
         </TooltipProvider>
         <Analytics />
         <Toaster />
+        <TailwindIndicator />
       </RootProvider>
     </ThemeProvider>
   );

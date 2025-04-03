@@ -1,8 +1,8 @@
 'use client';
 
 import { baseOptions, linkItems } from '@/app/layout.config';
-import { Header } from '@/components/header';
 import { Icons } from '@/components/icons/icons';
+import { Header } from '@/components/sections/header';
 import { Button } from '@/components/ui/button';
 import {
   Card,

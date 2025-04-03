@@ -1,4 +1,4 @@
-import { Header } from '@/components/header';
+import { Header } from '@/components/sections/header';
 import { createMetadata } from '@/lib/metadata';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { getLinks } from 'fumadocs-ui/layouts/shared';

@@ -12,7 +12,7 @@ import {
   TreeContextProvider,
 } from 'fumadocs-ui/provider';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { Header } from './header';
+import { Header } from './sections/header';
 
 export interface DocsLayoutProps extends BaseLayoutProps {
   tree: PageTree.Root;

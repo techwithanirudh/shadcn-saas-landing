@@ -7,7 +7,7 @@
     "postinstall": "fumadocs-mdx",
     "build": "next build",
     "preview": "next build && next start",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "dev": "next dev",
     "start": "next start",
     "format": "biome format --write .",
@@ -70,6 +70,7 @@
     "shiki": "^3.2.1",
     "sonner": "^2.0.2",
     "tailwind-merge": "^3.0.2",
+    "tailwind-scrollbar": "^4.0.2",
     "tailwindcss-animate": "^1.0.7",
     "usehooks-ts": "^3.1.1",
     "zod": "^3.24.2"

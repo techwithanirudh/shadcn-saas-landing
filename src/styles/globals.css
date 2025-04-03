@@ -4,6 +4,7 @@
 @import "@fuma-comment/react/preset.css";
 
 @plugin "tailwindcss-animate";
+@plugin 'tailwind-scrollbar';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -44,11 +45,29 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  /* fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @layer base {
   :root {
     --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    @apply scroll-smooth accent-primary scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border dark:scrollbar-track-transparent;
   }
 }
 
@@ -60,16 +79,6 @@
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground;
   }
 }
 
@@ -93,6 +102,67 @@
       transparent 100%
     );
     background-size: 0.25rem 0.25rem;
+  }
+}
+
+@layer components {
+  .footer {
+    --footer-text-size: clamp(3rem, 14rem, 14vw);
+
+    display: flex;
+    justify-content: center;
+    color: var(--color-muted-foreground);
+    position: relative;
+    overflow: clip;
+    min-height: var(--footer-text-size);
+  }
+
+  .footer-text {
+    text-rendering: geometricPrecision;
+    font-weight: 900;
+    font-size: var(--footer-text-size);
+    letter-spacing: 0;
+    opacity: 0.3;
+    position: absolute;
+    bottom: calc(-1 * var(--footer-text-size) / 1.6);
+  }
+
+  .footer-grid {
+    background-color: transparent;
+    background-image: radial-gradient(transparent 1px, rgb(255, 255, 255) 1px);
+    background-size: 4px 4px;
+    backdrop-filter: blur(3px);
+    mask: linear-gradient(
+      rgba(255, 255, 255, 0) 0%,
+      rgb(255, 255, 255, 0.6) 100%
+    );
+    opacity: 1;
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    z-index: 1;
+    flex: none;
+  }
+
+  .footer-gradient {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0) 0% 50%,
+      rgba(255, 255, 255, 0.5) 100%
+    );
+  }
+
+  .dark .footer-gradient {
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0) 0% 50%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  }
+
+  .dark .footer-grid {
+    background-image: radial-gradient(transparent 1px, rgb(0, 0, 0) 1px);
+    mask: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0, 0.6) 100%);
   }
 }
 
@@ -127,5 +197,3 @@
     }
   }
 }
-
-/* todo: fix global view transistion trigger on load: NOT FIXED */
