@@ -24,7 +24,7 @@ export const linkItems: LinkItemType[] = [
   },
   {
     icon: <Icons.posts />,
-    text: 'Posts',
+    text: 'Blog',
     url: '/posts',
     active: 'url',
   },
