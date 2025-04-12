@@ -74,14 +74,20 @@ const Testimonials = () => {
     <Section className='relative w-full pt-10 md:pt-14'>
       <div className='mx-auto'>
         <div className='flex flex-col gap-10'>
-          <h2 className='px-6 text-left font-regular text-3xl tracking-tighter md:text-5xl lg:max-w-xl'>
-            Trusted by thousands of people worldwide
-          </h2>
+            <div className='flex flex-col gap-2 px-6'>
+              <h2 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
+                Loved by the community
+              </h2>
+              <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
+                See what others are saying about AI Tutor.
+              </p>
+            </div>
+
           <Carousel
             setApi={setApi}
             className='w-full border-border/70 border-t border-dashed dark:border-border'
           >
-            <CarouselContent className='ml-0 divide-x divide-dashed divide-border/70 dark:divide-divide'>
+            <CarouselContent className='ml-0 divide-x divide-dashed divide-border/70 dark:divide-border'>
               {testimonials.map((item, index) => (
                 <CarouselItem
                   className='pl-0 lg:basis-1/2'

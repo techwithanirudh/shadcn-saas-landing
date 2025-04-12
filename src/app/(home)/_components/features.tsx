@@ -6,7 +6,7 @@ import { User } from 'lucide-react';
 
 // Create a variant for feature items
 const featureItemVariants = cva(
-  'group flex flex-col justify-between rounded-md bg-muted p-6',
+  'group flex flex-col justify-between p-6 last:border-border/70 last:border-b last:border-dashed hover:bg-card hover:bg-card/80 last:dark:border-border',
   {
     variants: {
       aspect: {
@@ -61,22 +61,20 @@ const features = [
 ];
 
 const Features = () => (
-  <Section className='relative w-full px-6 py-10 md:py-14 lg:px-6 lg:py-16'>
-    <div className='mx-auto'>
-      <div className='flex flex-col gap-10'>
-        <div className='flex flex-col items-start gap-4'>
-          <div className='flex flex-col gap-2'>
-            <h2 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
-              Why AI Tutor?
-            </h2>
-            <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
-              Teaching a child today isn’t easy — but with AI Tutor, it doesn’t
-              have to be hard either.
-            </p>
-          </div>
-        </div>
+  <Section className='relative w-full pt-10 md:pt-14'>
+    <div className='flex flex-col gap-10'>
+      <div className='flex flex-col gap-2 px-6'>
+        <h2 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
+          Why AI Tutor?
+        </h2>
+        <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
+          Teaching a child today isn’t easy — but with AI Tutor, it doesn’t have
+          to be hard either.
+        </p>
+      </div>
 
-        <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
+      <div className='w-full border-border/70 border-t border-dashed dark:border-border pb-4'>
+        <div className='grid grid-cols-1 divide-x divide-y divide-dashed divide-border/70 text-left sm:grid-cols-2 lg:grid-cols-3 dark:divide-border'>
           {features.map((feature) => (
             <div
               key={feature.id}

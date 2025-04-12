@@ -1,4 +1,4 @@
-import { PostComments } from '@/app/(home)/posts/[slug]/page.client';
+import { PostComments } from '@/app/(home)/blog/[slug]/page.client';
 import type { TOCItemType } from 'fumadocs-core/server';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import type { ReactNode } from 'react';
