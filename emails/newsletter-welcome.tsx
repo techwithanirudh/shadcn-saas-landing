@@ -99,7 +99,7 @@ export default function NewsletterWelcomeEmail({
           <Container className='mx-auto w-full max-w-[600px] p-8'>
             <Section>
               <Text className='mx-0 mt-4 mb-8 p-0 text-center font-normal text-2xl'>
-                <span className='font-bold tracking-tighter'>Blog</span>
+                <span className='font-bold tracking-tighter'>AI Tutor</span>
               </Text>
               <Heading className='my-4 font-medium text-4xl leading-tight'>
                 Welcome!

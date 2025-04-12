@@ -3,16 +3,15 @@ import { Icons } from '@/components/icons/icons';
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
-export const title = 'Blog';
-export const description =
-  'A blog about web development, software engineering, and the latest technologies.';
+export const title = 'AI Tutor';
+export const description = 'A smarter way to learn — with your personal AI tutor.';
 export const owner = 'Anirudh Sriram';
 
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title,
   },
-  githubUrl: 'https://github.com/techwithanirudh/shadcn-blog',
+  githubUrl: 'https://github.com/techwithanirudh/ai-tutor',
 };
 
 export const linkItems: LinkItemType[] = [

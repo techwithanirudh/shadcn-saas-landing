@@ -1,6 +1,6 @@
-# Blog
+# AI Tutor
 
-This is a blog template built using [Fumadocs](https://fumadocs.vercel.app), a documentation framework for Next.js.  
+This is a landing page template built using [Fumadocs](https://fumadocs.vercel.app), a documentation framework for Next.js.  
 
 ---
 
