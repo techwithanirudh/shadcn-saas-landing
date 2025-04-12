@@ -60,9 +60,9 @@ const features = [
   },
 ];
 
-export const Features = () => (
+const Features = () => (
   <Section className='relative w-full px-6 py-10 md:py-14 lg:px-6 lg:py-16'>
-    <div className='container mx-auto'>
+    <div className='mx-auto'>
       <div className='flex flex-col gap-10'>
         <div className='flex flex-col items-start gap-4'>
           <div className='flex flex-col gap-2'>
@@ -101,3 +101,4 @@ export const Features = () => (
     </div>
   </Section>
 );
+export default Features;
