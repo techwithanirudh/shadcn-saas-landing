@@ -2,12 +2,12 @@ import { Icons } from '@/components/icons/icons';
 import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { env } from '@/env';
+import type { Page } from '@/lib/source';
 import { PhoneCall } from 'lucide-react';
 import * as motion from 'motion/react-client';
 import Image from 'next/image';
 import Link from 'next/link';
 import heroImage from '../../../../public/images/gradient-noise-purple-azure-light.png';
-import type { Page } from '@/lib/source';
 
 const Hero = ({ posts }: { posts: Page[] }) => (
   <Section className='relative w-full overflow-hidden bg-dashed px-4 py-16 sm:px-16 sm:py-24 md:py-32'>
@@ -53,7 +53,7 @@ const Hero = ({ posts }: { posts: Page[] }) => (
       <div className='flex flex-row gap-3'>
         <Button
           size='lg'
-          className='group gap-4 bg-transparent shadow-none'
+          className='group gap-4 bg-dashed shadow-none'
           variant='outline'
           asChild
         >

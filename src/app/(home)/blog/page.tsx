@@ -1,6 +1,6 @@
 import { postsPerPage } from '@/app/layout.config';
+import { PostCard } from '@/components/blog/post-card';
 import { NumberedPagination } from '@/components/numbered-pagination';
-import { PostCard } from '@/components/posts/post-card';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { getSortedByDatePosts } from '@/lib/source';

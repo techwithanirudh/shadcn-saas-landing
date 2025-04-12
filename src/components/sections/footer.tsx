@@ -26,7 +26,7 @@ export function Footer() {
       className={cn(
         'container mx-auto flex flex-col gap-4',
         'border-border/70 border-b border-dashed dark:border-border',
-        'sm:gap-16 sm:px-8 sm:py-16',
+        'gap-16 px-8 py-16',
       )}
     >
       <div
@@ -129,7 +129,13 @@ function Copyright() {
   return (
     <div className='grid items-center gap-4 sm:grid-cols-3'>
       <div className='w-min'>
-        <UserButton />
+        <UserButton
+          classNames={{
+            trigger: {
+              base: '!bg-secondary hover:!bg-secondary/80',
+            },
+          }}
+        />
       </div>
       <div className='flex items-center sm:justify-center'>
         <p className='whitespace-nowrap text-muted-foreground text-sm'>

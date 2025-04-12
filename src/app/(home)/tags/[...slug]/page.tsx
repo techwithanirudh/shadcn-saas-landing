@@ -1,8 +1,8 @@
 import { postsPerPage } from '@/app/layout.config';
+import { PostCard } from '@/components/blog/post-card';
 import { Icons } from '@/components/icons/icons';
 import { TagJsonLd } from '@/components/json-ld';
 import { NumberedPagination } from '@/components/numbered-pagination';
-import { PostCard } from '@/components/posts/post-card';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { getPostsByTag, getTags } from '@/lib/source';

@@ -20,8 +20,8 @@ export default function NotFound() {
       }}
       className='pt-0'
     >
-      <main className='flex flex-1 px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-24'>
-        <div className='container flex min-h-full flex-1 items-center justify-center border-border/70 border-x border-b border-dashed dark:border-border'>
+      <main className='flex flex-1'>
+        <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border/70 border-x border-b border-dashed dark:border-border '>
           <div className='flex flex-auto flex-col items-center justify-center px-4 text-center sm:flex-row'>
             <h1 className='border-border font-extrabold text-2xl text-foreground tracking-tight sm:mr-6 sm:border-r sm:pr-6 sm:text-3xl'>
               404

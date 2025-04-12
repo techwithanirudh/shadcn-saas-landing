@@ -1,5 +1,5 @@
+import { PostCard } from '@/components/blog/post-card';
 import { Icons } from '@/components/icons/icons';
-import { PostCard } from '@/components/posts/post-card';
 import { Section } from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
 import type { Page } from '@/lib/source';

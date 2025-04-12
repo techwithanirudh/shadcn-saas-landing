@@ -47,7 +47,7 @@ export const linkItems: LinkItemType[] = [
     text: 'Tags',
     url: '/tags',
     active: 'url',
-  }
+  },
 ];
 
 export const postsPerPage = 5;

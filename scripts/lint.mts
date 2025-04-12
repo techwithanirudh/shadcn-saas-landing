@@ -45,7 +45,7 @@ async function checkLinks() {
 
   const scanned = await scanURLs({
     populate: {
-      '(home)/posts/[slug]': await Promise.all(blogs),
+      '(home)/blog/[slug]': await Promise.all(blogs),
     },
   });
 

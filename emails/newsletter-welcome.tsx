@@ -161,7 +161,7 @@ NewsletterWelcomeEmail.PreviewProps = {
       tags: ['Next.js', 'Pages', 'Routing'],
       image: `${baseUrl}/images/blog/pages.png`,
       author: 'You',
-      url: `${baseUrl}/posts/pages`,
+      url: `${baseUrl}/blog/pages`,
     },
     {
       title: 'Markdown Examples',
@@ -171,7 +171,7 @@ NewsletterWelcomeEmail.PreviewProps = {
       tags: ['Markdown', 'Docs', 'Writing'],
       image: `${baseUrl}/images/blog/markdown-examples.png`,
       author: 'You',
-      url: `${baseUrl}/posts/markdown-examples`,
+      url: `${baseUrl}/blog/markdown-examples`,
     },
     {
       title: 'Using MDX',
@@ -181,7 +181,7 @@ NewsletterWelcomeEmail.PreviewProps = {
       tags: ['MDX', 'Next.js', 'React'],
       image: `${baseUrl}/images/blog/using-mdx.png`,
       author: 'You',
-      url: `${baseUrl}/posts/using-mdx`,
+      url: `${baseUrl}/blog/using-mdx`,
     },
   ],
 } satisfies NewsletterWelcomeEmailProps;
