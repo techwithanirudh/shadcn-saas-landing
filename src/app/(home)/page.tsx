@@ -14,7 +14,6 @@ export default function Home() {
       <Features />
       <Separator />
       <Testimonials />
-      <Separator />
       <CTA />
     </>
   );

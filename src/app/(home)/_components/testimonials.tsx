@@ -71,20 +71,23 @@ const Testimonials = () => {
   }, [api, current]);
 
   return (
-    <Section className='relative w-full py-10 md:py-14 lg:py-16'>
+    <Section className='relative w-full pt-10 md:pt-14'>
       <div className='mx-auto'>
         <div className='flex flex-col gap-10'>
           <h2 className='px-6 text-left font-regular text-3xl tracking-tighter md:text-5xl lg:max-w-xl'>
             Trusted by thousands of people worldwide
           </h2>
-          <Carousel setApi={setApi} className='w-full'>
-            <CarouselContent>
+          <Carousel
+            setApi={setApi}
+            className='w-full border-border/70 border-t border-dashed dark:border-border'
+          >
+            <CarouselContent className='divide-x divide-dashed divide-border/70 dark:divide-divide'>
               {testimonials.map((item, index) => (
                 <CarouselItem
-                  className='rounded-none border-border/70 border-r border-dashed px-3 lg:basis-1/2 dark:border-border'
+                  className='px-0 lg:basis-1/2'
                   key={`${item.title}_${index}`}
                 >
-                  <div className='flex aspect-video h-full flex-col justify-between bg-muted p-6 lg:col-span-2'>
+                  <div className='flex aspect-video h-full flex-col justify-between p-6 lg:col-span-2'>
                     <User className='h-8 w-8 stroke-1' />
                     <div className='flex flex-col gap-4'>
                       <div className='flex flex-col'>

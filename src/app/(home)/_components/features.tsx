@@ -85,12 +85,12 @@ const Features = () => (
                 colSpan: feature.colSpan as 'normal' | 'double',
               })}
             >
-              <User className='h-8 w-8 stroke-1 transition-transform group-hover:scale-110' />
+              <User className='h-8 w-8 stroke-1 transition-transform hover:rotate-12 hover:scale-125' />
               <div className='flex flex-col '>
-                <h3 className='text-xl tracking-tight transition-all group-hover:text-2xl'>
+                <h3 className='text-xl tracking-tight transition-all'>
                   {feature.title}
                 </h3>
-                <p className='max-w-xs text-base text-muted-foreground transition-all group-hover:max-w-sm group-hover:text-lg'>
+                <p className='max-w-xs text-base text-muted-foreground transition-all'>
                   {feature.description}
                 </p>
               </div>
