@@ -4,7 +4,8 @@ import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
 export const title = 'AI Tutor';
-export const description = 'A smarter way to learn — with your personal AI tutor.';
+export const description =
+  'A smarter way to learn — with your personal AI tutor.';
 export const owner = 'Anirudh Sriram';
 
 export const baseOptions: BaseLayoutProps = {
