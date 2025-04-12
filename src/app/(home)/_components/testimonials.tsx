@@ -74,14 +74,14 @@ const Testimonials = () => {
     <Section className='relative w-full pt-10 md:pt-14'>
       <div className='mx-auto'>
         <div className='flex flex-col gap-10'>
-            <div className='flex flex-col gap-2 px-6'>
-              <h2 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
-                Loved by the community
-              </h2>
-              <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
-                See what others are saying about AI Tutor.
-              </p>
-            </div>
+          <div className='flex flex-col gap-2 px-6'>
+            <h2 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
+              Loved by the community
+            </h2>
+            <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
+              See what others are saying about AI Tutor.
+            </p>
+          </div>
 
           <Carousel
             setApi={setApi}
@@ -93,8 +93,8 @@ const Testimonials = () => {
                   className='pl-0 lg:basis-1/2'
                   key={`${item.title}_${index}`}
                 >
-                  <div className='flex aspect-video h-full flex-col justify-between p-6 lg:col-span-2'>
-                    <User className='h-8 w-8 stroke-1' />
+                  <div className='flex aspect-video flex-col justify-between p-6 hover:bg-card lg:col-span-2'>
+                    <User className='h-8 w-8 stroke-1 transition-transform hover:rotate-12 hover:scale-125' />
                     <div className='flex flex-col gap-4'>
                       <div className='flex flex-col'>
                         <h3 className='text-xl tracking-tight'>{item.title}</h3>

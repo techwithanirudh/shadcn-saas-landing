@@ -18,7 +18,7 @@ export function Footer() {
     <footer className={cn('flex flex-col gap-4')}>
       <div
         className={cn(
-          'grid gap-8 text-muted-foreground text-sm sm:grid-cols-4',
+          'grid gap-8 text-muted-foreground text-sm sm:grid-cols-5',
           'container mx-auto sm:gap-16 sm:px-8 sm:py-16',
           'border-border/70 border-b border-dashed dark:border-border',
         )}
@@ -27,7 +27,7 @@ export function Footer() {
           <p className='font-medium text-foreground'>Pages</p>
 
           <ul className='flex flex-col gap-3'>
-            <li className='flex items-center gap-2'>
+            <li>
               <ActiveLink href={'/'}>Home</ActiveLink>
             </li>
             {navItems
@@ -93,6 +93,19 @@ export function Footer() {
                   </InlineLink>
                 </li>
               ))}
+          </ul>
+        </div>
+
+        <div className='flex flex-col gap-6'>
+          <p className='font-medium text-foreground'>Legal</p>
+
+          <ul className='flex flex-col gap-3'>
+            <li>
+              <ActiveLink href={'/privacy'}>Privacy Policy</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink href={'/terms'}>Terms of Service</ActiveLink>
+            </li>
           </ul>
         </div>
       </div>

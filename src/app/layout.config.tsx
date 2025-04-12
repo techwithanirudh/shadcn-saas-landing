@@ -23,10 +23,20 @@ export const linkItems: LinkItemType[] = [
     active: 'url',
   },
   {
-    icon: <Icons.posts />,
-    text: 'Blog',
-    url: '/posts',
-    active: 'url',
+    type: 'menu',
+    text: 'Guide',
+    items: [
+      {
+        text: 'Getting Started',
+        description: 'Learn to use Fumadocs',
+        url: '/docs',
+
+        menu: {
+          className: 'row-span-2 mx-auto border-x',
+          banner: <div>Banner</div>,
+        },
+      },
+    ],
   },
   {
     icon: <Icons.tags />,
