@@ -55,12 +55,11 @@ export const FAQ = () => (
           <AccordionItem
             key={`${item.question}-${index}`}
             value={`index-${index}`}
-            className='px-4'
           >
-            <AccordionTrigger className='hover:bg-card hover:no-underline'>
+            <AccordionTrigger className='rounded-none px-4 hover:bg-card hover:no-underline data-[state=open]:bg-card'>
               {item.question}
             </AccordionTrigger>
-            <AccordionContent>{item.answer}</AccordionContent>
+            <AccordionContent className='p-4'>{item.answer}</AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
