@@ -27,52 +27,61 @@ const Cross = () => (
 
 function SignInCard() {
   return (
-    <Card className='relative w-full max-w-xl rounded-none border border-border/70 border-dashed shadow-none dark:border-border'>
+    <div className='relative mx-auto w-full max-w-xl'>
       <div className='-top-3 -left-3 absolute z-10 hidden h-6 sm:block'>
         <Cross />
       </div>
       <div className='-top-3 -right-3 -translate-x-px absolute z-10 hidden h-6 sm:block'>
         <Cross />
       </div>
-      <CardHeader>
-        <CardTitle className='text-lg md:text-xl'>Sign In</CardTitle>
-        <CardDescription className='text-xs md:text-sm'>
-          Sign in with your account
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className='grid gap-4'>
-          <div
-            className={cn(
-              'flex w-full items-center gap-2',
-              'flex-col justify-between',
-            )}
-          >
-            <Button
-              variant='outline'
-              className={cn(
-                'w-full gap-2 rounded-none border border-border/70 border-dashed dark:border-border',
-              )}
-              onClick={async () => {
-                await signIn.social({
-                  provider: 'google',
-                  callbackURL: '/',
-                });
-              }}
-            >
-              <Icons.google />
-              Sign in with Google
-            </Button>
-          </div>
-        </div>
-      </CardContent>
+      <div
+        className={cn(
+          'border-border/70 border-x border-y border-dashed dark:border-border',
+        )}
+      >
+        <Card className='rounded-none border-none'>
+          <CardHeader>
+            <CardTitle className='text-lg md:text-xl'>Sign In</CardTitle>
+            <CardDescription className='text-xs md:text-sm'>
+              Sign in with your account
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className='grid gap-4'>
+              <div
+                className={cn(
+                  'flex w-full items-center gap-2',
+                  'flex-col justify-between',
+                )}
+              >
+                <Button
+                  variant='outline'
+                  className={cn(
+                    'w-full gap-2 rounded-none border border-border/70 border-dashed dark:border-border',
+                  )}
+                  onClick={async () => {
+                    await signIn.social({
+                      provider: 'google',
+                      callbackURL: '/',
+                    });
+                  }}
+                >
+                  <Icons.google />
+                  Sign in with Google
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
       <div className='-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block'>
         <Cross />
       </div>
       <div className='-bottom-3 -right-3 -translate-x-px absolute z-10 hidden h-6 sm:block'>
         <Cross />
       </div>
-    </Card>
+    </div>
   );
 }
 
@@ -89,10 +98,10 @@ export default function LoginPage() {
           />
         ),
       }}
-      className='border-grid pt-0'
+      className='pt-0'
     >
-      <main className='flex flex-1 px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-24'>
-        <div className='container flex min-h-full flex-1 items-center justify-center border-border/70 border-x border-b border-dashed dark:border-border'>
+      <main className='flex flex-1'>
+        <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border/70 border-x border-b border-dashed dark:border-border '>
           <SignInCard />
         </div>
       </main>
