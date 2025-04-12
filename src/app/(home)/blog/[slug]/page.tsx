@@ -23,7 +23,7 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
       <div
         className={cn(
           'flex flex-col items-start justify-center gap-4 py-8 md:gap-6',
-          'sm:items-center sm:rounded-lg sm:border sm:bg-muted/70 sm:px-8 sm:py-20 sm:shadow-xs sm:dark:bg-muted',
+          'sm:items-center sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-xs',
         )}
       >
         <div className='flex flex-col gap-2 sm:text-center md:gap-4'>

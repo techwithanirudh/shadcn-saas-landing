@@ -32,7 +32,7 @@ const Hero = ({ posts }: { posts: Page[] }) => (
       />
     </motion.div>
     <div className='mx-auto flex flex-col items-center justify-center gap-8'>
-      <Button variant='secondary' size='sm' className='group gap-4' asChild>
+      <Button variant='outline' size='sm' className='group gap-4 bg-dashed' asChild>
         <Link href={`/blog/${posts?.[0]?.slugs?.join('/')}`}>
           Read our latest announcement
           <Icons.arrowUpRight className='group-hover:-rotate-12 size-4 transition-transform' />
