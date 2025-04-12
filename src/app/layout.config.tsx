@@ -1,4 +1,3 @@
-import { UserButton } from '@/components/auth/user-button';
 import { Icons } from '@/components/icons/icons';
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
@@ -48,12 +47,7 @@ export const linkItems: LinkItemType[] = [
     text: 'Tags',
     url: '/tags',
     active: 'url',
-  },
-  {
-    type: 'custom',
-    children: <UserButton />,
-    secondary: true,
-  },
+  }
 ];
 
 export const postsPerPage = 5;

@@ -1,9 +1,16 @@
-import { baseOptions, linkItems, postsPerPage } from '@/app/layout.config';
+import {
+  baseOptions,
+  linkItems,
+  owner,
+  postsPerPage,
+} from '@/app/layout.config';
 import { InlineLink } from '@/components/inline-link';
 import { getSortedByDatePosts, getTags } from '@/lib/source';
 import { cn } from '@/lib/utils';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
 import { ActiveLink } from '../active-link';
+import { UserButton } from '../auth/user-button';
+import { ThemeToggle } from '../theme-toggle';
 
 export function Footer() {
   const links = getLinks(linkItems, baseOptions.githubUrl);
@@ -15,12 +22,16 @@ export function Footer() {
   const tags = getTags();
 
   return (
-    <footer className={cn('flex flex-col gap-4')}>
+    <footer
+      className={cn(
+        'container mx-auto flex flex-col gap-4',
+        'border-border/70 border-b border-dashed dark:border-border',
+        'sm:gap-16 sm:px-8 sm:py-16',
+      )}
+    >
       <div
         className={cn(
           'grid gap-8 text-muted-foreground text-sm sm:grid-cols-5',
-          'container mx-auto sm:gap-16 sm:px-8 sm:py-16',
-          'border-border/70 border-b border-dashed dark:border-border',
         )}
       >
         <div className='flex flex-col gap-6'>
@@ -109,17 +120,25 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      {/* <Design /> */}
+      <Copyright />
     </footer>
   );
 }
 
-function Design() {
+function Copyright() {
   return (
-    <div className='footer'>
-      <span className='footer-text font-mono'>john•doe</span>
-      <div className='footer-grid' />
-      <div className='footer-gradient' />
+    <div className='grid items-center gap-4 sm:grid-cols-3'>
+      <div className='w-min'>
+        <UserButton />
+      </div>
+      <div className='flex items-center sm:justify-center'>
+        <p className='whitespace-nowrap text-muted-foreground text-sm'>
+          &copy; {new Date().getFullYear()} {owner}. All rights reserved.
+        </p>
+      </div>
+      <div className='flex items-center sm:justify-end'>
+        <ThemeToggle mode='light-dark-system' />
+      </div>
     </div>
   );
 }

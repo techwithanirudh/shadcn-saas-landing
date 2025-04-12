@@ -9,7 +9,7 @@ import type React from 'react';
 export default function CTA(): React.ReactElement {
   return (
     <Section className='relative grid gap-8 px-4 py-10 sm:grid-cols-2 md:py-14 lg:px-6 lg:py-16'>
-      <h2 className='max-w-xl font-semibold text-3xl md:text-5xl'>
+      <h2 className='max-w-xl font-regular text-3xl md:text-5xl'>
         Learn at lightspeed with AI Tutor
       </h2>
 

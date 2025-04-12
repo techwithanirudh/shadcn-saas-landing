@@ -7,8 +7,9 @@ import * as motion from 'motion/react-client';
 import Image from 'next/image';
 import Link from 'next/link';
 import heroImage from '../../../../public/images/gradient-noise-purple-azure-light.png';
+import type { Page } from '@/lib/source';
 
-const Hero = async () => (
+const Hero = ({ posts }: { posts: Page[] }) => (
   <Section className='relative w-full overflow-hidden bg-dashed px-4 py-16 sm:px-16 sm:py-24 md:py-32'>
     <motion.div
       initial={{ opacity: 0 }}
@@ -31,12 +32,12 @@ const Hero = async () => (
       />
     </motion.div>
     <div className='mx-auto flex flex-col items-center justify-center gap-8'>
-      <div className='flex items-center justify-center space-x-2'>
-        <Icons.code className='h-6 w-6 text-primary transition-transform hover:scale-125' />
-        <span className='font-medium text-muted-foreground text-sm'>
-          Full-Stack Developer & Tech Writer
-        </span>
-      </div>
+      <Button variant='secondary' size='sm' className='group gap-4' asChild>
+        <Link href={`/blog/${posts?.[0]?.slugs?.join('/')}`}>
+          Read our latest announcement
+          <Icons.arrowUpRight className='group-hover:-rotate-12 size-4 transition-transform' />
+        </Link>
+      </Button>
       <div className='flex flex-col gap-4'>
         <h1 className='max-w-2xl text-center font-regular text-5xl tracking-tighter md:text-7xl'>
           The Future of

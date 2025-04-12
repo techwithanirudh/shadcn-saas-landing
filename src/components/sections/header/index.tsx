@@ -18,7 +18,6 @@ import {
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import { SearchOnly } from 'fumadocs-ui/provider';
 import { ChevronDown, Languages } from 'lucide-react';
-import { ThemeToggle } from '../../theme-toggle';
 import { Menu, MenuContent, MenuLinkItem, MenuTrigger } from './menu';
 import { Navbar, NavbarMenuLink } from './navbar';
 
@@ -63,7 +62,6 @@ export const Header = ({
             <LargeSearchToggle className='w-full max-w-[240px] max-lg:hidden' />
           </SearchOnly>
         ) : null}
-        <ThemeToggle className='max-lg:hidden' />
         {navItems.filter(isSecondary).map((item, i) => (
           <NavbarLinkItem
             key={i.toString()}
@@ -101,7 +99,6 @@ export const Header = ({
                   <ChevronDown className='size-3 text-fd-muted-foreground' />
                 </LanguageToggle>
               ) : null}
-              <ThemeToggle />
             </div>
           </MenuContent>
         </Menu>
