@@ -36,7 +36,7 @@ const faq = [
 
 export const FAQ = () => (
   <Section className='w-full'>
-    <div className='grid divide-x divide-dashed divide-border/70 lg:grid-cols-2 dark:divide-border'>
+    <div className='grid divide-y divide-dashed divide-border/70 lg:grid-cols-2 lg:divide-x lg:divide-y-0 dark:divide-border'>
       <div className='flex flex-col gap-2 px-6 py-10 md:py-14'>
         <h4 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
           Frequently Asked Questions

@@ -24,17 +24,22 @@ export const linkItems: LinkItemType[] = [
   },
   {
     type: 'menu',
-    text: 'Guide',
+    text: 'Blog',
     items: [
       {
-        text: 'Getting Started',
-        description: 'Learn to use Fumadocs',
-        url: '/docs',
-
-        menu: {
-          className: 'row-span-2 mx-auto border-x',
-          banner: <div>Banner</div>,
-        },
+        text: 'Posts',
+        description: 'View all blog posts',
+        url: '/blog',
+      },
+      {
+        text: 'Tags',
+        description: 'View blog posts by tags',
+        url: '/tags',
+      },
+      {
+        text: 'Newsletter',
+        description: 'Subscribe to our newsletter',
+        url: '/newsletter',
       },
     ],
   },
