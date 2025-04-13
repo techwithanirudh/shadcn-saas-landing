@@ -137,7 +137,7 @@ function Copyright() {
         </p>
       </div>
       <div className='flex items-center sm:justify-end'>
-        <ThemeToggle mode='light-dark-system' />
+        <ThemeToggle mode='light-dark' />
       </div>
     </div>
   );
