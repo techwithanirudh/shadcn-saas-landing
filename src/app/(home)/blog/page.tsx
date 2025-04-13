@@ -32,7 +32,7 @@ const CurrentPostsCount = ({
 const Pagination = ({ pageIndex }: { pageIndex: number }) => {
   const handlePageChange = async (page: number) => {
     'use server';
-    redirect(`/posts?page=${page}`);
+    redirect(`/blog?page=${page}`);
   };
 
   return (
@@ -118,7 +118,7 @@ export async function generateMetadata(
 
   const isFirstPage = pageIndex === 1 || !searchParams.page;
   const pageTitle = isFirstPage ? 'Posts' : `Posts - Page ${pageIndex}`;
-  const canonicalUrl = isFirstPage ? '/posts' : `/posts?page=${pageIndex}`;
+  const canonicalUrl = isFirstPage ? '/blog' : `/blog?page=${pageIndex}`;
 
   return createMetadata({
     title: pageTitle,

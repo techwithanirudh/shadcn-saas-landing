@@ -53,7 +53,7 @@ async function checkLinks() {
     `collected ${scanned.urls.size} URLs, ${scanned.fallbackUrls.length} fallbacks`,
   );
 
-  const getUrl = createGetUrl('/posts');
+  const getUrl = createGetUrl('/blog');
   printErrors(
     await validateFiles([...blogFiles], {
       scanned,

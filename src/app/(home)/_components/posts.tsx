@@ -25,7 +25,7 @@ export default function Posts({ posts }: { posts: Page[] }) {
           );
         })}
         <Link
-          href='/posts'
+          href='/blog'
           className={buttonVariants({
             variant: 'default',
             className: 'group rounded-none py-4 sm:py-8',

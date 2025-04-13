@@ -49,7 +49,7 @@ export const PostJsonLd = ({ page }: { page: Post }) => {
         '@type': 'ListItem',
         position: 2,
         name: `${homeTitle} | Posts`,
-        item: new URL('/posts', baseUrl.href).href,
+        item: new URL('/blog', baseUrl.href).href,
       },
       {
         '@type': 'ListItem',

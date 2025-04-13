@@ -4,7 +4,7 @@ import { createMDXSource } from 'fumadocs-mdx';
 import { blog } from '.source';
 
 export const source = loader({
-  baseUrl: '/posts',
+  baseUrl: '/blog',
   source: createMDXSource(blog),
 });
 export const { getPage: getPost, getPages: getPosts, pageTree } = source;
