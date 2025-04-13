@@ -1,4 +1,4 @@
-import { PostComments, Share } from '@/app/(home)/blog/[slug]/page.client';
+import { PostComments, Share } from '@/app/(home)/(blog)/blog/[slug]/page.client';
 import { PostJsonLd } from '@/components/json-ld';
 import { Section } from '@/components/section';
 import { TagCard } from '@/components/tags/tag-card';
