@@ -8,6 +8,7 @@ import { TooltipProvider } from '@radix-ui/react-tooltip';
 import { RootProvider } from 'fumadocs-ui/provider';
 import type { ReactNode } from 'react';
 import { unstable_ViewTransition as ViewTransition } from 'react';
+import { ProgressProvider } from '@bprogress/next/app';
 
 export function Provider({
   children,
@@ -26,9 +27,16 @@ export function Provider({
           enabled: false,
         }}
       >
-        <TooltipProvider>
-          <ViewTransition>{children}</ViewTransition>
-        </TooltipProvider>
+        <ProgressProvider
+          height='2px'
+          color={'#5B438C'}
+          options={{ showSpinner: false }}
+          shallowRouting
+        >
+          <TooltipProvider>
+            <ViewTransition>{children}</ViewTransition>
+          </TooltipProvider>
+        </ProgressProvider>
         <Analytics />
         <Toaster />
         <TailwindIndicator />

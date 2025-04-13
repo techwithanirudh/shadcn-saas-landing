@@ -26,6 +26,7 @@
     "email:export": "email export"
   },
   "dependencies": {
+    "@bprogress/next": "^3.2.11",
     "@fuma-comment/react": "^1.2.1",
     "@fuma-comment/server": "^1.2.1",
     "@hookform/resolvers": "^4.1.3",
