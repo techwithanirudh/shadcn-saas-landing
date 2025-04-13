@@ -11,21 +11,16 @@ import {
 
 // Create a variant for feature items
 const featureItemVariants = cva(
-  'group flex flex-col justify-between p-6 last:border-border/70 last:border-b last:border-dashed hover:bg-card hover:bg-card/80 last:dark:border-border',
+  'group flex flex-col justify-between gap-10 p-6 last:border-border/70 last:border-b last:border-dashed hover:bg-card hover:bg-card/80 sm:gap-22 md:gap-34 lg:gap-46 last:dark:border-border',
   {
     variants: {
-      aspect: {
-        square: 'aspect-square',
-        auto: 'aspect-square h-full lg:aspect-auto',
-      },
-      colSpan: {
-        normal: '',
-        double: 'lg:col-span-2',
+      size: {
+        sm: '',
+        lg: 'lg:col-span-2',
       },
     },
     defaultVariants: {
-      aspect: 'square',
-      colSpan: 'normal',
+      size: 'sm',
     },
   },
 );
@@ -37,8 +32,7 @@ const features = [
     title: 'Affordable Learning',
     description:
       'Say goodbye to overpriced tutors. AI Tutor offers quality education without breaking the bank.',
-    aspect: 'auto',
-    colSpan: 'double',
+    size: 'lg',
   },
   {
     id: 2,
@@ -46,8 +40,7 @@ const features = [
     title: 'Natural Voice Interaction',
     description:
       'Speak to it like a real tutor. AI Tutor understands voice commands and responds just like a human would.',
-    aspect: 'square',
-    colSpan: 'normal',
+    size: 'sm',
   },
   {
     id: 3,
@@ -55,8 +48,7 @@ const features = [
     title: 'Focus-First Design',
     description:
       'Prevents distractions and keeps kids engaged with smart monitoring and redirection cues.',
-    aspect: 'square',
-    colSpan: 'normal',
+    size: 'sm',
   },
   {
     id: 4,
@@ -64,8 +56,7 @@ const features = [
     title: 'Guided Thinking, Not Just Answers',
     description:
       'AI Tutor doesn’t just hand out answers — it encourages critical thinking and problem-solving before offering help.',
-    aspect: 'auto',
-    colSpan: 'double',
+    size: 'lg',
   },
 ];
 
@@ -88,8 +79,7 @@ const Features = () => (
             <div
               key={feature.id}
               className={featureItemVariants({
-                aspect: feature.aspect as 'square' | 'auto',
-                colSpan: feature.colSpan as 'normal' | 'double',
+                size: feature.size as 'sm' | 'lg',
               })}
             >
               <feature.Icon className='h-8 w-8 stroke-1 transition-transform hover:rotate-12 hover:scale-125' />

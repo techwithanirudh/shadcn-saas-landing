@@ -9,11 +9,11 @@ import {
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-import Vercel from '@/public/images/logos/vercel.svg';
-import OpenAI from '@/public/images/logos/openai.svg';
-import Gemini from '@/public/images/logos/gemini.svg';
 import Claude from '@/public/images/logos/claude.svg';
+import Gemini from '@/public/images/logos/gemini.svg';
 import Neon from '@/public/images/logos/neon.svg';
+import OpenAI from '@/public/images/logos/openai.svg';
+import Vercel from '@/public/images/logos/vercel.svg';
 
 import { Section } from '@/components/section';
 
