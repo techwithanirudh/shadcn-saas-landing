@@ -8,6 +8,7 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  CircleDollarSign,
   ClipboardCheck,
   Code,
   CreditCard,
@@ -26,6 +27,7 @@ import {
   Moon,
   MoreVertical,
   Newspaper,
+  PhoneCall,
   Pizza,
   Plus,
   Rss,
@@ -80,6 +82,8 @@ export const Icons = {
   chevronDown: ChevronDown,
   mail: Mail,
   send: SendHorizonal,
+  pricing: CircleDollarSign,
+  phone: PhoneCall,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden='true'

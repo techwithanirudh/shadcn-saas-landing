@@ -2,7 +2,6 @@ import { Icons } from '@/components/icons/icons';
 import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { env } from '@/env';
-import { PhoneCall } from 'lucide-react';
 import Link from 'next/link';
 import type React from 'react';
 
@@ -28,7 +27,7 @@ export default function CTA(): React.ReactElement {
             >
               <Link href='/contact'>
                 Get in touch{' '}
-                <PhoneCall className='group-hover:-rotate-12 size-4 transition-transform' />
+                <Icons.phone className='group-hover:-rotate-12 size-4 transition-transform' />
               </Link>
             </Button>
             <Button size='lg' className='group gap-4' asChild>

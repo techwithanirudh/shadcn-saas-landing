@@ -18,7 +18,7 @@ import { useForm } from 'react-hook-form';
 
 import { Alert, AlertTitle } from '@/components/ui/alert';
 
-import { subscribeUser } from '@/app/(home)/actions';
+import { subscribeUser } from '@/app/(home)/(blog)/newsletter/actions/newsletter';
 import { Icons } from '@/components/icons/icons';
 
 export const NewsletterForm = () => {

@@ -22,6 +22,18 @@ export const linkItems: LinkItemType[] = [
     active: 'url',
   },
   {
+    icon: <Icons.pricing />,
+    text: 'Pricing',
+    url: '/pricing',
+    active: 'url',
+  },
+  {
+    icon: <Icons.phone />,
+    text: 'Contact',
+    url: '/contact',
+    active: 'url',
+  },
+  {
     type: 'menu',
     text: 'Blog',
     items: [
@@ -29,24 +41,21 @@ export const linkItems: LinkItemType[] = [
         text: 'Posts',
         description: 'View all blog posts',
         url: '/blog',
+        icon: <Icons.posts />,
       },
       {
         text: 'Tags',
         description: 'View blog posts by tags',
         url: '/tags',
+        icon: <Icons.tags />,
       },
       {
         text: 'Newsletter',
         description: 'Subscribe to our newsletter',
         url: '/newsletter',
+        icon: <Icons.mail />,
       },
     ],
-  },
-  {
-    icon: <Icons.tags />,
-    text: 'Tags',
-    url: '/tags',
-    active: 'url',
   },
 ];
 
