@@ -9,18 +9,20 @@ import {
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-import Anything from '../../../../public/images/logos/anything.png';
-import Nothing from '../../../../public/images/logos/nothing.png';
-import Pear from '../../../../public/images/logos/pear.png';
-import Something from '../../../../public/images/logos/something.png';
+import Vercel from '@/public/images/logos/vercel.svg';
+import OpenAI from '@/public/images/logos/openai.svg';
+import Gemini from '@/public/images/logos/gemini.svg';
+import Claude from '@/public/images/logos/claude.svg';
+import Neon from '@/public/images/logos/neon.svg';
 
 import { Section } from '@/components/section';
 
 const logos = [
-  { src: Something, name: 'Something' },
-  { src: Nothing, name: 'Nothing' },
-  { src: Anything, name: 'Anything' },
-  { src: Pear, name: 'Pear' },
+  { src: Vercel, name: 'Vercel' },
+  { src: OpenAI, name: 'OpenAI' },
+  { src: Claude, name: 'Claude' },
+  { src: Gemini, name: 'Gemini' },
+  { src: Neon, name: 'Neon' },
 ];
 
 export const Customers = ({
@@ -50,22 +52,22 @@ export const Customers = ({
   }, [api, current]);
 
   return (
-    <Section className='relative flex grid grid-cols-8 flex-col items-center justify-between gap-8 p-6 sm:flex-row sm:gap-16'>
-      <p className='col-span-4 text-muted-foreground sm:max-w-xs'>
-        Join {closest}+ companies in building better products with Eververse
+    <Section className='relative flex flex-col items-center justify-between gap-8 p-6 sm:flex-row sm:gap-16'>
+      <p className='text-muted-foreground sm:max-w-xs'>
+        Powered by {closest}+ technologies, including:
       </p>
-      <div className='col-span-4'>
+      <div className='md:w-[50%]'>
         <Carousel setApi={setApi}>
           <CarouselContent>
             {logos.map(({ src, name }, index) => (
-              <CarouselItem className='basis-1/4' key={name}>
+              <CarouselItem className='basis-1/4 md:basis-1/5' key={name}>
                 <div className='flex items-center justify-center rounded-md'>
                   <Image
                     src={src}
                     alt={name}
                     width={96}
                     height={24}
-                    className='h-12 w-48 object-contain dark:invert'
+                    className='h-6 w-24 object-contain dark:invert'
                   />
                 </div>
               </CarouselItem>

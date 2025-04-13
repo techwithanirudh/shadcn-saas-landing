@@ -35,7 +35,7 @@ const Hero = ({ posts }: { posts: Page[] }) => (
       <Button
         variant='outline'
         size='sm'
-        className='group gap-4 bg-dashed'
+        className='group gap-4 bg-muted/70'
         asChild
       >
         <Link href={`/blog/${posts?.[0]?.slugs?.join('/')}`}>
@@ -58,7 +58,7 @@ const Hero = ({ posts }: { posts: Page[] }) => (
       <div className='flex flex-row gap-3'>
         <Button
           size='lg'
-          className='group gap-4 bg-dashed shadow-none'
+          className='group gap-4 bg-muted/70 shadow-none'
           variant='outline'
           asChild
         >
