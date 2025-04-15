@@ -1,8 +1,9 @@
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
+import { ContactForm } from './components/contact-form';
 
-export default function Newsletter(): React.ReactElement {
+export default function Contact(): React.ReactElement {
   return (
     <Section className='grid divide-y divide-dashed divide-border/70 lg:grid-cols-2 lg:divide-x lg:divide-y-0 dark:divide-border'>
       <div className='flex flex-col gap-2 px-6 py-10 md:py-14'>
@@ -16,7 +17,7 @@ export default function Newsletter(): React.ReactElement {
       </div>
 
       <div className='flex w-full items-center px-6 py-10 md:py-14'>
-        {/* <ContactForm /> */}
+        <ContactForm />
       </div>
     </Section>
   );

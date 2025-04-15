@@ -21,7 +21,7 @@ import { Alert, AlertTitle } from '@/components/ui/alert';
 import { subscribeUser } from '@/app/(home)/(blog)/newsletter/actions/newsletter';
 import { Icons } from '@/components/icons/icons';
 
-export const NewsletterForm = () => {
+export const ContactForm = () => {
   const form = useForm({
     resolver: zodResolver(NewsletterSchema),
     defaultValues: {
