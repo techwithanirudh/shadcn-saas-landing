@@ -27,7 +27,7 @@ export const Section = ({
     <div className='container relative mx-auto'>
       <div
         className={cn(
-          'border-border/70 border-dashed sm:border-x dark:border-border',
+          'border-dashed sm:border-x border-border',
           className,
         )}
       >

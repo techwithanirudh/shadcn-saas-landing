@@ -25,7 +25,7 @@ export function Footer() {
     <footer
       className={cn(
         'container mx-auto flex flex-col gap-4',
-        'border-border/70 border-b border-dashed dark:border-border',
+        'border-b border-dashed border-border',
         'gap-16 px-8 py-16',
       )}
     >

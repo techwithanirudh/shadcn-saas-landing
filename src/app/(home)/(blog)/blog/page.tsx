@@ -69,7 +69,7 @@ export default async function Page(props: {
         </h1>
       </Section>
       <Section className='h-full' sectionClassName='flex flex-1'>
-        <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
+        <div className='grid divide-y divide-dashed text-left divide-border'>
           {posts.map((post) => {
             const date = new Date(post.data.date).toDateString();
             return (

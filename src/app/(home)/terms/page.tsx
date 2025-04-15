@@ -18,7 +18,7 @@ export default function TermsOfService() {
         </p>
       </Section>
       <Section>
-        <div className='grid divide-y divide-dashed divide-border/70 dark:divide-border'>
+        <div className='grid divide-y divide-dashed divide-border'>
           {sections.map((section) => (
             <div key={section.title} className='group p-6 transition-all'>
               <h2 className='mb-4 font-semibold text-xl tracking-tight'>

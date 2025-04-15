@@ -124,6 +124,14 @@
     );
     background-size: 0.25rem 0.25rem;
   }
+
+  .border-border {
+    @apply border-border/70 dark:border-border;
+  }
+  
+  .divide-border {
+    @apply divide-border/70 dark:divide-border;
+  }
 }
 
 @layer components {

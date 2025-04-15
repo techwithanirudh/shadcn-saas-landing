@@ -64,7 +64,7 @@ export default async function Page(props: {
           <div className='flex flex-1 flex-col gap-4'>
             <InlineTOC
               items={toc}
-              className='rounded-none border-0 border-border/70 border-b border-dashed dark:border-border'
+              className='rounded-none border-0 border-b border-dashed border-border'
             />
             <div className='prose min-w-0 flex-1 px-4'>
               <Mdx
@@ -80,10 +80,10 @@ export default async function Page(props: {
             </div>
             <PostComments
               slug={params.slug}
-              className='[&_form>div]:!rounded-none rounded-none border-0 border-border/70 border-t border-dashed dark:border-border'
+              className='[&_form>div]:!rounded-none rounded-none border-0 border-t border-dashed border-border'
             />
           </div>
-          <div className='flex flex-col gap-4 p-4 text-sm lg:sticky lg:top-[4rem] lg:h-[calc(100vh-4rem)] lg:w-[250px] lg:self-start lg:overflow-y-auto lg:border-border/70 lg:border-l lg:border-dashed lg:dark:border-border'>
+          <div className='flex flex-col gap-4 p-4 text-sm lg:sticky lg:top-[4rem] lg:h-[calc(100vh-4rem)] lg:w-[250px] lg:self-start lg:overflow-y-auto lg:border-l lg:border-dashed lg:border-border'>
             <div>
               <p className='mb-1 text-fd-muted-foreground'>Written by</p>
               <p className='font-medium'>{page.data.author}</p>

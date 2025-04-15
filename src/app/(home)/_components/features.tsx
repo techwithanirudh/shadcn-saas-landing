@@ -11,7 +11,7 @@ import {
 
 // Create a variant for feature items
 const featureItemVariants = cva(
-  'group flex flex-col justify-between gap-10 p-6 last:border-border/70 last:border-b last:border-dashed hover:bg-card hover:bg-card/80 sm:gap-22 md:gap-34 lg:gap-46 last:dark:border-border',
+  'group flex flex-col justify-between gap-10 p-6 last:border-b last:border-dashed hover:bg-card hover:bg-card/80 sm:gap-22 md:gap-34 lg:gap-46 last:border-border',
   {
     variants: {
       size: {
@@ -73,8 +73,8 @@ const Features = () => (
         </p>
       </div>
 
-      <div className='w-full border-border/70 border-t border-dashed pb-4 dark:border-border'>
-        <div className='grid grid-cols-1 divide-x divide-y divide-dashed divide-border/70 text-left sm:grid-cols-2 lg:grid-cols-3 dark:divide-border'>
+      <div className='w-full border-t border-dashed pb-4 border-border'>
+        <div className='grid grid-cols-1 divide-x divide-y divide-dashed text-left sm:grid-cols-2 lg:grid-cols-3 divide-border'>
           {features.map((feature) => (
             <div
               key={feature.id}

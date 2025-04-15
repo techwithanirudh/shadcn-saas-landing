@@ -20,7 +20,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       }}
       className='pt-0'
     >
-      <main className='flex flex-1 flex-col divide-y divide-dashed divide-border/70 border-border/70 border-dashed sm:border-b dark:divide-border dark:border-border'>
+      <main className='flex flex-1 flex-col divide-y divide-dashed border-dashed sm:border-b divide-border border-border'>
         {children}
         <Footer />
       </main>

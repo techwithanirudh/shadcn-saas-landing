@@ -84,9 +84,9 @@ const Testimonials = () => {
 
         <Carousel
           setApi={setApi}
-          className='w-full border-border/70 border-t border-dashed dark:border-border'
+          className='w-full border-t border-dashed border-border'
         >
-          <CarouselContent className='ml-0 divide-x divide-dashed divide-border/70 dark:divide-border'>
+          <CarouselContent className='ml-0 divide-x divide-dashed divide-border'>
             {testimonials.map((item, index) => (
               <CarouselItem
                 className='pl-0 lg:basis-1/2'
