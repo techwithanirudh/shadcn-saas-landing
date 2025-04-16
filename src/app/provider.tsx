@@ -28,9 +28,14 @@ export function Provider({
         }}
       >
         <ProgressProvider
-          height='2px'
-          color={'var(--color-primary)'}
-          options={{ showSpinner: false }}
+          height="2px"
+          color="var(--color-primary)"
+          options={{
+            showSpinner: false,
+          }}
+          stopDelay={1000}
+          delay={1000}
+          startOnLoad
           shallowRouting
         >
           <TooltipProvider>
