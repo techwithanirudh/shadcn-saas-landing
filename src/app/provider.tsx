@@ -29,7 +29,7 @@ export function Provider({
       >
         <ProgressProvider
           height='2px'
-          color={'#5B438C'}
+          color={'var(--color-primary)'}
           options={{ showSpinner: false }}
           shallowRouting
         >
