@@ -33,14 +33,14 @@ export default function MdxLayout({
             {toc?.length ? (
               <InlineTOC
                 items={toc}
-                className='rounded-none border-0 border-b border-dashed border-border'
+                className='rounded-none border-0 border-border border-b border-dashed'
               />
             ) : null}
             <div className='prose min-w-0 flex-1 px-4'>{children}</div>
             {comments ? (
               <PostComments
                 slug={slug}
-                className='[&_form>div]:!rounded-none rounded-none border-0 border-t border-dashed border-border'
+                className='[&_form>div]:!rounded-none rounded-none border-0 border-border border-t border-dashed'
               />
             ) : null}
           </div>

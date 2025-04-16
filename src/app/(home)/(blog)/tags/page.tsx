@@ -17,20 +17,20 @@ export default function Page() {
         </h1>
       </Section>
       <Section className='h-full' sectionClassName='flex flex-1'>
-        <div className='grid grid-cols-1 divide-y divide-dashed sm:grid-cols-2 lg:grid-cols-4 divide-border'>
+        <div className='grid grid-cols-1 divide-y divide-dashed divide-border sm:grid-cols-2 lg:grid-cols-4'>
           {tags.map((tag, index) => (
             <TagCard
               key={tag}
               displayCount={true}
               name={tag}
               className={cn(
-                'items-center justify-start gap-2 rounded-none border-r-0 bg-card/50 p-6 last:border-b last:border-dashed hover:bg-card/80 last:border-border',
+                'items-center justify-start gap-2 rounded-none border-r-0 bg-card/50 p-6 last:border-border last:border-b last:border-dashed hover:bg-card/80',
                 tags.at(index - 1) && 'border-l',
               )}
             />
           ))}
           {tags.length % 2 === 1 && (
-            <div className='size-full border-dashed bg-dashed sm:border-b sm:border-l border-border' />
+            <div className='size-full border-border border-dashed bg-dashed sm:border-b sm:border-l' />
           )}
         </div>
       </Section>

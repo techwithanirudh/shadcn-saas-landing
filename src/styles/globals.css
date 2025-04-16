@@ -128,7 +128,7 @@
   .border-border {
     @apply border-border/70 dark:border-border;
   }
-  
+
   .divide-border {
     @apply divide-border/70 dark:divide-border;
   }

@@ -1,9 +1,9 @@
 'use client';
 
-// import { Tab } from '@/components/ui/pricing-tab';
-import { useState } from 'react';
 import { Section } from '@/components/section';
 import { env } from '@/env';
+// import { Tab } from '@/components/ui/pricing-tab';
+import { useState } from 'react';
 import { PricingCard } from './pricing-card';
 import { Tab } from './pricing-tab';
 
@@ -28,7 +28,7 @@ export const plans = [
     cta: {
       href: env.NEXT_PUBLIC_APP_URL,
       label: 'Get started',
-    }
+    },
   },
   {
     id: 'teams',
@@ -49,7 +49,7 @@ export const plans = [
       href: env.NEXT_PUBLIC_APP_URL,
       label: 'Get started',
     },
-    popular: true
+    popular: true,
   },
   {
     id: 'organizations',
@@ -69,7 +69,7 @@ export const plans = [
     cta: {
       href: env.NEXT_PUBLIC_APP_URL,
       label: 'Get started',
-    }
+    },
   },
   {
     id: 'enterprise',
@@ -95,20 +95,18 @@ export const plans = [
 ];
 
 export function PricingSection() {
-  const [selectedFrequency, setSelectedFrequency] = useState(
-    frequencies[0],
-  );
+  const [selectedFrequency, setSelectedFrequency] = useState(frequencies[0]!);
 
   return (
-    <Section className='flex flex-col items-center divide-y divide-border divide-dashed'>
-      <div className="flex w-full">
+    <Section className='flex flex-col items-center divide-y divide-dashed divide-border'>
+      <div className='flex w-full'>
         {frequencies.map((freq) => (
           <Tab
             key={freq}
             text={freq}
             selected={selectedFrequency === freq}
             setSelected={setSelectedFrequency}
-            discount={freq === "yearly"}
+            discount={freq === 'yearly'}
           />
         ))}
       </div>

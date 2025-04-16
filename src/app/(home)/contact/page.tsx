@@ -5,7 +5,7 @@ import { ContactForm } from './components/contact-form';
 
 export default function Contact(): React.ReactElement {
   return (
-    <Section className='grid divide-y divide-dashed lg:grid-cols-2 lg:divide-x lg:divide-y-0 divide-border'>
+    <Section className='grid divide-y divide-dashed divide-border lg:grid-cols-2 lg:divide-x lg:divide-y-0'>
       <div className='flex flex-col gap-2 px-6 py-10 md:py-14'>
         <h4 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
           Contact
@@ -27,7 +27,8 @@ export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const description = 'Contact us for any inquiries, feedback, or support. We are here to assist you.';
+  const description =
+    'Contact us for any inquiries, feedback, or support. We are here to assist you.';
 
   return createMetadata({
     title: 'Contact',

@@ -45,13 +45,14 @@ export function UserButton({ className, classNames }: UserButtonProps) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        className={cn('rounded-md bg-transparent')}
-        asChild
-      >
+      <DropdownMenuTrigger className={cn('rounded-md bg-transparent')} asChild>
         <Button
           variant='ghost'
-          className={cn('size-auto rounded-md border-none bg-transparent p-0 hover:bg-accent dark:hover:bg-accent', 'bg-secondary hover:bg-secondary/80', classNames?.trigger?.base)}
+          className={cn(
+            'size-auto rounded-md border-none bg-transparent p-0 hover:bg-accent dark:hover:bg-accent',
+            'bg-secondary hover:bg-secondary/80',
+            classNames?.trigger?.base,
+          )}
           disabled={isPending}
         >
           {isPending ? (

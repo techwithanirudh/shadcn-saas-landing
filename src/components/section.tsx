@@ -25,12 +25,7 @@ export const Section = ({
 }: SectionProps) => (
   <section className={sectionClassName} {...props}>
     <div className='container relative mx-auto'>
-      <div
-        className={cn(
-          'border-dashed sm:border-x border-border',
-          className,
-        )}
-      >
+      <div className={cn('border-border border-dashed sm:border-x', className)}>
         {children}
       </div>
       <div className='-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block'>

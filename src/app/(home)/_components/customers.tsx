@@ -67,7 +67,7 @@ export const Customers = ({
                     alt={name}
                     width={96}
                     height={24}
-                    className='h-6 w-24 object-contain dark:invert select-none'
+                    className='h-6 w-24 select-none object-contain dark:invert'
                   />
                 </div>
               </CarouselItem>

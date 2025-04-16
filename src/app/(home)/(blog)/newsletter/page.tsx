@@ -1,14 +1,14 @@
+import { NewsletterForm } from '@/app/(home)/(blog)/newsletter/components/newsletter-form';
 import { title as homeTitle } from '@/app/layout.config';
+import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
-import { NewsletterForm } from '@/app/(home)/(blog)/newsletter/components/newsletter-form';
-import { Section } from '@/components/section';
 import type React from 'react';
 
 export default function NewsletterPage(): React.ReactElement {
   return (
     // todo use faq like stylor
-    <Section className='grid divide-y divide-dashed lg:grid-cols-2 lg:divide-x lg:divide-y-0 divide-border'>
+    <Section className='grid divide-y divide-dashed divide-border lg:grid-cols-2 lg:divide-x lg:divide-y-0'>
       <div className='flex flex-col gap-2 px-6 py-10 md:py-14'>
         <h4 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
           Subscribe to the Newsletter

@@ -147,7 +147,7 @@ const NavbarLinkItem = ({
         <NavbarMenuTrigger {...props}>
           {item.url ? <Link href={item.url}>{item.text}</Link> : item.text}
         </NavbarMenuTrigger>
-        <NavbarMenuContent className='container border-dashed sm:border-x border-border'>
+        <NavbarMenuContent className='container border-border border-dashed sm:border-x'>
           {children}
         </NavbarMenuContent>
       </NavbarMenu>

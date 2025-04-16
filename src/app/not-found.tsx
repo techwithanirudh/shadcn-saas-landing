@@ -21,7 +21,7 @@ export default function NotFound() {
       className='pt-0'
     >
       <main className='flex flex-1'>
-        <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-x border-b border-dashed border-border '>
+        <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border border-x border-b border-dashed '>
           <div className='flex flex-auto flex-col items-center justify-center px-4 text-center sm:flex-row'>
             <h1 className='border-border font-extrabold text-2xl text-foreground tracking-tight sm:mr-6 sm:border-r sm:pr-6 sm:text-3xl'>
               404

@@ -33,11 +33,7 @@ function SignInCard() {
       <div className='-top-3 -right-3 -translate-x-px absolute z-10 hidden h-6 sm:block'>
         <Cross />
       </div>
-      <div
-        className={cn(
-          'border-x border-y border-dashed border-border',
-        )}
-      >
+      <div className={cn('border-border border-x border-y border-dashed')}>
         <Card className='rounded-none border-none'>
           <CardHeader>
             <CardTitle className='text-lg md:text-xl'>Sign In</CardTitle>
@@ -56,7 +52,7 @@ function SignInCard() {
                 <Button
                   variant='outline'
                   className={cn(
-                    'w-full gap-2 rounded-none border border-dashed border-border',
+                    'w-full gap-2 rounded-none border border-border border-dashed',
                   )}
                   onClick={async () => {
                     await signIn.social({
@@ -100,7 +96,7 @@ export default function LoginPage() {
       className='pt-0'
     >
       <main className='flex flex-1'>
-        <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-x border-b border-dashed border-border '>
+        <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border border-x border-b border-dashed '>
           <SignInCard />
         </div>
       </main>

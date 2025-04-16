@@ -8,7 +8,7 @@ import Link from 'next/link';
 export default function Posts({ posts }: { posts: Page[] }) {
   return (
     <Section>
-      <div className='grid divide-y divide-dashed text-left divide-border'>
+      <div className='grid divide-y divide-dashed divide-border text-left'>
         {posts.map((post) => {
           const date = new Date(post.data.date).toDateString();
           return (
