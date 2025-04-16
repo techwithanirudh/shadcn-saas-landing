@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Section } from '@/components/section';
 import { env } from '@/env';
 import { PricingCard } from './pricing-card';
+import { Tab } from './pricing-tab';
 
 export const frequencies = ['monthly', 'yearly'];
 
@@ -100,18 +101,15 @@ export function PricingSection() {
 
   return (
     <Section className='flex flex-col items-center divide-y divide-border divide-dashed'>
-      <div className='flex w-full items-center justify-between'>
-        {frequencies.map((frequency) => (
-          <button
-            key={frequency}
-            onClick={() => setSelectedFrequency(frequency)}
-            className={`${selectedFrequency === frequency
-                ? 'bg-primary text-primary-foreground'
-                : 'text-muted-foreground'
-              } px-4 py-2 transition-colors w-full capitalize transition-colors`} 
-          >
-            {frequency}
-          </button>
+      <div className="flex w-full">
+        {frequencies.map((freq) => (
+          <Tab
+            key={freq}
+            text={freq}
+            selected={selectedFrequency === freq}
+            setSelected={setSelectedFrequency}
+            discount={freq === "yearly"}
+          />
         ))}
       </div>
       <div className='grid w-full divide-x divide-dashed divide-border sm:grid-cols-2 xl:grid-cols-4'>
