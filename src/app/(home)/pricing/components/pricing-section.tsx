@@ -1,124 +1,50 @@
-'use client';
+"use client"
 
-import { Section } from '@/components/section';
-import { env } from '@/env';
-// import { Tab } from '@/components/ui/pricing-tab';
 import { useState } from 'react';
+import { Section } from '@/components/section';
+import { plans, frequencies } from '../data';
 import { PricingCard } from './pricing-card';
 import { Tab } from './pricing-tab';
 
-export const frequencies = ['monthly', 'yearly'];
+interface PricingSectionProps {
+  title: string;
+  description: string;
+}
 
-export const plans = [
-  {
-    id: 'individuals',
-    name: 'Individuals',
-    price: {
-      monthly: 'Free',
-      yearly: 'Free',
-    },
-    description: 'For your hobby projects',
-    features: [
-      'Free email alerts',
-      '3-minute checks',
-      'Automatic data enrichment',
-      '10 monitors',
-      'Up to 3 seats',
-    ],
-    cta: {
-      href: env.NEXT_PUBLIC_APP_URL,
-      label: 'Get started',
-    },
-  },
-  {
-    id: 'teams',
-    name: 'Teams',
-    price: {
-      monthly: 90,
-      yearly: 75,
-    },
-    description: 'Great for small businesses',
-    features: [
-      'Unlimited phone calls',
-      '30 second checks',
-      'Single-user account',
-      '20 monitors',
-      'Up to 6 seats',
-    ],
-    cta: {
-      href: env.NEXT_PUBLIC_APP_URL,
-      label: 'Get started',
-    },
-    popular: true,
-  },
-  {
-    id: 'organizations',
-    name: 'Organizations',
-    price: {
-      monthly: 120,
-      yearly: 100,
-    },
-    description: 'Great for large businesses',
-    features: [
-      'Unlimited phone calls',
-      '15 second checks',
-      'Single-user account',
-      '50 monitors',
-      'Up to 10 seats',
-    ],
-    cta: {
-      href: env.NEXT_PUBLIC_APP_URL,
-      label: 'Get started',
-    },
-  },
-  {
-    id: 'enterprise',
-    name: 'Enterprise',
-    price: {
-      monthly: 'Custom',
-      yearly: 'Custom',
-    },
-    description: 'For multiple teams',
-    features: [
-      'Everything in Organizations',
-      'Up to 5 team members',
-      '100 monitors',
-      '15 status pages',
-      '200+ integrations',
-    ],
-    cta: {
-      href: '/contact',
-      label: 'Contact us',
-    },
-    highlighted: true,
-  },
-];
-
-export function PricingSection() {
-  const [selectedFrequency, setSelectedFrequency] = useState(frequencies[0]!);
+export function PricingSection({ title, description }: PricingSectionProps) {
+  const [selectedFrequency, setSelectedFrequency] = useState('monthly');
 
   return (
-    <Section className='flex flex-col items-center divide-y divide-dashed divide-border'>
-      <div className='flex w-full'>
-        {frequencies.map((freq) => (
-          <Tab
-            key={freq}
-            text={freq}
-            selected={selectedFrequency === freq}
-            setSelected={setSelectedFrequency}
-            discount={freq === 'yearly'}
-          />
-        ))}
-      </div>
-      <div className='grid w-full divide-x divide-dashed divide-border sm:grid-cols-2 xl:grid-cols-4'>
-        {plans.map((plan) => (
-          <PricingCard
-            key={plan.name}
-            tier={plan}
-            paymentFrequency={selectedFrequency}
-          />
-        ))}
-      </div>
-    </Section>
+    <>
+      <Section className='p-6 lg:p-12 flex flex-col items-center text-center'>
+        <h1 className='mb-2 font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
+          {title}
+        </h1>
+        <p className='text-muted-foreground text-sm'>{description}</p>
+
+        <div className='mt-8 flex items-center justify-center rounded-full bg-card p-1 w-fit'>
+          {frequencies.map((frequency) => (
+            <Tab
+              key={frequency}
+              text={frequency}
+              selected={frequency === selectedFrequency}
+              setSelected={setSelectedFrequency}
+              discount={frequency === 'yearly'}
+            />
+          ))}
+        </div>
+      </Section>
+      <Section className='flex flex-col items-center divide-y divide-dashed divide-border'>
+        <div className='grid w-full divide-x divide-dashed divide-border sm:grid-cols-2 xl:grid-cols-4'>
+          {plans.map((plan) => (
+            <PricingCard
+              key={plan.name}
+              tier={plan}
+              paymentFrequency={selectedFrequency}
+            />
+          ))}
+        </div>
+      </Section>
+    </>
   );
 }

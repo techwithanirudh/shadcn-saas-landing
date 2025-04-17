@@ -1,14 +1,16 @@
-'use client';
-import { motion } from 'motion/react';
+"use client"
 
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
+import * as React from "react"
+import { motion } from "motion/react"
+
+import { cn } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 
 interface TabProps {
-  text: string;
-  selected: boolean;
-  setSelected: (text: string) => void;
-  discount?: boolean;
+  text: string
+  selected: boolean
+  setSelected: (text: string) => void
+  discount?: boolean
 }
 
 export function Tab({
@@ -21,32 +23,30 @@ export function Tab({
     <button
       onClick={() => setSelected(text)}
       className={cn(
-        'relative w-full px-4 py-2 font-semibold text-sm capitalize',
-        'text-foreground transition-colors',
-        selected && 'text-primary-foreground',
-        discount && 'flex items-center justify-center gap-2.5',
+        "relative w-fit px-4 py-2 text-sm font-semibold capitalize",
+        "text-foreground transition-colors",
+        discount && "flex items-center justify-center gap-2.5"
       )}
-      type='button'
     >
-      <span className='relative z-10'>{text}</span>
+      <span className="relative z-10">{text}</span>
       {selected && (
         <motion.span
-          layoutId='tab'
-          transition={{ type: 'spring', duration: 0.4 }}
-          className='absolute inset-0 z-0 bg-primary shadow-sm'
+          layoutId="tab"
+          transition={{ type: "spring", duration: 0.4 }}
+          className="absolute inset-0 z-0 rounded-full bg-background shadow-sm"
         />
       )}
       {discount && (
         <Badge
-          variant='secondary'
+          variant="secondary"
           className={cn(
-            'relative z-10 whitespace-nowrap shadow-none',
-            selected && 'bg-muted',
+            "relative z-10 whitespace-nowrap shadow-none",
+            selected && "bg-muted"
           )}
         >
           Save 35%
         </Badge>
       )}
     </button>
-  );
+  )
 }

@@ -1,4 +1,3 @@
-import { Section } from '@/components/section';
 import type { Metadata } from 'next';
 import { PricingSection } from './components/pricing-section';
 
@@ -11,18 +10,6 @@ export const metadata: Metadata = {
   description,
 };
 
-const Pricing = async () => {
-  return (
-    <>
-      <Section className='p-4 lg:p-6'>
-        <h1 className='mb-2 font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
-          {title}
-        </h1>
-        <p className='text-muted-foreground text-sm'>{description}</p>
-      </Section>
-      <PricingSection />
-    </>
-  );
-};
-
-export default Pricing;
+export default function PricingPage() {
+  return <PricingSection title={title} description={description} />;
+}
