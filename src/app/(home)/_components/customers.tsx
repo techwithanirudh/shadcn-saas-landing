@@ -8,22 +8,49 @@ import {
 } from '@/components/ui/carousel';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
 
-import Claude from '@/public/images/logos/claude.svg';
-import Gemini from '@/public/images/logos/gemini.svg';
-import Neon from '@/public/images/logos/neon.svg';
-import OpenAI from '@/public/images/logos/openai.svg';
-import Vercel from '@/public/images/logos/vercel.svg';
+import VercelLight from '@/public/images/logos/light/vercel.svg';
+import OpenAILight from '@/public/images/logos/light/openai.svg';
+import ClaudeLight from '@/public/images/logos/light/claude.svg';
+import GeminiLight from '@/public/images/logos/light/gemini.svg';
+import NeonLight from '@/public/images/logos/light/neon.svg';
+
+import VercelDark from '@/public/images/logos/dark/vercel.svg';
+import OpenAIDark from '@/public/images/logos/dark/openai.svg';
+import ClaudeDark from '@/public/images/logos/dark/claude.svg';
+import GeminiDark from '@/public/images/logos/dark/gemini.svg';
+import NeonDark from '@/public/images/logos/dark/neon.svg';
 
 import { Section } from '@/components/section';
 import Autoplay from "embla-carousel-auto-scroll";
 
 const logos = [
-  { src: Vercel, name: 'Vercel' },
-  { src: OpenAI, name: 'OpenAI' },
-  { src: Claude, name: 'Claude' },
-  { src: Gemini, name: 'Gemini' },
-  { src: Neon, name: 'Neon' }
+  {
+    name: 'Vercel',
+    light: VercelLight,
+    dark: VercelDark
+  },
+  {
+    name: 'OpenAI',
+    light: OpenAILight,
+    dark: OpenAIDark
+  },
+  {
+    name: 'Claude',
+    light: ClaudeLight,
+    dark: ClaudeDark
+  },
+  {
+    name: 'Gemini',
+    light: GeminiLight,
+    dark: GeminiDark
+  },
+  {
+    name: 'Neon',
+    light: NeonLight,
+    dark: NeonDark
+  }
 ];
 
 export const Customers = ({
@@ -36,7 +63,7 @@ export const Customers = ({
   return (
     <Section className='relative flex flex-col items-center justify-between gap-8 p-6 sm:flex-row sm:gap-16'>
       <p className='text-muted-foreground sm:max-w-xs'>
-        Powered by {closest}+ technologies, including:
+        {closest}+ companies already use AI Tutor to automate their workflows.
       </p>
       <div className='md:w-[50%]'>
         <Carousel plugins={[
@@ -52,19 +79,27 @@ export const Customers = ({
           loop: true,
         }}>
           <CarouselContent>
-            {logos.map(({ src, name }, index) => (
-              <CarouselItem className='basis-1/4 md:basis-1/5' key={name}>
+            {logos.map((logo, index) => (
+              <CarouselItem className='basis-1/4 md:basis-1/5' key={logo.name}>
                 <div className='flex items-center justify-center rounded-md'>
                   <Image
-                    src={src}
-                    alt={name}
+                    src={logo.light}
+                    alt={logo.name}
                     width={96}
                     height={24}
-                    className='h-6 w-24 select-none object-contain dark:invert'
+                    className='h-6 w-24 select-none object-contain dark:hidden'
+                  />
+                  <Image
+                    src={logo.dark}
+                    alt={logo.name}
+                    width={96}
+                    height={24}
+                    className='h-6 w-24 select-none object-contain hidden dark:block'
                   />
                 </div>
               </CarouselItem>
-            ))}
+            )
+            )}
           </CarouselContent>
         </Carousel>
       </div>
