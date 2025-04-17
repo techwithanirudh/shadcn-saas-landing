@@ -1,9 +1,9 @@
 'use server';
 
-import { Resend } from 'resend';
+import { env } from '@/env';
 import { ActionError, actionClient } from '@/lib/safe-action';
 import { ContactSchema } from '@/lib/validators/contact';
-import { env } from '@/env';
+import { Resend } from 'resend';
 
 const resend = new Resend(env.RESEND_API_KEY as string);
 
@@ -26,11 +26,13 @@ export const contact = actionClient
 
       return {
         success: true,
-        message: 'Your message has been sent! We\'ll get back to you soon.',
+        message: "Your message has been sent! We'll get back to you soon.",
       };
     } catch (error) {
       console.error('Contact form error:', error);
       if (error instanceof ActionError) throw error;
-      throw new ActionError('Failed to send your message. Please try again later.');
+      throw new ActionError(
+        'Failed to send your message. Please try again later.',
+      );
     }
   });

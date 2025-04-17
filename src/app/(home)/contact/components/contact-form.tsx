@@ -21,9 +21,9 @@ import { useForm } from 'react-hook-form';
 import { Alert, AlertTitle } from '@/components/ui/alert';
 
 import { Icons } from '@/components/icons/icons';
-import { contact } from '../actions/contact';
 import { Textarea } from '@/components/ui/textarea';
 import { Suspense } from 'react';
+import { contact } from '../actions/contact';
 
 const ContactFormInner = () => {
   const form = useForm({
@@ -43,17 +43,17 @@ const ContactFormInner = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex-1">
+      <form onSubmit={form.handleSubmit(onSubmit)} className='flex-1 space-y-8'>
         <FormField
           control={form.control}
-          name="name"
+          name='name'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input
-                  className="bg-background"
-                  placeholder="Jane Smith"
+                  className='bg-background'
+                  placeholder='Jane Smith'
                   {...field}
                   disabled={status === 'executing'}
                 />
@@ -67,14 +67,14 @@ const ContactFormInner = () => {
         />
         <FormField
           control={form.control}
-          name="email"
+          name='email'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email address</FormLabel>
               <FormControl>
                 <Input
-                  className="bg-background"
-                  placeholder="jane@acme.com"
+                  className='bg-background'
+                  placeholder='jane@acme.com'
                   {...field}
                   disabled={status === 'executing'}
                 />
@@ -88,14 +88,14 @@ const ContactFormInner = () => {
         />
         <FormField
           control={form.control}
-          name="message"
+          name='message'
           render={({ field }) => (
             <FormItem>
               <FormLabel>Message</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="Hi there, I'm interested in..."
-                  className="max-h-[20rem] min-h-[10rem] resize-y bg-background"
+                  className='max-h-[20rem] min-h-[10rem] resize-y bg-background'
                   {...field}
                   disabled={status === 'executing'}
                 />
@@ -105,12 +105,12 @@ const ContactFormInner = () => {
           )}
         />
         <Button
-          type="submit"
+          type='submit'
           className='w-full'
           disabled={!form.formState.isValid || status === 'executing'}
         >
           {status === 'executing' ? (
-            <Icons.spinner className='size-4 animate-spin mr-2' />
+            <Icons.spinner className='mr-2 size-4 animate-spin' />
           ) : null}
           Send Message
         </Button>
@@ -118,7 +118,9 @@ const ContactFormInner = () => {
           <Alert className='border-emerald-500/15 bg-emerald-500/15 p-3 px-3 py-2 text-emerald-500 has-[>svg]:gap-x-1.5'>
             <Icons.success size={16} />
             <AlertTitle className='mb-0 leading-normal'>
-              {result.data?.success && result.data?.message ? result.data.message : "Your message has been sent! We'll get back to you soon."}
+              {result.data?.success && result.data?.message
+                ? result.data.message
+                : "Your message has been sent! We'll get back to you soon."}
             </AlertTitle>
           </Alert>
         )}
@@ -126,7 +128,9 @@ const ContactFormInner = () => {
           <Alert className='border-destructive/15 bg-destructive/15 p-3 px-3 py-2 text-destructive has-[>svg]:gap-x-1.5 dark:border-destructive dark:bg-destructive dark:text-destructive-foreground'>
             <Icons.warning className='size-4' />
             <AlertTitle className='mb-0 leading-normal'>
-              {typeof result.serverError === 'string' ? result.serverError : 'An error occurred while sending your message.'}
+              {typeof result.serverError === 'string'
+                ? result.serverError
+                : 'An error occurred while sending your message.'}
             </AlertTitle>
           </Alert>
         )}

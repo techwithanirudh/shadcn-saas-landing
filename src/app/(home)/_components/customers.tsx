@@ -2,55 +2,52 @@
 
 import {
   Carousel,
-  type CarouselApi,
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
 
-import VercelLight from '@/public/images/logos/light/vercel.svg';
-import OpenAILight from '@/public/images/logos/light/openai.svg';
 import ClaudeLight from '@/public/images/logos/light/claude.svg';
 import GeminiLight from '@/public/images/logos/light/gemini.svg';
 import NeonLight from '@/public/images/logos/light/neon.svg';
+import OpenAILight from '@/public/images/logos/light/openai.svg';
+import VercelLight from '@/public/images/logos/light/vercel.svg';
 
-import VercelDark from '@/public/images/logos/dark/vercel.svg';
-import OpenAIDark from '@/public/images/logos/dark/openai.svg';
 import ClaudeDark from '@/public/images/logos/dark/claude.svg';
 import GeminiDark from '@/public/images/logos/dark/gemini.svg';
 import NeonDark from '@/public/images/logos/dark/neon.svg';
+import OpenAIDark from '@/public/images/logos/dark/openai.svg';
+import VercelDark from '@/public/images/logos/dark/vercel.svg';
 
 import { Section } from '@/components/section';
-import Autoplay from "embla-carousel-auto-scroll";
+import Autoplay from 'embla-carousel-auto-scroll';
 
 const logos = [
   {
     name: 'Vercel',
     light: VercelLight,
-    dark: VercelDark
+    dark: VercelDark,
   },
   {
     name: 'OpenAI',
     light: OpenAILight,
-    dark: OpenAIDark
+    dark: OpenAIDark,
   },
   {
     name: 'Claude',
     light: ClaudeLight,
-    dark: ClaudeDark
+    dark: ClaudeDark,
   },
   {
     name: 'Gemini',
     light: GeminiLight,
-    dark: GeminiDark
+    dark: GeminiDark,
   },
   {
     name: 'Neon',
     light: NeonLight,
-    dark: NeonDark
-  }
+    dark: NeonDark,
+  },
 ];
 
 export const Customers = ({
@@ -66,18 +63,21 @@ export const Customers = ({
         {closest}+ companies already use AI Tutor to automate their workflows.
       </p>
       <div className='md:w-[50%]'>
-        <Carousel plugins={[
-          Autoplay({
-            speed: 600 / 1000,
-            startDelay: 100,
-            stopOnInteraction: false,
-            stopOnMouseEnter: true,
-          }),
-        ]} opts={{
-          align: "start",
-          dragFree: true,
-          loop: true,
-        }}>
+        <Carousel
+          plugins={[
+            Autoplay({
+              speed: 600 / 1000,
+              startDelay: 100,
+              stopOnInteraction: false,
+              stopOnMouseEnter: true,
+            }),
+          ]}
+          opts={{
+            align: 'start',
+            dragFree: true,
+            loop: true,
+          }}
+        >
           <CarouselContent>
             {logos.map((logo, index) => (
               <CarouselItem className='basis-1/4 md:basis-1/5' key={logo.name}>
@@ -94,12 +94,11 @@ export const Customers = ({
                     alt={logo.name}
                     width={96}
                     height={24}
-                    className='h-6 w-24 select-none object-contain hidden dark:block'
+                    className='hidden h-6 w-24 select-none object-contain dark:block'
                   />
                 </div>
               </CarouselItem>
-            )
-            )}
+            ))}
           </CarouselContent>
         </Carousel>
       </div>

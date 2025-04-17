@@ -28,8 +28,8 @@ export function Provider({
         }}
       >
         <ProgressProvider
-          height="2px"
-          color="var(--color-primary)"
+          height='2px'
+          color='var(--color-primary)'
           options={{
             showSpinner: false,
           }}

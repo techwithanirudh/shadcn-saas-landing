@@ -4,21 +4,24 @@ export const ContactSchema = z.object({
   name: z
     .string()
     .min(2, {
-      message: "Name must be at least 2 characters.",
+      message: 'Name must be at least 2 characters.',
     })
     .max(30, {
-      message: "Name must not be longer than 30 characters.",
+      message: 'Name must not be longer than 30 characters.',
     }),
   email: z
     .string({
-      required_error: "Please enter a valid email.",
+      required_error: 'Please enter a valid email.',
     })
     .email(),
-  message: z.string().max(380, {
-    message: "Message must not be longer than 380 characters.",
-  }).min(10, {
-    message: "Message must be at least 10 characters.",
-  }),
+  message: z
+    .string()
+    .max(380, {
+      message: 'Message must not be longer than 380 characters.',
+    })
+    .min(10, {
+      message: 'Message must be at least 10 characters.',
+    }),
 });
 
 export type Contact = z.infer<typeof ContactSchema>;

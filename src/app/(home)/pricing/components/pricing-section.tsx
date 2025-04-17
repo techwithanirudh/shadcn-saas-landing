@@ -1,8 +1,8 @@
-"use client"
+'use client';
 
-import { useState } from 'react';
 import { Section } from '@/components/section';
-import { plans, frequencies } from '../data';
+import { useState } from 'react';
+import { frequencies, plans } from '../data';
 import { PricingCard } from './pricing-card';
 import { Tab } from './pricing-tab';
 
@@ -16,13 +16,13 @@ export function PricingSection({ title, description }: PricingSectionProps) {
 
   return (
     <>
-      <Section className='p-6 lg:p-12 flex flex-col items-center text-center'>
-        <h1 className='mb-2 font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
+      <Section className='flex flex-col items-center p-6 text-center lg:p-12'>
+        <h1 className='mb-2 font-normal text-3xl leading-tight tracking-tighter md:text-5xl'>
           {title}
         </h1>
         <p className='text-muted-foreground text-sm'>{description}</p>
 
-        <div className='mt-8 flex items-center justify-center rounded-full bg-card p-1 w-fit'>
+        <div className='mt-8 flex w-fit items-center justify-center rounded-full bg-card p-1'>
           {frequencies.map((frequency) => (
             <Tab
               key={frequency}
