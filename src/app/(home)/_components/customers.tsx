@@ -16,13 +16,14 @@ import OpenAI from '@/public/images/logos/openai.svg';
 import Vercel from '@/public/images/logos/vercel.svg';
 
 import { Section } from '@/components/section';
+import Autoplay from "embla-carousel-auto-scroll";
 
 const logos = [
   { src: Vercel, name: 'Vercel' },
   { src: OpenAI, name: 'OpenAI' },
   { src: Claude, name: 'Claude' },
   { src: Gemini, name: 'Gemini' },
-  { src: Neon, name: 'Neon' },
+  { src: Neon, name: 'Neon' }
 ];
 
 export const Customers = ({
@@ -30,26 +31,7 @@ export const Customers = ({
 }: {
   count: number;
 }) => {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-
   const closest = Math.floor(count / 50) * 50;
-
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-
-    setTimeout(() => {
-      if (api.selectedScrollSnap() + 1 === api.scrollSnapList().length) {
-        setCurrent(0);
-        api.scrollTo(0);
-      } else {
-        api.scrollNext();
-        setCurrent(current + 1);
-      }
-    }, 1000);
-  }, [api, current]);
 
   return (
     <Section className='relative flex flex-col items-center justify-between gap-8 p-6 sm:flex-row sm:gap-16'>
@@ -57,7 +39,18 @@ export const Customers = ({
         Powered by {closest}+ technologies, including:
       </p>
       <div className='md:w-[50%]'>
-        <Carousel setApi={setApi}>
+        <Carousel plugins={[
+          Autoplay({
+            speed: 600 / 1000,
+            startDelay: 100,
+            stopOnInteraction: false,
+            stopOnMouseEnter: true,
+          }),
+        ]} opts={{
+          align: "start",
+          dragFree: true,
+          loop: true,
+        }}>
           <CarouselContent>
             {logos.map(({ src, name }, index) => (
               <CarouselItem className='basis-1/4 md:basis-1/5' key={name}>

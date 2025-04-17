@@ -40,7 +40,7 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
     >
       <div
         className={cn(
-          'flex flex-col gap-4 border-border border-b border-dashed px-6 pb-4',
+          'flex flex-col gap-4 border-border border-b border-dashed px-6 pb-6',
         )}
       >
         <h2 className='flex items-center gap-3 font-medium text-xl capitalize'>
