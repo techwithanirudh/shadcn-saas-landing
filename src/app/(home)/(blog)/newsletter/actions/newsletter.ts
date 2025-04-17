@@ -18,7 +18,7 @@ const splitName = (name = '') => {
   };
 };
 
-export const subscribeUser = actionClient
+export const subscribe = actionClient
   .schema(NewsletterSchema)
   .action(async ({ parsedInput: { email } }) => {
     const session = await getSession();

@@ -18,7 +18,7 @@ import { useForm } from 'react-hook-form';
 
 import { Alert, AlertTitle } from '@/components/ui/alert';
 
-import { subscribeUser } from '@/app/(home)/(blog)/newsletter/actions/newsletter';
+import { subscribe } from '@/app/(home)/(blog)/newsletter/actions/newsletter';
 import { Icons } from '@/components/icons/icons';
 
 export const NewsletterForm = () => {
@@ -29,7 +29,7 @@ export const NewsletterForm = () => {
     },
   });
 
-  const { execute, result, status } = useAction(subscribeUser);
+  const { execute, result, status } = useAction(subscribe);
 
   const onSubmit = (values: Newsletter) => {
     execute(values);

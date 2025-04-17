@@ -39,7 +39,7 @@
   --color-destructive-foreground: hsl(0 0% 98%);
 
   --color-border: var(--color-fd-border);
-  --color-input: var(--color-fd-input);
+  --color-input: var(--color-fd-border);
   --color-ring: var(--color-fd-ring);
 
   --radius-lg: var(--radius);
