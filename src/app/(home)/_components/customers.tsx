@@ -5,7 +5,6 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
-import Image from 'next/image';
 
 import ClaudeLight from '@/public/images/logos/light/claude.svg';
 import GeminiLight from '@/public/images/logos/light/gemini.svg';
@@ -21,6 +20,7 @@ import VercelDark from '@/public/images/logos/dark/vercel.svg';
 
 import { Section } from '@/components/section';
 import Autoplay from 'embla-carousel-auto-scroll';
+import { BlurImage } from '@/components/blur-image';
 
 const logos = [
   {
@@ -81,20 +81,22 @@ export const Customers = ({
           <CarouselContent>
             {logos.map((logo, index) => (
               <CarouselItem className='basis-1/4 md:basis-1/5' key={logo.name}>
-                <div className='flex items-center justify-center rounded-md'>
-                  <Image
+                <div className='flex items-center justify-center'>
+                  <BlurImage
                     src={logo.light}
                     alt={logo.name}
                     width={96}
                     height={24}
-                    className='h-6 w-24 select-none object-contain dark:hidden'
+                    imageClassName='h-6 w-24 select-none object-contain'
+                    className='dark:hidden rounded-md p-1'
                   />
-                  <Image
+                  <BlurImage
                     src={logo.dark}
                     alt={logo.name}
                     width={96}
                     height={24}
-                    className='hidden h-6 w-24 select-none object-contain dark:block'
+                    imageClassName='h-6 w-24 select-none object-contain'
+                    className='hidden dark:block rounded-md p-1'
                   />
                 </div>
               </CarouselItem>
