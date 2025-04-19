@@ -6,10 +6,10 @@ const description =
   'No hidden fees. No surprises. 15-day trial. Cancel anytime.';
 
 export const metadata: Metadata = {
-  title,
+  title: "Pricing",
   description,
 };
 
 export default function PricingPage() {
-  return <PricingSection title={title} description={description} />;
+  return <PricingSection title={"title"} description={description} />;
 }
