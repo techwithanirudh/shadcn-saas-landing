@@ -19,21 +19,21 @@ export default function CTA(): React.ReactElement {
             world of knowledge at your fingertips.
           </p>
           <div className='flex flex-row gap-3'>
+            <Button size='lg' className='group gap-4' asChild>
+              <Link href={env.NEXT_PUBLIC_APP_URL}>
+                Get started for free{' '}
+                <Icons.arrowUpRight className='group-hover:-rotate-12 size-4 transition-transform' />
+              </Link>
+            </Button>
             <Button
               size='lg'
               className='group gap-4 bg-transparent shadow-none'
               variant='outline'
               asChild
             >
-              <Link href='/contact'>
-                Get in touch{' '}
-                <Icons.phone className='group-hover:-rotate-12 size-4 transition-transform' />
-              </Link>
-            </Button>
-            <Button size='lg' className='group gap-4' asChild>
-              <Link href={env.NEXT_PUBLIC_APP_URL}>
-                Sign up{' '}
-                <Icons.arrowUpRight className='group-hover:-rotate-12 size-4 transition-transform' />
+              <Link href='/pricing'>
+                <Icons.pricing className='group-hover:-rotate-12 size-4 transition-transform' />
+                See pricing{' '}
               </Link>
             </Button>
           </div>
