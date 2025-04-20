@@ -60,7 +60,7 @@ export const Customers = ({
   return (
     <Section className='relative flex flex-col items-center justify-between gap-8 p-6 sm:flex-row sm:gap-16'>
       <p className='text-muted-foreground sm:max-w-xs'>
-        {closest}+ companies already use AI Tutor to automate their workflows.
+        {closest}+ companies already use SaasCN to automate their workflows.
       </p>
       <div className='md:w-[50%]'>
         <Carousel

@@ -1,8 +1,21 @@
 import { env } from '@/env';
 
-export const frequencies = ['monthly', 'yearly'];
+export interface PricingTier {
+  id: string;
+  name: string;
+  price: Record<string, number | string>;
+  description: string;
+  features: string[];
+  cta: {
+    href: string;
+    label: string;
+  };
+  highlighted?: boolean;
+  popular?: boolean;
+}
 
-export const plans = [
+export const frequencies = ['monthly', 'yearly'];
+export const plans: PricingTier[] = [
   {
     id: 'individuals',
     name: 'Individuals',
@@ -84,5 +97,33 @@ export const plans = [
       label: 'Contact us',
     },
     highlighted: true,
+  },
+];
+
+export const groups = [
+  {
+    name: 'Workspace',
+    features: [
+      {
+        label: 'Users',
+        description: 'Invite your team to your workspace.',
+        plans: [false, 'Unlimited', 'Unlimited', 'Unlimited'],
+      },
+      {
+        label: 'AI Digest',
+        description: 'Get a daily digest of your workspace activity.',
+        plans: [false, true, true, true],
+      },
+      {
+        label: 'Multifactor authentication',
+        description: 'Add an extra layer of security.',
+        plans: [false, false, true, true],
+      },
+      {
+        label: 'Advanced SSO',
+        description: 'Sign up with custom SAML SSO.',
+        plans: [false, false, true, true],
+      },
+    ],
   },
 ];

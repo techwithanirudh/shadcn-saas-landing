@@ -7,19 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import type { PricingTier } from '../data';
 
-export interface PricingTier {
-  name: string;
-  price: Record<string, number | string>;
-  description: string;
-  features: string[];
-  cta: {
-    href: string;
-    label: string;
-  };
-  highlighted?: boolean;
-  popular?: boolean;
-}
 
 interface PricingCardProps {
   tier: PricingTier;

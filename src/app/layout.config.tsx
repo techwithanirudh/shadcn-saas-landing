@@ -2,10 +2,10 @@ import { Icons } from '@/components/icons/icons';
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
-export const title = 'AI Tutor';
+export const title = 'SaasCN';
 export const description =
   'A smarter way to learn — with your personal AI tutor.';
-export const owner = 'AI Tutor';
+export const owner = 'SaasCN';
 
 export const baseOptions: BaseLayoutProps = {
   nav: {

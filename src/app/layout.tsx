@@ -21,8 +21,8 @@ const geistMono = Geist_Mono({
 
 export const metadata = createMetadata({
   title: {
-    template: '%s | AI Tutor',
-    default: 'AI Tutor',
+    template: '%s | SaasCN',
+    default: 'SaasCN',
   },
   description: homeDescription,
   metadataBase: baseUrl,

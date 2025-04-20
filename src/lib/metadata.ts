@@ -8,7 +8,7 @@ export function createMetadata(override: Metadata): Metadata {
       description: override.description ?? undefined,
       url: 'https://tutor.techwithanirudh.com',
       images: '/banner.png',
-      siteName: 'AI Tutor',
+      siteName: 'SaasCN',
       ...override.openGraph,
     },
     twitter: {

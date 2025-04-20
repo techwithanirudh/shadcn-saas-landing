@@ -78,7 +78,7 @@ const Testimonials = () => {
             Loved by the community
           </h2>
           <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
-            See what others are saying about AI Tutor.
+            See what others are saying about SaasCN.
           </p>
         </div>
 

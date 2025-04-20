@@ -31,7 +31,7 @@ const features = [
     Icon: HandCoinsIcon,
     title: 'Affordable Learning',
     description:
-      'Say goodbye to overpriced tutors. AI Tutor offers quality education without breaking the bank.',
+      'Say goodbye to overpriced tutors. SaasCN offers quality education without breaking the bank.',
     size: 'lg',
   },
   {
@@ -39,7 +39,7 @@ const features = [
     Icon: AudioLinesIcon,
     title: 'Natural Voice Interaction',
     description:
-      'Speak to it like a real tutor. AI Tutor understands voice commands and responds just like a human would.',
+      'Speak to it like a real tutor. SaasCN understands voice commands and responds just like a human would.',
     size: 'sm',
   },
   {
@@ -55,7 +55,7 @@ const features = [
     Icon: HandshakeIcon,
     title: 'Guided Thinking, Not Just Answers',
     description:
-      'AI Tutor doesn’t just hand out answers — it encourages critical thinking and problem-solving before offering help.',
+      'SaasCN doesn’t just hand out answers — it encourages critical thinking and problem-solving before offering help.',
     size: 'lg',
   },
 ];
@@ -65,10 +65,10 @@ const Features = () => (
     <div className='flex flex-col gap-10'>
       <div className='flex flex-col gap-2 px-6'>
         <h2 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
-          Why AI Tutor?
+          Why SaasCN?
         </h2>
         <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
-          Teaching a child today isn’t easy — but with AI Tutor, it doesn’t have
+          Teaching a child today isn’t easy — but with SaasCN, it doesn’t have
           to be hard either.
         </p>
       </div>

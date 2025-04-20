@@ -9,13 +9,13 @@ export default function CTA(): React.ReactElement {
   return (
     <Section className='relative grid gap-8 px-4 py-10 sm:grid-cols-2 md:py-14 lg:px-6 lg:py-16'>
       <h2 className='max-w-xl font-regular text-3xl md:text-5xl'>
-        Learn at lightspeed with AI Tutor
+        Learn at lightspeed with SaasCN
       </h2>
 
       <div className='flex w-full items-center'>
         <div className='max-w-xl space-y-4'>
           <p className='text-muted-foreground text-sm md:text-base'>
-            Learn, explore, and grow with AI Tutor. Sign up today and unlock a
+            Learn, explore, and grow with SaasCN. Sign up today and unlock a
             world of knowledge at your fingertips.
           </p>
           <div className='flex flex-row gap-3'>
