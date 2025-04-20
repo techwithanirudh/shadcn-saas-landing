@@ -15,8 +15,8 @@ export default function NewsletterPage(): React.ReactElement {
             Subscribe to the Newsletter
           </h4>
           <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
-            Get the latest articles and updates delivered straight to your inbox.
-            No spam, unsubscribe anytime.
+            Get the latest articles and updates delivered straight to your
+            inbox. No spam, unsubscribe anytime.
           </p>
         </div>
 

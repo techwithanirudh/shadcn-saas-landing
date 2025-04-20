@@ -9,7 +9,6 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import type { PricingTier } from '../data';
 
-
 interface PricingCardProps {
   tier: PricingTier;
   paymentFrequency: string;
@@ -25,6 +24,7 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
       className={cn(
         'relative flex flex-col gap-8 overflow-hidden py-6',
         'bg-card text-foreground',
+        'min-h-[600px]'
       )}
     >
       <div

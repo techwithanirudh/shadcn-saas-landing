@@ -42,7 +42,10 @@ export const FAQ = () => (
         Frequently Asked Questions
       </h4>
       <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
-        Still have questions? <InlineLink href="/contact" className='no-underline'>Contact Us</InlineLink>
+        Still have questions?{' '}
+        <InlineLink href='/contact' className='no-underline'>
+          Contact Us
+        </InlineLink>
       </p>
     </div>
 

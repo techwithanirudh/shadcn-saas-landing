@@ -30,7 +30,7 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
         )}
       >
         <div className='flex flex-col gap-2 sm:text-center md:gap-4'>
-          <h1 className='max-w-4xl font-normal text-3xl leading-tight tracking-tight sm:text-4xl sm:leading-tight md:text-5xl lg:text-6xl md:leading-tight'>
+          <h1 className='max-w-4xl font-normal text-3xl leading-tight tracking-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight lg:text-6xl'>
             <Balancer>{page.data.title}</Balancer>
           </h1>
           <p className='mx-auto max-w-4xl'>

@@ -18,9 +18,9 @@ import NeonDark from '@/public/images/logos/dark/neon.svg';
 import OpenAIDark from '@/public/images/logos/dark/openai.svg';
 import VercelDark from '@/public/images/logos/dark/vercel.svg';
 
+import { BlurImage } from '@/components/blur-image';
 import { Section } from '@/components/section';
 import Autoplay from 'embla-carousel-auto-scroll';
-import { BlurImage } from '@/components/blur-image';
 
 const logos = [
   {
@@ -88,7 +88,7 @@ export const Customers = ({
                     width={96}
                     height={24}
                     imageClassName='h-6 w-24 select-none object-contain'
-                    className='dark:hidden rounded-md p-1'
+                    className='rounded-md p-1 dark:hidden'
                   />
                   <BlurImage
                     src={logo.dark}
@@ -96,7 +96,7 @@ export const Customers = ({
                     width={96}
                     height={24}
                     imageClassName='h-6 w-24 select-none object-contain'
-                    className='hidden dark:block rounded-md p-1'
+                    className='hidden rounded-md p-1 dark:block'
                   />
                 </div>
               </CarouselItem>

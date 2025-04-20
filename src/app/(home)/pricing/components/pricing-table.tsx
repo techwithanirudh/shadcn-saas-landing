@@ -1,13 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { ArrowRight, CheckIcon, HelpCircleIcon, MinusIcon } from 'lucide-react';
-import { Fragment, useState } from 'react';
-import { groups, plans } from '../data';
 import { Section } from '@/components/section';
-import NumberFlow from '@number-flow/react';
 import { buttonVariants } from '@/components/ui/button';
 import {
   Table,
@@ -16,21 +9,29 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from '@/components/ui/tooltip';
+import { cn } from '@/lib/utils';
+import NumberFlow from '@number-flow/react';
+import { ArrowRight, CheckIcon, HelpCircleIcon, MinusIcon } from 'lucide-react';
+import Link from 'next/link';
+import { Fragment } from 'react';
+import { groups, plans } from '../data';
 
-export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string }) => {
+export const PricingTable = ({
+  paymentFrequency,
+}: { paymentFrequency: string }) => {
   return (
-    <Section className="flex flex-col gap-8 hidden lg:block">
-      <Table className="border-collapse">
+    <Section className='flex hidden flex-col gap-8 lg:block'>
+      <Table className='border-collapse'>
         <TableHeader>
-          <TableRow className="bg-background hover:bg-background">
-            <TableHead className="bg-card"></TableHead>
+          <TableRow className='bg-background hover:bg-background'>
+            <TableHead className='bg-card' />
             {plans.map((plan, index) => {
               const price = plan.price[paymentFrequency];
 
@@ -38,18 +39,21 @@ export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string })
                 <TableHead
                   key={plan.name}
                   className={cn(
-                    "text-center p-6 min-w-[200px]",
-                    index % 2 === 1 && "bg-card border-border border-x border-b border-dashed", 
+                    'min-w-[200px] p-6 text-center',
+                    index % 2 === 1 &&
+                      'border-border border-x border-b border-dashed bg-card',
                   )}
                 >
-                  <div className="flex flex-col items-center gap-2 p-4">
-                    <h3 className="font-semibold text-lg">{plan.name}</h3>
-                    <p className="text-sm text-muted-foreground">{plan.description}</p>
+                  <div className='flex flex-col items-center gap-2 p-2'>
+                    <h3 className='font-semibold text-lg'>{plan.name}</h3>
+                    <p className='text-muted-foreground text-sm'>
+                      {plan.description}
+                    </p>
 
-                    <div className="my-4">
+                    <div className='my-2'>
                       {typeof price === 'number' ? (
-                        <div className="flex flex-col items-center">
-                          <div className="flex items-baseline">
+                        <div className='flex flex-col items-center'>
+                          <div className='flex items-baseline'>
                             <NumberFlow
                               format={{
                                 style: 'currency',
@@ -60,7 +64,7 @@ export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string })
                               className='font-bold text-2xl'
                             />
                           </div>
-                          <p className='text-muted-foreground text-xs mt-1'>
+                          <p className='mt-1 text-muted-foreground text-xs'>
                             Per month/user
                           </p>
                         </div>
@@ -73,7 +77,7 @@ export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string })
                       className={cn(
                         buttonVariants({
                           variant: plan?.highlighted ? 'secondary' : 'default',
-                          size: 'sm'
+                          size: 'sm',
                         }),
                         'group mt-2',
                       )}
@@ -92,10 +96,10 @@ export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string })
         <TableBody>
           {groups.map((group) => (
             <Fragment key={group.name}>
-              <TableRow className="bg-card">
+              <TableRow className='bg-card'>
                 <TableCell
                   colSpan={plans.length + 1}
-                  className="font-medium p-4"
+                  className='p-4 font-medium'
                 >
                   {group.name}
                 </TableCell>
@@ -103,15 +107,15 @@ export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string })
 
               {group.features.map((feature) => (
                 <TableRow key={feature.label}>
-                  <TableCell className="font-medium flex items-center gap-2 p-4 bg-card">
+                  <TableCell className='flex items-center gap-2 bg-card p-4 font-medium'>
                     {feature.label}
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <HelpCircleIcon className="h-4 w-4 text-muted-foreground" />
+                          <HelpCircleIcon className='h-4 w-4 text-muted-foreground' />
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p className="text-sm max-w-[200px]">
+                          <p className='max-w-[200px] text-sm'>
                             {feature.description}
                           </p>
                         </TooltipContent>
@@ -123,15 +127,16 @@ export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string })
                     <TableCell
                       key={index}
                       className={cn(
-                        "text-center",
-                        index % 2 === 1 && "bg-card border-border border-dashed border-x border-t"
+                        'text-center',
+                        index % 2 === 1 &&
+                          'border-border border-x border-t border-dashed bg-card',
                       )}
                     >
                       {typeof value === 'boolean' ? (
                         value ? (
-                          <CheckIcon className="h-5 w-5 text-success mx-auto" />
+                          <CheckIcon className='mx-auto h-5 w-5 text-success' />
                         ) : (
-                          <MinusIcon className="h-5 w-5 text-muted-foreground mx-auto" />
+                          <MinusIcon className='mx-auto h-5 w-5 text-muted-foreground' />
                         )
                       ) : (
                         <span>{value}</span>
