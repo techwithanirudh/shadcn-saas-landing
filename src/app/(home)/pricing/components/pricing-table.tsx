@@ -39,9 +39,7 @@ export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string })
                   key={plan.name}
                   className={cn(
                     "text-center p-6 min-w-[200px]",
-                    index % 2 === 1
-                      && "bg-card",
-                    plan?.popular && "border-border border-x border-b border-dashed", 
+                    index % 2 === 1 && "bg-card border-border border-x border-b border-dashed", 
                   )}
                 >
                   <div className="flex flex-col items-center gap-2 p-4">
@@ -94,7 +92,7 @@ export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string })
         <TableBody>
           {groups.map((group) => (
             <Fragment key={group.name}>
-              <TableRow className="bg-muted/50">
+              <TableRow className="bg-card">
                 <TableCell
                   colSpan={plans.length + 1}
                   className="font-medium p-4"
@@ -105,7 +103,7 @@ export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string })
 
               {group.features.map((feature) => (
                 <TableRow key={feature.label}>
-                  <TableCell className="font-medium flex items-center gap-2 p-4">
+                  <TableCell className="font-medium flex items-center gap-2 p-4 bg-card">
                     {feature.label}
                     <TooltipProvider>
                       <Tooltip>
@@ -126,7 +124,7 @@ export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string })
                       key={index}
                       className={cn(
                         "text-center",
-                        plans[index]?.popular && "bg-card border-border border-dashed border-x border-t"
+                        index % 2 === 1 && "bg-card border-border border-dashed border-x border-t"
                       )}
                     >
                       {typeof value === 'boolean' ? (

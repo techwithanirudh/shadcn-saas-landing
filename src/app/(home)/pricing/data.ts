@@ -15,6 +15,7 @@ export interface PricingTier {
 }
 
 export const frequencies = ['monthly', 'yearly'];
+
 export const plans: PricingTier[] = [
   {
     id: 'individuals',
@@ -122,6 +123,56 @@ export const groups = [
       {
         label: 'Advanced SSO',
         description: 'Sign up with custom SAML SSO.',
+        plans: [false, false, true, true],
+      },
+    ],
+  },
+  {
+    name: 'Monitoring & Automation',
+    features: [
+      {
+        label: 'Auto incident tagging',
+        description: 'Automatically tag issues with relevant context.',
+        plans: [false, true, true, true],
+      },
+      {
+        label: 'Smart thresholds',
+        description: 'Adaptive alerting thresholds based on past activity.',
+        plans: [false, true, true, true],
+      },
+      {
+        label: 'Uptime History',
+        description: 'See 30/90/365-day uptime logs for your monitors.',
+        plans: ['30 days', '90 days', '365 days', '365 days'],
+      },
+      {
+        label: 'Custom Webhooks',
+        description: 'Trigger actions via your own API endpoints.',
+        plans: [false, false, true, true],
+      },
+    ],
+  },
+  {
+    name: 'Integrations & Customization',
+    features: [
+      {
+        label: 'Slack & Discord alerts',
+        description: 'Send alerts to your favorite team chats.',
+        plans: [false, true, true, true],
+      },
+      {
+        label: 'Custom status pages',
+        description: 'Share your system status with customers.',
+        plans: [false, false, true, true],
+      },
+      {
+        label: 'Theme customization',
+        description: 'Customize UI colors and branding.',
+        plans: [false, false, false, true],
+      },
+      {
+        label: 'API access',
+        description: 'Programmatic access to all your data and monitors.',
         plans: [false, false, true, true],
       },
     ],
