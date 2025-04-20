@@ -26,7 +26,7 @@ import {
 
 export const PricingTable = ({ paymentFrequency }: { paymentFrequency: string }) => {
   return (
-    <Section className="flex flex-col gap-8">
+    <Section className="flex flex-col gap-8 hidden lg:block">
       <Table className="border-collapse">
         <TableHeader>
           <TableRow className="bg-background hover:bg-background">

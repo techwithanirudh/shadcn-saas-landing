@@ -49,11 +49,11 @@ export default function PricingPage() {
         ))}
       </div>
     </Section>
-    <Section className='p-4 lg:p-6'>
-        <h1 className='text-center font-normal text-3xl leading-tight tracking-tighter md:text-5xl'>
-          Compare Plans
-        </h1>
-      </Section>
+    <Section className='p-4 lg:p-6 hidden lg:block'>
+      <h1 className='text-center font-normal text-3xl leading-tight tracking-tighter md:text-5xl'>
+        Compare Plans
+      </h1>
+    </Section>
     <PricingTable paymentFrequency={selectedFrequency} />
   </>;
 }
