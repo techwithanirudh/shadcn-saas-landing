@@ -51,7 +51,7 @@ export default function PricingPage() {
         </div>
       </Section>
       <Customers count={50} />
-      <Section className='hidden p-4 lg:block lg:p-6'>
+      <Section className='p-4 lg:p-6' sectionClassName='hidden lg:block'>
         <h1 className='text-center font-normal text-3xl leading-tight tracking-tighter md:text-5xl'>
           Compare Plans
         </h1>
