@@ -71,7 +71,7 @@ const Testimonials = () => {
   }, [api, current]);
 
   return (
-    <Section className='relative w-full pt-10 md:pt-14'>
+    <Section className='relative w-full pt-10'>
       <div className='flex flex-col gap-10'>
         <div className='flex flex-col gap-2 px-6'>
           <h2 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
