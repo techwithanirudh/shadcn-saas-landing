@@ -3,7 +3,7 @@ import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { env } from '@/env';
 import type { Page } from '@/lib/source';
-import { PhoneCall } from 'lucide-react';
+import { MailIcon } from 'lucide-react';
 import * as motion from 'motion/react-client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -64,7 +64,7 @@ const Hero = ({ posts }: { posts: Page[] }) => (
         >
           <Link href='/contact'>
             Get in touch{' '}
-            <PhoneCall className='group-hover:-rotate-12 size-4 transition-transform' />
+            <MailIcon className='group-hover:-rotate-12 size-4 transition-transform' />
           </Link>
         </Button>
         <Button size='lg' className='group gap-4' asChild>

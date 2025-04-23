@@ -48,7 +48,7 @@ const features = [
     title: 'Team Collaboration',
     description:
       'Work seamlessly with your team through integrated collaboration features and real-time updates.',
-    size: 'lg',
+    size: 'sm',
   },
   {
     id: 4,
@@ -56,7 +56,7 @@ const features = [
     title: 'Easy Integration',
     description:
       'Connect with your favorite tools and services through our extensive integration ecosystem.',
-    size: 'sm',
+    size: 'lg',
   },
 ];
 
