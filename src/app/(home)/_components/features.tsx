@@ -3,10 +3,10 @@
 import { Section } from '@/components/section';
 import { cva } from 'class-variance-authority';
 import {
-  BarChart3 as BarChartIcon, 
-  Users as UsersIcon,
+  BarChart3 as BarChartIcon,
+  HandCoins as HandCoinsIcon,
   Boxes as IntegrationsIcon,
-  HandCoins as HandCoinsIcon
+  Users as UsersIcon,
 } from 'lucide-react';
 
 // Create a variant for feature items
@@ -68,7 +68,8 @@ const Features = () => (
           Why SaasCN?
         </h2>
         <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
-          Powerful features to help your business succeed in today's competitive landscape.
+          Powerful features to help your business succeed in today's competitive
+          landscape.
         </p>
       </div>
 

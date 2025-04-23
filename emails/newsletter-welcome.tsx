@@ -92,7 +92,8 @@ export default function NewsletterWelcomeEmail({
         />
       </Head>
       <Preview>
-        Thanks for joining our newsletter! Get ready to transform your business operations.
+        Thanks for joining our newsletter! Get ready to transform your business
+        operations.
       </Preview>
       <Tailwind>
         <Body className='bg-white font-sans'>
@@ -106,9 +107,9 @@ export default function NewsletterWelcomeEmail({
               </Heading>
               <Text className='text-lg leading-8'>Hey {firstName},</Text>
               <Text className='text-lg leading-8'>
-                Thanks for subscribing to our newsletter! We're excited to share the latest
-                updates about our business automation platform, industry insights, and tips
-                for maximizing your productivity.
+                Thanks for subscribing to our newsletter! We're excited to share
+                the latest updates about our business automation platform,
+                industry insights, and tips for maximizing your productivity.
               </Text>
               <Text className='text-lg leading-8'>
                 Here are some popular articles you might find interesting:
@@ -131,8 +132,9 @@ export default function NewsletterWelcomeEmail({
 
             <Section>
               <Text className='text-lg text-zinc-900 leading-8'>
-                Thank you for being a part of our community! We look forward to helping
-                you streamline your business operations and achieve greater efficiency.
+                Thank you for being a part of our community! We look forward to
+                helping you streamline your business operations and achieve
+                greater efficiency.
               </Text>
               <Text
                 className='select-none text-4xl text-zinc-900 leading-8'

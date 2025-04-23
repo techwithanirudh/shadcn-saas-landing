@@ -125,7 +125,7 @@ export const PricingTable = ({
 
                   {feature.plans.map((value, index) => (
                     <TableCell
-                      key={index}
+                      key={`${String(value)}_${index}`}
                       className={cn(
                         'text-center',
                         index % 2 === 1 &&

@@ -1,12 +1,12 @@
 'use client';
 import { Section } from '@/components/section';
 import { useState } from 'react';
+import { Customers } from '../_components/customers';
+import { FAQ } from '../_components/faq';
 import { PricingCard } from './components/pricing-card';
 import { Tab } from './components/pricing-tab';
 import { PricingTable } from './components/pricing-table';
 import { frequencies, plans } from './data';
-import { Customers } from '../_components/customers';
-import { FAQ } from '../_components/faq';
 
 const title = 'Plans and Pricing';
 const description = 'Choose the plan that fits your needs.';

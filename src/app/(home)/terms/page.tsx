@@ -96,16 +96,10 @@ const sections = [
       <div className='mt-4 space-y-3 text-muted-foreground'>
         <p>By using our platform, you agree to:</p>
         <ul className='ml-4 list-disc space-y-2'>
-          <li>
-            Comply with all applicable laws and regulations.
-          </li>
+          <li>Comply with all applicable laws and regulations.</li>
           <li>Maintain the security of your account credentials.</li>
-          <li>
-            Use the platform for legitimate business purposes only.
-          </li>
-          <li>
-            Respect intellectual property rights and data privacy.
-          </li>
+          <li>Use the platform for legitimate business purposes only.</li>
+          <li>Respect intellectual property rights and data privacy.</li>
           <li>Report any security or technical issues promptly.</li>
         </ul>
       </div>
@@ -119,9 +113,7 @@ const sections = [
         <ul className='ml-4 list-disc space-y-2'>
           <li>Fair usage policies for all platform features.</li>
           <li>Standard service level agreements (SLAs).</li>
-          <li>
-            Regular maintenance and update schedules.
-          </li>
+          <li>Regular maintenance and update schedules.</li>
         </ul>
       </div>
     ),

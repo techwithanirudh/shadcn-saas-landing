@@ -15,8 +15,9 @@ export default function CTA(): React.ReactElement {
       <div className='flex w-full items-center'>
         <div className='max-w-xl space-y-4'>
           <p className='text-muted-foreground text-sm md:text-base'>
-            Join thousands of businesses that use SaasCN to streamline operations,
-            boost productivity, and drive growth. Start your journey today.
+            Join thousands of businesses that use SaasCN to streamline
+            operations, boost productivity, and drive growth. Start your journey
+            today.
           </p>
           <div className='flex flex-row gap-3'>
             <Button size='lg' className='group gap-4' asChild>

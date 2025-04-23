@@ -46,8 +46,8 @@ const sections = [
     title: 'Our Commitment to Privacy',
     content: (
       <p>
-        We take your privacy seriously. Our platform is designed to provide a secure
-        environment where your business data is protected at all times.
+        We take your privacy seriously. Our platform is designed to provide a
+        secure environment where your business data is protected at all times.
       </p>
     ),
   },
@@ -60,8 +60,8 @@ const sections = [
           including account details and usage patterns.
         </li>
         <li>
-          Business data is processed securely and never shared with third parties
-          without explicit consent.
+          Business data is processed securely and never shared with third
+          parties without explicit consent.
         </li>
         <li>
           Analytics data is used to improve platform performance and user
@@ -85,9 +85,7 @@ const sections = [
     content: (
       <ul className='ml-4 list-disc space-y-2'>
         <li>All data is encrypted in transit and at rest.</li>
-        <li>
-          We implement regular security audits and penetration testing.
-        </li>
+        <li>We implement regular security audits and penetration testing.</li>
         <li>
           Our infrastructure adheres to industry best practices for data
           protection.
@@ -100,9 +98,7 @@ const sections = [
     content: (
       <ul className='ml-4 list-disc space-y-2'>
         <li>Access and export your data at any time.</li>
-        <li>
-          Control your privacy settings and integration permissions.
-        </li>
+        <li>Control your privacy settings and integration permissions.</li>
         <li>Request data deletion upon account closure.</li>
       </ul>
     ),
