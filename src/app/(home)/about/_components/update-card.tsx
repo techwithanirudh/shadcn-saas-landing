@@ -63,7 +63,6 @@ export const PostCard: React.FC<PostCardProps> = ({
           </div>
         </div>
       </div>
-
     </Link>
   );
 };

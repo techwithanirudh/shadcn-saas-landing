@@ -1,30 +1,49 @@
+import { BlurImage } from '@/components/blur-image';
 import { Section } from '@/components/section';
+import { cn } from '@/lib/utils';
+import TeamImage from '@/public/images/about/team.png';
 
-export default function About(): React.ReactElement {
+const Team = () => {
   return (
-    <Section className='grid divide-y divide-dashed divide-border lg:grid-cols-2 lg:divide-x lg:divide-y-0'>
-      <div className='flex flex-col gap-2 px-6 py-10 md:py-14'>
-        <h4 className='max-w-xl text-left font-regular text-3xl tracking-tighter md:text-5xl'>
-          Our Team
-        </h4>
-      </div>
-
-      <div className='gap-4 px-6 py-10 md:py-14'>
-        <div className='prose dark:prose-invert w-full space-y-4'>
-          <p className='text-lg'>
-            Business tools today are overwhelming - complex interfaces,
-            disconnected systems, and manual processes that waste valuable time.
-            We believed there had to be a better way. That's why we built
-            SaasCN.
+    <Section className='relative w-full pt-10'>
+      <div className='flex flex-col gap-10'>
+        <div className='flex flex-col gap-2 px-6'>
+          <h2 className='font-regular text-3xl tracking-tighter md:text-5xl'>
+            Our Team
+          </h2>
+          <p className='text-lg text-muted-foreground leading-relaxed tracking-tight'>
+            A fully remote team of 20+ engineers, designers, and product
+            managers
           </p>
+        </div>
 
-          <p className='text-lg'>
-            What began as a simple workflow automation tool has evolved into a
-            complete business operations platform. One that brings clarity to
-            chaos and makes automation accessible to everyone.
-          </p>
+        <div className='flexitems-center relative justify-center border-t border-dashed'>
+          <div
+            className={cn(
+              'absolute inset-0',
+              '[background-size:20px_20px]',
+              '[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]',
+              'dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]',
+            )}
+          />
+          <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]' />
+
+          <div className='relative z-20 flex size-full flex-col items-center justify-center gap-6 py-6'>
+            <BlurImage
+              src={TeamImage}
+              alt='Team Image'
+              imageClassName='rounded-xl'
+              width={800}
+              className='rounded-xl p-6 transition-transform hover:scale-105'
+            />
+            <p className='text-muted-foreground text-sm'>
+              SaasCN founding team, John Doe, Jane Smith, and Alex Johnson
+            </p>
+          </div>
         </div>
       </div>
     </Section>
   );
-}
+};
+
+export default Team;

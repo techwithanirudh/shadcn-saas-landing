@@ -1,4 +1,3 @@
-import { PostCard } from './update-card';
 import { Section } from '@/components/section';
 import {
   Carousel,
@@ -6,6 +5,7 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel';
 import type { Page } from '@/lib/source';
+import { PostCard } from './update-card';
 
 const Updates = ({ posts }: { posts: Page[] }) => {
   return (

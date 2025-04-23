@@ -12,6 +12,7 @@ const Hero = () => (
           height={200}
           width={200}
           priority
+          className='transition-transform hover:scale-110'
         />
         <h1 className='max-w-2xl bg-gradient-to-b bg-opacity-50 from-foreground to-muted-foreground/70 bg-clip-text font-regular text-4xl text-transparent tracking-tighter sm:text-6xl md:text-7xl'>
           <Balancer>Building the modern BizOps platform</Balancer>
