@@ -46,9 +46,8 @@ const sections = [
     title: 'Our Commitment to Privacy',
     content: (
       <p>
-        We take your privacy seriously. Our gaming marketplace is designed to
-        provide a fun, secure environment where your data across multiple games
-        is protected at all times.
+        We take your privacy seriously. Our platform is designed to provide a secure
+        environment where your business data is protected at all times.
       </p>
     ),
   },
@@ -57,19 +56,16 @@ const sections = [
     content: (
       <ul className='ml-4 list-disc space-y-2'>
         <li>
-          We collect basic information such as username and game-related data to
-          enhance your experience across our diverse portfolio.
+          We collect essential information to provide and improve our services,
+          including account details and usage patterns.
         </li>
         <li>
-          Personal data is never shared with third parties without your consent.
+          Business data is processed securely and never shared with third parties
+          without explicit consent.
         </li>
         <li>
-          Analytics data is used to improve gameplay, app performance, and
-          overall marketplace experience.
-        </li>
-        <li>
-          We do not collect sensitive information such as passwords or financial
-          details.
+          Analytics data is used to improve platform performance and user
+          experience.
         </li>
       </ul>
     ),
@@ -78,8 +74,8 @@ const sections = [
     title: 'Third-Party Services',
     content: (
       <p>
-        Our marketplace may integrate third-party services for analytics, cloud
-        storage, multiplayer features, and game updates. These services comply
+        Our platform may integrate with third-party services for analytics,
+        payment processing, and other business functions. These services comply
         with industry standards for data security.
       </p>
     ),
@@ -88,12 +84,13 @@ const sections = [
     title: 'Data Security',
     content: (
       <ul className='ml-4 list-disc space-y-2'>
-        <li>All data is encrypted to ensure security.</li>
+        <li>All data is encrypted in transit and at rest.</li>
         <li>
-          We implement regular security audits to safeguard your information.
+          We implement regular security audits and penetration testing.
         </li>
         <li>
-          Our servers adhere to industry best practices for data protection.
+          Our infrastructure adheres to industry best practices for data
+          protection.
         </li>
       </ul>
     ),
@@ -102,11 +99,11 @@ const sections = [
     title: 'Your Rights and Controls',
     content: (
       <ul className='ml-4 list-disc space-y-2'>
-        <li>You can update or delete your account information at any time.</li>
+        <li>Access and export your data at any time.</li>
         <li>
-          You have the right to request data deletion upon account closure.
+          Control your privacy settings and integration permissions.
         </li>
-        <li>You can opt out of data tracking features in the settings menu.</li>
+        <li>Request data deletion upon account closure.</li>
       </ul>
     ),
   },
@@ -114,9 +111,8 @@ const sections = [
     title: 'Contact Us',
     content: (
       <p>
-        If you have any questions or concerns about your privacy or the way we
-        handle your data across our gaming marketplace, please contact us
-        through our official channels.
+        If you have any questions about your privacy or how we handle your data,
+        please contact us through our official support channels.
       </p>
     ),
   },
@@ -124,8 +120,8 @@ const sections = [
     title: 'Updates to This Policy',
     content: (
       <p>
-        We may update this privacy policy from time to time. Users will be
-        notified of any significant changes through the app.
+        We may update this privacy policy periodically. Users will be notified
+        of any significant changes through the platform.
       </p>
     ),
   },

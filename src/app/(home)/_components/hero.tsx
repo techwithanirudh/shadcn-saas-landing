@@ -47,12 +47,10 @@ const Hero = ({ posts }: { posts: Page[] }) => (
         <h1 className='max-w-2xl text-center font-regular text-5xl tracking-tighter md:text-7xl'>
           The Future of
           <br />
-          Learning Starts Here
+          Business Starts Here
         </h1>
         <p className='max-w-2xl text-center text-lg text-muted-foreground leading-relaxed tracking-tight md:text-xl'>
-          Say goodbye to confusing concepts and one-size-fits-all lessons. AI
-          Tutor personalizes education, making learning intuitive, efficient,
-          and tailored just for you.
+          Say goodbye to manual workflows and inefficient processes. SaasCN streamlines your business operations, making work intuitive, efficient, and tailored to your needs.
         </p>
       </div>
       <div className='flex flex-row gap-3'>

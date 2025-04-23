@@ -13,27 +13,27 @@ import { useEffect, useState } from 'react';
 
 const testimonials = [
   {
-    title: 'Best decision',
+    title: 'Transformed our workflow',
     description:
-      'Our goal was to streamline SMB trade, making it easier and faster than ever and we did it together.',
+      'SaasCN has completely revolutionized how we handle our business processes. The automation features alone have saved us countless hours.',
     author: {
       name: 'Hayden Bleasel',
       image: 'https://github.com/haydenbleasel.png',
     },
   },
   {
-    title: 'Game changer',
+    title: 'Enterprise-grade solution',
     description:
-      'This platform revolutionized how we handle our day-to-day operations. The efficiency gains have been remarkable.',
+      'The platform offers enterprise-level features while maintaining an intuitive interface. Perfect for scaling organizations.',
     author: {
       name: 'Lee Robinson',
       image: 'https://github.com/leerob.png',
     },
   },
   {
-    title: 'Exceeded expectations',
+    title: 'Exceptional integration',
     description:
-      'Implementation was smooth and the results were immediate. Our team adapted quickly and productivity soared.',
+      'The ease of integration with our existing tools was impressive. It fits perfectly into our tech stack.',
     author: {
       name: 'shadcn',
       image: 'https://github.com/shadcn.png',
@@ -42,7 +42,7 @@ const testimonials = [
   {
     title: 'Outstanding support',
     description:
-      'Not only is the platform powerful, but the customer support team has been exceptional in helping us maximize its potential.',
+      'Their customer support team goes above and beyond. Any questions we had were answered promptly and thoroughly.',
     author: {
       name: 'Pontus Abrahamsson',
       image: 'https://github.com/pontusab.png',

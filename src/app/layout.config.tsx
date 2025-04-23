@@ -4,14 +4,14 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 
 export const title = 'SaasCN';
 export const description =
-  'A smarter way to learn — with your personal AI tutor.';
+  'A powerful platform to streamline your business operations.';
 export const owner = 'SaasCN';
 
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title,
   },
-  githubUrl: 'https://github.com/techwithanirudh/ai-tutor',
+  githubUrl: 'https://github.com/techwithanirudh/shadcn-saas-landing',
 };
 
 export const linkItems: LinkItemType[] = [

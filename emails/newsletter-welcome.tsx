@@ -92,7 +92,7 @@ export default function NewsletterWelcomeEmail({
         />
       </Head>
       <Preview>
-        Thanks for joining my newsletter! This email is to welcome you.
+        Thanks for joining our newsletter! Get ready to transform your business operations.
       </Preview>
       <Tailwind>
         <Body className='bg-white font-sans'>
@@ -102,18 +102,16 @@ export default function NewsletterWelcomeEmail({
                 <span className='font-bold tracking-tighter'>SaasCN</span>
               </Text>
               <Heading className='my-4 font-medium text-4xl leading-tight'>
-                Welcome!
+                Welcome to Better Business Operations!
               </Heading>
               <Text className='text-lg leading-8'>Hey {firstName},</Text>
               <Text className='text-lg leading-8'>
-                Thanks for subscribing to my newsletter! I&apos;m excited to
-                share my thoughts and ideas with you. You can expect an email
-                every few weeks, and I might occasionally share newsletter-only
-                content as well—so stay tuned!
+                Thanks for subscribing to our newsletter! We're excited to share the latest
+                updates about our business automation platform, industry insights, and tips
+                for maximizing your productivity.
               </Text>
               <Text className='text-lg leading-8'>
-                Here are a few popular posts from the past few months that you
-                might find interesting:
+                Here are some popular articles you might find interesting:
               </Text>
             </Section>
 
@@ -133,14 +131,14 @@ export default function NewsletterWelcomeEmail({
 
             <Section>
               <Text className='text-lg text-zinc-900 leading-8'>
-                Thank you for being a part of my community! I appreciate your
-                support and look forward to connecting with you.
+                Thank you for being a part of our community! We look forward to helping
+                you streamline your business operations and achieve greater efficiency.
               </Text>
               <Text
                 className='select-none text-4xl text-zinc-900 leading-8'
                 style={{ fontFamily: 'Alex Brush' }}
               >
-                John Doe
+                The SaasCN Team
               </Text>
             </Section>
           </Container>

@@ -3,10 +3,10 @@
 import { Section } from '@/components/section';
 import { cva } from 'class-variance-authority';
 import {
-  AudioLinesIcon,
-  FocusIcon,
-  HandCoinsIcon,
-  HandshakeIcon,
+  BarChart3 as BarChartIcon, 
+  Users as UsersIcon,
+  Boxes as IntegrationsIcon,
+  HandCoins as HandCoinsIcon
 } from 'lucide-react';
 
 // Create a variant for feature items
@@ -29,34 +29,34 @@ const features = [
   {
     id: 1,
     Icon: HandCoinsIcon,
-    title: 'Affordable Learning',
+    title: 'Cost-Effective Solutions',
     description:
-      'Say goodbye to overpriced tutors. SaasCN offers quality education without breaking the bank.',
+      'Maximize ROI with our affordable business automation solutions that scale with your needs.',
     size: 'lg',
   },
   {
     id: 2,
-    Icon: AudioLinesIcon,
-    title: 'Natural Voice Interaction',
+    Icon: BarChartIcon,
+    title: 'Advanced Analytics',
     description:
-      'Speak to it like a real tutor. SaasCN understands voice commands and responds just like a human would.',
+      'Get deep insights into your business performance with comprehensive analytics and reporting tools.',
     size: 'sm',
   },
   {
     id: 3,
-    Icon: FocusIcon,
-    title: 'Focus-First Design',
+    Icon: UsersIcon,
+    title: 'Team Collaboration',
     description:
-      'Prevents distractions and keeps kids engaged with smart monitoring and redirection cues.',
-    size: 'sm',
+      'Work seamlessly with your team through integrated collaboration features and real-time updates.',
+    size: 'lg',
   },
   {
     id: 4,
-    Icon: HandshakeIcon,
-    title: 'Guided Thinking, Not Just Answers',
+    Icon: IntegrationsIcon,
+    title: 'Easy Integration',
     description:
-      'SaasCN doesn’t just hand out answers — it encourages critical thinking and problem-solving before offering help.',
-    size: 'lg',
+      'Connect with your favorite tools and services through our extensive integration ecosystem.',
+    size: 'sm',
   },
 ];
 
@@ -68,8 +68,7 @@ const Features = () => (
           Why SaasCN?
         </h2>
         <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
-          Teaching a child today isn’t easy — but with SaasCN, it doesn’t have
-          to be hard either.
+          Powerful features to help your business succeed in today's competitive landscape.
         </p>
       </div>
 

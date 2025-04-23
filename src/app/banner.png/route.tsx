@@ -42,7 +42,7 @@ export async function GET() {
 
   return generateOGImage({
     title: 'SaasCN',
-    subtitle: 'Learn Smarter. Anytime. Anywhere.',
+    subtitle: 'Automate Smarter. Work Faster. Grow Better.',
     fonts,
   });
 }

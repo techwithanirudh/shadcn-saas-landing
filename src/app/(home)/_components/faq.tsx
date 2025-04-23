@@ -9,24 +9,24 @@ import {
 
 const faq = [
   {
-    question: 'What is the platform?',
+    question: 'What is SaasCN?',
     answer:
-      'The platform is a trading platform that allows you to trade with confidence.',
+      'SaasCN is a comprehensive business operations platform that helps companies streamline their workflows, automate processes, and scale efficiently. Our solutions are designed for businesses of all sizes.',
   },
   {
     question: 'How secure is the platform?',
     answer:
-      'Our platform employs enterprise-grade security measures, including end-to-end encryption and multi-factor authentication, to ensure your trading activities remain completely secure.',
+      'We implement enterprise-grade security measures, including end-to-end encryption, regular security audits, and compliance with industry standards. Your data security is our top priority.',
   },
   {
-    question: 'What trading features are available?',
+    question: 'Can I integrate with other tools?',
     answer:
-      'The platform offers comprehensive trading tools including real-time market data, advanced charting, automated trading strategies, and detailed analytics to support informed decision-making.',
+      'Yes! SaasCN offers extensive integration capabilities with popular business tools and services. Our API and webhook system allows for seamless connection with your existing tech stack.',
   },
   {
     question: 'How does pricing work?',
     answer:
-      'We offer flexible pricing tiers designed to scale with your business needs, from starter plans for individual traders to enterprise solutions for large organizations.',
+      'We offer flexible pricing tiers designed to scale with your business needs, from starter plans for small teams to enterprise solutions for large organizations. Check our pricing page for detailed information.',
   },
   {
     question: 'What kind of support do you provide?',

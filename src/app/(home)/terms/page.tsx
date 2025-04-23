@@ -1,8 +1,8 @@
 import { title as homeTitle } from '@/app/layout.config';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
-import { Github } from 'lucide-react';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 const LAST_UPDATED = 'March 2, 2025';
 
@@ -40,9 +40,9 @@ const sections = [
     title: 'Overview',
     content: (
       <p>
-        Tech with Anirudh Gaming is an open-source, multi-game marketplace that
-        allows you to explore, play, and manage a variety of games in one place.
-        By using our platform, you agree to these terms.
+        SaasCN is a comprehensive business operations platform that helps
+        organizations streamline their workflows and processes. By using our
+        platform, you agree to these terms.
       </p>
     ),
   },
@@ -52,20 +52,20 @@ const sections = [
       <div className='space-y-8'>
         <div>
           <h3 className='mb-3 font-medium text-card-foreground text-xl'>
-            Gaming Marketplace
+            Platform Services
           </h3>
           <ul className='ml-4 list-disc space-y-2'>
             <li>
-              Our platform hosts a diverse collection of games, curated to
-              ensure quality and variety.
+              Our platform provides tools for workflow automation, analytics,
+              and business process management.
             </li>
             <li>
-              We provide tools and features to enhance your gaming experience,
-              including user profiles, leaderboards, and in-game analytics.
+              We offer various features including team collaboration, reporting,
+              and third-party integrations.
             </li>
             <li>
-              The service is provided on an "as is" basis under an open-source
-              MIT License.
+              The service is provided under standard business terms and
+              conditions.
             </li>
           </ul>
         </div>
@@ -75,16 +75,15 @@ const sections = [
           </h3>
           <ul className='ml-4 list-disc space-y-2'>
             <li>
-              Our marketplace integrates with various third-party services for
-              game updates, analytics, and community features.
+              Our platform integrates with various third-party services for
+              enhanced functionality.
             </li>
             <li>
-              Users must adhere to the terms of service of any third-party
-              providers used within our platform.
-            </li>
-            <li>
-              We are not responsible for disruptions or issues arising from
+              Users must comply with the terms of service of any integrated
               third-party services.
+            </li>
+            <li>
+              We are not responsible for disruptions in third-party services.
             </li>
           </ul>
         </div>
@@ -98,48 +97,45 @@ const sections = [
         <p>By using our platform, you agree to:</p>
         <ul className='ml-4 list-disc space-y-2'>
           <li>
-            Follow all applicable laws and regulations while using the service.
+            Comply with all applicable laws and regulations.
           </li>
-          <li>Keep your account secure and protect your login credentials.</li>
+          <li>Maintain the security of your account credentials.</li>
           <li>
-            Refrain from using the platform for fraudulent, spam, or malicious
-            activities.
+            Use the platform for legitimate business purposes only.
           </li>
           <li>
-            Respect the intellectual property rights of game developers and
-            other users.
+            Respect intellectual property rights and data privacy.
           </li>
-          <li>Report any security vulnerabilities or issues responsibly.</li>
+          <li>Report any security or technical issues promptly.</li>
         </ul>
       </div>
     ),
   },
   {
-    title: 'Software License',
+    title: 'Service Terms',
     content: (
       <div className='mt-4 space-y-3 text-muted-foreground'>
-        <p>Our software is open-sourced under the MIT License:</p>
+        <p>Our service terms include:</p>
         <ul className='ml-4 list-disc space-y-2'>
-          <li>You are free to use, modify, and distribute the software.</li>
-          <li>The software is provided without warranties of any kind.</li>
+          <li>Fair usage policies for all platform features.</li>
+          <li>Standard service level agreements (SLAs).</li>
           <li>
-            Please include the original license and copyright notice in any
-            redistribution.
+            Regular maintenance and update schedules.
           </li>
         </ul>
       </div>
     ),
   },
   {
-    title: 'Community Guidelines',
+    title: 'Data Policies',
     content: (
       <div className='mt-4 space-y-3 text-muted-foreground'>
-        <p>When participating in our community, you agree to:</p>
+        <p>Our data handling policies ensure:</p>
         <ul className='ml-4 list-disc space-y-2'>
-          <li>Follow our established code of conduct.</li>
-          <li>Engage constructively in community discussions.</li>
-          <li>Respect other members and their contributions.</li>
-          <li>Report any behavior that violates community standards.</li>
+          <li>Secure processing and storage of business data.</li>
+          <li>Compliance with data protection regulations.</li>
+          <li>Regular backups and data recovery procedures.</li>
+          <li>Clear data retention and deletion policies.</li>
         </ul>
       </div>
     ),
@@ -149,17 +145,16 @@ const sections = [
     content: (
       <div className='mt-4 space-y-3 text-muted-foreground'>
         <p>
-          For any questions or concerns regarding these terms, feel free to
-          reach out:
+          For any questions or concerns regarding these terms, please reach out
+          through our support channels:
         </p>
         <div className='flex flex-col space-y-2'>
-          <a
-            href='https://github.com/techwithanirudh/ai-tutor/issues'
+          <Link
+            href='/contact'
             className='inline-flex items-center text-fd-primary underline duration-300 hover:text-fd-primary/70'
           >
-            <Github className='mr-2 h-4 w-4' />
-            Open an issue on GitHub
-          </a>
+            Contact Support
+          </Link>
         </div>
       </div>
     ),
