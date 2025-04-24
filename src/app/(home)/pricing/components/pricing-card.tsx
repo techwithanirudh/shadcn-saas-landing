@@ -54,7 +54,7 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
                 className='font-medium text-4xl'
               />
               <p className='-mt-2 text-muted-foreground text-xs'>
-                Per {paymentFrequency}/user
+                {paymentFrequency} per user
               </p>
             </>
           ) : (

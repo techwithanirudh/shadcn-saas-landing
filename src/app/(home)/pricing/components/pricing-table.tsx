@@ -41,18 +41,18 @@ export const PricingTable = ({
                   className={cn(
                     'min-w-[200px] p-6 text-center',
                     index % 2 === 1 &&
-                    'border-border border-x border-b border-dashed bg-card',
+                      'border-border border-x border-b border-dashed bg-card',
                   )}
                 >
                   <div className='flex flex-col items-center gap-2 p-2'>
                     <h3 className='font-semibold text-lg'>{plan.name}</h3>
-                    <p className='text-muted-foreground text-sm'>
+                    {/* <p className='text-muted-foreground text-sm'>
                       {plan.description}
-                    </p>
+                    </p> */}
 
-                    <div className='my-2'>
+                    <div className='-mt-2'>
                       {typeof price === 'number' ? (
-                        <div className='flex flex-col items-center gap-0.5'>
+                        <div className='flex items-center justify-center gap-1'>
                           <div className='flex items-baseline'>
                             <NumberFlow
                               format={{
@@ -61,27 +61,22 @@ export const PricingTable = ({
                                 trailingZeroDisplay: 'stripIfInteger',
                               }}
                               value={price}
-                              className='font-semibold text-xl'
+                              className='font-semibold text-xs'
                             />
                           </div>
                           <p className='text-muted-foreground text-xs'>
-                            per {paymentFrequency}/user
+                            {paymentFrequency} per user
                           </p>
                         </div>
                       ) : (
-                        <div className='flex flex-col items-center gap-0.5'>
-                          <h3 className='font-bold text-xl'>{price}</h3>
-                          <p className='text-muted-foreground text-xs'>
-                            per {paymentFrequency}/user
-                          </p>
-                        </div>
+                        <h3 className='font-bold text-xs'>{price}</h3>
                       )}
                     </div>
 
                     <Link
                       className={cn(
                         buttonVariants({
-                          variant: plan?.highlighted ? 'secondary' : 'default',
+                          variant: plan?.popular ? 'default' : 'secondary',
                           size: 'sm',
                         }),
                         'group mt-2',
@@ -134,7 +129,7 @@ export const PricingTable = ({
                       className={cn(
                         'text-center',
                         index % 2 === 1 &&
-                        'border-border border-x border-t border-dashed bg-card',
+                          'border-border border-x border-t border-dashed bg-card',
                       )}
                     >
                       {typeof value === 'boolean' ? (
