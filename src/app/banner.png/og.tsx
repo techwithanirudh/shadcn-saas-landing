@@ -35,7 +35,7 @@ export function generate({ title = 'John Doe' }: GenerateProps): ReactElement {
       <div tw='flex border absolute border-stone-900 border-dashed inset-y-0 right-16 w-[1px]' />
       <div tw='flex border absolute border-stone-900 inset-x-0 h-[1px] top-16' />
       <div tw='flex border absolute border-stone-900 inset-x-0 h-[1px] bottom-16' />
-      <div tw='flex items-center absolute w-[896px] justify-center inset-32'>
+      <div tw='flex items-center absolute w-[896px] justify-center inset-16'>
         <div
           tw='tracking-tight flex-grow-1 flex flex-col justify-center items-center leading-[1.1]'
           style={{
