@@ -58,7 +58,7 @@ export const Customers = ({
   const closest = Math.floor(count / 50) * 50;
 
   return (
-    <Section className='relative flex flex-col items-center justify-between gap-8 p-6 sm:flex-row sm:gap-16'>
+    <Section className='relative flex flex-col items-center justify-between gap-8 p-6 py-8 sm:flex-row sm:gap-16 md:py-10'>
       <p className='text-muted-foreground sm:max-w-xs'>
         {closest}+ companies already use SaasCN to automate their workflows.
       </p>
