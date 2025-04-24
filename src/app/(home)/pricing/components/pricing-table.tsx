@@ -17,7 +17,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import NumberFlow from '@number-flow/react';
+// import NumberFlow from '@number-flow/react';
 import { ArrowRight, CheckIcon, HelpCircleIcon, MinusIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Fragment } from 'react';
@@ -50,7 +50,7 @@ export const PricingTable = ({
                       {plan.description}
                     </p>
 
-                    <div className='my-2'>
+                    {/* <div className='my-2'>
                       {typeof price === 'number' ? (
                         <div className='flex flex-col items-center'>
                           <div className='flex items-baseline'>
@@ -71,7 +71,7 @@ export const PricingTable = ({
                       ) : (
                         <h3 className='font-bold text-2xl'>{price}</h3>
                       )}
-                    </div>
+                    </div> */}
 
                     <Link
                       className={cn(

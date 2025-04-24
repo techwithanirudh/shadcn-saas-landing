@@ -43,6 +43,7 @@ export function Tab({
             selected && 'bg-muted',
           )}
         >
+          {/* todo: auto-generate discount percent */}
           Save 35%
         </Badge>
       )}
