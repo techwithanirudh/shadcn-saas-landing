@@ -17,7 +17,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-// import NumberFlow from '@number-flow/react';
+import NumberFlow from '@number-flow/react';
 import { ArrowRight, CheckIcon, HelpCircleIcon, MinusIcon } from 'lucide-react';
 import Link from 'next/link';
 import { Fragment } from 'react';
@@ -41,7 +41,7 @@ export const PricingTable = ({
                   className={cn(
                     'min-w-[200px] p-6 text-center',
                     index % 2 === 1 &&
-                      'border-border border-x border-b border-dashed bg-card',
+                    'border-border border-x border-b border-dashed bg-card',
                   )}
                 >
                   <div className='flex flex-col items-center gap-2 p-2'>
@@ -50,9 +50,9 @@ export const PricingTable = ({
                       {plan.description}
                     </p>
 
-                    {/* <div className='my-2'>
+                    <div className='my-2'>
                       {typeof price === 'number' ? (
-                        <div className='flex flex-col items-center'>
+                        <div className='flex flex-col items-center gap-0.5'>
                           <div className='flex items-baseline'>
                             <NumberFlow
                               format={{
@@ -61,17 +61,22 @@ export const PricingTable = ({
                                 trailingZeroDisplay: 'stripIfInteger',
                               }}
                               value={price}
-                              className='font-bold text-2xl'
+                              className='font-semibold text-xl'
                             />
                           </div>
-                          <p className='mt-1 text-muted-foreground text-xs'>
-                            Per month/user
+                          <p className='text-muted-foreground text-xs'>
+                            per {paymentFrequency}/user
                           </p>
                         </div>
                       ) : (
-                        <h3 className='font-bold text-2xl'>{price}</h3>
+                        <div className='flex flex-col items-center gap-0.5'>
+                          <h3 className='font-bold text-xl'>{price}</h3>
+                          <p className='text-muted-foreground text-xs'>
+                            per {paymentFrequency}/user
+                          </p>
+                        </div>
                       )}
-                    </div> */}
+                    </div>
 
                     <Link
                       className={cn(
@@ -129,7 +134,7 @@ export const PricingTable = ({
                       className={cn(
                         'text-center',
                         index % 2 === 1 &&
-                          'border-border border-x border-t border-dashed bg-card',
+                        'border-border border-x border-t border-dashed bg-card',
                       )}
                     >
                       {typeof value === 'boolean' ? (

@@ -87,7 +87,7 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
         <Link
           className={cn(
             buttonVariants({
-              variant: isHighlighted ? 'secondary' : 'default',
+              variant: isPopular ? 'default' : 'secondary',
             }),
             'group w-full',
           )}
