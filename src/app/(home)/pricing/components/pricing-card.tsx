@@ -71,11 +71,8 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
               key={feature}
               className={cn('flex items-center gap-2 text-base')}
             >
-              <div className='inline-flex size-5 items-center justify-center rounded-full border border-border p-1 transition-transform hover:scale-125 bg-primary'>
-                <CheckIcon
-                  className='size-3 text-background'
-                  strokeWidth='4'
-                />
+              <div className='inline-flex size-5 items-center justify-center rounded-full border border-border bg-primary p-1 transition-transform hover:scale-125'>
+                <CheckIcon className='size-3 text-background' strokeWidth='4' />
               </div>
               {feature}
             </li>

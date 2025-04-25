@@ -1,16 +1,17 @@
 'use client';
 import { Section } from '@/components/section';
 import { useState } from 'react';
+import Balancer from 'react-wrap-balancer';
 import { Customers } from '../_components/customers';
 import { FAQ } from '../_components/faq';
 import { PricingCard } from './components/pricing-card';
 import { Tab } from './components/pricing-tab';
 import { PricingTable } from './components/pricing-table';
 import { frequencies, plans } from './data';
-import Balancer from 'react-wrap-balancer';
 
 const title = 'Plans and Pricing';
-const description = 'Use SaasCN for free with your whole team. Upgrade to enable more features like advanced analytics, priority support, and more.';
+const description =
+  'Use SaasCN for free with your whole team. Upgrade to enable more features like advanced analytics, priority support, and more.';
 
 // export const metadata: Metadata = {
 //   title: "Pricing",
@@ -28,9 +29,8 @@ export default function PricingPage() {
         <h1 className='mb-2 font-normal text-3xl leading-tight tracking-tighter md:text-5xl'>
           {title}
         </h1>
-        <p className='text-muted-foreground text-md max-w-xl'>
-          <Balancer>{description}
-          </Balancer>
+        <p className='max-w-xl text-md text-muted-foreground'>
+          <Balancer>{description}</Balancer>
         </p>
 
         <div className='mt-8 flex w-fit items-center justify-center rounded-full bg-card p-1'>
