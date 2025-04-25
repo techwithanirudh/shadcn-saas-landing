@@ -7,9 +7,10 @@ import { PricingCard } from './components/pricing-card';
 import { Tab } from './components/pricing-tab';
 import { PricingTable } from './components/pricing-table';
 import { frequencies, plans } from './data';
+import Balancer from 'react-wrap-balancer';
 
 const title = 'Plans and Pricing';
-const description = 'Choose the plan that fits your needs.';
+const description = 'Use SaasCN for free with your whole team. Upgrade to enable more features like advanced analytics, priority support, and more.';
 
 // export const metadata: Metadata = {
 //   title: "Pricing",
@@ -21,11 +22,16 @@ export default function PricingPage() {
 
   return (
     <>
+      <title>Pricing | SaasCN</title>
+      <meta name='description' content={description} />
       <Section className='flex flex-col items-center p-6 text-center lg:p-12'>
         <h1 className='mb-2 font-normal text-3xl leading-tight tracking-tighter md:text-5xl'>
           {title}
         </h1>
-        <p className='text-muted-foreground text-sm'>{description}</p>
+        <p className='text-muted-foreground text-md max-w-xl'>
+          <Balancer>{description}
+          </Balancer>
+        </p>
 
         <div className='mt-8 flex w-fit items-center justify-center rounded-full bg-card p-1'>
           {frequencies.map((frequency) => (
@@ -51,7 +57,7 @@ export default function PricingPage() {
         </div>
       </Section>
       <Customers count={50} />
-      <Section className='p-4 lg:p-6' sectionClassName='hidden lg:block'>
+      <Section className='p-6 lg:p-12' sectionClassName='hidden lg:block'>
         <h1 className='text-center font-normal text-3xl leading-tight tracking-tighter md:text-5xl'>
           Compare Plans
         </h1>
