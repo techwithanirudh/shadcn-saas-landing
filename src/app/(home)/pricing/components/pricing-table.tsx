@@ -27,7 +27,7 @@ export const PricingTable = ({
   paymentFrequency,
 }: { paymentFrequency: string }) => {
   return (
-    <Section className='flex flex-col gap-8' sectionClassName='hidden lg:block'>
+    <Section className='flex flex-col gap-8'>
       <Table className='border-collapse'>
         <TableHeader>
           <TableRow className='bg-background hover:bg-background'>
