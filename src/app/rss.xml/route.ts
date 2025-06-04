@@ -35,7 +35,7 @@ function createFeed(): Feed {
     image: new URL('/banner.png', baseUrl).href,
     favicon: new URL('/favicon.ico', baseUrl).href,
     link: baseUrl.href,
-    feed: new URL('/api/rss.xml', baseUrl).href,
+    feed: new URL('/rss.xml', baseUrl).href,
     updated: new Date(),
   });
 
