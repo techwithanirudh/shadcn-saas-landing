@@ -16,6 +16,7 @@ import type { HomeLayoutProps } from 'fumadocs-ui/layouts/home';
 import {
   type LinkItemType,
   type NavOptions,
+  renderTitleNav,
   resolveLinkItems,
 } from 'fumadocs-ui/layouts/shared';
 import { useIsScrollTop } from 'fumadocs-ui/utils/use-is-scroll-top';
@@ -79,12 +80,9 @@ export const Header = ({
       className={className}
       transparentMode={nav.transparentMode}
     >
-      <Link
-        className='inline-flex items-center gap-2.5 font-semibold'
-        href={nav.url ?? '/'}
-      >
-        {nav.title}
-      </Link>
+      {renderTitleNav(nav, {
+        className: 'inline-flex items-center gap-2.5 font-semibold',
+      })}
       {nav.children}
       <ul className='flex flex-row items-center gap-2 px-3 max-sm:hidden'>
         {navItems
