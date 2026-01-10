@@ -1,5 +1,5 @@
+import type { ImageResponse } from '@takumi-rs/image-response';
 import type { Metadata } from 'next';
-import type { ImageResponse } from 'next/og';
 import { getPost, getPosts, type Page } from '@/lib/source';
 
 const createAPI = (
