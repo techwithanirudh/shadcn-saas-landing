@@ -17,7 +17,7 @@ const Team = () => {
           </p>
         </div>
 
-        <div className='flexitems-center relative justify-center border-t border-dashed'>
+        <div className='flex items-center relative justify-center border-t border-dashed'>
           <div
             className={cn(
               'absolute inset-0',
