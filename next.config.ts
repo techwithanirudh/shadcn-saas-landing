@@ -19,6 +19,9 @@ async function createNextConfig(): Promise<NextConfig> {
         fullUrl: true,
       },
     },
+    images: {
+      qualities: [100, 75, 85, 95],
+    },
     typescript: {
       ignoreBuildErrors: true,
     },
