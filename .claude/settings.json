@@ -5,5 +5,18 @@
     "github@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pnpm dlx ultracite fix"
+          }
+        ]
+      }
+    ]
   }
 }
