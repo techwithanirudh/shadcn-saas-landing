@@ -10,20 +10,20 @@
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "dev": "next dev",
     "start": "next start",
-    "format": "biome format --write .",
-    "lint": "tsx ./scripts/lint.mts && biome lint .",
-    "lint:write": "biome lint --write .",
-    "lint:unsafe": "biome lint --write --unsafe .",
     "check": "biome check .",
     "check:unsafe": "biome check --write --unsafe .",
     "check:write": "biome check --write .",
+    "check:links": "tsx ./scripts/lint.mts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "email:build": "email build",
     "email:dev": "email dev -p 3001",
-    "email:export": "email export"
+    "email:export": "email export",
+    "check:spelling": "cspell -c .cspell.jsonc --no-progress --no-summary --no-must-find-files --unique --cache",
+    "typegen": "fumadocs-mdx && next typegen",
+    "typecheck": "pnpm run typegen && tsc --noEmit"
   },
   "dependencies": {
     "@bprogress/next": "^3.2.12",
@@ -86,6 +86,12 @@
     "zod": "4.1.13"
   },
   "devDependencies": {
+    "cspell": "^9.4.0",
+    "@cspell/dict-bash": "^4.2.2",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
+    "@commitlint/types": "^20.2.0",
+    "lefthook": "^2.0.8",
     "@biomejs/biome": "2.3.8",
     "@next/bundle-analyzer": "^16.1.1",
     "@tailwindcss/postcss": "4.1.18",

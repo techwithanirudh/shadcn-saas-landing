@@ -5,8 +5,7 @@ import {
 import { PostJsonLd } from '@/components/json-ld';
 import { Section } from '@/components/section';
 import { TagCard } from '@/components/tags/tag-card';
-import { createMetadata } from '@/lib/metadata';
-import { metadataImage } from '@/lib/metadata-image';
+import { createMetadata, getPageImage } from '@/lib/metadata';
 import { type Page as MDXPage, getPost, getPosts } from '@/lib/source';
 import { cn } from '@/lib/utils';
 import { File, Files, Folder } from 'fumadocs-ui/components/files';
@@ -127,18 +126,22 @@ export async function generateMetadata(props: {
   const title = page.data.title ?? 'Untitled';
   const description = page.data.description ?? homeDescription;
 
-  return createMetadata(
-    metadataImage.withImage(page.slugs, {
-      title,
-      description,
-      openGraph: {
-        url: `/blog/${page.slugs.join('/')}`,
-      },
-      alternates: {
-        canonical: page.url,
-      },
-    }),
-  );
+  const image = getPageImage(page);
+
+  return createMetadata({
+    title,
+    description,
+    openGraph: {
+      url: `/blog/${page.slugs.join('/')}`,
+      images: image.url,
+    },
+    twitter: {
+      images: image.url,
+    },
+    alternates: {
+      canonical: page.url,
+    },
+  });
 }
 
 export function generateStaticParams(): { slug: string | undefined }[] {
