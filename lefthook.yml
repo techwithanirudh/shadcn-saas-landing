@@ -1,9 +1,9 @@
 post-merge:
   commands:
     install-deps:
-      run: bun i
+      run: pnpm install
 
 commit-msg:
   commands:
     "lint commit message":
-      run: bun commitlint --edit {1}
+      run: pnpm commitlint --edit {1}
