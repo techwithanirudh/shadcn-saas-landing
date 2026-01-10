@@ -1,5 +1,9 @@
 'use client';
 
+import NumberFlow from '@number-flow/react';
+import { ArrowRight, CheckIcon, HelpCircleIcon, MinusIcon } from 'lucide-react';
+import Link from 'next/link';
+import { Fragment } from 'react';
 import { Section } from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
 import {
@@ -17,15 +21,13 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import NumberFlow from '@number-flow/react';
-import { ArrowRight, CheckIcon, HelpCircleIcon, MinusIcon } from 'lucide-react';
-import Link from 'next/link';
-import { Fragment } from 'react';
 import { groups, plans } from '../data';
 
 export const PricingTable = ({
   paymentFrequency,
-}: { paymentFrequency: string }) => {
+}: {
+  paymentFrequency: string;
+}) => {
   return (
     <Section className='flex flex-col gap-8'>
       <Table className='border-collapse'>

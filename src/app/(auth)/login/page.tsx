@@ -1,6 +1,7 @@
 'use client';
 
-import { baseOptions, linkItems } from '@/app/layout.config';
+import { HomeLayout } from 'fumadocs-ui/layouts/home';
+import { baseOptions, linkItems } from '@/app/layout.shared';
 import { Icons } from '@/components/icons/icons';
 import { Header } from '@/components/sections/header';
 import { Button } from '@/components/ui/button';
@@ -13,8 +14,6 @@ import {
 } from '@/components/ui/card';
 import { signIn } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
-import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { getLinks } from 'fumadocs-ui/layouts/shared';
 
 const Cross = () => (
   <div className='relative h-6 w-6'>
@@ -86,17 +85,12 @@ export default function LoginPage() {
       {...baseOptions}
       links={linkItems}
       nav={{
-        component: (
-          <Header
-            finalLinks={getLinks(linkItems, baseOptions.githubUrl)}
-            {...baseOptions}
-          />
-        ),
+        component: <Header links={linkItems} {...baseOptions} />,
       }}
       className='pt-0'
     >
       <main className='flex flex-1'>
-        <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border border-x border-b border-dashed '>
+        <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border border-x border-b border-dashed'>
           <SignInCard />
         </div>
       </main>

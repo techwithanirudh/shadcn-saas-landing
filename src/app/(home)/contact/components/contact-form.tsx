@@ -1,7 +1,11 @@
 'use client';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useAction } from 'next-safe-action/hooks';
-
+import { Suspense } from 'react';
+import { useForm } from 'react-hook-form';
+import { Icons } from '@/components/icons/icons';
+import { Alert, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -13,16 +17,9 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import type { Contact } from '@/lib/validators/contact';
 import { ContactSchema } from '@/lib/validators/contact';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-
-import { Alert, AlertTitle } from '@/components/ui/alert';
-
-import { Icons } from '@/components/icons/icons';
-import { Textarea } from '@/components/ui/textarea';
-import { Suspense } from 'react';
 import { contact } from '../actions/contact';
 
 const ContactFormInner = () => {

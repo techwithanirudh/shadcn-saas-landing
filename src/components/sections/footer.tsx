@@ -1,19 +1,25 @@
 import {
+  type LinkItemType,
+  resolveLinkItems,
+} from 'fumadocs-ui/layouts/shared';
+import {
   baseOptions,
   linkItems,
   owner,
   postsPerPage,
-} from '@/app/layout.config';
+} from '@/app/layout.shared';
 import { InlineLink } from '@/components/inline-link';
 import { getSortedByDatePosts, getTags } from '@/lib/source';
 import { cn } from '@/lib/utils';
-import { getLinks } from 'fumadocs-ui/layouts/shared';
 import { ActiveLink } from '../active-link';
 import { UserButton } from '../auth/user-button';
 import { ThemeToggle } from '../theme-toggle';
 
 export function Footer() {
-  const links = getLinks(linkItems, baseOptions.githubUrl);
+  const links = resolveLinkItems({
+    links: linkItems,
+    githubUrl: baseOptions.githubUrl,
+  }) as LinkItemType[];
   const navItems = links.filter((item) =>
     ['nav', 'all'].includes(item.on ?? 'all'),
   );
@@ -25,7 +31,6 @@ export function Footer() {
     <footer
       className={cn(
         'container mx-auto flex flex-col gap-4',
-        'border-border border-b border-dashed',
         'gap-16 px-8 py-16',
       )}
     >

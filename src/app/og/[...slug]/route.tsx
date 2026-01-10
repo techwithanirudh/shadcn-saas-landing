@@ -1,58 +1,33 @@
-import { generateOGImage } from '@/app/og/[...slug]/og';
-import { metadataImage } from '@/lib/metadata-image';
-import type { ImageResponse } from 'next/og';
+import { ImageResponse } from '@takumi-rs/image-response';
+import { generate, getImageResponseOptions } from '@/app/og/[...slug]/og';
+import { getPageImage } from '@/lib/metadata';
+import { getPost, getPosts } from '@/lib/source';
 
-async function loadAssets(): Promise<
-  { name: string; data: Buffer; weight: 400 | 600; style: 'normal' }[]
-> {
-  const [
-    { base64Font: normal },
-    { base64Font: mono },
-    { base64Font: semibold },
-  ] = await Promise.all([
-    import('./fonts/geist-regular-otf.json').then((mod) => mod.default || mod),
-    import('./fonts/geistmono-regular-otf.json').then(
-      (mod) => mod.default || mod,
-    ),
-    import('./fonts/geist-semibold-otf.json').then((mod) => mod.default || mod),
-  ]);
+export const GET = async (
+  _request: Request,
+  context: { params: Promise<{ slug?: string[] }> },
+): Promise<ImageResponse | Response> => {
+  const params = await context.params;
+  const slug = params.slug ?? [];
+  const page = getPost(slug.slice(0, -1));
 
-  return [
-    {
-      name: 'Geist',
-      data: Buffer.from(normal, 'base64'),
-      weight: 400 as const,
-      style: 'normal' as const,
-    },
-    {
-      name: 'Geist Mono',
-      data: Buffer.from(mono, 'base64'),
-      weight: 400 as const,
-      style: 'normal' as const,
-    },
-    {
-      name: 'Geist',
-      data: Buffer.from(semibold, 'base64'),
-      weight: 600 as const,
-      style: 'normal' as const,
-    },
-  ];
-}
+  if (!page) {
+    return new Response('Not Found', { status: 404 });
+  }
 
-export const GET = metadataImage.createAPI(
-  async (page): Promise<ImageResponse> => {
-    const [fonts] = await Promise.all([loadAssets()]);
-
-    return generateOGImage({
-      title: page.data.title,
-      description: page.data.description,
-      fonts,
-    });
-  },
-);
+  return new ImageResponse(
+    generate({
+      title: page.data.title ?? 'Untitled',
+      description: page.data.description ?? '',
+    }),
+    await getImageResponseOptions(),
+  );
+};
 
 export function generateStaticParams(): {
   slug: string[];
 }[] {
-  return metadataImage.generateParams();
+  return getPosts().map((page) => ({
+    slug: getPageImage(page).segments,
+  }));
 }

@@ -1,5 +1,7 @@
 'use client';
 
+import { User } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Section } from '@/components/section';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -8,8 +10,6 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
-import { User } from 'lucide-react';
-import { useEffect, useState } from 'react';
 
 const testimonials = [
   {

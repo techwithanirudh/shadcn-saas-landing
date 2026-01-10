@@ -1,4 +1,3 @@
-import { baseUrl } from '@/lib/constants';
 import {
   Body,
   Container,
@@ -14,6 +13,7 @@ import {
   Tailwind,
   Text,
 } from '@react-email/components';
+import { baseUrl } from '@/lib/constants';
 
 interface NewsletterWelcomeEmailProps {
   firstName: string;
@@ -31,10 +31,10 @@ interface NewsletterWelcomeEmailProps {
 function PostCard({
   title,
   description,
-  date,
-  tags,
+  date: _date,
+  tags: _tags,
   image,
-  author,
+  author: _author,
   url,
 }: NewsletterWelcomeEmailProps['posts'][0]) {
   return (

@@ -1,26 +1,23 @@
 'use client';
 
+import Autoplay from 'embla-carousel-auto-scroll';
+import { BlurImage } from '@/components/blur-image';
+import { Section } from '@/components/section';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
-
-import ClaudeLight from '@/public/images/logos/light/claude.svg';
-import NeonLight from '@/public/images/logos/light/neon.svg';
-import NextjsLight from '@/public/images/logos/light/nextjs.svg';
-import OpenAILight from '@/public/images/logos/light/openai.svg';
-import VercelLight from '@/public/images/logos/light/vercel.svg';
-
 import ClaudeDark from '@/public/images/logos/dark/claude.svg';
 import NeonDark from '@/public/images/logos/dark/neon.svg';
 import NextjsDark from '@/public/images/logos/dark/nextjs.svg';
 import OpenAIDark from '@/public/images/logos/dark/openai.svg';
 import VercelDark from '@/public/images/logos/dark/vercel.svg';
-
-import { BlurImage } from '@/components/blur-image';
-import { Section } from '@/components/section';
-import Autoplay from 'embla-carousel-auto-scroll';
+import ClaudeLight from '@/public/images/logos/light/claude.svg';
+import NeonLight from '@/public/images/logos/light/neon.svg';
+import NextjsLight from '@/public/images/logos/light/nextjs.svg';
+import OpenAILight from '@/public/images/logos/light/openai.svg';
+import VercelLight from '@/public/images/logos/light/vercel.svg';
 
 const logos = [
   {
@@ -50,11 +47,7 @@ const logos = [
   },
 ];
 
-export const Customers = ({
-  count,
-}: {
-  count: number;
-}) => {
+export const Customers = ({ count }: { count: number }) => {
   const closest = Math.floor(count / 50) * 50;
 
   return (
@@ -79,7 +72,7 @@ export const Customers = ({
           }}
         >
           <CarouselContent>
-            {logos.map((logo, index) => (
+            {logos.map((logo, _index) => (
               <CarouselItem className='basis-1/4 md:basis-1/5' key={logo.name}>
                 <div className='flex items-center justify-center'>
                   <BlurImage

@@ -1,13 +1,12 @@
-import { PostComments } from '@/app/(home)/(blog)/blog/[slug]/page.client';
-import type { TOCItemType } from 'fumadocs-core/server';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
-import type { ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
+import { PostComments } from '@/app/(home)/(blog)/blog/[slug]/page.client';
 import { Section } from './section';
 
 interface MdxLayoutProps {
   children: ReactNode;
   title: string;
-  toc?: TOCItemType[] | null;
+  toc?: ComponentProps<typeof InlineTOC>['items'];
   comments?: boolean;
   slug: string;
 }

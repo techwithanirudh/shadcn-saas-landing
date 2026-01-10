@@ -2,11 +2,10 @@
 
 import NumberFlow from '@number-flow/react';
 import { ArrowRight, CheckIcon } from 'lucide-react';
-
+import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 import type { PricingTier } from '../data';
 
 interface PricingCardProps {
@@ -17,7 +16,7 @@ interface PricingCardProps {
 export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
   const price = tier.price[paymentFrequency];
   const isPopular = tier.popular;
-  const isHighlighted = tier.highlighted;
+  const _isHighlighted = tier.highlighted;
 
   return (
     <div
@@ -66,7 +65,7 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
       </div>
       <div className='flex-1 space-y-2 px-6'>
         <ul className='space-y-2'>
-          {tier.features.map((feature, index) => (
+          {tier.features.map((feature, _index) => (
             <li
               key={feature}
               className={cn('flex items-center gap-2 text-base')}

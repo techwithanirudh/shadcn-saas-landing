@@ -1,9 +1,8 @@
+import { HomeLayout } from 'fumadocs-ui/layouts/home';
+import type { ReactNode } from 'react';
 import { Footer } from '@/components/sections/footer';
 import { Header } from '@/components/sections/header';
-import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { getLinks } from 'fumadocs-ui/layouts/shared';
-import type { ReactNode } from 'react';
-import { baseOptions, linkItems } from '../layout.config';
+import { baseOptions, linkItems } from '../layout.shared';
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
@@ -13,8 +12,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
       nav={{
         component: (
           <Header
-            finalLinks={getLinks(linkItems, baseOptions.githubUrl)}
+            links={linkItems}
             {...baseOptions}
+            themeSwitch={{ enabled: false }}
           />
         ),
       }}

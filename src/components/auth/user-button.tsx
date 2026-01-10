@@ -103,24 +103,20 @@ export function UserButton({ className, classNames }: UserButtonProps) {
         <DropdownMenuSeparator className={classNames?.content?.separator} />
 
         {!user ? (
-          <>
-            <DropdownMenuItem className={classNames?.content?.menuItem} asChild>
-              <Link href={'/login'}>
-                <Icons.logIn className='size-4' />
-                Sign In
-              </Link>
-            </DropdownMenuItem>
-          </>
+          <DropdownMenuItem className={classNames?.content?.menuItem} asChild>
+            <Link href={'/login'}>
+              <Icons.logIn className='size-4' />
+              Sign In
+            </Link>
+          </DropdownMenuItem>
         ) : (
-          <>
-            <DropdownMenuItem
-              className={classNames?.content?.menuItem}
-              onClick={() => signOut()}
-            >
-              <Icons.logOut className='size-4' />
-              Log Out
-            </DropdownMenuItem>
-          </>
+          <DropdownMenuItem
+            className={classNames?.content?.menuItem}
+            onClick={() => signOut()}
+          >
+            <Icons.logOut className='size-4' />
+            Log Out
+          </DropdownMenuItem>
         )}
       </DropdownMenuContent>
     </DropdownMenu>

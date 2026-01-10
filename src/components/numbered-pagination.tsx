@@ -56,7 +56,7 @@ function NumberedPagination({
           </PaginationLink>
         </PaginationItem>
 
-        <div className='inline-flex w-full justify-center '>
+        <div className='inline-flex w-full justify-center'>
           {showLeftEllipsis && (
             <PaginationItem>
               <PaginationLink

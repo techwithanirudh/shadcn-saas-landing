@@ -1,7 +1,7 @@
 'use client';
-import { Section } from '@/components/section';
 import { useState } from 'react';
 import Balancer from 'react-wrap-balancer';
+import { Section } from '@/components/section';
 import { Customers } from '../_components/customers';
 import { FAQ } from '../_components/faq';
 import { PricingCard } from './components/pricing-card';

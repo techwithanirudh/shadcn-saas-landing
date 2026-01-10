@@ -1,12 +1,12 @@
+import { MailIcon } from 'lucide-react';
+import * as motion from 'motion/react-client';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Icons } from '@/components/icons/icons';
 import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { env } from '@/env';
 import type { Page } from '@/lib/source';
-import { MailIcon } from 'lucide-react';
-import * as motion from 'motion/react-client';
-import Image from 'next/image';
-import Link from 'next/link';
 import heroImage from '../../../../public/images/gradient-noise-purple-azure-light.png';
 
 const Hero = ({ posts }: { posts: Page[] }) => (

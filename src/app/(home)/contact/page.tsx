@@ -1,6 +1,6 @@
+import type { Metadata } from 'next';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
-import type { Metadata } from 'next';
 import CTA from '../_components/cta';
 import { ContactForm } from './components/contact-form';
 
@@ -30,7 +30,7 @@ export default function Contact(): React.ReactElement {
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
-  const params = await props.params;
+  const _params = await props.params;
   const description =
     'Contact us for any inquiries, feedback, or support. We are here to assist you.';
 

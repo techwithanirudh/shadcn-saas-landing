@@ -1,9 +1,9 @@
+import Link from 'next/link';
 import { PostCard } from '@/components/blog/post-card';
 import { Icons } from '@/components/icons/icons';
 import { Section } from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
 import type { Page } from '@/lib/source';
-import Link from 'next/link';
 
 export default function Posts({ posts }: { posts: Page[] }) {
   return (
@@ -13,13 +13,13 @@ export default function Posts({ posts }: { posts: Page[] }) {
           const date = new Date(post.data.date).toDateString();
           return (
             <PostCard
-              title={post.data.title}
+              title={post.data.title ?? 'Untitled'}
               description={post.data.description ?? ''}
-              image={post.data.image}
+              image={post.data.image ?? null}
               url={post.url}
               date={date}
               key={post.url}
-              author={post.data.author}
+              author={post.data.author ?? 'Unknown'}
               tags={post.data.tags}
             />
           );

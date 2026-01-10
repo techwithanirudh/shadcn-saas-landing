@@ -1,8 +1,8 @@
-import { title as homeTitle } from '@/app/layout.config';
+import type { Metadata } from 'next';
+import { title as homeTitle } from '@/app/layout.shared';
 import { InlineLink } from '@/components/inline-link';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
-import type { Metadata } from 'next';
 
 const LAST_UPDATED = 'March 2, 2025';
 
@@ -126,7 +126,7 @@ const sections = [
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
-  const params = await props.params;
+  const _params = await props.params;
   const description = `Privacy Policy for ${homeTitle}. Last updated on ${LAST_UPDATED}.`;
 
   return createMetadata({

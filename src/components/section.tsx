@@ -1,6 +1,6 @@
-import { cn } from '@/lib/utils';
 import { PlusIcon } from 'lucide-react';
 import type { HTMLAttributes } from 'react';
+import { cn } from '@/lib/utils';
 
 type SectionProps = {
   sectionClassName?: string;

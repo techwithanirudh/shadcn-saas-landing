@@ -1,10 +1,10 @@
 'use client';
 
-import { isActive } from '@/lib/is-active';
-import { cn } from '@/lib/utils';
 import Link, { type LinkProps } from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
+import { isActive } from '@/lib/is-active';
+import { cn } from '@/lib/utils';
 
 type ActiveLinkProps = LinkProps & {
   children: ReactNode;

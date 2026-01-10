@@ -1,11 +1,11 @@
 'use client';
+import NextImage from 'next/image';
+import { useState } from 'react';
 /**
  * Copyright (c) Delba de Oliveira
  * Source: https://github.com/delbaoliveira/website/blob/59e6f181ad75751342ceaa8931db4cbcef86b018/ui/BlurImage.tsx
  */
 import { cn } from '@/lib/utils';
-import NextImage from 'next/image';
-import { useState } from 'react';
 
 type ImageProps = {
   imageClassName?: string;

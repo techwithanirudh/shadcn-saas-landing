@@ -4,12 +4,12 @@
 @import "@fuma-comment/react/preset.css";
 
 @plugin "tailwindcss-animate";
-@plugin 'tailwind-scrollbar';
+@plugin "tailwind-scrollbar";
 
 @custom-variant dark (&:is(.dark *));
 
-@source '../../node_modules/fumadocs-ui/dist/**/*.js';
-@source '../../node_modules/@fuma-comment/react/dist/**/*.js';
+@source "../../node_modules/fumadocs-ui/dist/**/*.js";
+@source "../../node_modules/@fuma-comment/react/dist/**/*.js";
 
 @theme {
   --color-background: var(--color-fd-background);

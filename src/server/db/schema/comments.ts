@@ -3,12 +3,12 @@ import {
   index,
   integer,
   json,
+  pgTableCreator,
   primaryKey,
   serial,
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core';
-import { pgTableCreator } from 'drizzle-orm/pg-core';
 
 const createTable = pgTableCreator((name) => `blog_${name}`);
 

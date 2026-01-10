@@ -1,8 +1,8 @@
-import { BlurImage } from '@/components/blur-image';
 import { CalendarIcon, UserIcon } from 'lucide-react';
 import Link from 'next/link';
 import type React from 'react';
 import Balancer from 'react-wrap-balancer';
+import { BlurImage } from '@/components/blur-image';
 
 interface PostCardProps {
   title: string;
@@ -21,7 +21,7 @@ export const PostCard: React.FC<PostCardProps> = ({
   url,
   date,
   author,
-  tags,
+  tags: _tags,
 }) => {
   return (
     <Link

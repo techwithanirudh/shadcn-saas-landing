@@ -1,5 +1,5 @@
-import { baseUrl } from '@/lib/constants';
 import { Resend, type UpdateContactOptions } from 'resend';
+import { baseUrl } from '@/lib/constants';
 import NewsletterWelcomeEmail from '../../emails/newsletter-welcome';
 import type { getPosts } from './source';
 
@@ -67,7 +67,7 @@ export async function sendWelcomeEmail({
     url: `${baseUrl}${post.url}`,
   }));
 
-  const { data: res, error } = await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: EMAIL_FROM,
     to,
     subject: 'Welcome to my newsletter!',

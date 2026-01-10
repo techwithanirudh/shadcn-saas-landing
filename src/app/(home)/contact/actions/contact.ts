@@ -1,9 +1,9 @@
 'use server';
 
+import { Resend } from 'resend';
 import { env } from '@/env';
 import { ActionError, actionClient } from '@/lib/safe-action';
 import { ContactSchema } from '@/lib/validators/contact';
-import { Resend } from 'resend';
 
 const resend = new Resend(env.RESEND_API_KEY as string);
 
@@ -11,7 +11,7 @@ export const contact = actionClient
   .schema(ContactSchema)
   .action(async ({ parsedInput: { name, email, message } }) => {
     try {
-      const { data, error } = await resend.emails.send({
+      const { error } = await resend.emails.send({
         from: env.EMAIL_FROM,
         to: env.EMAIL_FROM,
         subject: `New contact form submission from ${name}`,

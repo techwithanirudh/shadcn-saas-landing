@@ -31,7 +31,7 @@ import {
   Pizza,
   Plus,
   Rss,
-  SendHorizonal,
+  SendHorizontal,
   Settings,
   ShareIcon,
   SunMedium,
@@ -81,7 +81,7 @@ export const Icons = {
   arrowUpRight: ArrowUpRight,
   chevronDown: ChevronDown,
   mail: Mail,
-  send: SendHorizonal,
+  send: SendHorizontal,
   pricing: CircleDollarSign,
   phone: PhoneCall,
   gitHub: ({ ...props }: LucideProps) => (

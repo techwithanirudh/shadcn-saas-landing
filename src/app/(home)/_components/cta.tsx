@@ -1,9 +1,9 @@
+import Link from 'next/link';
+import type React from 'react';
 import { Icons } from '@/components/icons/icons';
 import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { env } from '@/env';
-import Link from 'next/link';
-import type React from 'react';
 
 export default function CTA(): React.ReactElement {
   return (

@@ -1,4 +1,7 @@
-import type { Metadata } from 'next/types';
+import type { Metadata } from 'next';
+import { title } from '@/app/layout.shared';
+import { env } from '@/env';
+import type { Page } from './source';
 
 export function createMetadata(override: Metadata): Metadata {
   return {
@@ -6,9 +9,9 @@ export function createMetadata(override: Metadata): Metadata {
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: 'https://saas-landing.techwithanirudh.com',
+      url: baseUrl.href,
       images: '/banner.png',
-      siteName: 'SaasCN',
+      siteName: title,
       ...override.openGraph,
     },
     twitter: {
@@ -19,12 +22,18 @@ export function createMetadata(override: Metadata): Metadata {
       images: '/banner.png',
       ...override.twitter,
     },
-    alternates: {
-      canonical: '/',
-      types: {
-        'application/rss+xml': '/rss.xml',
-      },
-      ...override.alternates,
-    },
   };
 }
+
+export function getPageImage(page: Page) {
+  const segments = [...page.slugs, 'image.webp'];
+  return {
+    segments,
+    url: `/og/${segments.join('/')}`,
+  };
+}
+
+export const baseUrl =
+  env.NODE_ENV === 'development' || !env.NEXT_PUBLIC_APP_URL
+    ? new URL('http://localhost:3000')
+    : new URL(env.NEXT_PUBLIC_APP_URL);

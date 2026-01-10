@@ -1,10 +1,10 @@
-import { title as homeTitle } from '@/app/layout.config';
+import type { Metadata } from 'next';
+import { title as homeTitle } from '@/app/layout.shared';
 import { Section } from '@/components/section';
 import { TagCard } from '@/components/tags/tag-card';
 import { createMetadata } from '@/lib/metadata';
 import { getTags } from '@/lib/source';
 import { cn } from '@/lib/utils';
-import type { Metadata } from 'next';
 
 export default function Page() {
   const tags = getTags();
@@ -41,7 +41,7 @@ export default function Page() {
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
-  const params = await props.params;
+  const _params = await props.params;
   const description = `Explore all the tags on ${homeTitle}.`;
 
   return createMetadata({

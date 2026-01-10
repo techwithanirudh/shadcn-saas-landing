@@ -1,11 +1,11 @@
-import { postsPerPage } from '@/app/layout.config';
+import type { Metadata, ResolvingMetadata } from 'next';
+import { notFound, redirect } from 'next/navigation';
+import { postsPerPage } from '@/app/layout.shared';
 import { PostCard } from '@/components/blog/post-card';
 import { NumberedPagination } from '@/components/numbered-pagination';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { getSortedByDatePosts } from '@/lib/source';
-import type { Metadata, ResolvingMetadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
 
 export const dynamicParams = false;
 
@@ -74,13 +74,13 @@ export default async function Page(props: {
             const date = new Date(post.data.date).toDateString();
             return (
               <PostCard
-                title={post.data.title}
+                title={post.data.title ?? 'Untitled'}
                 description={post.data.description ?? ''}
-                image={post.data.image}
+                image={post.data.image ?? null}
                 url={post.url}
                 date={date}
                 key={post.url}
-                author={post.data.author}
+                author={post.data.author ?? 'Unknown'}
                 tags={post.data.tags}
               />
             );
@@ -107,9 +107,9 @@ type Props = {
 
 export async function generateMetadata(
   props: Props,
-  parent: ResolvingMetadata,
+  _parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const params = await props.params;
+  const _params = await props.params;
   const searchParams = await props.searchParams;
 
   const pageIndex = searchParams.page

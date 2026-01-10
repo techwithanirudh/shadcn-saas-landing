@@ -1,8 +1,7 @@
-import { title as homeTitle } from '@/app/layout.config';
-import { owner } from '@/app/layout.config';
+import type { BlogPosting, BreadcrumbList, Graph } from 'schema-dts';
+import { title as homeTitle, owner } from '@/app/layout.shared';
 import { baseUrl } from '@/lib/constants';
 import type { Post } from '@/lib/source';
-import type { BlogPosting, BreadcrumbList, Graph } from 'schema-dts';
 
 export const PostJsonLd = ({ page }: { page: Post }) => {
   if (!page) {
@@ -68,7 +67,7 @@ export const PostJsonLd = ({ page }: { page: Post }) => {
   return (
     <script
       type='application/ld+json'
-      // biome-ignore lint/security/noDangerouslySetInnerHtml:
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
     />
   );
@@ -107,7 +106,7 @@ export const TagJsonLd = ({ tag }: { tag: string }) => {
   return (
     <script
       type='application/ld+json'
-      // biome-ignore lint/security/noDangerouslySetInnerHtml:
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
     />
   );

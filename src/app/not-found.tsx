@@ -1,9 +1,8 @@
+import { HomeLayout } from 'fumadocs-ui/layouts/home';
+import type { Metadata } from 'next';
 import { Header } from '@/components/sections/header';
 import { createMetadata } from '@/lib/metadata';
-import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { getLinks } from 'fumadocs-ui/layouts/shared';
-import type { Metadata } from 'next';
-import { baseOptions, linkItems } from './layout.config';
+import { baseOptions, linkItems } from './layout.shared';
 
 export default function NotFound() {
   return (
@@ -11,17 +10,12 @@ export default function NotFound() {
       {...baseOptions}
       links={linkItems}
       nav={{
-        component: (
-          <Header
-            finalLinks={getLinks(linkItems, baseOptions.githubUrl)}
-            {...baseOptions}
-          />
-        ),
+        component: <Header links={linkItems} {...baseOptions} />,
       }}
       className='pt-0'
     >
       <main className='flex flex-1'>
-        <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border border-x border-b border-dashed '>
+        <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border border-x border-b border-dashed'>
           <div className='flex flex-auto flex-col items-center justify-center px-4 text-center sm:flex-row'>
             <h1 className='border-border font-extrabold text-2xl text-foreground tracking-tight sm:mr-6 sm:border-r sm:pr-6 sm:text-3xl'>
               404
@@ -39,7 +33,7 @@ export default function NotFound() {
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
-  const params = await props.params;
+  const _params = await props.params;
   const description = 'The page you are looking for could not be found.';
 
   return createMetadata({

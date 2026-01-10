@@ -1,17 +1,17 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import type { Variants } from 'motion/react';
 import { motion, useAnimation } from 'motion/react';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+import { cn } from '@/lib/utils';
 
 export interface UploadIconHandle {
   startAnimation: () => void;
   stopAnimation: () => void;
 }
 
-interface UploadIconProps extends HTMLAttributes<HTMLDivElement> {
+interface UploadIconProps extends HTMLAttributes<HTMLButtonElement> {
   size?: number;
 }
 
@@ -29,7 +29,17 @@ const arrowVariants: Variants = {
 };
 
 const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
-  ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
+  (
+    {
+      onMouseEnter,
+      onMouseLeave,
+      className,
+      size = 28,
+      'aria-label': ariaLabel = 'Upload icon',
+      ...props
+    },
+    ref,
+  ) => {
     const controls = useAnimation();
     const isControlledRef = useRef(false);
 
@@ -43,7 +53,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     });
 
     const handleMouseEnter = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!isControlledRef.current) {
           controls.start('animate');
         } else {
@@ -54,7 +64,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     );
 
     const handleMouseLeave = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!isControlledRef.current) {
           controls.start('normal');
         } else {
@@ -65,7 +75,9 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     );
 
     return (
-      <div
+      <button
+        type='button'
+        aria-label={ariaLabel}
         className={cn(
           'flex cursor-pointer select-none items-center justify-center rounded-md p-2 transition-colors duration-200 hover:bg-accent',
           className,
@@ -74,7 +86,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative icon */}
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width={size}
@@ -92,7 +104,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
             <line x1='12' x2='12' y1='3' y2='15' />
           </motion.g>
         </svg>
-      </div>
+      </button>
     );
   },
 );

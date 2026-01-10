@@ -1,5 +1,4 @@
-import { boolean, text, timestamp } from 'drizzle-orm/pg-core';
-import { pgTableCreator } from 'drizzle-orm/pg-core';
+import { boolean, pgTableCreator, text, timestamp } from 'drizzle-orm/pg-core';
 
 const createTable = pgTableCreator((name) => `blog_${name}`);
 
