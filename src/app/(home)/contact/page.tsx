@@ -1,6 +1,6 @@
+import type { Metadata } from 'next';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
-import type { Metadata } from 'next';
 import CTA from '../_components/cta';
 import { ContactForm } from './components/contact-form';
 

@@ -1,5 +1,5 @@
-import { getPosts } from '@/lib/source';
 import { createSearchAPI } from 'fumadocs-core/search/server';
+import { getPosts } from '@/lib/source';
 
 const emptyStructuredData = {
   headings: [],

@@ -1,26 +1,23 @@
 'use client';
 
+import Autoplay from 'embla-carousel-auto-scroll';
+import { BlurImage } from '@/components/blur-image';
+import { Section } from '@/components/section';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
-
-import ClaudeLight from '@/public/images/logos/light/claude.svg';
-import NeonLight from '@/public/images/logos/light/neon.svg';
-import NextjsLight from '@/public/images/logos/light/nextjs.svg';
-import OpenAILight from '@/public/images/logos/light/openai.svg';
-import VercelLight from '@/public/images/logos/light/vercel.svg';
-
 import ClaudeDark from '@/public/images/logos/dark/claude.svg';
 import NeonDark from '@/public/images/logos/dark/neon.svg';
 import NextjsDark from '@/public/images/logos/dark/nextjs.svg';
 import OpenAIDark from '@/public/images/logos/dark/openai.svg';
 import VercelDark from '@/public/images/logos/dark/vercel.svg';
-
-import { BlurImage } from '@/components/blur-image';
-import { Section } from '@/components/section';
-import Autoplay from 'embla-carousel-auto-scroll';
+import ClaudeLight from '@/public/images/logos/light/claude.svg';
+import NeonLight from '@/public/images/logos/light/neon.svg';
+import NextjsLight from '@/public/images/logos/light/nextjs.svg';
+import OpenAILight from '@/public/images/logos/light/openai.svg';
+import VercelLight from '@/public/images/logos/light/vercel.svg';
 
 const logos = [
   {

@@ -1,8 +1,8 @@
+import type { Metadata } from 'next';
 import { title as homeTitle } from '@/app/layout.config';
 import { InlineLink } from '@/components/inline-link';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
-import type { Metadata } from 'next';
 
 const LAST_UPDATED = 'March 2, 2025';
 

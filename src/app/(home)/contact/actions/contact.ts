@@ -1,9 +1,9 @@
 'use server';
 
+import { Resend } from 'resend';
 import { env } from '@/env';
 import { ActionError, actionClient } from '@/lib/safe-action';
 import { ContactSchema } from '@/lib/validators/contact';
-import { Resend } from 'resend';
 
 const resend = new Resend(env.RESEND_API_KEY as string);
 

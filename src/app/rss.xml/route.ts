@@ -1,8 +1,7 @@
-import { description, title } from '@/app/layout.config';
-import { owner } from '@/app/layout.config';
+import { Feed } from 'feed';
+import { description, owner, title } from '@/app/layout.config';
 import { baseUrl } from '@/lib/constants';
 import { getPosts } from '@/lib/source';
-import { Feed } from 'feed';
 
 export const dynamic = 'force-static';
 

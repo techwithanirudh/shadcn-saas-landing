@@ -1,9 +1,9 @@
+import Link from 'next/link';
 import { PostCard } from '@/components/blog/post-card';
 import { Icons } from '@/components/icons/icons';
 import { Section } from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
 import type { Page } from '@/lib/source';
-import Link from 'next/link';
 
 export default function Posts({ posts }: { posts: Page[] }) {
   return (

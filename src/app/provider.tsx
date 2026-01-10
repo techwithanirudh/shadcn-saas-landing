@@ -1,12 +1,12 @@
 'use client';
 
+import { ProgressProvider } from '@bprogress/next/app';
+import { TooltipProvider } from '@radix-ui/react-tooltip';
+import type { ReactNode } from 'react';
 import Analytics from '@/components/analytics';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Toaster } from '@/components/ui/sonner';
-import { ProgressProvider } from '@bprogress/next/app';
-import { TooltipProvider } from '@radix-ui/react-tooltip';
-import type { ReactNode } from 'react';
 
 export function Provider({
   children,

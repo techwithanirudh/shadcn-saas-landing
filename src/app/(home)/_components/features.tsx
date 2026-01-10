@@ -1,6 +1,5 @@
 'use client';
 
-import { Section } from '@/components/section';
 import { cva } from 'class-variance-authority';
 import {
   BarChart3 as BarChartIcon,
@@ -8,6 +7,7 @@ import {
   Boxes as IntegrationsIcon,
   Users as UsersIcon,
 } from 'lucide-react';
+import { Section } from '@/components/section';
 
 // Create a variant for feature items
 const featureItemVariants = cva(

@@ -1,4 +1,3 @@
-import { baseUrl } from '@/lib/constants';
 import {
   Body,
   Container,
@@ -14,6 +13,7 @@ import {
   Tailwind,
   Text,
 } from '@react-email/components';
+import { baseUrl } from '@/lib/constants';
 
 interface NewsletterWelcomeEmailProps {
   firstName: string;

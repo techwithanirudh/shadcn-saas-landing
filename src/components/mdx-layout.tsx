@@ -1,6 +1,6 @@
-import { PostComments } from '@/app/(home)/(blog)/blog/[slug]/page.client';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import type { ComponentProps, ReactNode } from 'react';
+import { PostComments } from '@/app/(home)/(blog)/blog/[slug]/page.client';
 import { Section } from './section';
 
 interface MdxLayoutProps {

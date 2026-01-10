@@ -1,8 +1,8 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import { useParams } from 'next/navigation';
 import type { ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 
 export function Body({
   children,

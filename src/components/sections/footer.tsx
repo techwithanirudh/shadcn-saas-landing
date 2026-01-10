@@ -1,4 +1,8 @@
 import {
+  type LinkItemType,
+  resolveLinkItems,
+} from 'fumadocs-ui/layouts/shared';
+import {
   baseOptions,
   linkItems,
   owner,
@@ -7,10 +11,6 @@ import {
 import { InlineLink } from '@/components/inline-link';
 import { getSortedByDatePosts, getTags } from '@/lib/source';
 import { cn } from '@/lib/utils';
-import {
-  resolveLinkItems,
-  type LinkItemType,
-} from 'fumadocs-ui/layouts/shared';
 import { ActiveLink } from '../active-link';
 import { UserButton } from '../auth/user-button';
 import { ThemeToggle } from '../theme-toggle';

@@ -1,11 +1,11 @@
 'use server';
 
+import { Resend } from 'resend';
 import { getContact, sendWelcomeEmail, updateContact } from '@/lib/resend';
 import { ActionError, actionClient } from '@/lib/safe-action';
 import { getSortedByDatePosts } from '@/lib/source';
 import { NewsletterSchema } from '@/lib/validators';
 import { getSession } from '@/server/auth';
-import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 const audienceId = process.env.RESEND_AUDIENCE_ID as string;

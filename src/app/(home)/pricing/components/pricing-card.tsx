@@ -2,11 +2,10 @@
 
 import NumberFlow from '@number-flow/react';
 import { ArrowRight, CheckIcon } from 'lucide-react';
-
+import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 import type { PricingTier } from '../data';
 
 interface PricingCardProps {

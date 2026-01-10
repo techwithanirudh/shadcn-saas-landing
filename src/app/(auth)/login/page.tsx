@@ -1,5 +1,6 @@
 'use client';
 
+import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { baseOptions, linkItems } from '@/app/layout.config';
 import { Icons } from '@/components/icons/icons';
 import { Header } from '@/components/sections/header';
@@ -13,7 +14,6 @@ import {
 } from '@/components/ui/card';
 import { signIn } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
-import { HomeLayout } from 'fumadocs-ui/layouts/home';
 
 const Cross = () => (
   <div className='relative h-6 w-6'>

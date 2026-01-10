@@ -1,5 +1,5 @@
-import { Icons } from '@/components/icons/icons';
 import type { BaseLayoutProps, LinkItemType } from 'fumadocs-ui/layouts/shared';
+import { Icons } from '@/components/icons/icons';
 
 export const title = 'SaasCN';
 export const description =

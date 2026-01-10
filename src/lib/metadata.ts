@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { env } from '@/env';
 import { title } from '@/app/layout.config';
+import { env } from '@/env';
 import type { Page } from './source';
 
 export function createMetadata(override: Metadata): Metadata {

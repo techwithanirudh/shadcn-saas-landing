@@ -1,8 +1,8 @@
-import { BlurImage } from '@/components/blur-image';
 import { CalendarIcon, UserIcon } from 'lucide-react';
 import Link from 'next/link';
 import type React from 'react';
 import Balancer from 'react-wrap-balancer';
+import { BlurImage } from '@/components/blur-image';
 
 interface PostCardProps {
   title: string;

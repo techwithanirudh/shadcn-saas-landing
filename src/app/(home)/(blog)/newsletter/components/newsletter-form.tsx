@@ -1,7 +1,11 @@
 'use client';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useAction } from 'next-safe-action/hooks';
-
+import { useForm } from 'react-hook-form';
+import { subscribe } from '@/app/(home)/(blog)/newsletter/actions/newsletter';
+import { Icons } from '@/components/icons/icons';
+import { Alert, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -13,13 +17,6 @@ import {
 import { Input } from '@/components/ui/input';
 import type { Newsletter } from '@/lib/validators';
 import { NewsletterSchema } from '@/lib/validators';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-
-import { Alert, AlertTitle } from '@/components/ui/alert';
-
-import { subscribe } from '@/app/(home)/(blog)/newsletter/actions/newsletter';
-import { Icons } from '@/components/icons/icons';
 
 export const NewsletterForm = () => {
   const form = useForm({

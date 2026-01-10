@@ -1,7 +1,7 @@
-import { Header } from '@/components/sections/header';
-import { createMetadata } from '@/lib/metadata';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import type { Metadata } from 'next';
+import { Header } from '@/components/sections/header';
+import { createMetadata } from '@/lib/metadata';
 import { baseOptions, linkItems } from './layout.config';
 
 export default function NotFound() {

@@ -1,8 +1,7 @@
-import { title as homeTitle } from '@/app/layout.config';
-import { owner } from '@/app/layout.config';
+import type { BlogPosting, BreadcrumbList, Graph } from 'schema-dts';
+import { title as homeTitle, owner } from '@/app/layout.config';
 import { baseUrl } from '@/lib/constants';
 import type { Post } from '@/lib/source';
-import type { BlogPosting, BreadcrumbList, Graph } from 'schema-dts';
 
 export const PostJsonLd = ({ page }: { page: Post }) => {
   if (!page) {

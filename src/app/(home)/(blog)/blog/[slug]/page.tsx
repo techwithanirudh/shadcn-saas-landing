@@ -1,13 +1,3 @@
-import {
-  PostComments,
-  Share,
-} from '@/app/(home)/(blog)/blog/[slug]/page.client';
-import { PostJsonLd } from '@/components/json-ld';
-import { Section } from '@/components/section';
-import { TagCard } from '@/components/tags/tag-card';
-import { createMetadata, getPageImage } from '@/lib/metadata';
-import { type Page as MDXPage, getPost, getPosts } from '@/lib/source';
-import { cn } from '@/lib/utils';
 import { File, Files, Folder } from 'fumadocs-ui/components/files';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
@@ -16,6 +6,16 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
 import { description as homeDescription } from 'src/app/layout.config';
+import {
+  PostComments,
+  Share,
+} from '@/app/(home)/(blog)/blog/[slug]/page.client';
+import { PostJsonLd } from '@/components/json-ld';
+import { Section } from '@/components/section';
+import { TagCard } from '@/components/tags/tag-card';
+import { createMetadata, getPageImage } from '@/lib/metadata';
+import { getPost, getPosts, type Page as MDXPage } from '@/lib/source';
+import { cn } from '@/lib/utils';
 
 function Header(props: { page: MDXPage; tags?: string[] }) {
   const { page, tags } = props;

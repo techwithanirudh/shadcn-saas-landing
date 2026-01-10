@@ -1,13 +1,13 @@
-import { fileURLToPath } from 'node:url'
-import bundleAnalyzer from '@next/bundle-analyzer'
-import { createMDX } from 'fumadocs-mdx/next'
-import type { NextConfig } from 'next'
+import { fileURLToPath } from 'node:url';
+import bundleAnalyzer from '@next/bundle-analyzer';
+import { createMDX } from 'fumadocs-mdx/next';
+import type { NextConfig } from 'next';
 
 async function createNextConfig(): Promise<NextConfig> {
-  const { createJiti } = await import('jiti')
-  const jiti = createJiti(fileURLToPath(import.meta.url))
+  const { createJiti } = await import('jiti');
+  const jiti = createJiti(fileURLToPath(import.meta.url));
 
-  await jiti.import('./src/env')
+  await jiti.import('./src/env');
 
   const nextConfig: NextConfig = {
     reactStrictMode: true,
@@ -44,22 +44,22 @@ async function createNextConfig(): Promise<NextConfig> {
           port: '',
         },
       ],
-    }
-  }
+    },
+  };
 
-  return nextConfig
+  return nextConfig;
 }
 
 const bundleAnalyzerPlugin = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 
-const mdxPlugin = createMDX()
+const mdxPlugin = createMDX();
 
 const NextApp = async () => {
-  const nextConfig = await createNextConfig()
-  const plugins = [bundleAnalyzerPlugin, mdxPlugin]
-  return plugins.reduce((config, plugin) => plugin(config), nextConfig)
-}
+  const nextConfig = await createNextConfig();
+  const plugins = [bundleAnalyzerPlugin, mdxPlugin];
+  return plugins.reduce((config, plugin) => plugin(config), nextConfig);
+};
 
-export default NextApp
+export default NextApp;

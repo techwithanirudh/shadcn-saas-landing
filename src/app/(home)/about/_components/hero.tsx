@@ -1,6 +1,6 @@
-import { Section } from '@/components/section';
 import Image from 'next/image';
 import Balancer from 'react-wrap-balancer';
+import { Section } from '@/components/section';
 
 const Hero = () => (
   <Section className='relative w-full overflow-hidden px-4 py-16 sm:px-16 sm:py-24 md:py-32'>

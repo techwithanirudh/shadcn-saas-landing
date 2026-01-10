@@ -1,8 +1,8 @@
-import { createMetadata } from '@/lib/metadata';
+import { RootProvider } from 'fumadocs-ui/provider/next';
 import type { Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
-import { RootProvider } from 'fumadocs-ui/provider/next';
+import { createMetadata } from '@/lib/metadata';
 import '@/styles/globals.css';
 import 'katex/dist/katex.css';
 import { baseUrl } from '@/lib/constants';

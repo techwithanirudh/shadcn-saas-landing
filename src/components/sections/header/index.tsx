@@ -101,7 +101,7 @@ export const Header = ({
         {searchToggle.enabled !== false &&
           (searchToggle.components?.lg ?? (
             <LargeSearchToggle
-              className='w-full rounded-full ps-2.5 max-w-60'
+              className='w-full max-w-60 rounded-full ps-2.5'
               hideIfDisabled
             />
           ))}
@@ -119,7 +119,7 @@ export const Header = ({
           ))}
         </ul>
       </div>
-      <ul className='ms-auto flex flex-row items-center -me-1.5 lg:hidden'>
+      <ul className='-me-1.5 ms-auto flex flex-row items-center lg:hidden'>
         {searchToggle.enabled !== false &&
           (searchToggle.components?.sm ?? (
             <SearchToggle className='p-2' hideIfDisabled />
@@ -254,8 +254,8 @@ const NavigationMenuLinkItem = ({
             {rest.children ?? (
               <>
                 {banner}
-                <p className='text-base font-medium'>{child.text}</p>
-                <p className='text-sm text-fd-muted-foreground empty:hidden'>
+                <p className='font-medium text-base'>{child.text}</p>
+                <p className='text-fd-muted-foreground text-sm empty:hidden'>
                   {child.description}
                 </p>
               </>
@@ -318,7 +318,7 @@ const MobileNavigationMenuLinkItem = ({
 
     return (
       <div className={cn('mb-4 flex flex-col', props.className)}>
-        <p className='mb-1 text-sm text-fd-muted-foreground'>
+        <p className='mb-1 text-fd-muted-foreground text-sm'>
           {item.url ? (
             <NavigationMenuLink asChild>
               <Link href={item.url} external={item.external}>

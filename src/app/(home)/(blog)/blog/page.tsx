@@ -1,11 +1,11 @@
+import type { Metadata, ResolvingMetadata } from 'next';
+import { notFound, redirect } from 'next/navigation';
 import { postsPerPage } from '@/app/layout.config';
 import { PostCard } from '@/components/blog/post-card';
 import { NumberedPagination } from '@/components/numbered-pagination';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { getSortedByDatePosts } from '@/lib/source';
-import type { Metadata, ResolvingMetadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
 
 export const dynamicParams = false;
 
