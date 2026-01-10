@@ -19,7 +19,7 @@ export function Footer() {
   const links = resolveLinkItems({
     links: linkItems,
     githubUrl: baseOptions.githubUrl,
-  }) as LinkItemType[];
+  });
   const navItems = links.filter((item) =>
     ['nav', 'all'].includes(item.on ?? 'all')
   );

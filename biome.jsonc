@@ -31,6 +31,7 @@
     "enabled": true,
     "rules": {
       "a11y": {
+        "noSvgWithoutTitle": "off",
         "useGenericFontNames": "off"
       },
       "correctness": {

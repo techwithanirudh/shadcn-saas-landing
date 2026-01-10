@@ -4,6 +4,7 @@ import type { Variants } from 'motion/react';
 import { motion, useAnimation } from 'motion/react';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+
 import { cn } from '@/lib/utils';
 
 export interface UploadIconHandle {
@@ -11,11 +12,11 @@ export interface UploadIconHandle {
   stopAnimation: () => void;
 }
 
-interface UploadIconProps extends HTMLAttributes<HTMLButtonElement> {
+interface UploadIconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const arrowVariants: Variants = {
+const ARROW_VARIANTS: Variants = {
   normal: { y: 0 },
   animate: {
     y: -2,
@@ -29,17 +30,7 @@ const arrowVariants: Variants = {
 };
 
 const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
-  (
-    {
-      onMouseEnter,
-      onMouseLeave,
-      className,
-      size = 28,
-      'aria-label': ariaLabel = 'Upload icon',
-      ...props
-    },
-    ref
-  ) => {
+  ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation();
     const isControlledRef = useRef(false);
 
@@ -53,7 +44,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     });
 
     const handleMouseEnter = useCallback(
-      (e: React.MouseEvent<HTMLButtonElement>) => {
+      (e: React.MouseEvent<HTMLDivElement>) => {
         if (isControlledRef.current) {
           onMouseEnter?.(e);
         } else {
@@ -64,7 +55,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     );
 
     const handleMouseLeave = useCallback(
-      (e: React.MouseEvent<HTMLButtonElement>) => {
+      (e: React.MouseEvent<HTMLDivElement>) => {
         if (isControlledRef.current) {
           onMouseLeave?.(e);
         } else {
@@ -75,21 +66,14 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     );
 
     return (
-      <button
-        aria-label={ariaLabel}
-        className={cn(
-          'flex cursor-pointer select-none items-center justify-center rounded-md p-2 transition-colors duration-200 hover:bg-accent',
-          className
-        )}
+      <div
+        className={cn(className)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        type='button'
         {...props}
       >
         <svg
-          aria-hidden='true'
           fill='none'
-          focusable='false'
           height={size}
           stroke='currentColor'
           strokeLinecap='round'
@@ -100,12 +84,12 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
           xmlns='http://www.w3.org/2000/svg'
         >
           <path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4' />
-          <motion.g animate={controls} variants={arrowVariants}>
+          <motion.g animate={controls} variants={ARROW_VARIANTS}>
             <polyline points='17 8 12 3 7 8' />
             <line x1='12' x2='12' y1='3' y2='15' />
           </motion.g>
         </svg>
-      </button>
+      </div>
     );
   }
 );

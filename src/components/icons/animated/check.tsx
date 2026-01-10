@@ -4,6 +4,7 @@ import type { Variants } from 'motion/react';
 import { motion, useAnimation } from 'motion/react';
 import type { HTMLAttributes } from 'react';
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+
 import { cn } from '@/lib/utils';
 
 export interface CheckIconHandle {
@@ -11,11 +12,11 @@ export interface CheckIconHandle {
   stopAnimation: () => void;
 }
 
-interface CheckIconProps extends HTMLAttributes<HTMLButtonElement> {
+interface CheckIconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const pathVariants: Variants = {
+const PATH_VARIANTS: Variants = {
   normal: {
     opacity: 1,
     pathLength: 1,
@@ -37,17 +38,7 @@ const pathVariants: Variants = {
 };
 
 const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
-  (
-    {
-      onMouseEnter,
-      onMouseLeave,
-      className,
-      size = 28,
-      'aria-label': ariaLabel = 'Check icon',
-      ...props
-    },
-    ref
-  ) => {
+  ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation();
     const isControlledRef = useRef(false);
 
@@ -61,7 +52,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
     });
 
     const handleMouseEnter = useCallback(
-      (e: React.MouseEvent<HTMLButtonElement>) => {
+      (e: React.MouseEvent<HTMLDivElement>) => {
         if (isControlledRef.current) {
           onMouseEnter?.(e);
         } else {
@@ -72,7 +63,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
     );
 
     const handleMouseLeave = useCallback(
-      (e: React.MouseEvent<HTMLButtonElement>) => {
+      (e: React.MouseEvent<HTMLDivElement>) => {
         if (isControlledRef.current) {
           onMouseLeave?.(e);
         } else {
@@ -83,21 +74,14 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
     );
 
     return (
-      <button
-        aria-label={ariaLabel}
-        className={cn(
-          'flex cursor-pointer select-none items-center justify-center rounded-md p-2 transition-colors duration-200 hover:bg-accent',
-          className
-        )}
+      <div
+        className={cn(className)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        type='button'
         {...props}
       >
         <svg
-          aria-hidden='true'
           fill='none'
-          focusable='false'
           height={size}
           stroke='currentColor'
           strokeLinecap='round'
@@ -111,10 +95,10 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
             animate={controls}
             d='M4 12 9 17L20 6'
             initial='normal'
-            variants={pathVariants}
+            variants={PATH_VARIANTS}
           />
         </svg>
-      </button>
+      </div>
     );
   }
 );
