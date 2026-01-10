@@ -24,20 +24,6 @@ async function createNextConfig(): Promise<NextConfig> {
     },
     images: {
       qualities: [100, 75, 85, 95],
-    },
-    typescript: {
-      ignoreBuildErrors: true,
-    },
-    serverExternalPackages: [
-      'ts-morph',
-      'typescript',
-      'oxc-transform',
-      'twoslash',
-      'twoslash-protocol',
-      'shiki',
-      '@takumi-rs/image-response',
-    ],
-    images: {
       remotePatterns: [
         {
           protocol: 'https',
@@ -51,6 +37,18 @@ async function createNextConfig(): Promise<NextConfig> {
         },
       ],
     },
+    typescript: {
+      ignoreBuildErrors: true,
+    },
+    serverExternalPackages: [
+      'ts-morph',
+      'typescript',
+      'oxc-transform',
+      'twoslash',
+      'twoslash-protocol',
+      'shiki',
+      '@takumi-rs/image-response',
+    ],
   };
 
   return nextConfig;

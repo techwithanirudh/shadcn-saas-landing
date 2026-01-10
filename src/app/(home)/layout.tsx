@@ -10,7 +10,13 @@ const Layout = ({ children }: { children: ReactNode }) => {
       {...baseOptions}
       links={linkItems}
       nav={{
-        component: <Header links={linkItems} {...baseOptions} />,
+        component: (
+          <Header
+            links={linkItems}
+            {...baseOptions}
+            themeSwitch={{ enabled: false }}
+          />
+        ),
       }}
       className='pt-0'
     >

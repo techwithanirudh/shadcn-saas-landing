@@ -2,6 +2,7 @@
 
 import { ProgressProvider } from '@bprogress/next/app';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
+import { ViewTransition } from 'react';
 import type { ReactNode } from 'react';
 import Analytics from '@/components/analytics';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
@@ -31,7 +32,9 @@ export function Provider({
         startOnLoad
         shallowRouting
       >
-        <TooltipProvider>{children}</TooltipProvider>
+        <TooltipProvider>
+          <ViewTransition>{children}</ViewTransition>
+        </TooltipProvider>
       </ProgressProvider>
       <Analytics />
       <Toaster />
