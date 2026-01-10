@@ -5,7 +5,7 @@ import { TagJsonLd } from '@/components/json-ld';
 import { NumberedPagination } from '@/components/numbered-pagination';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
-import { getPostsByTag, getTags } from '@/lib/source';
+import { type Page as BlogPage, getPostsByTag, getTags } from '@/lib/source';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
@@ -105,7 +105,7 @@ export default async function Page(props: {
       <Header tag={tag} startIndex={startIndex} endIndex={endIndex} />
       <Section className='h-full' sectionClassName='flex flex-1'>
         <div className='grid divide-y divide-dashed divide-border text-left'>
-          {posts.map((post) => {
+          {posts.map((post: BlogPage) => {
             const date = new Date(post.data.date).toDateString();
             return (
               <PostCard
@@ -116,7 +116,6 @@ export default async function Page(props: {
                 date={date}
                 key={post.url}
                 author={post.data.author}
-                tags={post.data.tags}
               />
             );
           })}
@@ -147,7 +146,7 @@ type Props = {
 
 export async function generateMetadata(
   props: Props,
-  parent: ResolvingMetadata,
+  _parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const params = await props.params;
   const searchParams = await props.searchParams;

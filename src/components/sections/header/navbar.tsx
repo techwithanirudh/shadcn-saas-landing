@@ -1,7 +1,7 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import Link, { type LinkProps } from 'fumadocs-core/link';
-import { cn } from 'fumadocs-ui/components/api';
 import {
   NavigationMenu,
   NavigationMenuLink,

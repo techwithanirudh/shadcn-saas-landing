@@ -3,7 +3,7 @@ import { PostCard } from '@/components/blog/post-card';
 import { NumberedPagination } from '@/components/numbered-pagination';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
-import { getSortedByDatePosts } from '@/lib/source';
+import { type Page as BlogPage, getSortedByDatePosts } from '@/lib/source';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
@@ -70,7 +70,7 @@ export default async function Page(props: {
       </Section>
       <Section className='h-full' sectionClassName='flex flex-1'>
         <div className='grid divide-y divide-dashed divide-border text-left'>
-          {posts.map((post) => {
+          {posts.map((post: BlogPage) => {
             const date = new Date(post.data.date).toDateString();
             return (
               <PostCard
@@ -81,7 +81,6 @@ export default async function Page(props: {
                 date={date}
                 key={post.url}
                 author={post.data.author}
-                tags={post.data.tags}
               />
             );
           })}
@@ -107,9 +106,9 @@ type Props = {
 
 export async function generateMetadata(
   props: Props,
-  parent: ResolvingMetadata,
+  _parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const params = await props.params;
+  const _params = await props.params;
   const searchParams = await props.searchParams;
 
   const pageIndex = searchParams.page

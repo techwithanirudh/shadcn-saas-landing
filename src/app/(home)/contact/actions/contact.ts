@@ -11,7 +11,7 @@ export const contact = actionClient
   .schema(ContactSchema)
   .action(async ({ parsedInput: { name, email, message } }) => {
     try {
-      const { data, error } = await resend.emails.send({
+      const { error } = await resend.emails.send({
         from: env.EMAIL_FROM,
         to: env.EMAIL_FROM,
         subject: `New contact form submission from ${name}`,

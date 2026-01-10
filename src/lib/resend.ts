@@ -44,7 +44,9 @@ export async function getContact({
     );
   }
 
-  const contact = contacts.data.find((contact) => contact.email === email);
+  const contact = contacts.data.find(
+    (contact: (typeof contacts.data)[number]) => contact.email === email,
+  );
   return contact || null;
 }
 
@@ -61,13 +63,15 @@ export async function sendWelcomeEmail({
   if (!EMAIL_FROM) throw new Error('Missing EMAIL_FROM environment variable');
   if (!firstName || !to) throw new Error('Missing required email fields');
 
-  const formattedPosts = posts.map((post) => ({
-    ...post.data,
-    image: `${baseUrl}${post.data.image}`,
-    url: `${baseUrl}${post.url}`,
-  }));
+  const formattedPosts = posts.map(
+    (post: ReturnType<typeof getPosts>[number]) => ({
+      ...post.data,
+      image: `${baseUrl}${post.data.image}`,
+      url: `${baseUrl}${post.url}`,
+    }),
+  );
 
-  const { data: res, error } = await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: EMAIL_FROM,
     to,
     subject: 'Welcome to my newsletter!',

@@ -32,7 +32,7 @@ export default function NewsletterPage(): React.ReactElement {
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
-  const params = await props.params;
+  const _params = await props.params;
   const description = `News and updates from ${homeTitle}. Stay informed with the latest articles, features, and insights.`;
 
   return createMetadata({

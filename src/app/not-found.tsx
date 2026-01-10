@@ -1,7 +1,7 @@
 import { Header } from '@/components/sections/header';
 import { createMetadata } from '@/lib/metadata';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { getLinks } from 'fumadocs-ui/layouts/shared';
+import { resolveLinkItems } from 'fumadocs-ui/layouts/shared';
 import type { Metadata } from 'next';
 import { baseOptions, linkItems } from './layout.config';
 
@@ -13,7 +13,10 @@ export default function NotFound() {
       nav={{
         component: (
           <Header
-            finalLinks={getLinks(linkItems, baseOptions.githubUrl)}
+            finalLinks={resolveLinkItems({
+              links: linkItems,
+              githubUrl: baseOptions.githubUrl,
+            })}
             {...baseOptions}
           />
         ),
@@ -39,7 +42,7 @@ export default function NotFound() {
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
-  const params = await props.params;
+  const _params = await props.params;
   const description = 'The page you are looking for could not be found.';
 
   return createMetadata({

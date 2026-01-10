@@ -3,124 +3,87 @@
 import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
 import { Airplay, Moon, Sun } from 'lucide-react';
-import { motion } from 'motion/react';
 import { useTheme } from 'next-themes';
-import { type HTMLAttributes, useLayoutEffect, useState } from 'react';
-
-const themes = [
-  {
-    key: 'light',
-    icon: Sun,
-    label: 'Light theme',
-  },
-  {
-    key: 'dark',
-    icon: Moon,
-    label: 'Dark theme',
-  },
-  {
-    key: 'system',
-    icon: Airplay,
-    label: 'System theme',
-  },
-];
+import { type HTMLAttributes, useEffect, useState } from 'react';
 
 const itemVariants = cva(
-  'relative size-6.5 rounded-full p-1.5 text-fd-muted-foreground',
+  'size-6.5 rounded-full p-1.5 text-fd-muted-foreground',
   {
     variants: {
       active: {
-        true: 'text-fd-accent-foreground',
+        true: 'bg-fd-accent text-fd-accent-foreground',
         false: 'text-fd-muted-foreground',
       },
     },
   },
 );
 
-type Theme = 'light' | 'dark' | 'system';
+const full = [
+  ['light', Sun] as const,
+  ['dark', Moon] as const,
+  ['system', Airplay] as const,
+];
 
-export function ThemeToggle({
+export const ThemeToggle = ({
   className,
   mode = 'light-dark',
   ...props
 }: HTMLAttributes<HTMLDivElement> & {
   mode?: 'light-dark' | 'light-dark-system';
-}) {
-  const { setTheme, theme: currentTheme, resolvedTheme } = useTheme();
+}) => {
+  const { setTheme, theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  const container = cn(
-    'relative flex items-center rounded-full p-1 ring-1 ring-border',
-    className,
-  );
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     setMounted(true);
   }, []);
 
-  const handleChangeTheme = async (theme: Theme) => {
-    function update() {
-      setTheme(theme);
-    }
+  const container = cn(
+    'inline-flex items-center rounded-full border p-1',
+    className,
+  );
 
-    if (document.startViewTransition && theme !== resolvedTheme) {
-      document.documentElement.style.viewTransitionName = 'theme-transition';
-      await document.startViewTransition(update).finished;
-      document.documentElement.style.viewTransitionName = '';
-    } else {
-      update();
-    }
-  };
+  if (mode === 'light-dark') {
+    const value = mounted ? resolvedTheme : null;
 
-  const value = mounted
-    ? mode === 'light-dark'
-      ? resolvedTheme
-      : currentTheme
-    : null;
+    return (
+      <button
+        type='button'
+        className={container}
+        aria-label='Toggle Theme'
+        onClick={() => setTheme(value === 'light' ? 'dark' : 'light')}
+        data-theme-toggle=''
+      >
+        {full.map(([key, Icon]) => {
+          if (key === 'system') return null;
+
+          return (
+            <Icon
+              key={key}
+              fill='currentColor'
+              className={cn(itemVariants({ active: value === key }))}
+            />
+          );
+        })}
+      </button>
+    );
+  }
+
+  const value = mounted ? theme : null;
 
   return (
-    <div
-      className={container}
-      onClick={() => {
-        if (mode !== 'light-dark') return;
-        handleChangeTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
-      }}
-      data-theme-toggle=''
-      aria-label={mode === 'light-dark' ? 'Toggle Theme' : undefined}
-      {...props}
-    >
-      {themes.map(({ key, icon: Icon, label }) => {
-        const isActive = value === key;
-        if (mode === 'light-dark' && key === 'system') return;
-
-        return (
-          <button
-            type='button'
-            key={key}
-            className={itemVariants({ active: isActive })}
-            onClick={() => {
-              if (mode === 'light-dark') return;
-              handleChangeTheme(key as Theme);
-            }}
-            aria-label={label}
-          >
-            {isActive && (
-              <motion.div
-                layoutId='activeTheme'
-                className='absolute inset-0 rounded-full bg-accent'
-                transition={{
-                  type: 'spring',
-                  duration: 1.5,
-                }}
-              />
-            )}
-            <Icon
-              className={'relative m-auto size-full'}
-              fill={'currentColor'}
-            />
-          </button>
-        );
-      })}
+    <div className={container} data-theme-toggle='' {...props}>
+      {full.map(([key, Icon]) => (
+        <button
+          type='button'
+          key={key}
+          aria-label={key}
+          className={cn(itemVariants({ active: value === key }))}
+          onClick={() => setTheme(key)}
+        >
+          <Icon className='size-full' fill='currentColor' />
+        </button>
+      ))}
     </div>
   );
-}
+};

@@ -14,7 +14,7 @@ import {
 import { signIn } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { getLinks } from 'fumadocs-ui/layouts/shared';
+import { resolveLinkItems } from 'fumadocs-ui/layouts/shared';
 
 const Cross = () => (
   <div className='relative h-6 w-6'>
@@ -88,7 +88,10 @@ export default function LoginPage() {
       nav={{
         component: (
           <Header
-            finalLinks={getLinks(linkItems, baseOptions.githubUrl)}
+            finalLinks={resolveLinkItems({
+              links: linkItems,
+              githubUrl: baseOptions.githubUrl,
+            })}
             {...baseOptions}
           />
         ),

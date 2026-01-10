@@ -31,10 +31,7 @@ interface NewsletterWelcomeEmailProps {
 function PostCard({
   title,
   description,
-  date,
-  tags,
   image,
-  author,
   url,
 }: NewsletterWelcomeEmailProps['posts'][0]) {
   return (

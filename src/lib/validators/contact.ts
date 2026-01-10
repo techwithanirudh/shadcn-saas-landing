@@ -10,8 +10,9 @@ export const ContactSchema = z.object({
       message: 'Name must not be longer than 30 characters.',
     }),
   email: z
-    .string({
-      required_error: 'Please enter a valid email.',
+    .string()
+    .min(1, {
+      message: 'Please enter a valid email.',
     })
     .email(),
   message: z

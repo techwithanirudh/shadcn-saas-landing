@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import fg from 'fast-glob';
-import { getTableOfContents } from 'fumadocs-core/server';
-import { createGetUrl, getSlugs, parseFilePath } from 'fumadocs-core/source';
+import { getTableOfContents } from 'fumadocs-core/content/toc';
+import { createGetUrl } from 'fumadocs-core/source';
 import { remarkInclude } from 'fumadocs-mdx/config';
 import matter from 'gray-matter';
 import { printErrors, scanURLs, validateFiles } from 'next-validate-link';
@@ -21,16 +21,28 @@ async function readFromPath(file: string) {
   };
 }
 
+function toSlugs(relativePath: string) {
+  const normalized = relativePath.split(path.sep).join('/');
+  const withoutExtension = normalized.replace(/\.mdx?$/, '');
+  const segments = withoutExtension.split('/').filter(Boolean);
+
+  if (segments[segments.length - 1] === 'index') {
+    segments.pop();
+  }
+
+  return segments;
+}
+
 async function checkLinks() {
   const blogFiles = await Promise.all(
     await fg('content/**/*.mdx').then((files) => files.map(readFromPath)),
   );
 
   const blogs = blogFiles.map(async (file) => {
-    const info = parseFilePath(path.relative('content', file.path));
+    const slugs = toSlugs(path.relative('content', file.path));
 
     return {
-      value: getSlugs(info)[0],
+      value: slugs[0],
       hashes: (
         await getTableOfContents(
           {
@@ -59,8 +71,8 @@ async function checkLinks() {
       scanned,
 
       pathToUrl(value) {
-        const info = parseFilePath(path.relative('content', value));
-        return getUrl(getSlugs(info));
+        const slugs = toSlugs(path.relative('content', value));
+        return getUrl(slugs);
       },
     }),
     true,

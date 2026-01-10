@@ -11,7 +11,6 @@ interface PostCardProps {
   url: string;
   date: string;
   author: string;
-  tags?: string[];
 }
 
 export const PostCard: React.FC<PostCardProps> = ({
@@ -21,7 +20,6 @@ export const PostCard: React.FC<PostCardProps> = ({
   url,
   date,
   author,
-  tags,
 }) => {
   return (
     <Link

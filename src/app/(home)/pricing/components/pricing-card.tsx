@@ -17,7 +17,6 @@ interface PricingCardProps {
 export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
   const price = tier.price[paymentFrequency];
   const isPopular = tier.popular;
-  const isHighlighted = tier.highlighted;
 
   return (
     <div
@@ -66,7 +65,7 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
       </div>
       <div className='flex-1 space-y-2 px-6'>
         <ul className='space-y-2'>
-          {tier.features.map((feature, index) => (
+          {tier.features.map((feature) => (
             <li
               key={feature}
               className={cn('flex items-center gap-2 text-base')}

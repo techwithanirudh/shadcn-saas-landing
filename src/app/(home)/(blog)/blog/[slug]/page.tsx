@@ -6,7 +6,7 @@ import { PostJsonLd } from '@/components/json-ld';
 import { Section } from '@/components/section';
 import { TagCard } from '@/components/tags/tag-card';
 import { createMetadata } from '@/lib/metadata';
-import { metadataImage } from '@/lib/metadata-image';
+import { getOgImageUrl } from '@/lib/metadata-image';
 import { type Page as MDXPage, getPost, getPosts } from '@/lib/source';
 import { cn } from '@/lib/utils';
 import { File, Files, Folder } from 'fumadocs-ui/components/files';
@@ -95,9 +95,7 @@ export default async function Page(props: {
               <p className='mb-1 text-fd-muted-foreground text-sm'>
                 Created At
               </p>
-              <p className='font-medium'>
-                {new Date(page.data.date ?? page.file.name).toDateString()}
-              </p>
+              <p className='font-medium'>{page.data.date.toDateString()}</p>
             </div>
             {lastUpdate && (
               <div>
@@ -127,22 +125,26 @@ export async function generateMetadata(props: {
   const title = page.data.title;
   const description = page.data.description ?? homeDescription;
 
-  return createMetadata(
-    metadataImage.withImage(page.slugs, {
-      title,
-      description,
-      openGraph: {
-        url: `/blog/${page.slugs.join('/')}`,
-      },
-      alternates: {
-        canonical: page.url,
-      },
-    }),
-  );
+  const ogImage = getOgImageUrl(page.slugs);
+
+  return createMetadata({
+    title,
+    description,
+    openGraph: {
+      url: `/blog/${page.slugs.join('/')}`,
+      images: [ogImage],
+    },
+    twitter: {
+      images: [ogImage],
+    },
+    alternates: {
+      canonical: page.url,
+    },
+  });
 }
 
 export function generateStaticParams(): { slug: string | undefined }[] {
-  return getPosts().map((page) => ({
+  return getPosts().map((page: MDXPage) => ({
     slug: page.slugs[0],
   }));
 }

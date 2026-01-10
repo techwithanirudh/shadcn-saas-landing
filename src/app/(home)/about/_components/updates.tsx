@@ -36,7 +36,6 @@ const Updates = ({ posts }: { posts: Page[] }) => {
                     url={post.url}
                     date={date}
                     author={post.data.author}
-                    tags={post.data.tags}
                   />
                 </CarouselItem>
               );

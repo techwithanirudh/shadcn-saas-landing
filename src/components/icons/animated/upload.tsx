@@ -11,7 +11,7 @@ export interface UploadIconHandle {
   stopAnimation: () => void;
 }
 
-interface UploadIconProps extends HTMLAttributes<HTMLDivElement> {
+interface UploadIconProps extends HTMLAttributes<HTMLButtonElement> {
   size?: number;
 }
 
@@ -43,7 +43,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     });
 
     const handleMouseEnter = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!isControlledRef.current) {
           controls.start('animate');
         } else {
@@ -54,7 +54,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     );
 
     const handleMouseLeave = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!isControlledRef.current) {
           controls.start('normal');
         } else {
@@ -65,16 +65,18 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     );
 
     return (
-      <div
+      <button
+        type='button'
         className={cn(
           'flex cursor-pointer select-none items-center justify-center rounded-md p-2 transition-colors duration-200 hover:bg-accent',
           className,
         )}
+        aria-label='Upload icon'
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative icon */}
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width={size}
@@ -92,7 +94,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
             <line x1='12' x2='12' y1='3' y2='15' />
           </motion.g>
         </svg>
-      </div>
+      </button>
     );
   },
 );

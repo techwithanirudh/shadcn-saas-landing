@@ -1,5 +1,5 @@
 import { PostComments } from '@/app/(home)/(blog)/blog/[slug]/page.client';
-import type { TOCItemType } from 'fumadocs-core/server';
+import type { TOCItemType } from 'fumadocs-core/toc';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import type { ReactNode } from 'react';
 import { Section } from './section';

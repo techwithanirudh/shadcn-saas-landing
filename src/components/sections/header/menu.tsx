@@ -1,8 +1,8 @@
 'use client';
 
 import { cva } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
 import Link from 'fumadocs-core/link';
-import { cn } from 'fumadocs-ui/components/api';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import {
   NavigationMenuContent,
@@ -10,7 +10,7 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from 'fumadocs-ui/components/ui/navigation-menu';
-import { BaseLinkItem, type LinkItemType } from 'fumadocs-ui/layouts/links';
+import type { LinkItemType } from 'fumadocs-ui/layouts/shared';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const menuItemVariants = cva('', {
@@ -61,8 +61,8 @@ export const MenuLinkItem = ({
             header
           )}
         </p>
-        {item.items.map((child, i) => (
-          <MenuLinkItem key={i.toString()} item={child} />
+        {item.items.map((child: LinkItemType, index: number) => (
+          <MenuLinkItem key={index.toString()} item={child} />
         ))}
       </div>
     );
@@ -70,8 +70,9 @@ export const MenuLinkItem = ({
 
   return (
     <NavigationMenuLink asChild>
-      <BaseLinkItem
-        item={item}
+      <Link
+        href={item.url}
+        external={item.external}
         className={cn(
           menuItemVariants({ variant: item.type }),
           props.className,
@@ -80,7 +81,7 @@ export const MenuLinkItem = ({
       >
         {item.icon}
         {item.type === 'icon' ? undefined : item.text}
-      </BaseLinkItem>
+      </Link>
     </NavigationMenuLink>
   );
 };

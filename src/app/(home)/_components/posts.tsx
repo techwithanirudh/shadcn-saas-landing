@@ -20,7 +20,6 @@ export default function Posts({ posts }: { posts: Page[] }) {
               date={date}
               key={post.url}
               author={post.data.author}
-              tags={post.data.tags}
             />
           );
         })}
