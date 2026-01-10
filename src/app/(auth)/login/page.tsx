@@ -17,7 +17,7 @@ import { cn } from '@/lib/utils';
 
 const Cross = () => (
   <div className='relative h-6 w-6'>
-    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background'>
+    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
       <Icons.add className='text-border/70 dark:text-border' size={20} />
     </div>
   </div>
