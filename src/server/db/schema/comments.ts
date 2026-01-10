@@ -39,5 +39,5 @@ export const rates = createTable(
   (table) => [
     primaryKey({ columns: [table.userId, table.commentId] }),
     index('comment_idx').on(table.commentId),
-  ],
+  ]
 );

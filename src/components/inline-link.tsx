@@ -15,11 +15,11 @@ export const InlineLink = ({
 }) => {
   return (
     <Link
-      href={href}
       className={cn(
         'text-fd-primary underline duration-300 hover:text-fd-primary/70',
-        className,
+        className
       )}
+      href={href}
       target={blank ? '_blank' : undefined}
     >
       {children}

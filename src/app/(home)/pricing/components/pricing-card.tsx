@@ -23,18 +23,18 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
       className={cn(
         'relative flex flex-col gap-8 overflow-hidden py-6',
         'bg-card text-foreground',
-        'min-h-[600px]',
+        'min-h-[600px]'
       )}
     >
       <div
         className={cn(
-          'flex flex-col gap-4 border-border border-b border-dashed px-6 pb-6',
+          'flex flex-col gap-4 border-border border-b border-dashed px-6 pb-6'
         )}
       >
         <h2 className='flex items-center gap-3 font-medium text-xl capitalize'>
           {tier.name}
           {isPopular && (
-            <Badge variant='secondary' className='z-10 mt-1'>
+            <Badge className='z-10 mt-1' variant='secondary'>
               🔥 Most Popular
             </Badge>
           )}
@@ -44,13 +44,13 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
           {typeof price === 'number' ? (
             <>
               <NumberFlow
+                className='font-medium text-4xl'
                 format={{
                   style: 'currency',
                   currency: 'USD',
                   trailingZeroDisplay: 'stripIfInteger',
                 }}
                 value={price}
-                className='font-medium text-4xl'
               />
               <p className='-mt-2 text-muted-foreground text-xs'>
                 {paymentFrequency} per user
@@ -67,8 +67,8 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
         <ul className='space-y-2'>
           {tier.features.map((feature, _index) => (
             <li
-              key={feature}
               className={cn('flex items-center gap-2 text-base')}
+              key={feature}
             >
               <div className='inline-flex size-5 items-center justify-center rounded-full border border-border bg-primary p-1 transition-transform hover:scale-125'>
                 <CheckIcon className='size-3 text-background' strokeWidth='4' />
@@ -85,12 +85,12 @@ export function PricingCard({ tier, paymentFrequency }: PricingCardProps) {
             buttonVariants({
               variant: isPopular ? 'default' : 'secondary',
             }),
-            'group w-full',
+            'group w-full'
           )}
           href={tier.cta.href}
         >
           {tier.cta.label}
-          <ArrowRight className='group-hover:-rotate-45 ml-2 h-4 w-4 transition-transform' />
+          <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:-rotate-45' />
         </Link>
       </div>
     </div>

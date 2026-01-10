@@ -20,13 +20,13 @@ export default function Page() {
         <div className='grid grid-cols-1 divide-y divide-dashed divide-border sm:grid-cols-2 lg:grid-cols-4'>
           {tags.map((tag, index) => (
             <TagCard
-              key={tag}
-              displayCount={true}
-              name={tag}
               className={cn(
                 'items-center justify-start gap-2 rounded-none border-r-0 bg-card/50 p-6 last:border-border last:border-b last:border-dashed hover:bg-card/80',
-                tags.at(index - 1) && 'border-l',
+                tags.at(index - 1) && 'border-l'
               )}
+              displayCount={true}
+              key={tag}
+              name={tag}
             />
           ))}
           {tags.length % 2 === 1 && (

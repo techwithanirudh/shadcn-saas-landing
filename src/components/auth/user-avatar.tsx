@@ -28,8 +28,8 @@ export function UserAvatar({
 
   return (
     <Avatar
-      key={src}
       className={cn('rounded-md', className, classNames?.base)}
+      key={src}
       {...props}
     >
       <AvatarImage
@@ -41,7 +41,7 @@ export function UserAvatar({
       <AvatarFallback
         className={cn(
           'rounded-md bg-transparent uppercase',
-          classNames?.fallback,
+          classNames?.fallback
         )}
         delayMs={src ? 200 : 0}
       >

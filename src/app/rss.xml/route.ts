@@ -48,7 +48,7 @@ function createFeed(): Feed {
         title: post.data.title,
         type: 'image/png',
         url: escapeForXML(
-          new URL(`/og/${post.slugs.join('/')}/image.png`, baseUrl.href).href,
+          new URL(`/og/${post.slugs.join('/')}/image.png`, baseUrl.href).href
         ),
       },
       date: post.data.date,

@@ -21,7 +21,9 @@ const CurrentPostsCount = ({
 }) => {
   const start = startIndex + 1;
   const end = endIndex < totalPosts ? endIndex : totalPosts;
-  if (start === end) return <span>({start})</span>;
+  if (start === end) {
+    return <span>({start})</span>;
+  }
   return (
     <span>
       ({start}-{end})
@@ -39,9 +41,9 @@ const Pagination = ({ pageIndex }: { pageIndex: number }) => {
     <Section className='bg-dashed'>
       <NumberedPagination
         currentPage={pageIndex + 1}
-        totalPages={pageCount}
-        paginationItemsToDisplay={5}
         onPageChange={handlePageChange}
+        paginationItemsToDisplay={5}
+        totalPages={pageCount}
       />
     </Section>
   );
@@ -54,7 +56,9 @@ export default async function Page(props: {
   const pageIndex = searchParams.page
     ? Number.parseInt(searchParams.page[0] ?? '', 10) - 1
     : 0;
-  if (pageIndex < 0 || pageIndex >= pageCount) notFound();
+  if (pageIndex < 0 || pageIndex >= pageCount) {
+    notFound();
+  }
 
   const startIndex = pageIndex * postsPerPage;
   const endIndex = startIndex + postsPerPage;
@@ -65,7 +69,7 @@ export default async function Page(props: {
       <Section className='p-4 lg:p-6'>
         <h1 className='font-normal text-3xl leading-tight tracking-tighter md:text-5xl'>
           All {totalPosts} Posts{' '}
-          <CurrentPostsCount startIndex={startIndex} endIndex={endIndex} />
+          <CurrentPostsCount endIndex={endIndex} startIndex={startIndex} />
         </h1>
       </Section>
       <Section className='h-full' sectionClassName='flex flex-1'>
@@ -74,14 +78,14 @@ export default async function Page(props: {
             const date = new Date(post.data.date).toDateString();
             return (
               <PostCard
-                title={post.data.title ?? 'Untitled'}
+                author={post.data.author ?? 'Unknown'}
+                date={date}
                 description={post.data.description ?? ''}
                 image={post.data.image ?? null}
-                url={post.url}
-                date={date}
                 key={post.url}
-                author={post.data.author ?? 'Unknown'}
                 tags={post.data.tags}
+                title={post.data.title ?? 'Untitled'}
+                url={post.url}
               />
             );
           })}
@@ -100,14 +104,14 @@ export const generateStaticParams = () => {
   return [{ slug: [] }, ...slugs];
 };
 
-type Props = {
+interface Props {
   params: Promise<{ slug: string[] }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
+}
 
 export async function generateMetadata(
   props: Props,
-  _parent: ResolvingMetadata,
+  _parent: ResolvingMetadata
 ): Promise<Metadata> {
   const _params = await props.params;
   const searchParams = await props.searchParams;
@@ -122,7 +126,7 @@ export async function generateMetadata(
 
   return createMetadata({
     title: pageTitle,
-    description: `Posts${!isFirstPage ? ` - Page ${pageIndex}` : ''}`,
+    description: `Posts${isFirstPage ? '' : ` - Page ${pageIndex}`}`,
     openGraph: {
       url: canonicalUrl,
     },

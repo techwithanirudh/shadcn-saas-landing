@@ -30,7 +30,7 @@ async function readFromPath(file: string) {
 
 async function checkLinks() {
   const blogFiles = await Promise.all(
-    await fg('content/**/*.mdx').then((files) => files.map(readFromPath)),
+    await fg('content/**/*.mdx').then((files) => files.map(readFromPath))
   );
 
   const scanned = await scanURLs({
@@ -43,7 +43,7 @@ async function checkLinks() {
   });
 
   console.log(
-    `collected ${scanned.urls.size} URLs, ${scanned.fallbackUrls.length} fallbacks`,
+    `collected ${scanned.urls.size} URLs, ${scanned.fallbackUrls.length} fallbacks`
   );
 
   const files: FileObject[] = blogFiles.map((file) => ({
@@ -57,7 +57,7 @@ async function checkLinks() {
     await validateFiles(files, {
       scanned,
     }),
-    true,
+    true
   );
 }
 

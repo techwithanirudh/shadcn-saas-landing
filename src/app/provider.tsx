@@ -2,8 +2,8 @@
 
 import { ProgressProvider } from '@bprogress/next/app';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
-import { ViewTransition } from 'react';
 import type { ReactNode } from 'react';
+import { ViewTransition } from 'react';
 import Analytics from '@/components/analytics';
 import { TailwindIndicator } from '@/components/tailwind-indicator';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -18,19 +18,19 @@ export function Provider({
     <ThemeProvider
       attribute='class'
       defaultTheme='system'
-      enableSystem
       disableTransitionOnChange
+      enableSystem
     >
       <ProgressProvider
-        height='2px'
         color='var(--color-primary)'
+        delay={1000}
+        height='2px'
         options={{
           showSpinner: false,
         }}
-        stopDelay={1000}
-        delay={1000}
-        startOnLoad
         shallowRouting
+        startOnLoad
+        stopDelay={1000}
       >
         <TooltipProvider>
           <ViewTransition>{children}</ViewTransition>

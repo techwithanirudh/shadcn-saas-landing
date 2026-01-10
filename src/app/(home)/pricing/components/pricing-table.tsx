@@ -3,7 +3,7 @@
 import NumberFlow from '@number-flow/react';
 import { ArrowRight, CheckIcon, HelpCircleIcon, MinusIcon } from 'lucide-react';
 import Link from 'next/link';
-import { Fragment } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import { Section } from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
 import {
@@ -39,12 +39,12 @@ export const PricingTable = ({
 
               return (
                 <TableHead
-                  key={plan.name}
                   className={cn(
                     'min-w-[200px] p-6 text-center',
                     index % 2 === 1 &&
-                      'border-border border-x border-b border-dashed bg-card',
+                      'border-border border-x border-b border-dashed bg-card'
                   )}
+                  key={plan.name}
                 >
                   <div className='flex flex-col items-center gap-2 p-2'>
                     <h3 className='font-semibold text-lg'>{plan.name}</h3>
@@ -57,13 +57,13 @@ export const PricingTable = ({
                         <div className='flex items-center justify-center gap-1'>
                           <div className='flex items-baseline'>
                             <NumberFlow
+                              className='font-semibold text-xs'
                               format={{
                                 style: 'currency',
                                 currency: 'USD',
                                 trailingZeroDisplay: 'stripIfInteger',
                               }}
                               value={price}
-                              className='font-semibold text-xs'
                             />
                           </div>
                           <p className='text-muted-foreground text-xs'>
@@ -81,12 +81,12 @@ export const PricingTable = ({
                           variant: plan?.popular ? 'default' : 'secondary',
                           size: 'sm',
                         }),
-                        'group mt-2',
+                        'group mt-2'
                       )}
                       href={plan.cta.href}
                     >
                       {plan.cta.label}
-                      <ArrowRight className='group-hover:-rotate-45 ml-2 h-4 w-4 transition-transform' />
+                      <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:-rotate-45' />
                     </Link>
                   </div>
                 </TableHead>
@@ -100,8 +100,8 @@ export const PricingTable = ({
             <Fragment key={group.name}>
               <TableRow className='bg-card'>
                 <TableCell
-                  colSpan={plans.length + 1}
                   className='p-4 font-medium'
+                  colSpan={plans.length + 1}
                 >
                   {group.name}
                 </TableCell>
@@ -125,26 +125,32 @@ export const PricingTable = ({
                     </TooltipProvider>
                   </TableCell>
 
-                  {feature.plans.map((value, index) => (
-                    <TableCell
-                      key={`${String(value)}_${index}`}
-                      className={cn(
-                        'text-center',
-                        index % 2 === 1 &&
-                          'border-border border-x border-t border-dashed bg-card',
-                      )}
-                    >
-                      {typeof value === 'boolean' ? (
-                        value ? (
-                          <CheckIcon className='mx-auto h-5 w-5 text-success' />
-                        ) : (
-                          <MinusIcon className='mx-auto h-5 w-5 text-muted-foreground' />
-                        )
+                  {feature.plans.map((value, index) => {
+                    let cellContent: ReactNode;
+
+                    if (typeof value === 'boolean') {
+                      cellContent = value ? (
+                        <CheckIcon className='mx-auto h-5 w-5 text-success' />
                       ) : (
-                        <span>{value}</span>
-                      )}
-                    </TableCell>
-                  ))}
+                        <MinusIcon className='mx-auto h-5 w-5 text-muted-foreground' />
+                      );
+                    } else {
+                      cellContent = <span>{value}</span>;
+                    }
+
+                    return (
+                      <TableCell
+                        className={cn(
+                          'text-center',
+                          index % 2 === 1 &&
+                            'border-border border-x border-t border-dashed bg-card'
+                        )}
+                        key={`${String(value)}_${index}`}
+                      >
+                        {cellContent}
+                      </TableCell>
+                    );
+                  })}
                 </TableRow>
               ))}
             </Fragment>

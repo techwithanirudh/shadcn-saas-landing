@@ -83,8 +83,8 @@ const Testimonials = () => {
         </div>
 
         <Carousel
-          setApi={setApi}
           className='w-full border-border border-t border-dashed'
+          setApi={setApi}
         >
           <CarouselContent className='ml-0 divide-x divide-dashed divide-border'>
             {testimonials.map((item, index) => (

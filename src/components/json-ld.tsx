@@ -66,9 +66,9 @@ export const PostJsonLd = ({ page }: { page: Post }) => {
 
   return (
     <script
-      type='application/ld+json'
       // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+      type='application/ld+json'
     />
   );
 };
@@ -105,9 +105,9 @@ export const TagJsonLd = ({ tag }: { tag: string }) => {
 
   return (
     <script
-      type='application/ld+json'
       // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+      type='application/ld+json'
     />
   );
 };

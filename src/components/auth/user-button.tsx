@@ -45,15 +45,15 @@ export function UserButton({ className, classNames }: UserButtonProps) {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className={cn('rounded-md bg-transparent')} asChild>
+      <DropdownMenuTrigger asChild className={cn('rounded-md bg-transparent')}>
         <Button
-          variant='ghost'
           className={cn(
             'size-auto rounded-md border-none bg-transparent p-0 hover:bg-accent dark:hover:bg-accent',
             'bg-secondary hover:bg-secondary/80',
-            classNames?.trigger?.base,
+            classNames?.trigger?.base
           )}
           disabled={isPending}
+          variant='ghost'
         >
           {isPending ? (
             <Skeleton
@@ -62,7 +62,7 @@ export function UserButton({ className, classNames }: UserButtonProps) {
                 className,
                 classNames?.base,
                 classNames?.skeleton,
-                classNames?.trigger?.skeleton,
+                classNames?.trigger?.skeleton
               )}
             />
           ) : (
@@ -76,9 +76,9 @@ export function UserButton({ className, classNames }: UserButtonProps) {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent
+        align='end'
         className={cn('max-w-64', classNames?.content?.base)}
         onCloseAutoFocus={(e) => e.preventDefault()}
-        align='end'
       >
         {user ? (
           <div className='flex items-center gap-2 p-2'>
@@ -102,20 +102,20 @@ export function UserButton({ className, classNames }: UserButtonProps) {
 
         <DropdownMenuSeparator className={classNames?.content?.separator} />
 
-        {!user ? (
-          <DropdownMenuItem className={classNames?.content?.menuItem} asChild>
-            <Link href={'/login'}>
-              <Icons.logIn className='size-4' />
-              Sign In
-            </Link>
-          </DropdownMenuItem>
-        ) : (
+        {user ? (
           <DropdownMenuItem
             className={classNames?.content?.menuItem}
             onClick={() => signOut()}
           >
             <Icons.logOut className='size-4' />
             Log Out
+          </DropdownMenuItem>
+        ) : (
+          <DropdownMenuItem asChild className={classNames?.content?.menuItem}>
+            <Link href={'/login'}>
+              <Icons.logIn className='size-4' />
+              Sign In
+            </Link>
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>

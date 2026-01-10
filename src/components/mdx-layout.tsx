@@ -31,8 +31,8 @@ export default function MdxLayout({
           <div className='flex flex-1 flex-col gap-4'>
             {toc?.length ? (
               <InlineTOC
-                items={toc}
                 className='rounded-none border-0 border-border border-b border-dashed'
+                items={toc}
               />
             ) : (
               <div className='py-2' />
@@ -40,8 +40,8 @@ export default function MdxLayout({
             <div className='prose min-w-0 flex-1 px-4'>{children}</div>
             {comments ? (
               <PostComments
-                slug={slug}
                 className='[&_form>div]:!rounded-none rounded-none border-0 border-border border-t border-dashed'
+                slug={slug}
               />
             ) : (
               <div className='py-2' />

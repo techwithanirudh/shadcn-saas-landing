@@ -27,7 +27,9 @@ const CurrentPostsCount = ({
   const total = totalPosts(tag);
   const start = startIndex + 1;
   const end = endIndex < total ? endIndex : total;
-  if (start === end) return <span>({start})</span>;
+  if (start === end) {
+    return <span>({start})</span>;
+  }
   return (
     <span>
       ({start}-{end})
@@ -47,14 +49,14 @@ const Header = ({
   <Section className='p-4 lg:p-6'>
     <div className='flex items-center gap-2'>
       <Icons.tag
-        size={20}
         className='text-muted-foreground transition-transform hover:rotate-12 hover:scale-125'
+        size={20}
       />
       <h1 className='font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
         {tag} <span className='text-muted-foreground'>Posts</span>{' '}
         <CurrentPostsCount
-          startIndex={startIndex}
           endIndex={endIndex}
+          startIndex={startIndex}
           tag={tag}
         />
       </h1>
@@ -72,9 +74,9 @@ const Pagination = ({ pageIndex, tag }: { pageIndex: number; tag: string }) => {
     <Section className='bg-dashed'>
       <NumberedPagination
         currentPage={pageIndex + 1}
-        totalPages={pageCount(tag)}
-        paginationItemsToDisplay={5}
         onPageChange={handlePageChange}
+        paginationItemsToDisplay={5}
+        totalPages={pageCount(tag)}
       />
     </Section>
   );
@@ -88,13 +90,17 @@ export default async function Page(props: {
   const searchParams = await props.searchParams;
 
   const tag = params.slug[0];
-  if (!tag) return notFound();
+  if (!tag) {
+    return notFound();
+  }
 
   const pageIndex = searchParams.page
     ? Number.parseInt(searchParams.page[0] ?? '', 10) - 1
     : 0;
 
-  if (pageIndex < 0 || pageIndex >= pageCount(tag)) notFound();
+  if (pageIndex < 0 || pageIndex >= pageCount(tag)) {
+    notFound();
+  }
 
   const startIndex = pageIndex * postsPerPage;
   const endIndex = startIndex + postsPerPage;
@@ -102,21 +108,21 @@ export default async function Page(props: {
 
   return (
     <>
-      <Header tag={tag} startIndex={startIndex} endIndex={endIndex} />
+      <Header endIndex={endIndex} startIndex={startIndex} tag={tag} />
       <Section className='h-full' sectionClassName='flex flex-1'>
         <div className='grid divide-y divide-dashed divide-border text-left'>
           {posts.map((post) => {
             const date = new Date(post.data.date).toDateString();
             return (
               <PostCard
-                title={post.data.title ?? 'Untitled'}
+                author={post.data.author ?? 'Unknown'}
+                date={date}
                 description={post.data.description ?? ''}
                 image={post.data.image ?? null}
-                url={post.url}
-                date={date}
                 key={post.url}
-                author={post.data.author ?? 'Unknown'}
                 tags={post.data.tags}
+                title={post.data.title ?? 'Untitled'}
+                url={post.url}
               />
             );
           })}
@@ -135,19 +141,19 @@ export const generateStaticParams = () => {
     ...tags.flatMap((tag) =>
       Array.from({ length: pageCount(tag) }, (_, index) => ({
         slug: [tag, (index + 1).toString()],
-      })),
+      }))
     ),
   ];
 };
 
-type Props = {
+interface Props {
   params: Promise<{ slug: string[] }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
+}
 
 export async function generateMetadata(
   props: Props,
-  _parent: ResolvingMetadata,
+  _parent: ResolvingMetadata
 ): Promise<Metadata> {
   const params = await props.params;
   const searchParams = await props.searchParams;
@@ -167,8 +173,9 @@ export async function generateMetadata(
 
   return createMetadata({
     title: pageTitle,
-    description: `Posts tagged with ${tag}${!isFirstPage ? ` - Page ${pageIndex}` : ''
-      }`,
+    description: `Posts tagged with ${tag}${
+      isFirstPage ? '' : ` - Page ${pageIndex}`
+    }`,
     openGraph: {
       url: canonicalUrl,
     },

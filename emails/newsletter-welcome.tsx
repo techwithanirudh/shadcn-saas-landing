@@ -49,8 +49,8 @@ function PostCard({
       </Link>
       <Section className='mt-[24px]'>
         <Link
-          href={url}
           className='m-0 mt-[8px] font-semibold text-[32px] text-zinc-900 leading-[36px]'
+          href={url}
         >
           {title}
         </Link>
@@ -71,24 +71,24 @@ export default function NewsletterWelcomeEmail({
     <Html>
       <Head>
         <Font
-          fontFamily='Alex Brush'
           fallbackFontFamily='Georgia'
+          fontFamily='Alex Brush'
+          fontStyle='normal'
+          fontWeight={400}
           webFont={{
             url: 'https://fonts.gstatic.com/s/alexbrush/v22/SZc83FzrJKuqFbwMKk6EhUXz7RlNiCY.woff2',
             format: 'woff2',
           }}
-          fontWeight={400}
-          fontStyle='normal'
         />
         <Font
-          fontFamily='Bricolage Grotesque'
           fallbackFontFamily='Helvetica'
+          fontFamily='Bricolage Grotesque'
+          fontStyle='normal'
+          fontWeight={400}
           webFont={{
             url: 'https://fonts.gstatic.com/s/bricolagegrotesque/v8/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2',
             format: 'woff2',
           }}
-          fontWeight={400}
-          fontStyle='normal'
         />
       </Head>
       <Preview>

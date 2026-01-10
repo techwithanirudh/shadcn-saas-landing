@@ -6,7 +6,7 @@ interface GenerateProps {
   description?: string;
 }
 
-export async function getImageResponseOptions(): Promise<ImageResponseOptions> {
+export function getImageResponseOptions(): ImageResponseOptions {
   return {
     format: 'webp',
     width: 1200,

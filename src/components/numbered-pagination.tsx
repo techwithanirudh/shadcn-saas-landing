@@ -10,12 +10,12 @@ import {
 import { usePagination } from '@/hooks/use-pagination';
 import { cn } from '@/lib/utils';
 
-type NumberedPaginationProps = {
+interface NumberedPaginationProps {
   currentPage: number;
   totalPages: number;
   paginationItemsToDisplay?: number;
   onPageChange: (page: number) => void;
-};
+}
 
 function NumberedPagination({
   currentPage,
@@ -38,21 +38,21 @@ function NumberedPagination({
 
   return (
     <Pagination>
-      <PaginationContent className='-space-x-px inline-flex w-full gap-0 rtl:space-x-reverse'>
+      <PaginationContent className='inline-flex w-full gap-0 -space-x-px rtl:space-x-reverse'>
         <PaginationItem>
           <PaginationLink
+            aria-disabled={currentPage === 1}
+            aria-label='Go to previous page'
             className={cn(
               buttonVariants({
                 variant: 'ghost',
               }),
-              'rounded-none shadow-none focus-visible:z-10 aria-disabled:pointer-events-none [&[aria-disabled]>svg]:opacity-50',
+              'rounded-none shadow-none focus-visible:z-10 aria-disabled:pointer-events-none [&[aria-disabled]>svg]:opacity-50'
             )}
             href='#'
             onClick={handlePageChange(currentPage - 1)}
-            aria-label='Go to previous page'
-            aria-disabled={currentPage === 1}
           >
-            <Icons.chevronLeft size={16} strokeWidth={2} aria-hidden='true' />
+            <Icons.chevronLeft aria-hidden='true' size={16} strokeWidth={2} />
           </PaginationLink>
         </PaginationItem>
 
@@ -64,7 +64,7 @@ function NumberedPagination({
                   buttonVariants({
                     variant: 'ghost',
                   }),
-                  'pointer-events-none rounded-none shadow-none',
+                  'pointer-events-none rounded-none shadow-none'
                 )}
               >
                 ...
@@ -73,7 +73,7 @@ function NumberedPagination({
           )}
 
           {pages.map((page) => (
-            <PaginationItem key={page} className='w-max'>
+            <PaginationItem className='w-max' key={page}>
               <PaginationLink
                 className={cn(
                   buttonVariants({
@@ -81,11 +81,11 @@ function NumberedPagination({
                   }),
                   'rounded-none border-0 shadow-none focus-visible:z-10',
                   page === currentPage &&
-                    'min-w-full dark:bg-primary dark:hover:bg-primary/90',
+                    'min-w-full dark:bg-primary dark:hover:bg-primary/90'
                 )}
                 href='#'
-                onClick={handlePageChange(page)}
                 isActive={page === currentPage}
+                onClick={handlePageChange(page)}
               >
                 {page}
               </PaginationLink>
@@ -99,7 +99,7 @@ function NumberedPagination({
                   buttonVariants({
                     variant: 'ghost',
                   }),
-                  'pointer-events-none rounded-none shadow-none',
+                  'pointer-events-none rounded-none shadow-none'
                 )}
               >
                 ...
@@ -109,18 +109,18 @@ function NumberedPagination({
         </div>
         <PaginationItem>
           <PaginationLink
+            aria-disabled={currentPage === totalPages}
+            aria-label='Go to next page'
             className={cn(
               buttonVariants({
                 variant: 'ghost',
               }),
-              'rounded-none shadow-none focus-visible:z-10 aria-disabled:pointer-events-none [&[aria-disabled]>svg]:opacity-50',
+              'rounded-none shadow-none focus-visible:z-10 aria-disabled:pointer-events-none [&[aria-disabled]>svg]:opacity-50'
             )}
             href='#'
             onClick={handlePageChange(currentPage + 1)}
-            aria-label='Go to next page'
-            aria-disabled={currentPage === totalPages}
           >
-            <Icons.chevronRight size={16} strokeWidth={2} aria-hidden='true' />
+            <Icons.chevronRight aria-hidden='true' size={16} strokeWidth={2} />
           </PaginationLink>
         </PaginationItem>
       </PaginationContent>

@@ -13,26 +13,26 @@ export default function Posts({ posts }: { posts: Page[] }) {
           const date = new Date(post.data.date).toDateString();
           return (
             <PostCard
-              title={post.data.title ?? 'Untitled'}
+              author={post.data.author ?? 'Unknown'}
+              date={date}
               description={post.data.description ?? ''}
               image={post.data.image ?? null}
-              url={post.url}
-              date={date}
               key={post.url}
-              author={post.data.author ?? 'Unknown'}
               tags={post.data.tags}
+              title={post.data.title ?? 'Untitled'}
+              url={post.url}
             />
           );
         })}
         <Link
-          href='/blog'
           className={buttonVariants({
             variant: 'default',
             className: 'group rounded-none py-4 sm:py-8',
           })}
+          href='/blog'
         >
           View More
-          <Icons.arrowUpRight className='group-hover:-rotate-12 ml-2 size-5 transition-transform' />
+          <Icons.arrowUpRight className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
         </Link>
       </div>
     </Section>

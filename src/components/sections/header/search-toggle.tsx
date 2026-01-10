@@ -23,23 +23,25 @@ export const SearchToggle = ({
   ...props
 }: SearchToggleProps) => {
   const { setOpenSearch, enabled } = useSearchContext();
-  if (hideIfDisabled && !enabled) return null;
+  if (hideIfDisabled && !enabled) {
+    return null;
+  }
 
   return (
     <button
-      type='button'
+      aria-label='Open Search'
       className={cn(
         buttonVariants({
           size,
           color,
         }),
-        props.className,
+        props.className
       )}
       data-search=''
-      aria-label='Open Search'
       onClick={() => {
         setOpenSearch(true);
       }}
+      type='button'
     >
       <Search />
     </button>
@@ -54,16 +56,18 @@ export const LargeSearchToggle = ({
 }) => {
   const { enabled, hotKey, setOpenSearch } = useSearchContext();
   const { text } = useI18n();
-  if (hideIfDisabled && !enabled) return null;
+  if (hideIfDisabled && !enabled) {
+    return null;
+  }
 
   return (
     <button
-      type='button'
       data-search-full=''
+      type='button'
       {...props}
       className={cn(
         'inline-flex items-center gap-2 rounded-lg border bg-fd-secondary/50 p-1.5 ps-2 text-fd-muted-foreground text-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground',
-        props.className,
+        props.className
       )}
       onClick={() => {
         setOpenSearch(true);
@@ -74,8 +78,8 @@ export const LargeSearchToggle = ({
       <div className='ms-auto inline-flex gap-0.5'>
         {hotKey.map((k, i) => (
           <kbd
-            key={i.toString()}
             className='rounded-md border bg-fd-background px-1.5'
+            key={i.toString()}
           >
             {k.display}
           </kbd>

@@ -34,7 +34,7 @@ export const NewsletterForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='flex-1 space-y-4'>
+      <form className='flex-1 space-y-4' onSubmit={form.handleSubmit(onSubmit)}>
         <div className='flex h-full min-h-10 overflow-hidden rounded-md border bg-muted p-0'>
           <div className='flex-1'>
             <FormField
@@ -45,10 +45,10 @@ export const NewsletterForm = () => {
                   <FormControl className='h-full group-has-[p]:pt-3'>
                     <Input
                       {...field}
+                      className='h-full rounded-md rounded-r-none border-none px-4 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0'
                       disabled={status === 'executing'}
                       placeholder='Email address'
                       type='email'
-                      className='h-full rounded-md rounded-r-none border-none px-4 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0'
                     />
                   </FormControl>
                   <FormMessage className='ml-4 pb-2 text-xs' />
@@ -58,15 +58,15 @@ export const NewsletterForm = () => {
           </div>
 
           <Button
-            disabled={status === 'executing'}
-            type='submit'
-            size='icon'
             className='group size-auto w-15 rounded-md rounded-l-none px-3'
+            disabled={status === 'executing'}
+            size='icon'
+            type='submit'
           >
             {status === 'executing' ? (
               <Icons.spinner className='size-4 animate-spin' />
             ) : (
-              <Icons.send className='group-hover:-rotate-45 size-4 transition-transform' />
+              <Icons.send className='size-4 transition-transform group-hover:-rotate-45' />
             )}
           </Button>
         </div>

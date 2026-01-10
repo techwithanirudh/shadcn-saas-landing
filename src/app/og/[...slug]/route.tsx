@@ -5,7 +5,7 @@ import { getPost, getPosts } from '@/lib/source';
 
 export const GET = async (
   _request: Request,
-  context: { params: Promise<{ slug?: string[] }> },
+  context: { params: Promise<{ slug?: string[] }> }
 ): Promise<ImageResponse | Response> => {
   const params = await context.params;
   const slug = params.slug ?? [];
@@ -20,7 +20,7 @@ export const GET = async (
       title: page.data.title ?? 'Untitled',
       description: page.data.description ?? '',
     }),
-    await getImageResponseOptions(),
+    await getImageResponseOptions()
   );
 };
 

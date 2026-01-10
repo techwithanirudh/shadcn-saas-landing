@@ -8,7 +8,7 @@ interface GenerateProps {
 }
 
 export function generateOGImage(
-  options: GenerateProps & ImageResponseOptions,
+  options: GenerateProps & ImageResponseOptions
 ): ImageResponse {
   const { title, subtitle, ...rest } = options;
 
@@ -21,15 +21,15 @@ export function generateOGImage(
       width: 1200,
       height: 630,
       ...rest,
-    },
+    }
   );
 }
 
 export function generate({ title = 'John Doe' }: GenerateProps): ReactElement {
   return (
     <div
-      tw='flex h-full w-full bg-black text-white'
       style={{ fontFamily: 'Geist Sans' }}
+      tw='flex h-full w-full bg-black text-white'
     >
       <div tw='flex border absolute border-stone-900 border-dashed inset-y-0 left-16 w-[1px]' />
       <div tw='flex border absolute border-stone-900 border-dashed inset-y-0 right-16 w-[1px]' />
@@ -37,13 +37,13 @@ export function generate({ title = 'John Doe' }: GenerateProps): ReactElement {
       <div tw='flex border absolute border-stone-900 inset-x-0 h-[1px] bottom-16' />
       <div tw='flex items-center absolute w-[896px] justify-center inset-16'>
         <div
-          tw='tracking-tight flex-grow-1 flex flex-col justify-center items-center leading-[1.1]'
           style={{
             textWrap: 'balance',
             fontWeight: 600,
             fontSize: title && title.length > 20 ? 64 : 80,
             letterSpacing: '-0.04em',
           }}
+          tw='tracking-tight flex-grow-1 flex flex-col justify-center items-center leading-[1.1]'
         >
           {title}
         </div>

@@ -19,18 +19,18 @@ export const DocsLayout = ({
 }: DocsLayoutProps): ReactNode => {
   return (
     <div className='[--fd-layout-width:1280px]'>
-      <Header links={props.links} githubUrl={props.githubUrl} nav={nav} />
+      <Header githubUrl={props.githubUrl} links={props.links} nav={nav} />
       <FumadocsDocsLayout
-        tree={props.tree}
-        sidebar={props.sidebar}
-        nav={{ enabled: false }}
         containerProps={{
           ...props.containerProps,
           className: cn(
             'mx-auto w-full max-w-(--fd-layout-width) [--fd-banner-height:3.5rem]',
-            props.containerProps?.className,
+            props.containerProps?.className
           ),
         }}
+        nav={{ enabled: false }}
+        sidebar={props.sidebar}
+        tree={props.tree}
       >
         {props.children}
       </FumadocsDocsLayout>

@@ -1,14 +1,14 @@
-type UsePaginationProps = {
+interface UsePaginationProps {
   currentPage: number;
   totalPages: number;
   paginationItemsToDisplay: number;
-};
+}
 
-type UsePaginationReturn = {
+interface UsePaginationReturn {
   pages: number[];
   showLeftEllipsis: boolean;
   showRightEllipsis: boolean;
-};
+}
 
 export function usePagination({
   currentPage,
@@ -42,12 +42,16 @@ export function usePagination({
       adjustedRange.start = totalPages - paginationItemsToDisplay + 1;
     }
 
-    if (showLeftEllipsis) adjustedRange.start++;
-    if (showRightEllipsis) adjustedRange.end--;
+    if (showLeftEllipsis) {
+      adjustedRange.start++;
+    }
+    if (showRightEllipsis) {
+      adjustedRange.end--;
+    }
 
     return Array.from(
       { length: adjustedRange.end - adjustedRange.start + 1 },
-      (_, i) => adjustedRange.start + i,
+      (_, i) => adjustedRange.start + i
     );
   }
 

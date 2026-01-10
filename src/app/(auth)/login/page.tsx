@@ -17,8 +17,8 @@ import { cn } from '@/lib/utils';
 
 const Cross = () => (
   <div className='relative h-6 w-6'>
-    <div className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 bg-background'>
-      <Icons.add size={20} className='text-border/70 dark:text-border' />
+    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-background'>
+      <Icons.add className='text-border/70 dark:text-border' size={20} />
     </div>
   </div>
 );
@@ -26,10 +26,10 @@ const Cross = () => (
 function SignInCard() {
   return (
     <div className='relative mx-auto w-full max-w-xl'>
-      <div className='-top-3 -left-3 absolute z-10 hidden h-6 sm:block'>
+      <div className='absolute -top-3 -left-3 z-10 hidden h-6 sm:block'>
         <Cross />
       </div>
-      <div className='-top-3 -right-3 -translate-x-px absolute z-10 hidden h-6 sm:block'>
+      <div className='absolute -top-3 -right-3 z-10 hidden h-6 -translate-x-px sm:block'>
         <Cross />
       </div>
       <div className={cn('border-border border-x border-y border-dashed')}>
@@ -45,13 +45,12 @@ function SignInCard() {
               <div
                 className={cn(
                   'flex w-full items-center gap-2',
-                  'flex-col justify-between',
+                  'flex-col justify-between'
                 )}
               >
                 <Button
-                  variant='outline'
                   className={cn(
-                    'w-full gap-2 rounded-none border border-border border-dashed',
+                    'w-full gap-2 rounded-none border border-border border-dashed'
                   )}
                   onClick={async () => {
                     await signIn.social({
@@ -59,6 +58,7 @@ function SignInCard() {
                       callbackURL: '/',
                     });
                   }}
+                  variant='outline'
                 >
                   <Icons.google />
                   Sign in with Google
@@ -69,10 +69,10 @@ function SignInCard() {
         </Card>
       </div>
 
-      <div className='-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block'>
+      <div className='absolute -bottom-3 -left-3 z-10 hidden h-6 sm:block'>
         <Cross />
       </div>
-      <div className='-bottom-3 -right-3 -translate-x-px absolute z-10 hidden h-6 sm:block'>
+      <div className='absolute -right-3 -bottom-3 z-10 hidden h-6 -translate-x-px sm:block'>
         <Cross />
       </div>
     </div>
@@ -83,11 +83,11 @@ export default function LoginPage() {
   return (
     <HomeLayout
       {...baseOptions}
+      className='pt-0'
       links={linkItems}
       nav={{
         component: <Header links={linkItems} {...baseOptions} />,
       }}
-      className='pt-0'
     >
       <main className='flex flex-1'>
         <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border border-x border-b border-dashed'>

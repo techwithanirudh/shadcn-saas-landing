@@ -1,7 +1,4 @@
-import {
-  type LinkItemType,
-  resolveLinkItems,
-} from 'fumadocs-ui/layouts/shared';
+import { resolveLinkItems } from 'fumadocs-ui/layouts/shared';
 import {
   baseOptions,
   linkItems,
@@ -19,9 +16,9 @@ export function Footer() {
   const links = resolveLinkItems({
     links: linkItems,
     githubUrl: baseOptions.githubUrl,
-  }) as LinkItemType[];
+  });
   const navItems = links.filter((item) =>
-    ['nav', 'all'].includes(item.on ?? 'all'),
+    ['nav', 'all'].includes(item.on ?? 'all')
   );
 
   const posts = getSortedByDatePosts();
@@ -31,12 +28,12 @@ export function Footer() {
     <footer
       className={cn(
         'container mx-auto flex flex-col gap-4',
-        'gap-16 px-8 py-16',
+        'gap-16 px-8 py-16'
       )}
     >
       <div
         className={cn(
-          'grid gap-8 text-muted-foreground text-sm sm:grid-cols-5',
+          'grid gap-8 text-muted-foreground text-sm sm:grid-cols-5'
         )}
       >
         <div className='flex flex-col gap-6'>
@@ -51,11 +48,11 @@ export function Footer() {
                 (item) =>
                   item.type !== 'menu' &&
                   item.type !== 'custom' &&
-                  item.type !== 'icon',
+                  item.type !== 'icon'
               )
               .map((item, i) => (
                 <li key={item.url}>
-                  <ActiveLink key={i.toString()} href={item.url}>
+                  <ActiveLink href={item.url} key={i.toString()}>
                     {item.text}
                   </ActiveLink>
                 </li>
@@ -69,7 +66,7 @@ export function Footer() {
           <ul className='flex flex-col gap-3'>
             {posts.slice(0, postsPerPage).map((post, i) => (
               <li key={post.url}>
-                <ActiveLink key={i.toString()} href={post.url}>
+                <ActiveLink href={post.url} key={i.toString()}>
                   {post.data.title}
                 </ActiveLink>
               </li>
@@ -83,7 +80,7 @@ export function Footer() {
           <ul className='flex flex-col gap-3'>
             {tags.slice(0, postsPerPage).map((name, i) => (
               <li key={`/tags/${name}`}>
-                <ActiveLink key={i.toString()} href={`/tags/${name}`}>
+                <ActiveLink href={`/tags/${name}`} key={i.toString()}>
                   <span className='capitalize'>{name}</span>
                 </ActiveLink>
               </li>
@@ -100,9 +97,9 @@ export function Footer() {
               .map((item, i) => (
                 <li key={item.url}>
                   <InlineLink
-                    key={i.toString()}
-                    href={item.url}
                     className='inline-flex items-center gap-1.5 text-muted-foreground no-underline [&_svg]:size-4'
+                    href={item.url}
+                    key={i.toString()}
                   >
                     {item.icon}
                     {item.text}

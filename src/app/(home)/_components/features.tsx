@@ -22,7 +22,7 @@ const featureItemVariants = cva(
     defaultVariants: {
       size: 'sm',
     },
-  },
+  }
 );
 
 const features = [
@@ -77,10 +77,10 @@ const Features = () => (
         <div className='grid grid-cols-1 divide-x divide-y divide-dashed divide-border text-left sm:grid-cols-2 lg:grid-cols-3'>
           {features.map((feature) => (
             <div
-              key={feature.id}
               className={featureItemVariants({
                 size: feature.size as 'sm' | 'lg',
               })}
+              key={feature.id}
             >
               <feature.Icon className='h-8 w-8 stroke-1 transition-transform hover:rotate-12 hover:scale-125' />
               <div className='flex flex-col'>
