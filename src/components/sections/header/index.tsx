@@ -86,7 +86,7 @@ export const Header = ({
         {nav.title}
       </Link>
       {nav.children}
-      <ul className='flex flex-row items-center gap-2 px-6 max-sm:hidden'>
+      <ul className='flex flex-row items-center gap-2 px-3 max-sm:hidden'>
         {navItems
           .filter((item) => !isSecondary(item))
           .map((item, i) => (
@@ -188,17 +188,18 @@ const HeaderNavigationMenu = ({
       <header
         id='nd-nav'
         {...props}
-        className={cn('sticky top-0 z-40 h-14', props.className)}
+        className={cn('sticky top-0 z-40 h-14 box-content w-full bg-fd-background/80 transition-colors border-b border-dashed', props.className)}
       >
         <div
           className={cn(
-            'border-b backdrop-blur-lg transition-colors *:mx-auto *:max-w-(--fd-layout-width)',
+            'backdrop-blur-lg transition-colors *:mx-auto *:max-w-(--fd-layout-width)',
             value.length > 0 && 'max-lg:rounded-b-2xl max-lg:shadow-lg',
+            'border-border border-dashed sm:border-x container',
             (!isTransparent || value.length > 0) && 'bg-fd-background/80',
           )}
         >
           <NavigationMenuList
-            className='flex h-14 w-full items-center px-4'
+            className='flex h-14 w-full items-center px-4 lg:px-6'
             asChild
           >
             <nav>{props.children}</nav>

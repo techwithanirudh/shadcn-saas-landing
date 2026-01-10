@@ -19,6 +19,9 @@ async function createNextConfig(): Promise<NextConfig> {
         fullUrl: true,
       },
     },
+    experimental: {
+      viewTransition: true,
+    },
     images: {
       qualities: [100, 75, 85, 95],
     },
