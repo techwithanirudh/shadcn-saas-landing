@@ -2,7 +2,7 @@
 
 import type { Variants } from 'motion/react';
 import { motion, useAnimation } from 'motion/react';
-import type { HTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -12,7 +12,7 @@ export interface CheckIconHandle {
   stopAnimation: () => void;
 }
 
-interface CheckIconProps extends HTMLAttributes<HTMLDivElement> {
+interface CheckIconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: number;
 }
 
@@ -38,7 +38,18 @@ const PATH_VARIANTS: Variants = {
 };
 
 const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
-  ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
+  (
+    {
+      onMouseEnter,
+      onMouseLeave,
+      onFocus,
+      onBlur,
+      className,
+      size = 28,
+      ...props
+    },
+    ref
+  ) => {
     const controls = useAnimation();
     const isControlledRef = useRef(false);
 
@@ -52,7 +63,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
     });
 
     const handleMouseEnter = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement>) => {
         if (isControlledRef.current) {
           onMouseEnter?.(e);
         } else {
@@ -63,7 +74,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
     );
 
     const handleMouseLeave = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement>) => {
         if (isControlledRef.current) {
           onMouseLeave?.(e);
         } else {
@@ -73,11 +84,37 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
       [controls, onMouseLeave]
     );
 
+    const handleFocus = useCallback(
+      (event: React.FocusEvent<HTMLButtonElement>) => {
+        if (isControlledRef.current) {
+          onFocus?.(event);
+        } else {
+          controls.start('animate');
+        }
+      },
+      [controls, onFocus]
+    );
+
+    const handleBlur = useCallback(
+      (event: React.FocusEvent<HTMLButtonElement>) => {
+        if (isControlledRef.current) {
+          onBlur?.(event);
+        } else {
+          controls.start('normal');
+        }
+      },
+      [controls, onBlur]
+    );
+
     return (
-      <div
+      <button
+        aria-label='Animated check icon'
         className={cn(className)}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        type='button'
         {...props}
       >
         <svg
@@ -98,7 +135,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
             variants={PATH_VARIANTS}
           />
         </svg>
-      </div>
+      </button>
     );
   }
 );

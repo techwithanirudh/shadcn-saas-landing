@@ -2,7 +2,7 @@
 
 import type { Variants } from 'motion/react';
 import { motion, useAnimation } from 'motion/react';
-import type { HTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -12,7 +12,7 @@ export interface UploadIconHandle {
   stopAnimation: () => void;
 }
 
-interface UploadIconProps extends HTMLAttributes<HTMLDivElement> {
+interface UploadIconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: number;
 }
 
@@ -30,7 +30,18 @@ const ARROW_VARIANTS: Variants = {
 };
 
 const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
-  ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
+  (
+    {
+      onMouseEnter,
+      onMouseLeave,
+      onFocus,
+      onBlur,
+      className,
+      size = 28,
+      ...props
+    },
+    ref
+  ) => {
     const controls = useAnimation();
     const isControlledRef = useRef(false);
 
@@ -44,7 +55,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     });
 
     const handleMouseEnter = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement>) => {
         if (isControlledRef.current) {
           onMouseEnter?.(e);
         } else {
@@ -55,7 +66,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
     );
 
     const handleMouseLeave = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement>) => {
         if (isControlledRef.current) {
           onMouseLeave?.(e);
         } else {
@@ -65,11 +76,37 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
       [controls, onMouseLeave]
     );
 
+    const handleFocus = useCallback(
+      (event: React.FocusEvent<HTMLButtonElement>) => {
+        if (isControlledRef.current) {
+          onFocus?.(event);
+        } else {
+          controls.start('animate');
+        }
+      },
+      [controls, onFocus]
+    );
+
+    const handleBlur = useCallback(
+      (event: React.FocusEvent<HTMLButtonElement>) => {
+        if (isControlledRef.current) {
+          onBlur?.(event);
+        } else {
+          controls.start('normal');
+        }
+      },
+      [controls, onBlur]
+    );
+
     return (
-      <div
+      <button
+        aria-label='Animated upload icon'
         className={cn(className)}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        type='button'
         {...props}
       >
         <svg
@@ -89,7 +126,7 @@ const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
             <line x1='12' x2='12' y1='3' y2='15' />
           </motion.g>
         </svg>
-      </div>
+      </button>
     );
   }
 );

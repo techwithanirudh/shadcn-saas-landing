@@ -1,7 +1,4 @@
-import {
-  type LinkItemType,
-  resolveLinkItems,
-} from 'fumadocs-ui/layouts/shared';
+import { resolveLinkItems } from 'fumadocs-ui/layouts/shared';
 import {
   baseOptions,
   linkItems,
