@@ -2,8 +2,8 @@
 
 import { usePathname } from 'fumadocs-core/framework';
 import Link from 'fumadocs-core/link';
-import { isActive } from 'fumadocs-ui/utils/is-active';
 import type { ComponentProps, ReactNode } from 'react';
+import { isActive } from '@/lib/is-active';
 
 interface Filterable {
   /**

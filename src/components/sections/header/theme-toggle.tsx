@@ -1,10 +1,10 @@
 'use client';
 
 import { cva } from 'class-variance-authority';
-import { cn } from 'fumadocs-ui/utils/cn';
 import { Airplay, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { type ComponentProps, useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 const itemVariants = cva(
   'size-6.5 rounded-full p-1.5 text-fd-muted-foreground',

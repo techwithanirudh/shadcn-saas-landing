@@ -16,10 +16,10 @@ import {
 import { useI18n } from 'fumadocs-ui/contexts/i18n';
 import { useSearchContext } from 'fumadocs-ui/contexts/search';
 import type { LinkItemType } from 'fumadocs-ui/layouts/shared';
-import { cn } from 'fumadocs-ui/utils/cn';
-import { isActive } from 'fumadocs-ui/utils/is-active';
 import { Search } from 'lucide-react';
 import type { ComponentProps, ComponentPropsWithoutRef } from 'react';
+import { isActive } from '@/lib/is-active';
+import { cn } from '@/lib/utils';
 
 const menuItemVariants = cva('', {
   variants: {

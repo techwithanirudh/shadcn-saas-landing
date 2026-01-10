@@ -12,7 +12,7 @@ export async function updateContact({
 }: {
   email: string;
   audienceId: string;
-} & Omit<UpdateContactOptions, 'email' | 'audienceId'>) {
+} & Omit<UpdateContactOptions, 'email' | 'audienceId' | 'id'>) {
   const { data, error } = await resend.contacts.update({
     email,
     audienceId,
