@@ -2,6 +2,7 @@ import { createMetadata } from '@/lib/metadata';
 import type { Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
+import { RootProvider } from 'fumadocs-ui/provider/next';
 import '@/styles/globals.css';
 import 'katex/dist/katex.css';
 import { baseUrl } from '@/lib/constants';
@@ -43,7 +44,13 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
       suppressHydrationWarning
     >
       <Body>
-        <Provider>{children}</Provider>
+        <RootProvider
+          theme={{
+            enabled: false,
+          }}
+        >
+          <Provider>{children}</Provider>
+        </RootProvider>
       </Body>
     </html>
   );

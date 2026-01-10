@@ -1,5 +1,6 @@
 import { generateOGImage } from '@/app/og/[...slug]/og';
 import { metadataImage } from '@/lib/metadata-image';
+import type { Page } from '@/lib/source';
 import type { ImageResponse } from 'next/og';
 
 async function loadAssets(): Promise<
@@ -40,12 +41,12 @@ async function loadAssets(): Promise<
 }
 
 export const GET = metadataImage.createAPI(
-  async (page): Promise<ImageResponse> => {
+  async (page: Page): Promise<ImageResponse> => {
     const [fonts] = await Promise.all([loadAssets()]);
 
     return generateOGImage({
-      title: page.data.title,
-      description: page.data.description,
+      title: page.data.title ?? 'Untitled',
+      description: page.data.description ?? '',
       fonts,
     });
   },

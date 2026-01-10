@@ -1,7 +1,11 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "organizeImports": {
-    "enabled": true
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "vcs": {
     "enabled": true,
@@ -9,7 +13,13 @@
     "useIgnoreFile": true
   },
   "files": {
-    "ignore": ["node_modules", ".next", ".source"]
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/.next",
+      "!**/.source",
+      "!**/.compare"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -23,6 +33,11 @@
       "quoteStyle": "single",
       "jsxQuoteStyle": "single",
       "semicolons": "always"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
     }
   },
   "linter": {

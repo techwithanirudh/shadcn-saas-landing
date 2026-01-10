@@ -1,7 +1,6 @@
 import { Header } from '@/components/sections/header';
 import { createMetadata } from '@/lib/metadata';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { getLinks } from 'fumadocs-ui/layouts/shared';
 import type { Metadata } from 'next';
 import { baseOptions, linkItems } from './layout.config';
 
@@ -11,12 +10,7 @@ export default function NotFound() {
       {...baseOptions}
       links={linkItems}
       nav={{
-        component: (
-          <Header
-            finalLinks={getLinks(linkItems, baseOptions.githubUrl)}
-            {...baseOptions}
-          />
-        ),
+        component: <Header links={linkItems} {...baseOptions} />,
       }}
       className='pt-0'
     >

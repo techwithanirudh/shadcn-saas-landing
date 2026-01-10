@@ -1,15 +1,16 @@
 import { loader } from 'fumadocs-core/source';
-import type { InferMetaType, InferPageType } from 'fumadocs-core/source';
-import { createMDXSource } from 'fumadocs-mdx';
-import { blog } from '.source';
+import { blog } from 'fumadocs-mdx:collections/server';
+import { toFumadocsSource } from 'fumadocs-mdx/runtime/server';
 
-export const source = loader({
+export const source = loader(toFumadocsSource(blog, []), {
   baseUrl: '/blog',
-  source: createMDXSource(blog),
 });
+
 export const { getPage: getPost, getPages: getPosts, pageTree } = source;
 
 export type Post = ReturnType<typeof getPost>;
+export type PageTree = typeof pageTree;
+export type Page = ReturnType<typeof getPosts>[number];
 
 const posts = getPosts();
 
@@ -35,6 +36,3 @@ export const getPostsByTag = (tag: string) => {
     .filter((post) => post.data.tags?.includes(tag))
     .toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime());
 };
-
-export type Page = InferPageType<typeof source>;
-export type Meta = InferMetaType<typeof source>;

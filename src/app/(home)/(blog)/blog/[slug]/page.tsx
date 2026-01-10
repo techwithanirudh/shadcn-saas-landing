@@ -31,15 +31,15 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
       >
         <div className='flex flex-col gap-2 sm:text-center md:gap-4'>
           <h1 className='max-w-4xl font-normal text-3xl leading-tight tracking-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight lg:text-6xl'>
-            <Balancer>{page.data.title}</Balancer>
+            <Balancer>{page.data.title ?? 'Untitled'}</Balancer>
           </h1>
           <p className='mx-auto max-w-4xl'>
-            <Balancer>{page.data.description}</Balancer>
+            <Balancer>{page.data.description ?? ''}</Balancer>
           </p>
         </div>
         <div className='flex flex-wrap gap-2'>
           {tags?.map((tag) => (
-            <TagCard name={tag} key={tag} className=' border border-border ' />
+            <TagCard name={tag} key={tag} className='border border-border' />
           ))}
         </div>
       </div>
@@ -89,14 +89,14 @@ export default async function Page(props: {
           <div className='flex flex-col gap-4 p-4 text-sm lg:sticky lg:top-[4rem] lg:h-[calc(100vh-4rem)] lg:w-[250px] lg:self-start lg:overflow-y-auto lg:border-border lg:border-l lg:border-dashed'>
             <div>
               <p className='mb-1 text-fd-muted-foreground'>Written by</p>
-              <p className='font-medium'>{page.data.author}</p>
+              <p className='font-medium'>{page.data.author ?? 'Unknown'}</p>
             </div>
             <div>
               <p className='mb-1 text-fd-muted-foreground text-sm'>
                 Created At
               </p>
               <p className='font-medium'>
-                {new Date(page.data.date ?? page.file.name).toDateString()}
+                {new Date(page.data.date).toDateString()}
               </p>
             </div>
             {lastUpdate && (
@@ -124,7 +124,7 @@ export async function generateMetadata(props: {
 
   if (!page) notFound();
 
-  const title = page.data.title;
+  const title = page.data.title ?? 'Untitled';
   const description = page.data.description ?? homeDescription;
 
   return createMetadata(

@@ -1,33 +1,34 @@
 import Link from 'fumadocs-core/link';
 import {
-  LanguageToggle,
-  LanguageToggleText,
-} from 'fumadocs-ui/components/layout/language-toggle';
-import {
-  LargeSearchToggle,
-  SearchToggle,
-} from 'fumadocs-ui/components/layout/search-toggle';
-import { NavigationMenuList } from 'fumadocs-ui/components/ui/navigation-menu';
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from 'fumadocs-ui/components/ui/navigation-menu';
 import type { HomeLayoutProps } from 'fumadocs-ui/layouts/home';
 import {
-  NavbarLink,
-  NavbarMenu,
-  NavbarMenuContent,
-  NavbarMenuTrigger,
-} from 'fumadocs-ui/layouts/home/navbar';
-import type { LinkItemType } from 'fumadocs-ui/layouts/links';
-import { SearchOnly } from 'fumadocs-ui/provider';
-import { ChevronDown, Languages } from 'lucide-react';
-import { Menu, MenuContent, MenuLinkItem, MenuTrigger } from './menu';
+  type LinkItemType,
+  resolveLinkItems,
+} from 'fumadocs-ui/layouts/shared';
+import { ChevronDown } from 'lucide-react';
+import {
+  LargeSearchToggle,
+  Menu,
+  MenuContent,
+  MenuLinkItem,
+  MenuTrigger,
+  SearchToggle,
+} from './menu';
 import { Navbar, NavbarMenuLink } from './navbar';
 
 export const Header = ({
-  nav: { enableSearch = true, ...nav } = {},
-  i18n = false,
-  finalLinks,
-}: HomeLayoutProps & {
-  finalLinks: LinkItemType[];
-}) => {
+  nav = {},
+  links = [],
+  githubUrl,
+  searchToggle = {},
+}: HomeLayoutProps) => {
+  const enableSearch = searchToggle.enabled !== false;
+  const finalLinks = resolveLinkItems({ links, githubUrl });
   const navItems = finalLinks.filter((item) =>
     ['nav', 'all'].includes(item.on ?? 'all'),
   );
@@ -57,10 +58,13 @@ export const Header = ({
       </NavigationMenuList>
       <div className='flex flex-1 flex-row items-center justify-end lg:gap-1.5'>
         {enableSearch ? (
-          <SearchOnly>
-            <SearchToggle className='lg:hidden' />
-            <LargeSearchToggle className='w-full max-w-[240px] max-lg:hidden' />
-          </SearchOnly>
+          <>
+            <SearchToggle className='lg:hidden' hideIfDisabled />
+            <LargeSearchToggle
+              className='w-full max-w-[240px] max-lg:hidden'
+              hideIfDisabled
+            />
+          </>
         ) : null}
         {navItems.filter(isSecondary).map((item, i) => (
           <NavbarLinkItem
@@ -92,13 +96,6 @@ export const Header = ({
                 />
               ))}
               <div className='flex-1' />
-              {i18n ? (
-                <LanguageToggle>
-                  <Languages className='size-5' />
-                  <LanguageToggleText />
-                  <ChevronDown className='size-3 text-fd-muted-foreground' />
-                </LanguageToggle>
-              ) : null}
             </div>
           </MenuContent>
         </Menu>
@@ -117,14 +114,21 @@ const NavbarLinkItem = ({
   if (item.type === 'custom') return <div {...props}>{item.children}</div>;
 
   if (item.type === 'menu') {
-    const children = item.items.map((child, j) => {
+    const children = item.items.map((child, index) => {
       if (child.type === 'custom')
-        return <div key={j.toString()}>{child.children}</div>;
+        return <div key={index.toString()}>{child.children}</div>;
 
-      const { banner, footer, ...rest } = child.menu ?? {};
+      if (!('url' in child) || !child.url) return null;
+
+      const menuOptions = 'menu' in child ? child.menu : undefined;
+      const banner = menuOptions?.banner;
 
       return (
-        <NavbarMenuLink key={j.toString()} href={child.url} {...rest}>
+        <NavbarMenuLink
+          key={index.toString()}
+          href={child.url}
+          className={menuOptions?.className}
+        >
           {banner ??
             (child.icon ? (
               <div className='w-fit rounded-md border bg-fd-muted p-1 [&_svg]:size-4'>
@@ -132,38 +136,32 @@ const NavbarLinkItem = ({
               </div>
             ) : null)}
           <p className='-mb-1 font-medium text-sm'>{child.text}</p>
-          {child.description ? (
+          {'description' in child && child.description ? (
             <p className='text-[13px] text-fd-muted-foreground'>
               {child.description}
             </p>
           ) : null}
-          {footer}
         </NavbarMenuLink>
       );
     });
 
     return (
-      <NavbarMenu>
-        <NavbarMenuTrigger {...props}>
-          {item.url ? <Link href={item.url}>{item.text}</Link> : item.text}
-        </NavbarMenuTrigger>
-        <NavbarMenuContent className='container border-border border-dashed sm:border-x'>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger className={props.className}>
+          {'url' in item && item.url ? (
+            <Link href={item.url}>{item.text}</Link>
+          ) : (
+            item.text
+          )}
+        </NavigationMenuTrigger>
+        <NavigationMenuContent className='container border-border border-dashed sm:border-x'>
           {children}
-        </NavbarMenuContent>
-      </NavbarMenu>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
     );
   }
 
-  return (
-    <NavbarLink
-      {...props}
-      item={item}
-      variant={item.type}
-      aria-label={item.type === 'icon' ? item.label : undefined}
-    >
-      {item.type === 'icon' ? item.icon : item.text}
-    </NavbarLink>
-  );
+  return <MenuLinkItem item={item} {...props} />;
 };
 
 const isSecondary = (item: LinkItemType): boolean => {

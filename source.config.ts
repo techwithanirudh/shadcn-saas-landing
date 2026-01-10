@@ -1,13 +1,12 @@
 import { transformerRemoveNotationEscape } from '@shikijs/transformers';
-import { rehypeCodeDefaultOptions } from 'fumadocs-core/mdx-plugins';
 import {
   defineCollections,
   defineConfig,
   frontmatterSchema,
 } from 'fumadocs-mdx/config';
+import jsonSchema from 'fumadocs-mdx/plugins/json-schema';
+import lastModified from 'fumadocs-mdx/plugins/last-modified';
 import { transformerTwoslash } from 'fumadocs-twoslash';
-import rehypeKatex from 'rehype-katex';
-import remarkMath from 'remark-math';
 import { z } from 'zod';
 
 export const blog = defineCollections({
@@ -21,9 +20,10 @@ export const blog = defineCollections({
         try {
           return new Date(value);
         } catch {
-          context.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: 'Invalid date',
+          context.issues.push({
+            code: 'custom',
+            message: 'The value could not be transformed to Date type.',
+            input: value,
           });
           return z.NEVER;
         }
@@ -35,21 +35,46 @@ export const blog = defineCollections({
 });
 
 export default defineConfig({
-  lastModifiedTime: 'git',
-  mdxOptions: {
-    rehypeCodeOptions: {
-      inline: 'tailing-curly-colon',
-      themes: {
-        light: 'catppuccin-latte',
-        dark: 'catppuccin-mocha',
+  plugins: [
+    jsonSchema({
+      insert: true,
+    }),
+    lastModified(),
+  ],
+  mdxOptions: async () => {
+    const { rehypeCodeDefaultOptions } = await import(
+      'fumadocs-core/mdx-plugins/rehype-code'
+    );
+    const { remarkSteps } = await import(
+      'fumadocs-core/mdx-plugins/remark-steps'
+    );
+    const { default: remarkMath } = await import('remark-math');
+    const { default: rehypeKatex } = await import('rehype-katex');
+    const { remarkAutoTypeTable } = await import('fumadocs-typescript');
+
+    return {
+      rehypeCodeOptions: {
+        inline: 'tailing-curly-colon',
+        themes: {
+          light: 'catppuccin-latte',
+          dark: 'catppuccin-mocha',
+        },
+        transformers: [
+          ...(rehypeCodeDefaultOptions.transformers ?? []),
+          transformerTwoslash(),
+          transformerRemoveNotationEscape(),
+        ],
       },
-      transformers: [
-        ...(rehypeCodeDefaultOptions.transformers ?? []),
-        transformerTwoslash(),
-        transformerRemoveNotationEscape(),
-      ],
-    },
-    remarkPlugins: [remarkMath],
-    rehypePlugins: (v) => [rehypeKatex, ...v],
+      remarkCodeTabOptions: {
+        parseMdx: true,
+      },
+      remarkNpmOptions: {
+        persist: {
+          id: 'package-manager',
+        },
+      },
+      remarkPlugins: [remarkSteps, remarkMath, remarkAutoTypeTable],
+      rehypePlugins: (v) => [rehypeKatex, ...v],
+    };
   },
 });

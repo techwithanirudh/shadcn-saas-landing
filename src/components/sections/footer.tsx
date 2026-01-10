@@ -7,13 +7,19 @@ import {
 import { InlineLink } from '@/components/inline-link';
 import { getSortedByDatePosts, getTags } from '@/lib/source';
 import { cn } from '@/lib/utils';
-import { getLinks } from 'fumadocs-ui/layouts/shared';
+import {
+  resolveLinkItems,
+  type LinkItemType,
+} from 'fumadocs-ui/layouts/shared';
 import { ActiveLink } from '../active-link';
 import { UserButton } from '../auth/user-button';
 import { ThemeToggle } from '../theme-toggle';
 
 export function Footer() {
-  const links = getLinks(linkItems, baseOptions.githubUrl);
+  const links = resolveLinkItems({
+    links: linkItems,
+    githubUrl: baseOptions.githubUrl,
+  }) as LinkItemType[];
   const navItems = links.filter((item) =>
     ['nav', 'all'].includes(item.on ?? 'all'),
   );

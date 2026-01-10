@@ -1,7 +1,6 @@
 import { Footer } from '@/components/sections/footer';
 import { Header } from '@/components/sections/header';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { getLinks } from 'fumadocs-ui/layouts/shared';
 import type { ReactNode } from 'react';
 import { baseOptions, linkItems } from '../layout.config';
 
@@ -11,12 +10,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       {...baseOptions}
       links={linkItems}
       nav={{
-        component: (
-          <Header
-            finalLinks={getLinks(linkItems, baseOptions.githubUrl)}
-            {...baseOptions}
-          />
-        ),
+        component: <Header links={linkItems} {...baseOptions} />,
       }}
       className='pt-0'
     >

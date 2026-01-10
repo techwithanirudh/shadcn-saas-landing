@@ -1,17 +1,25 @@
 'use client';
 
 import { cva } from 'class-variance-authority';
+import { usePathname } from 'fumadocs-core/framework';
 import Link from 'fumadocs-core/link';
-import { cn } from 'fumadocs-ui/components/api';
-import { buttonVariants } from 'fumadocs-ui/components/ui/button';
+import {
+  type ButtonProps,
+  buttonVariants,
+} from 'fumadocs-ui/components/ui/button';
 import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from 'fumadocs-ui/components/ui/navigation-menu';
-import { BaseLinkItem, type LinkItemType } from 'fumadocs-ui/layouts/links';
-import type { ComponentPropsWithoutRef } from 'react';
+import { useI18n } from 'fumadocs-ui/contexts/i18n';
+import { useSearchContext } from 'fumadocs-ui/contexts/search';
+import type { LinkItemType } from 'fumadocs-ui/layouts/shared';
+import { cn } from 'fumadocs-ui/utils/cn';
+import { isActive } from 'fumadocs-ui/utils/is-active';
+import { Search } from 'lucide-react';
+import type { ComponentProps, ComponentPropsWithoutRef } from 'react';
 
 const menuItemVariants = cva('', {
   variants: {
@@ -31,6 +39,32 @@ const menuItemVariants = cva('', {
     variant: 'main',
   },
 });
+
+const LinkItem = ({
+  item,
+  ...props
+}: ComponentPropsWithoutRef<'a'> & { item: LinkItemType }) => {
+  const pathname = usePathname();
+  const activeType = 'active' in item ? (item.active ?? 'url') : 'url';
+  const url = 'url' in item ? item.url : undefined;
+  const active =
+    activeType !== 'none' && url
+      ? isActive(url, pathname, activeType === 'nested-url')
+      : false;
+
+  if (!url) return null;
+
+  return (
+    <Link
+      {...props}
+      href={url}
+      external={'external' in item ? item.external : undefined}
+      data-active={active}
+    >
+      {props.children}
+    </Link>
+  );
+};
 
 export const MenuLinkItem = ({
   item,
@@ -53,7 +87,7 @@ export const MenuLinkItem = ({
     return (
       <div className={cn('mb-4 flex flex-col', props.className)}>
         <p className='mb-1 text-fd-muted-foreground text-sm'>
-          {item.url ? (
+          {'url' in item && item.url ? (
             <NavigationMenuLink asChild>
               <Link href={item.url}>{header}</Link>
             </NavigationMenuLink>
@@ -70,7 +104,7 @@ export const MenuLinkItem = ({
 
   return (
     <NavigationMenuLink asChild>
-      <BaseLinkItem
+      <LinkItem
         item={item}
         className={cn(
           menuItemVariants({ variant: item.type }),
@@ -80,7 +114,7 @@ export const MenuLinkItem = ({
       >
         {item.icon}
         {item.type === 'icon' ? undefined : item.text}
-      </BaseLinkItem>
+      </LinkItem>
     </NavigationMenuLink>
   );
 };
@@ -116,5 +150,80 @@ export const MenuContent = (
     >
       {props.children}
     </NavigationMenuContent>
+  );
+};
+
+interface SearchToggleProps
+  extends Omit<ComponentProps<'button'>, 'color'>,
+    ButtonProps {
+  hideIfDisabled?: boolean;
+}
+
+export const SearchToggle = ({
+  hideIfDisabled,
+  size = 'icon-sm',
+  color = 'ghost',
+  ...props
+}: SearchToggleProps) => {
+  const { setOpenSearch, enabled } = useSearchContext();
+  if (hideIfDisabled && !enabled) return null;
+
+  return (
+    <button
+      type='button'
+      className={cn(
+        buttonVariants({
+          size,
+          color,
+        }),
+        props.className,
+      )}
+      data-search=''
+      aria-label='Open Search'
+      onClick={() => {
+        setOpenSearch(true);
+      }}
+    >
+      <Search />
+    </button>
+  );
+};
+
+export const LargeSearchToggle = ({
+  hideIfDisabled,
+  ...props
+}: ComponentProps<'button'> & {
+  hideIfDisabled?: boolean;
+}) => {
+  const { enabled, hotKey, setOpenSearch } = useSearchContext();
+  const { text } = useI18n();
+  if (hideIfDisabled && !enabled) return null;
+
+  return (
+    <button
+      type='button'
+      data-search-full=''
+      {...props}
+      className={cn(
+        'inline-flex items-center gap-2 rounded-lg border bg-fd-secondary/50 p-1.5 ps-2 text-sm text-fd-muted-foreground transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground',
+        props.className,
+      )}
+      onClick={() => {
+        setOpenSearch(true);
+      }}
+    >
+      <Search className='size-4' />
+      {text.search}
+      <div className='ms-auto inline-flex gap-0.5'>
+        {hotKey.map((key, i) => (
+          <kbd
+            key={i.toString()}
+            className='rounded-md border bg-fd-background px-1.5'
+          >
+            {key.display}
+          </kbd>
+        ))}
+      </div>
+    </button>
   );
 };
