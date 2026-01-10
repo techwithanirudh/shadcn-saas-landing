@@ -21,7 +21,7 @@ export const PostCard: React.FC<PostCardProps> = ({
   url,
   date,
   author,
-  tags,
+  tags: _tags,
 }) => {
   return (
     <Link

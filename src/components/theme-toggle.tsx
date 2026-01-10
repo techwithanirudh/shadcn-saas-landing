@@ -79,19 +79,10 @@ export function ThemeToggle({
     : null;
 
   return (
-    <div
-      className={container}
-      onClick={() => {
-        if (mode !== 'light-dark') return;
-        handleChangeTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
-      }}
-      data-theme-toggle=''
-      aria-label={mode === 'light-dark' ? 'Toggle Theme' : undefined}
-      {...props}
-    >
+    <div className={container} data-theme-toggle='' {...props}>
       {themes.map(({ key, icon: Icon, label }) => {
         const isActive = value === key;
-        if (mode === 'light-dark' && key === 'system') return;
+        if (mode === 'light-dark' && key === 'system') return null;
 
         return (
           <button
@@ -99,7 +90,6 @@ export function ThemeToggle({
             key={key}
             className={itemVariants({ active: isActive })}
             onClick={() => {
-              if (mode === 'light-dark') return;
               handleChangeTheme(key as Theme);
             }}
             aria-label={label}

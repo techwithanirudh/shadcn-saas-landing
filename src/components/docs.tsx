@@ -27,7 +27,7 @@ export const DocsLayout = ({
         containerProps={{
           ...props.containerProps,
           className: cn(
-            'mx-auto max-w-(--fd-layout-width) w-full [--fd-banner-height:3.5rem]',
+            'mx-auto w-full max-w-(--fd-layout-width) [--fd-banner-height:3.5rem]',
             props.containerProps?.className,
           ),
         }}

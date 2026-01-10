@@ -67,7 +67,7 @@ export async function sendWelcomeEmail({
     url: `${baseUrl}${post.url}`,
   }));
 
-  const { data: res, error } = await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: EMAIL_FROM,
     to,
     subject: 'Welcome to my newsletter!',

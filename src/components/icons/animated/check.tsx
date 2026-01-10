@@ -11,7 +11,7 @@ export interface CheckIconHandle {
   stopAnimation: () => void;
 }
 
-interface CheckIconProps extends HTMLAttributes<HTMLDivElement> {
+interface CheckIconProps extends HTMLAttributes<HTMLButtonElement> {
   size?: number;
 }
 
@@ -37,7 +37,17 @@ const pathVariants: Variants = {
 };
 
 const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
-  ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
+  (
+    {
+      onMouseEnter,
+      onMouseLeave,
+      className,
+      size = 28,
+      'aria-label': ariaLabel = 'Check icon',
+      ...props
+    },
+    ref,
+  ) => {
     const controls = useAnimation();
     const isControlledRef = useRef(false);
 
@@ -51,7 +61,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
     });
 
     const handleMouseEnter = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!isControlledRef.current) {
           controls.start('animate');
         } else {
@@ -62,7 +72,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
     );
 
     const handleMouseLeave = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
+      (e: React.MouseEvent<HTMLButtonElement>) => {
         if (!isControlledRef.current) {
           controls.start('normal');
         } else {
@@ -73,7 +83,9 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
     );
 
     return (
-      <div
+      <button
+        type='button'
+        aria-label={ariaLabel}
         className={cn(
           'flex cursor-pointer select-none items-center justify-center rounded-md p-2 transition-colors duration-200 hover:bg-accent',
           className,
@@ -82,7 +94,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative icon */}
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width={size}
@@ -101,7 +113,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
             d='M4 12 9 17L20 6'
           />
         </svg>
-      </div>
+      </button>
     );
   },
 );

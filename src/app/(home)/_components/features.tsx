@@ -83,7 +83,7 @@ const Features = () => (
               })}
             >
               <feature.Icon className='h-8 w-8 stroke-1 transition-transform hover:rotate-12 hover:scale-125' />
-              <div className='flex flex-col '>
+              <div className='flex flex-col'>
                 <h3 className='text-xl tracking-tight transition-all'>
                   {feature.title}
                 </h3>

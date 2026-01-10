@@ -156,7 +156,7 @@ const sections = [
 export async function generateMetadata(props: {
   params: Promise<{ slug?: string[] }>;
 }): Promise<Metadata> {
-  const params = await props.params;
+  const _params = await props.params;
   const description = `Terms of service for ${homeTitle}. Last updated on ${LAST_UPDATED}.`;
 
   return createMetadata({

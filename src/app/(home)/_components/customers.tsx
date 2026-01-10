@@ -50,11 +50,7 @@ const logos = [
   },
 ];
 
-export const Customers = ({
-  count,
-}: {
-  count: number;
-}) => {
+export const Customers = ({ count }: { count: number }) => {
   const closest = Math.floor(count / 50) * 50;
 
   return (
@@ -79,7 +75,7 @@ export const Customers = ({
           }}
         >
           <CarouselContent>
-            {logos.map((logo, index) => (
+            {logos.map((logo, _index) => (
               <CarouselItem className='basis-1/4 md:basis-1/5' key={logo.name}>
                 <div className='flex items-center justify-center'>
                   <BlurImage
