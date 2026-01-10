@@ -19,29 +19,29 @@ export function Tab({
 }: TabProps) {
   return (
     <button
-      onClick={() => setSelected(text)}
       className={cn(
         'relative w-fit px-4 py-2 font-semibold text-sm capitalize',
         'text-foreground transition-colors',
-        discount && 'flex items-center justify-center gap-2.5',
+        discount && 'flex items-center justify-center gap-2.5'
       )}
+      onClick={() => setSelected(text)}
       type='button'
     >
       <span className='relative z-10'>{text}</span>
       {selected && (
         <motion.span
+          className='absolute inset-0 z-0 rounded-full bg-background shadow-sm'
           layoutId='tab'
           transition={{ type: 'spring', duration: 0.4 }}
-          className='absolute inset-0 z-0 rounded-full bg-background shadow-sm'
         />
       )}
       {discount && (
         <Badge
-          variant='secondary'
           className={cn(
             'relative z-10 whitespace-nowrap shadow-none',
-            selected && 'bg-muted',
+            selected && 'bg-muted'
           )}
+          variant='secondary'
         >
           {/* todo: auto-generate discount percent */}
           Save 35%

@@ -57,6 +57,11 @@ export const Customers = ({ count }: { count: number }) => {
       </p>
       <div className='md:w-[50%]'>
         <Carousel
+          opts={{
+            align: 'start',
+            dragFree: true,
+            loop: true,
+          }}
           plugins={[
             Autoplay({
               speed: 600 / 1000,
@@ -65,31 +70,26 @@ export const Customers = ({ count }: { count: number }) => {
               stopOnMouseEnter: true,
             }),
           ]}
-          opts={{
-            align: 'start',
-            dragFree: true,
-            loop: true,
-          }}
         >
           <CarouselContent>
             {logos.map((logo, _index) => (
               <CarouselItem className='basis-1/4 md:basis-1/5' key={logo.name}>
                 <div className='flex items-center justify-center'>
                   <BlurImage
-                    src={logo.light}
                     alt={logo.name}
-                    width={96}
+                    className='rounded-md p-1 dark:hidden'
                     height={24}
                     imageClassName='h-6 w-24 select-none object-contain'
-                    className='rounded-md p-1 dark:hidden'
+                    src={logo.light}
+                    width={96}
                   />
                   <BlurImage
-                    src={logo.dark}
                     alt={logo.name}
-                    width={96}
+                    className='hidden rounded-md p-1 dark:block'
                     height={24}
                     imageClassName='h-6 w-24 select-none object-contain'
-                    className='hidden rounded-md p-1 dark:block'
+                    src={logo.dark}
+                    width={96}
                   />
                 </div>
               </CarouselItem>

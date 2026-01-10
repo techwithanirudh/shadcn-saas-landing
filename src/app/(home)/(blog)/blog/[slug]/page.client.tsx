@@ -27,10 +27,10 @@ export function Share({ url }: { url: string }): React.ReactElement {
   return (
     <Button
       className={cn('group gap-2')}
-      variant={'secondary'}
       onClick={onClick}
       onMouseEnter={() => iconRef.current?.startAnimation?.()}
       onMouseLeave={() => iconRef.current?.stopAnimation?.()}
+      variant={'secondary'}
     >
       <ShareIcon className='size-4 hover:bg-transparent' ref={iconRef} />
       Share Post
@@ -47,14 +47,14 @@ export function PostComments({
 }) {
   return (
     <Comments
-      page={slug}
-      className={cn('w-full', className)}
       auth={{
         type: 'api',
         signIn: () => {
           redirect('/login');
         },
       }}
+      className={cn('w-full', className)}
+      page={slug}
     />
   );
 }

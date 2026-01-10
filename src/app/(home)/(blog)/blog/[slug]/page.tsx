@@ -25,7 +25,7 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
       <div
         className={cn(
           'flex flex-col items-start justify-center gap-4 py-8 md:gap-6',
-          'sm:items-center sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-xs',
+          'sm:items-center sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-xs'
         )}
       >
         <div className='flex flex-col gap-2 sm:text-center md:gap-4'>
@@ -38,7 +38,7 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
         </div>
         <div className='flex flex-wrap gap-2'>
           {tags?.map((tag) => (
-            <TagCard name={tag} key={tag} className='border border-border' />
+            <TagCard className='border border-border' key={tag} name={tag} />
           ))}
         </div>
       </div>
@@ -52,7 +52,9 @@ export default async function Page(props: {
   const params = await props.params;
   const page = getPost([params.slug]);
 
-  if (!page) notFound();
+  if (!page) {
+    notFound();
+  }
   const { body: Mdx, toc, tags, lastModified } = page.data;
 
   const lastUpdate = lastModified ? new Date(lastModified) : undefined;
@@ -65,8 +67,8 @@ export default async function Page(props: {
         <article className='flex min-h-full flex-col lg:flex-row'>
           <div className='flex flex-1 flex-col gap-4'>
             <InlineTOC
-              items={toc}
               className='rounded-none border-0 border-border border-b border-dashed'
+              items={toc}
             />
             <div className='prose min-w-0 flex-1 px-4'>
               <Mdx
@@ -81,8 +83,8 @@ export default async function Page(props: {
               />
             </div>
             <PostComments
-              slug={params.slug}
               className='[&_form>div]:!rounded-none rounded-none border-0 border-border border-t border-dashed'
+              slug={params.slug}
             />
           </div>
           <div className='flex flex-col gap-4 p-4 text-sm lg:sticky lg:top-[4rem] lg:h-[calc(100vh-4rem)] lg:w-[250px] lg:self-start lg:overflow-y-auto lg:border-border lg:border-l lg:border-dashed'>
@@ -121,7 +123,9 @@ export async function generateMetadata(props: {
   const params = await props.params;
   const page = getPost([params.slug]);
 
-  if (!page) notFound();
+  if (!page) {
+    notFound();
+  }
 
   const title = page.data.title ?? 'Untitled';
   const description = page.data.description ?? homeDescription;

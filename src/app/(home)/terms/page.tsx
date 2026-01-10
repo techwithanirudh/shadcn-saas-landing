@@ -20,7 +20,7 @@ export default function TermsOfService() {
       <Section>
         <div className='grid divide-y divide-dashed divide-border'>
           {sections.map((section) => (
-            <div key={section.title} className='group p-6 transition-all'>
+            <div className='group p-6 transition-all' key={section.title}>
               <h2 className='mb-4 font-semibold text-xl tracking-tight'>
                 {section.title}
               </h2>
@@ -142,8 +142,8 @@ const sections = [
         </p>
         <div className='flex flex-col space-y-2'>
           <Link
-            href='/contact'
             className='inline-flex items-center text-fd-primary underline duration-300 hover:text-fd-primary/70'
+            href='/contact'
           >
             Contact Support
           </Link>

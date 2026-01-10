@@ -24,7 +24,7 @@ export default function PricingPage() {
   return (
     <>
       <title>Pricing | SaasCN</title>
-      <meta name='description' content={description} />
+      <meta content={description} name='description' />
       <Section className='flex flex-col items-center p-6 text-center lg:p-12'>
         <h1 className='mb-2 font-normal text-3xl leading-tight tracking-tighter md:text-5xl'>
           {title}
@@ -36,11 +36,11 @@ export default function PricingPage() {
         <div className='mt-8 flex w-fit items-center justify-center rounded-full bg-card p-1'>
           {frequencies.map((frequency) => (
             <Tab
+              discount={frequency === 'yearly'}
               key={frequency}
-              text={frequency}
               selected={frequency === selectedFrequency}
               setSelected={setSelectedFrequency}
-              discount={frequency === 'yearly'}
+              text={frequency}
             />
           ))}
         </div>
@@ -50,8 +50,8 @@ export default function PricingPage() {
           {plans.map((plan) => (
             <PricingCard
               key={plan.name}
-              tier={plan}
               paymentFrequency={selectedFrequency}
+              tier={plan}
             />
           ))}
         </div>

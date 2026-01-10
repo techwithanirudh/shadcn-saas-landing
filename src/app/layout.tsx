@@ -39,8 +39,8 @@ export const viewport: Viewport = {
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html
-      lang='en'
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      lang='en'
       suppressHydrationWarning
     >
       <Body>

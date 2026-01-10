@@ -30,9 +30,11 @@ export const contact = actionClient
       };
     } catch (error) {
       console.error('Contact form error:', error);
-      if (error instanceof ActionError) throw error;
+      if (error instanceof ActionError) {
+        throw error;
+      }
       throw new ActionError(
-        'Failed to send your message. Please try again later.',
+        'Failed to send your message. Please try again later.'
       );
     }
   });

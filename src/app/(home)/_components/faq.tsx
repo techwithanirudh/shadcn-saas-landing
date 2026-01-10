@@ -43,16 +43,16 @@ export const FAQ = () => (
       </h4>
       <p className='max-w-xl text-left text-lg text-muted-foreground leading-relaxed tracking-tight lg:max-w-lg'>
         Still have questions?{' '}
-        <InlineLink href='/contact' className='no-underline'>
+        <InlineLink className='no-underline' href='/contact'>
           Contact Us
         </InlineLink>
       </p>
     </div>
 
     <Accordion
-      type='single'
-      collapsible
       className='w-full divide-dashed divide-border'
+      collapsible
+      type='single'
     >
       {faq.map((item, index) => (
         <AccordionItem

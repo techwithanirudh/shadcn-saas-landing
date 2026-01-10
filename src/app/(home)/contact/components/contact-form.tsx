@@ -40,7 +40,7 @@ const ContactFormInner = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='flex-1 space-y-8'>
+      <form className='flex-1 space-y-8' onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
           name='name'
@@ -91,8 +91,8 @@ const ContactFormInner = () => {
               <FormLabel>Message</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Hi there, I'm interested in..."
                   className='max-h-[20rem] min-h-[10rem] resize-y bg-background'
+                  placeholder="Hi there, I'm interested in..."
                   {...field}
                   disabled={status === 'executing'}
                 />
@@ -102,9 +102,9 @@ const ContactFormInner = () => {
           )}
         />
         <Button
-          type='submit'
           className='w-full'
           disabled={!form.formState.isValid || status === 'executing'}
+          type='submit'
         >
           {status === 'executing' ? (
             <Icons.spinner className='mr-2 size-4 animate-spin' />

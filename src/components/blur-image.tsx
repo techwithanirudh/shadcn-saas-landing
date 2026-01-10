@@ -21,19 +21,19 @@ const BlurImage = (props: ImageProps) => {
       className={cn('overflow-hidden', isLoading && 'animate-pulse', className)}
     >
       <NextImage
+        alt={alt}
         className={cn(
           isLoading && 'scale-[1.02] blur-xl grayscale',
-          imageClassName,
+          imageClassName
         )}
+        loading={lazy ? 'lazy' : undefined}
+        onLoad={() => setIsLoading(false)}
+        priority={!lazy}
+        quality={100}
+        src={src}
         style={{
           transition: 'filter 700ms ease, scale 150ms ease',
         }}
-        src={src}
-        alt={alt}
-        loading={lazy ? 'lazy' : undefined}
-        priority={!lazy}
-        quality={100}
-        onLoad={() => setIsLoading(false)}
         {...rest}
       />
     </div>

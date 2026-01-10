@@ -108,9 +108,9 @@ export const LinkItem = ({
 
   return (
     <Link
-      ref={ref}
-      href={item.url}
       external={item.external}
+      href={item.url}
+      ref={ref}
       {...props}
       data-active={active}
     >

@@ -12,35 +12,35 @@ import heroImage from '../../../../public/images/gradient-noise-purple-azure-lig
 const Hero = ({ posts }: { posts: Page[] }) => (
   <Section className='relative w-full overflow-hidden bg-dashed px-4 py-16 sm:px-16 sm:py-24 md:py-32'>
     <motion.div
-      initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      className='absolute inset-0 -z-10 h-full w-full'
+      initial={{ opacity: 0 }}
       transition={{
         duration: 0.4,
         scale: { type: 'spring', visualDuration: 0.4, bounce: 0.5 },
       }}
-      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className='-z-10 absolute inset-0 h-full w-full'
+      whileInView={{ opacity: 1 }}
     >
       <Image
-        src={heroImage}
         alt='Hero Background'
-        height={600}
-        width={704}
         className='pointer-events-none absolute right-0 bottom-0 h-[900px] w-[1004px] max-w-[1004px] translate-x-1/2 translate-y-1/2 select-none opacity-80 dark:opacity-100'
+        height={600}
         priority
+        src={heroImage}
+        width={704}
       />
     </motion.div>
     <div className='mx-auto flex flex-col items-center justify-center gap-8'>
       <Button
-        variant='outline'
-        size='sm'
-        className='group gap-4 bg-muted/70'
         asChild
+        className='group gap-4 bg-muted/70'
+        size='sm'
+        variant='outline'
       >
         <Link href={`/blog/${posts?.[0]?.slugs?.join('/')}`}>
           Read our latest announcement
-          <Icons.arrowUpRight className='group-hover:-rotate-12 size-4 transition-transform' />
+          <Icons.arrowUpRight className='size-4 transition-transform group-hover:-rotate-12' />
         </Link>
       </Button>
       <div className='flex flex-col gap-4'>
@@ -57,20 +57,20 @@ const Hero = ({ posts }: { posts: Page[] }) => (
       </div>
       <div className='flex flex-row gap-3'>
         <Button
-          size='lg'
-          className='group gap-4 bg-muted/70 shadow-none'
-          variant='outline'
           asChild
+          className='group gap-4 bg-muted/70 shadow-none'
+          size='lg'
+          variant='outline'
         >
           <Link href='/contact'>
             Get in touch{' '}
-            <MailIcon className='group-hover:-rotate-12 size-4 transition-transform' />
+            <MailIcon className='size-4 transition-transform group-hover:-rotate-12' />
           </Link>
         </Button>
-        <Button size='lg' className='group gap-4' asChild>
+        <Button asChild className='group gap-4' size='lg'>
           <Link href={env.NEXT_PUBLIC_APP_URL}>
             Sign up{' '}
-            <Icons.arrowUpRight className='group-hover:-rotate-12 size-4 transition-transform' />
+            <Icons.arrowUpRight className='size-4 transition-transform group-hover:-rotate-12' />
           </Link>
         </Button>
       </div>

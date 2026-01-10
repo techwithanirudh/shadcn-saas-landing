@@ -30,13 +30,13 @@ const Updates = ({ posts }: { posts: Page[] }) => {
                   key={post.url}
                 >
                   <PostCard
-                    title={post.data.title}
+                    author={post.data.author}
+                    date={date}
                     description={post.data.description ?? ''}
                     image={post.data.image}
-                    url={post.url}
-                    date={date}
-                    author={post.data.author}
                     tags={post.data.tags}
+                    title={post.data.title}
+                    url={post.url}
                   />
                 </CarouselItem>
               );

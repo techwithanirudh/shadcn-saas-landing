@@ -13,7 +13,7 @@ const audienceId = process.env.RESEND_AUDIENCE_ID as string;
 const splitName = (name = '') => {
   const [firstName, ...lastName] = name.split(' ').filter(Boolean);
   return {
-    firstName: firstName,
+    firstName,
     lastName: lastName.join(' '),
   };
 };
@@ -55,7 +55,7 @@ export const subscribe = actionClient
 
       if (!data || error) {
         throw new Error(
-          `Failed to create contact: ${error?.message || 'Unknown error'}`,
+          `Failed to create contact: ${error?.message || 'Unknown error'}`
         );
       }
 
@@ -72,7 +72,9 @@ export const subscribe = actionClient
       };
     } catch (error) {
       console.error('Failed to subscribe:', error);
-      if (error instanceof ActionError) throw error;
+      if (error instanceof ActionError) {
+        throw error;
+      }
       throw new ActionError('Oops, something went wrong while subscribing.');
     }
   });

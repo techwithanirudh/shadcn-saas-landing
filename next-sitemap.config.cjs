@@ -1,3 +1,4 @@
+'use strict';
 const siteUrl =
   process.env.NODE_ENV === 'development' ||
   !process.env.VERCEL_PROJECT_PRODUCTION_URL

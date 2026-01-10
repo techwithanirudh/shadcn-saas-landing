@@ -25,17 +25,17 @@ export const PostCard: React.FC<PostCardProps> = ({
 }) => {
   return (
     <Link
-      href={url}
       className='flex flex-col gap-4 bg-card/50 p-6 transition-colors hover:bg-card/80'
+      href={url}
     >
       {image && (
         <div className='relative inline-flex items-center justify-center transition-transform hover:scale-105'>
           <BlurImage
-            width={853}
-            height={554}
-            src={image}
             alt={title}
             className='relative rounded-lg'
+            height={554}
+            src={image}
+            width={853}
           />
         </div>
       )}

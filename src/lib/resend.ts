@@ -40,7 +40,7 @@ export async function getContact({
 
   if (error || !contacts) {
     throw new Error(
-      `Failed to list contacts: ${error?.message || 'Unknown error'}`,
+      `Failed to list contacts: ${error?.message || 'Unknown error'}`
     );
   }
 
@@ -58,8 +58,12 @@ export async function sendWelcomeEmail({
   to: string;
 }) {
   const EMAIL_FROM = process.env.EMAIL_FROM as string;
-  if (!EMAIL_FROM) throw new Error('Missing EMAIL_FROM environment variable');
-  if (!firstName || !to) throw new Error('Missing required email fields');
+  if (!EMAIL_FROM) {
+    throw new Error('Missing EMAIL_FROM environment variable');
+  }
+  if (!(firstName && to)) {
+    throw new Error('Missing required email fields');
+  }
 
   const formattedPosts = posts.map((post) => ({
     ...post.data,

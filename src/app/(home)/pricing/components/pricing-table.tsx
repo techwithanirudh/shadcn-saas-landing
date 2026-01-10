@@ -39,12 +39,12 @@ export const PricingTable = ({
 
               return (
                 <TableHead
-                  key={plan.name}
                   className={cn(
                     'min-w-[200px] p-6 text-center',
                     index % 2 === 1 &&
-                      'border-border border-x border-b border-dashed bg-card',
+                      'border-border border-x border-b border-dashed bg-card'
                   )}
+                  key={plan.name}
                 >
                   <div className='flex flex-col items-center gap-2 p-2'>
                     <h3 className='font-semibold text-lg'>{plan.name}</h3>
@@ -57,13 +57,13 @@ export const PricingTable = ({
                         <div className='flex items-center justify-center gap-1'>
                           <div className='flex items-baseline'>
                             <NumberFlow
+                              className='font-semibold text-xs'
                               format={{
                                 style: 'currency',
                                 currency: 'USD',
                                 trailingZeroDisplay: 'stripIfInteger',
                               }}
                               value={price}
-                              className='font-semibold text-xs'
                             />
                           </div>
                           <p className='text-muted-foreground text-xs'>
@@ -81,12 +81,12 @@ export const PricingTable = ({
                           variant: plan?.popular ? 'default' : 'secondary',
                           size: 'sm',
                         }),
-                        'group mt-2',
+                        'group mt-2'
                       )}
                       href={plan.cta.href}
                     >
                       {plan.cta.label}
-                      <ArrowRight className='group-hover:-rotate-45 ml-2 h-4 w-4 transition-transform' />
+                      <ArrowRight className='ml-2 h-4 w-4 transition-transform group-hover:-rotate-45' />
                     </Link>
                   </div>
                 </TableHead>
@@ -100,8 +100,8 @@ export const PricingTable = ({
             <Fragment key={group.name}>
               <TableRow className='bg-card'>
                 <TableCell
-                  colSpan={plans.length + 1}
                   className='p-4 font-medium'
+                  colSpan={plans.length + 1}
                 >
                   {group.name}
                 </TableCell>
@@ -127,12 +127,12 @@ export const PricingTable = ({
 
                   {feature.plans.map((value, index) => (
                     <TableCell
-                      key={`${String(value)}_${index}`}
                       className={cn(
                         'text-center',
                         index % 2 === 1 &&
-                          'border-border border-x border-t border-dashed bg-card',
+                          'border-border border-x border-t border-dashed bg-card'
                       )}
+                      key={`${String(value)}_${index}`}
                     >
                       {typeof value === 'boolean' ? (
                         value ? (

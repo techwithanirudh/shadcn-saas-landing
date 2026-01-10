@@ -4,9 +4,15 @@ import { env } from '@/env';
 import { isProduction } from '@/lib/constants';
 
 const Analytics = () => {
-  if (!isProduction) return null;
-  if (!env.NEXT_PUBLIC_UMAMI_URL) return null;
-  if (!env.NEXT_PUBLIC_UMAMI_WEBSITE_ID) return null;
+  if (!isProduction) {
+    return null;
+  }
+  if (!env.NEXT_PUBLIC_UMAMI_URL) {
+    return null;
+  }
+  if (!env.NEXT_PUBLIC_UMAMI_WEBSITE_ID) {
+    return null;
+  }
 
   return (
     <Script

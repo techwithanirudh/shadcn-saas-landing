@@ -46,7 +46,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
       'aria-label': ariaLabel = 'Check icon',
       ...props
     },
-    ref,
+    ref
   ) => {
     const controls = useAnimation();
     const isControlledRef = useRef(false);
@@ -62,60 +62,61 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
 
     const handleMouseEnter = useCallback(
       (e: React.MouseEvent<HTMLButtonElement>) => {
-        if (!isControlledRef.current) {
-          controls.start('animate');
-        } else {
+        if (isControlledRef.current) {
           onMouseEnter?.(e);
+        } else {
+          controls.start('animate');
         }
       },
-      [controls, onMouseEnter],
+      [controls, onMouseEnter]
     );
 
     const handleMouseLeave = useCallback(
       (e: React.MouseEvent<HTMLButtonElement>) => {
-        if (!isControlledRef.current) {
-          controls.start('normal');
-        } else {
+        if (isControlledRef.current) {
           onMouseLeave?.(e);
+        } else {
+          controls.start('normal');
         }
       },
-      [controls, onMouseLeave],
+      [controls, onMouseLeave]
     );
 
     return (
       <button
-        type='button'
         aria-label={ariaLabel}
         className={cn(
           'flex cursor-pointer select-none items-center justify-center rounded-md p-2 transition-colors duration-200 hover:bg-accent',
-          className,
+          className
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        type='button'
         {...props}
       >
-        {/* biome-ignore lint/a11y/noSvgWithoutTitle: decorative icon */}
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width={size}
-          height={size}
-          viewBox='0 0 24 24'
+          aria-hidden='true'
           fill='none'
+          focusable='false'
+          height={size}
           stroke='currentColor'
-          strokeWidth='2'
           strokeLinecap='round'
           strokeLinejoin='round'
+          strokeWidth='2'
+          viewBox='0 0 24 24'
+          width={size}
+          xmlns='http://www.w3.org/2000/svg'
         >
           <motion.path
-            variants={pathVariants}
-            initial='normal'
             animate={controls}
             d='M4 12 9 17L20 6'
+            initial='normal'
+            variants={pathVariants}
           />
         </svg>
       </button>
     );
-  },
+  }
 );
 
 CheckIcon.displayName = 'CheckIcon';

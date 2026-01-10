@@ -8,11 +8,11 @@ export default function NotFound() {
   return (
     <HomeLayout
       {...baseOptions}
+      className='pt-0'
       links={linkItems}
       nav={{
         component: <Header links={linkItems} {...baseOptions} />,
       }}
-      className='pt-0'
     >
       <main className='flex flex-1'>
         <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border border-x border-b border-dashed'>

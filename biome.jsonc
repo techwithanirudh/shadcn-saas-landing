@@ -8,7 +8,6 @@
   "files": {
     "ignoreUnknown": true,
     "includes": [
-      "**",
       "!node_modules",
       "!**/.next",
       "!**/dist",
@@ -32,7 +31,6 @@
     "enabled": true,
     "rules": {
       "a11y": {
-        "noSvgWithoutTitle": "off",
         "useGenericFontNames": "off"
       },
       "correctness": {
@@ -50,9 +48,7 @@
           "fix": "safe",
           "level": "info",
           "options": {
-            "functions": [
-              "cn"
-            ]
+            "functions": ["cn"]
           }
         },
         "noLeakedRender": "off"
@@ -62,9 +58,9 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
-      "semicolons": "asNeeded",
       "trailingCommas": "es5",
-      "jsxQuoteStyle": "single"
+      "jsxQuoteStyle": "single",
+      "semicolons": "always"
     }
   },
   "json": {
@@ -73,9 +69,6 @@
     }
   },
   "extends": [
-    "ultracite/core",
-    "ultracite/react",
-    "ultracite/next",
     "ultracite/biome/core",
     "ultracite/biome/react",
     "ultracite/biome/next"

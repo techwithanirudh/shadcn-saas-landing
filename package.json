@@ -63,7 +63,7 @@
     "jiti": "^2.6.1",
     "katex": "0.16.27",
     "lucide-react": "0.560.0",
-    "motion": "^12.6.2",
+    "motion": "^12.25.0",
     "next": "16.0.10",
     "next-safe-action": "^7.10.4",
     "next-sitemap": "4.2.3",

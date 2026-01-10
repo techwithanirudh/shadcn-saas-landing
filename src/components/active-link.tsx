@@ -27,15 +27,15 @@ export const ActiveLink = ({
 
   return (
     <Link
-      href={href}
-      target={props.target}
-      rel={props.rel}
       className={cn(
         'text-muted-foreground text-sm transition-colors',
         'hover:text-foreground',
         active && 'font-medium text-foreground',
-        className,
+        className
       )}
+      href={href}
+      rel={props.rel}
+      target={props.target}
       {...props}
     >
       {children}

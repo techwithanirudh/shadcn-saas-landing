@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
             Last updated: {LAST_UPDATED}
           </p>
           <span className='text-muted-foreground text-sm'>•</span>
-          <InlineLink href='/terms' className='text-sm'>
+          <InlineLink className='text-sm' href='/terms'>
             Terms of Service
           </InlineLink>
         </div>
@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
       <Section>
         <div className='grid divide-y divide-dashed divide-border'>
           {sections.map((section) => (
-            <div key={section.title} className='group p-6 transition-all'>
+            <div className='group p-6 transition-all' key={section.title}>
               <h2 className='mb-4 font-semibold text-xl tracking-tight'>
                 {section.title}
               </h2>

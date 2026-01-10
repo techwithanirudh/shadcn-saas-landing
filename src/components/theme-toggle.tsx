@@ -34,7 +34,7 @@ const itemVariants = cva(
         false: 'text-fd-muted-foreground',
       },
     },
-  },
+  }
 );
 
 type Theme = 'light' | 'dark' | 'system';
@@ -51,7 +51,7 @@ export function ThemeToggle({
 
   const container = cn(
     'relative flex items-center rounded-full p-1 ring-1 ring-border',
-    className,
+    className
   );
 
   useLayoutEffect(() => {
@@ -82,22 +82,24 @@ export function ThemeToggle({
     <div className={container} data-theme-toggle='' {...props}>
       {themes.map(({ key, icon: Icon, label }) => {
         const isActive = value === key;
-        if (mode === 'light-dark' && key === 'system') return null;
+        if (mode === 'light-dark' && key === 'system') {
+          return null;
+        }
 
         return (
           <button
-            type='button'
-            key={key}
+            aria-label={label}
             className={itemVariants({ active: isActive })}
+            key={key}
             onClick={() => {
               handleChangeTheme(key as Theme);
             }}
-            aria-label={label}
+            type='button'
           >
             {isActive && (
               <motion.div
-                layoutId='activeTheme'
                 className='absolute inset-0 rounded-full bg-accent'
+                layoutId='activeTheme'
                 transition={{
                   type: 'spring',
                   duration: 1.5,
