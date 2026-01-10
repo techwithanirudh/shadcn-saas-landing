@@ -72,11 +72,15 @@ export function ThemeToggle({
     }
   };
 
-  const value = mounted
-    ? mode === 'light-dark'
-      ? resolvedTheme
-      : currentTheme
-    : null;
+  let value: string | null | undefined;
+
+  if (!mounted) {
+    value = null;
+  } else if (mode === 'light-dark') {
+    value = resolvedTheme;
+  } else {
+    value = currentTheme;
+  }
 
   return (
     <div className={container} data-theme-toggle='' {...props}>

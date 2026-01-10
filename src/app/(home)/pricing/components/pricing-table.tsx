@@ -3,7 +3,7 @@
 import NumberFlow from '@number-flow/react';
 import { ArrowRight, CheckIcon, HelpCircleIcon, MinusIcon } from 'lucide-react';
 import Link from 'next/link';
-import { Fragment } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import { Section } from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
 import {
@@ -125,26 +125,32 @@ export const PricingTable = ({
                     </TooltipProvider>
                   </TableCell>
 
-                  {feature.plans.map((value, index) => (
-                    <TableCell
-                      className={cn(
-                        'text-center',
-                        index % 2 === 1 &&
-                          'border-border border-x border-t border-dashed bg-card'
-                      )}
-                      key={`${String(value)}_${index}`}
-                    >
-                      {typeof value === 'boolean' ? (
-                        value ? (
-                          <CheckIcon className='mx-auto h-5 w-5 text-success' />
-                        ) : (
-                          <MinusIcon className='mx-auto h-5 w-5 text-muted-foreground' />
-                        )
+                  {feature.plans.map((value, index) => {
+                    let cellContent: ReactNode;
+
+                    if (typeof value === 'boolean') {
+                      cellContent = value ? (
+                        <CheckIcon className='mx-auto h-5 w-5 text-success' />
                       ) : (
-                        <span>{value}</span>
-                      )}
-                    </TableCell>
-                  ))}
+                        <MinusIcon className='mx-auto h-5 w-5 text-muted-foreground' />
+                      );
+                    } else {
+                      cellContent = <span>{value}</span>;
+                    }
+
+                    return (
+                      <TableCell
+                        className={cn(
+                          'text-center',
+                          index % 2 === 1 &&
+                            'border-border border-x border-t border-dashed bg-card'
+                        )}
+                        key={`${String(value)}_${index}`}
+                      >
+                        {cellContent}
+                      </TableCell>
+                    );
+                  })}
                 </TableRow>
               ))}
             </Fragment>
