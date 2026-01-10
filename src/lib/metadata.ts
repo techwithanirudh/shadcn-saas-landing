@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { title } from '@/app/layout.config';
+import { title } from '@/app/layout.shared';
 import { env } from '@/env';
 import type { Page } from './source';
 

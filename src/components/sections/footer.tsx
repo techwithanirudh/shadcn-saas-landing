@@ -7,7 +7,7 @@ import {
   linkItems,
   owner,
   postsPerPage,
-} from '@/app/layout.config';
+} from '@/app/layout.shared';
 import { InlineLink } from '@/components/inline-link';
 import { getSortedByDatePosts, getTags } from '@/lib/source';
 import { cn } from '@/lib/utils';

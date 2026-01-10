@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type React from 'react';
 import { NewsletterForm } from '@/app/(home)/(blog)/newsletter/components/newsletter-form';
-import { title as homeTitle } from '@/app/layout.config';
+import { title as homeTitle } from '@/app/layout.shared';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import CTA from '../../_components/cta';

@@ -5,7 +5,7 @@ import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
-import { description as homeDescription } from 'src/app/layout.config';
+import { description as homeDescription } from 'src/app/layout.shared';
 import {
   PostComments,
   Share,

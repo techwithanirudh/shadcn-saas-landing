@@ -7,7 +7,7 @@ import '@/styles/globals.css';
 import 'katex/dist/katex.css';
 import { baseUrl } from '@/lib/constants';
 import { Body } from './layout.client';
-import { description as homeDescription } from './layout.config';
+import { description as homeDescription } from './layout.shared';
 import { Provider } from './provider';
 
 const geistSans = Geist({

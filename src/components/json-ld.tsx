@@ -1,5 +1,5 @@
 import type { BlogPosting, BreadcrumbList, Graph } from 'schema-dts';
-import { title as homeTitle, owner } from '@/app/layout.config';
+import { title as homeTitle, owner } from '@/app/layout.shared';
 import { baseUrl } from '@/lib/constants';
 import type { Post } from '@/lib/source';
 

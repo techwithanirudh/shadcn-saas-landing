@@ -2,7 +2,7 @@ import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import type { ReactNode } from 'react';
 import { Footer } from '@/components/sections/footer';
 import { Header } from '@/components/sections/header';
-import { baseOptions, linkItems } from '../layout.config';
+import { baseOptions, linkItems } from '../layout.shared';
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (

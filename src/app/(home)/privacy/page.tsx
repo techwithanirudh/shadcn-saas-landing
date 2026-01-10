@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { title as homeTitle } from '@/app/layout.config';
+import { title as homeTitle } from '@/app/layout.shared';
 import { InlineLink } from '@/components/inline-link';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';

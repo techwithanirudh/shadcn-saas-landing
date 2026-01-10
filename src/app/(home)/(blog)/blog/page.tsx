@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
-import { postsPerPage } from '@/app/layout.config';
+import { postsPerPage } from '@/app/layout.shared';
 import { PostCard } from '@/components/blog/post-card';
 import { NumberedPagination } from '@/components/numbered-pagination';
 import { Section } from '@/components/section';

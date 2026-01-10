@@ -1,7 +1,7 @@
 'use client';
 
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { baseOptions, linkItems } from '@/app/layout.config';
+import { baseOptions, linkItems } from '@/app/layout.shared';
 import { Icons } from '@/components/icons/icons';
 import { Header } from '@/components/sections/header';
 import { Button } from '@/components/ui/button';

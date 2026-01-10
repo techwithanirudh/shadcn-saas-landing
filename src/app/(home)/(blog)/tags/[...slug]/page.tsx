@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
-import { postsPerPage } from '@/app/layout.config';
+import { postsPerPage } from '@/app/layout.shared';
 import { PostCard } from '@/components/blog/post-card';
 import { Icons } from '@/components/icons/icons';
 import { TagJsonLd } from '@/components/json-ld';
@@ -167,9 +167,8 @@ export async function generateMetadata(
 
   return createMetadata({
     title: pageTitle,
-    description: `Posts tagged with ${tag}${
-      !isFirstPage ? ` - Page ${pageIndex}` : ''
-    }`,
+    description: `Posts tagged with ${tag}${!isFirstPage ? ` - Page ${pageIndex}` : ''
+      }`,
     openGraph: {
       url: canonicalUrl,
     },

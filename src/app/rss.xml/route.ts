@@ -1,5 +1,5 @@
 import { Feed } from 'feed';
-import { description, owner, title } from '@/app/layout.config';
+import { description, owner, title } from '@/app/layout.shared';
 import { baseUrl } from '@/lib/constants';
 import { getPosts } from '@/lib/source';
 

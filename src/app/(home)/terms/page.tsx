@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { title as homeTitle } from '@/app/layout.config';
+import { title as homeTitle } from '@/app/layout.shared';
 import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 
